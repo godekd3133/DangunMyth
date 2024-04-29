@@ -2,7 +2,6 @@ public  class Dialog {
     public Dialog() {}
     public ArrayList<DialogElement> elementList = new ArrayList<DialogElement>();
 } 
-
 public abstract class DialogElement{
     public DialogElement() {}
     
@@ -10,7 +9,7 @@ public abstract class DialogElement{
     public abstract void Draw();
     public abstract void Release();
     
-    public boolean b = true;
+    public abstract boolean isRunning();
 }
 
 public class TextBox extends DialogElement{
@@ -28,6 +27,11 @@ public class TextBox extends DialogElement{
     @Override
     public void Release() {
         // Release TextBox
+    }
+    
+    @Override
+    public boolean isRunning() {
+        return true;
     }
 }
 
@@ -47,5 +51,10 @@ public class ButtonBox extends DialogElement{
     @Override
     public void Release() {
         // Release ButtonBox
+    }
+    
+    @Override
+    public boolean isRunning() {
+        return true;
     }
 }
