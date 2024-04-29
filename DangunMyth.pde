@@ -1,39 +1,14 @@
-SceneManager sceneManager = new SceneManager();
+SceneManager scene = new SceneManager();
+ImageManager image = new ImageManager();
 
-public  class SceneManager  {
-    
-    public SceneManager() { 
-    }
-    
-    public Scene currentScene;
-    public Scene  nextScene;
-    
-    public void Setup(Scene firstScene) {
-    }
-    
-    public void Draw() {
-        if (currentScene!= null)
-            currentScene.OnDraw();
-        if (nextScene != null) {
-            currentScene = nextScene;
-            currentScene.OnExit();
-            currentScene.OnEnter();
-            nextScene = null;
-        }
-    }
-    
-    public void ChangeScene(Scene scene) {
-        nextScene = scene;
-    }
-}
 void setup() {
-    //frameRate(1);
-    size(800, 600);
+    frameRate(60);
+    size(1280, 720);
     TestScene testScene = new TestScene();
-    sceneManager.Setup(testScene);
+    scene.Setup(testScene);
 }
 void draw() {
-    sceneManager.Draw();
+    scene.Draw();
 }
 
 
