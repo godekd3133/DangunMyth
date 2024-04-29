@@ -4,7 +4,7 @@ public  class Dialog {
 } 
 public abstract class DialogElement{
     public DialogElement() {}
-    
+    public Object result;
     public abstract void Setup();
     public abstract void Draw();
     public abstract void Release();
