@@ -12,7 +12,7 @@ public class TestScene extends Scene
     }
     @Override 
     public  void OnDraw()
-        {
+    {
         print("Draw");
     }
     @Override 
