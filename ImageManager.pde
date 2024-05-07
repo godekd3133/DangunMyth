@@ -22,6 +22,7 @@ public class ImageManager {
         
         PImage img = loadImage(path + ".png");
         images.put(name, img);
+        
     }
     
     public void LoadAnimation(String name, String path,int count) {
@@ -49,6 +50,9 @@ public class ImageManager {
         DrawImage(key, position, 0f);
     }
     void DrawImage(String key, PVector position, float angle) {
+        DrawImage(key, position, angle, 255);
+    }
+    void DrawImage(String key, PVector position, float angle, float alpha) {
         PImage img = images.get(key);
         
         if (ValidateImage(key) == false) {
@@ -58,6 +62,7 @@ public class ImageManager {
         translate(position.x, position.y);
         rotate(angle);
         imageMode(CENTER);
+        tint(255, alpha);
         image(img, 0, 0);
         popMatrix();
     }
@@ -65,8 +70,11 @@ public class ImageManager {
     void DrawImageScale(String key, PVector position, PVector scale) {
         DrawImageScale(key, position, scale, 0f);
     }
-    
     void DrawImageScale(String key, PVector position, PVector scale, float angle) {
+        DrawImageScale(key, position, scale, angle, 255);
+    }
+    
+    void DrawImageScale(String key, PVector position, PVector scale, float angle, float alpha) {
         PImage img = images.get(key);
         
         if (ValidateImage(key) == false) {
@@ -77,14 +85,18 @@ public class ImageManager {
         rotate(angle);
         scale(scale.x, scale.y);
         imageMode(CENTER);
+        tint(255, alpha);
         image(img, 0, 0);
         popMatrix();
     }
     void DrawImageSize(String key, PVector position, PVector size) {
         DrawImageSize(key, position, size, 0f);
     }
-    
     void DrawImageSize(String key, PVector position, PVector size, float angle) {
+        DrawImageSize(key, position, size, angle, 255);
+    }
+    
+    void DrawImageSize(String key, PVector position, PVector size, float angle, float alpha) {
         PImage img = images.get(key);
         
         if (ValidateImage(key) == false) {
@@ -95,6 +107,7 @@ public class ImageManager {
         scale(size.x / img.width, size.y / img.height);
         rotate(angle);
         imageMode(CENTER);
+        tint(255, alpha);
         image(img, 0, 0);
         popMatrix();
     }
