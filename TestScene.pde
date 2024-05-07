@@ -7,15 +7,16 @@ public class TestScene extends Scene
     @Override 
     public void OnEnter()  
     {
-        image.LoadImage("test", "test.png");
+        image.LoadImage("test", "11.JPG");
         print("Enter");
     }
     @Override 
     public  void OnDraw()
     {
-        image.DrawImage("test", 0, 0);
+        // image.DrawImage("test", 0, 0,40f);
         print("Draw");
     }
+    
     @Override 
     public  void OnExit()
     {
