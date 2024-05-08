@@ -1,0 +1,12 @@
+{
+  "[pde]": {
+    "editor.defaultFormatter": "TheRankin.processingformatter"
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  // "editor.formatOnPaste": true,
+  // "editor.formatOnType": true,
+  "eslint.validate": ["pde"],
+  "prettier.singleAttributePerLine": true,
+}
