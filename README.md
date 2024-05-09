@@ -23,7 +23,7 @@ Example: sudo ln -s /opt/processing/processing-java /bin/processing-java
 ## 2. vscode 권장 확장 설치
 
 ## 3. pde 파일의 상단의 재생 버튼 실행
-![alt text](public\assets\image.png)
+![alt text](public/assets/image.png)
 
 ## 환경변수 설정이 싫거나, 설정하여도 안되는 경우
 ### .vscode/settings.json 수정
