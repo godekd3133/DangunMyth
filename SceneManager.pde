@@ -1,11 +1,9 @@
-public  class SceneManager {
+public class SceneManager {
 
   public SceneManager() {
-
   }
-
   public Scene currentScene;
-  public Scene  nextScene;
+  public Scene nextScene;
 
   public void Setup(Scene firstScene) {
     if (firstScene != null) {
@@ -15,8 +13,7 @@ public  class SceneManager {
   }
 
   public void Draw() {
-    if (currentScene!= null)
-    currentScene.OnDraw();
+    if (currentScene!= null) currentScene.OnDraw();
     if (nextScene != null) {
       currentScene = nextScene;
       currentScene.OnExit();
@@ -27,5 +24,11 @@ public  class SceneManager {
 
   public void ChangeScene(Scene scene) {
     nextScene = scene;
+  }
+
+  public void NextScene() {
+    if (currentScene.nextScene != null) {
+      ChangeScene(currentScene.nextScene);
+    }
   }
 }
