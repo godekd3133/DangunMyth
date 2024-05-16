@@ -1,20 +1,37 @@
 SceneManager scene = new SceneManager();
 ImageManager image = new ImageManager();
-TimeManager time = new TimeManager();
+TimelineManager timelineManager = new TimelineManager();
+
 void setup() {
-    frameRate(60);
-    size(1280, 720);
-    TestScene testScene = new TestScene();
-    scene.Setup(testScene);
-    
+  frameRate(60);
+  size(1280, 720);
+  TestScene testScene = new TestScene();
+  scene.Setup(testScene);
+
+  timelineManager.pushTimeline(new TimelineCallback() {
+
+    @Override public void OnDraw() {
+      print("a");
+    }
+  }, 5);
+
+  timelineManager.pushTimeline(new TimelineCallback() {
+
+    @Override public void OnDraw() {
+      print("b");
+    }
+  }, 15);
+
+  timelineManager.pushTimeline(new TimelineCallback() {
+
+    @Override public void OnDraw() {
+      print("c");
+    }
+  }, 30);
+
 }
+
 void draw() {
-    time.OnDraw();
-    scene.Draw();
+  scene.Draw();
+  timelineManager.OnDraw();
 }
-
-
-
-
-
-
