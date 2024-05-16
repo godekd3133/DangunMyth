@@ -25,10 +25,4 @@ public class SceneManager {
   public void ChangeScene(Scene scene) {
     nextScene = scene;
   }
-
-  public void NextScene() {
-    if (currentScene.nextScene != null) {
-      ChangeScene(currentScene.nextScene);
-    }
-  }
 }
