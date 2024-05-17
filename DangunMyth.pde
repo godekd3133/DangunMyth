@@ -5,8 +5,8 @@ TimelineManager timelineManager = new TimelineManager();
 void setup() {
   frameRate(60);
   size(1280, 720);
-  TestScene testScene = new TestScene();
-  scene.Setup(testScene);
+  S1C1 s1c1 = new S1C1();
+  scene.Setup(s1c1);
 
   timelineManager.pushTimeline(new TimelineCallback() {
 

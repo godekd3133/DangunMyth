@@ -15,8 +15,8 @@ public class SceneManager {
   public void Draw() {
     if (currentScene!= null) currentScene.OnDraw();
     if (nextScene != null) {
-      currentScene = nextScene;
       currentScene.OnExit();
+      currentScene = nextScene;
       currentScene.OnEnter();
       nextScene = null;
     }
