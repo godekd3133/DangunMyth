@@ -66,12 +66,18 @@ public class ImageManager {
     popMatrix();
   }
 
+  
+
   void DrawImageScale(String key, PVector position, PVector scale) {
     DrawImageScale(key, position, scale, 0f);
   }
 
   void DrawImageScale(String key, PVector position, PVector scale, float angle) {
     DrawImageScale(key, position, scale, angle, 255);
+  }
+
+  void DrawImageScale(String key, int x, int y, float scale, float angle, float alpha) {
+    DrawImageScale(key, new PVector((float)x, (float)y), new PVector(scale,scale,0), angle, alpha);
   }
 
   void DrawImageScale(String key, PVector position, PVector scale, float angle, float alpha) {
