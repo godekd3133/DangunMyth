@@ -19,16 +19,15 @@ public class ImageManager {
     if (images.containsKey(name)) {
       return;
     }
-
     PImage img = loadImage(path + ".png");
     images.put(name, img);
 
   }
 
   public void LoadAnimation(String name, String path,int count) {
-    for (int i = 0; i < count; i++) {
-      String key = name + " (" + i + ")";
-      String fullPath = path + " (" + i + ")";
+    for (int i=0; i<count; i++) {
+      String key = name + "(" + i + ")";
+      String fullPath = path + "(" + i + ")";
       LoadImage(key, fullPath);
     }
   }
@@ -39,10 +38,8 @@ public class ImageManager {
     }
     print("Key was not found in image manager: " + key + "\n");
     // print stack trace
-    for (StackTraceElement ste : Thread.currentThread().getStackTrace()) {
-      print(ste + "\n");
+    for(StackTraceElement ste : Thread.currentThread().getStackTrace()) {
     }
-
     return false;
   }
 
