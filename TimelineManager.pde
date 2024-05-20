@@ -47,6 +47,7 @@ public class TimelineManager {
         }
       }
       if (this.currentTimeline != null) {
+        print("this.time.deltaTime : " + this.time.deltaTime + "\n");
         this.currentTimeline.OnDraw(this.time.deltaTime - this.currentUseSceneTime);
       }
     } else {
