@@ -1,7 +1,7 @@
 public class S1C2 extends Scene {
-  private static final String BACKGROUND_IMAGE = "resource/s1c2/s1c2background.png";
-  private static final String CLOUD_IMAGE = "resource/s1c2/s1c2cloud.png";
-  private static final String BLACK_IMAGE = "resource/s1c2/s1c2black.png";
+  private static final String BACKGROUND_IMAGE = "Images/S1/C2/background.png";
+  private static final String CLOUD_IMAGE = "Images/S1/C2/cloud.png";
+  private static final String BLACK_IMAGE = "Images/S1/C2/black.png";
   private static final int MAX_TIMER = 25;
 
   private PImage m_bkImg = null;
