@@ -6,33 +6,11 @@ TimelineManager timelineManager = new TimelineManager();
 void setup() {
   frameRate(60);
   size(1280, 720);
-  S1C1 s1c1 = new S1C1();
+  S1C5 s1c1 = new S1C5();
   scene.Setup(s1c1);
-
-  timelineManager.pushTimeline(new TimelineCallback() {
-
-    @Override public void OnDraw() {
-      print("a");
-    }
-  }, 5);
-
-  timelineManager.pushTimeline(new TimelineCallback() {
-
-    @Override public void OnDraw() {
-      print("b");
-    }
-  }, 15);
-
-  timelineManager.pushTimeline(new TimelineCallback() {
-
-    @Override public void OnDraw() {
-      print("c");
-    }
-  }, 30);
 
 }
 
 void draw() {
   scene.Draw();
-  timelineManager.OnDraw();
 }
