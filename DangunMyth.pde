@@ -1,5 +1,6 @@
 SceneManager scene = new SceneManager();
 ImageManager image = new ImageManager();
+FontManager font = new FontManager();
 TimelineManager timelineManager = new TimelineManager();
 
 void setup() {
