@@ -29,7 +29,7 @@ public class S1C2 extends Scene {
       backgroundAlpha -= 4;
     }
     if (cloudX > width / 2 + 200) {
-      //secne.ChangeScene(new S1C2());
+      // scene.ChangeScene(new S1C3());
     }
   }
 

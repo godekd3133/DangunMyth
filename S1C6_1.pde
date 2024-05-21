@@ -1,4 +1,4 @@
-public class S1C6 extends Scene
+public class S1C6_1 extends Scene
 {
     
     int centerX = width/2;
@@ -31,7 +31,7 @@ public class S1C6 extends Scene
     boolean hwanwoongMouse = true;
 
     
-    public S1C6()
+    public S1C6_1()
     {
     }
     
@@ -42,18 +42,18 @@ public class S1C6 extends Scene
         // int hwaninY = centerY;
 
         //환인
-        image.LoadImage("Background", "./Images/S1/C6/Background");
-        image.LoadImage("HwaninBody", "./Images/S1/C6/HwaninBody");
-        image.LoadImage("HwaninFace_MouseClose", "./Images/S1/C6/HwaninFace_MouseClose");
-        image.LoadImage("HwaninFace_MouseOpen", "./Images/S1/C6/HwaninFace_MouseOpen");
-        image.LoadImage("HwaninFace_MouseClose", "./Images/S1/C6/HwaninFace_MouseClose");
+        image.LoadImage("Background", "./Images/S1/C6-1/Background");
+        image.LoadImage("HwaninBody", "./Images/S1/C6-1/HwaninBody");
+        image.LoadImage("HwaninFace_MouseClose", "./Images/S1/C6-1/HwaninFace_MouseClose");
+        image.LoadImage("HwaninFace_MouseOpen", "./Images/S1/C6-1/HwaninFace_MouseOpen");
+        image.LoadImage("HwaninFace_MouseClose", "./Images/S1/C6-1/HwaninFace_MouseClose");
         
         //환웅
-        image.LoadImage("HwanwoongBody1", "./Images/S1/C6/HwanwoongBody1");
-        image.LoadImage("HwanwoongBody2", "./Images/S1/C6/HwanwoongBody2");
-        image.LoadImage("HwanwoongFace1", "./Images/S1/C6/HwanwoongFace1");
-        image.LoadImage("HwanwoongFace2-1", "./Images/S1/C6/HwanwoongFace2-1");
-        image.LoadImage("HwanwoongFace2-2", "./Images/S1/C6/HwanwoongFace2-2");
+        image.LoadImage("HwanwoongBody1", "./Images/S1/C6-1/HwanwoongBody1");
+        image.LoadImage("HwanwoongBody2", "./Images/S1/C6-1/HwanwoongBody2");
+        image.LoadImage("HwanwoongFace1", "./Images/S1/C6-1/HwanwoongFace1");
+        image.LoadImage("HwanwoongFace2-1", "./Images/S1/C6-1/HwanwoongFace2-1");
+        image.LoadImage("HwanwoongFace2-2", "./Images/S1/C6-1/HwanwoongFace2-2");
         
         
         
@@ -73,7 +73,7 @@ public class S1C6 extends Scene
 
 
         if(tick1Cnt%10 == 0) {
-            println("[S1C6] tick1Cnt : "+tick1Cnt);
+            // println("[S1C6] tick1Cnt : "+tick1Cnt);
             //환인
             if(hwaninFaceFlag) {
                 hwaninMouse = !hwaninMouse;
@@ -98,8 +98,9 @@ public class S1C6 extends Scene
         }
 
         //EndPoint
-        if(tick1Cnt > 1000) {
-            scene.ChangeScene(new S1C1()); 
+        // if(tick1Cnt > 1000) {
+        if(tick1Cnt > 200) {
+            scene.ChangeScene(new S1C6_2()); 
         }
         
 
