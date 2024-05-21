@@ -10,7 +10,7 @@ public class S1C8 extends Scene
     int endpointTick = 0;
     
     //환인 위치
-    int hwaninfaceOffset = -120;
+    int hwaninfaceOffset = -300;
     int hwaninX = centerX-250;
     int hwaninY = centerY+380;
 
@@ -33,8 +33,10 @@ public class S1C8 extends Scene
         //환인
         image.LoadImage("BackgroundS1C8", "./Images/S1/C8/Background");
         image.LoadImage("HwaninBody", "./Images/S1/C8/HwaninBody");
-        image.LoadImage("HwaninFace_MouseClose", "./Images/S1/C8/HwaninFace_MouseClose");
-        image.LoadImage("HwaninFace_MouseOpen", "./Images/S1/C8/HwaninFace_MouseOpen");
+        // image.LoadImage("HwaninFace_MouseClose", "./Images/S1/C8/HwaninFace_MouseClose");
+        // image.LoadImage("HwaninFace_MouseOpen", "./Images/S1/C8/HwaninFace_MouseOpen");
+        image.LoadImage("HwaninFace", "./Images/S1/C8/HwaninFace");
+        
         image.LoadImage("HwaninHand", "./Images/S1/C8/HwaninHand");
         
         
@@ -45,7 +47,7 @@ public class S1C8 extends Scene
     @Override 
     public  void OnDraw()
     {
-        int mouseMove = (int)random(0,15);
+        // int mouseMove = (int)random(0,15);
 
         if(hwaninFace) tick1Cnt++;
         else tick1Cnt--;
@@ -66,8 +68,10 @@ public class S1C8 extends Scene
         
         //환인 Draw
         image.DrawImageScale("HwaninBody", hwaninX, hwaninY, 0.4, 0f, 255f);
-        if(mouseMove < 10) image.DrawImageScale("HwaninFace_MouseClose", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt, 0.4, 0f, 255f);
-        else image.DrawImageScale("HwaninFace_MouseOpen", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt, 0.4, 0f, 255f);
+        // if(mouseMove < 10) image.DrawImageScale("HwaninFace_MouseClose", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt, 0.4, 0f, 255f);
+        // else image.DrawImageScale("HwaninFace_MouseOpen", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt, 0.4, 0f, 255f);
+        
+        image.DrawImageScale("HwaninFace", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt, 0.4, 0f, 255f);
         image.DrawImageScale("HwaninHand", hwaninX+(-35), hwaninY+(-140), 0.3, 0.7, 255f);
 
         
