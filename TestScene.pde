@@ -4,13 +4,22 @@ public class TestScene extends Scene {
   }
 
   @Override public void OnEnter() {
-    image.LoadImage("test", "11.JPG");
     print("Enter");
-  }
+    font.LoadFont("LeeSeoyun.otf","LeeSeoyun.otf");
+
+}
 
   @Override public void OnDraw() {
-    // image.DrawImage("test", 0, 0,40f);
-    // print("Draw");
+        for(int i =1; i< 10; i++){
+          int size = i * 4;
+                  font.DrawFont("LeeSeoyun.otf", "Hello 사이즈는 : " + size, 0, size, 40f,40 + i *50);
+        }
+
+        for(int i =10; i< 20; i++){
+          int size = i * 4;
+                  font.DrawFont("LeeSeoyun.otf", "Hello 사이즈는 : " + size, 0, size, 500f,40 + (i-10) *50);
+        }
+    
   }
 
   @Override public void OnExit() {
