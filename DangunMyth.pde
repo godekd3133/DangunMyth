@@ -6,7 +6,7 @@ TimelineManager timelineManager = new TimelineManager();
 void setup() {
   frameRate(60);
   size(1280, 720);
-  S1C5 s1c1 = new S1C5();
+  Scene s1c1 = new S1C8();
   scene.Setup(s1c1);
 
 }
