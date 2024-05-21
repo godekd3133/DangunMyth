@@ -5,10 +5,13 @@ public class FontManager {
     fonts.put(name, createFont("Fonts/" + path,1f,true));
   }
 
-  void DrawFont(String fontName, String text,color col,float size, float x, float y) {
+  void DrawFont(String fontName, String text, color col, float size, float x, float y) {
+    pushStyle();
+    fill(col);
     PFont font = fonts.get(fontName);
-  //font sizing
+    //font sizing
     textFont(font, size);
     text(text, x, y);
-}
+    popStyle();
+  }
 }
