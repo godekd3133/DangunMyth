@@ -12,9 +12,13 @@ public class S3C1 extends Scene {
   private int garlicInitVelY = 15;
   private int garlicInitVelX = 5;
   private int garlicCurrentVelY = garlicInitVelY;
+  private float garlicRotate = 1.0f;
+  private float garlicAngle = random(0.05f, 0.15f);
   private int ssugInitVelY = 18;
   private int ssugInitVelX = 3;
   private int ssugCurrentVelY = ssugInitVelY;
+  private float ssugRotate = 1.0f;
+  private float ssugAngle = random(0.05f, 0.15f);
 
   public S3C1() {
   }
@@ -39,25 +43,26 @@ public class S3C1 extends Scene {
     image.DrawImageScale("tiger", new PVector(width / 2 + 230, animalY - jumpY), new PVector(animalScale, animalScale));
 
     // util animation
-    //garlic part
-    if(garlicY < utilY){
+    // garlic part
+    if (garlicY < utilY) {
       garlicY -= garlicCurrentVelY;
       garlicX += garlicInitVelX;
       garlicCurrentVelY--;
+      garlicRotate += garlicAngle;
     }
+    image.DrawImageScale("garlic", new PVector(garlicX, garlicY), new PVector(utilScale, utilScale), garlicRotate);
 
-    image.DrawImageScale("garlic", new PVector(garlicX, garlicY), new PVector(utilScale, utilScale));
-
-    //ssug part
-    if(ssugY < utilY){
+    // ssug part
+    if (ssugY < utilY) {
       ssugY -= ssugCurrentVelY;
       ssugX += ssugInitVelX;
       ssugCurrentVelY--;
+      ssugRotate += ssugAngle;
     }
-
-    image.DrawImageScale("ssug", new PVector(ssugX, ssugY), new PVector(utilScale, utilScale));
+    image.DrawImageScale("ssug", new PVector(ssugX, ssugY), new PVector(utilScale, utilScale), ssugRotate);
   }
 
   @Override public void OnExit() {
+    // scene.ChangeScene(new S3C2());
   }
 }
