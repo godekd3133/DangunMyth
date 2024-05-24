@@ -9,7 +9,8 @@ public class TimeManager {
 
   public void OnDraw() {
     //get deltaTime on processing
+    lastTime = currentTime;
     currentTime = millis();
-    deltaTime =(currentTime - lastTime) / 1000;
+    deltaTime =(currentTime - lastTime) / 1000f;
   }
 }
