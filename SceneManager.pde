@@ -18,6 +18,7 @@ public class SceneManager {
       currentScene.OnExit();
       currentScene = nextScene;
       currentScene.OnEnter();
+      image.ResetImages();
       nextScene = null;
     }
   }

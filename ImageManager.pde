@@ -5,7 +5,9 @@ public class ImageManager {
 
   public ImageManager() {
   }
-
+  public void ResetImages() {
+    images.clear();
+  }
   public void SetPivot(PVector p) {
     SetPivot(p.x, p.y);
   }
