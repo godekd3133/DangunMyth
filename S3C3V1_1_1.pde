@@ -17,6 +17,11 @@ public class S3C3V1_1_1 extends Scene {
     image.LoadImage("tiger_before", "Images/S3/C3/V1/_1/_1/tiger_before");
     image.LoadImage("tiger_after", "Images/S3/C3/V1/_1/_1/tiger_after");
 
+    _time = 0;
+    tiger_x = 800;
+    tiger_y = 500;
+    bear_x = 500;
+    bear_y = 500;
   }
 
   @Override public void OnDraw() {

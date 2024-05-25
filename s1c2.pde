@@ -14,6 +14,9 @@ public class S1C2 extends Scene {
   @Override public void OnEnter() {
     image.LoadImage("background", BACKGROUND_IMAGE);
     image.LoadImage("cloud01", CLOUD_IMAGE);
+
+    backgroundAlpha = 255;
+    cloudX = 0;
   }
 
   @Override public void OnDraw() {

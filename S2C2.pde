@@ -20,6 +20,17 @@ public class S2C2 extends Scene {
 
   public S2C2() {
     backgroundAlpha = 255;
+
+    _time = 0;
+    _rock_size = 0.4;
+    _rock_rotate = 0.01;
+    tiger_x = 20;
+    tiger_y = 400;
+    bear_x = -200;
+    bear_y = 400;
+
+    animation = 1;
+
   }
 
   @Override public void OnEnter() {
