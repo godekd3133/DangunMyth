@@ -1,5 +1,5 @@
 import processing.sound.*;
-
+//import processing.javafx.*;
 SceneManager scene = new SceneManager();
 ImageManager image = new ImageManager();
 FontManager font = new FontManager();
@@ -24,19 +24,21 @@ void setup() {
   sceneList.add(new S1C9());
   sceneList.add(new S1C11());
 
-
-
-  frameRate(60);
-  size(1280, 720);
-  // S1C1 s1c1 = new S1C1();
-  // scene.Setup(s1c1);
-
+  frameRate(140);
+  noStroke();
+  //size(1280, 720,FX2D);
+   size(1280, 720,P2D);
+  S1C1 s1c1 = new S1C1();
+   scene.Setup(s1c1);
   scene.Setup(sceneList.get(0));
 
 }
 
 void draw() {
-  time.OnDraw();
+   background(255);
+   fill(255);
+   print(1f/time.deltaTime  + "\n");
+ time.OnDraw();
   scene.Draw();
 
   //오른쪽 키 누르면 현재씬의 다음씬으로, 왼쪽키 누르면 현재씬의 이전씬으로
