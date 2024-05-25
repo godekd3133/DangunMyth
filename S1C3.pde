@@ -28,7 +28,6 @@ public class S1C3 extends Scene {
     int imageCount = TELLING_FACES.length;
     currentImageIndex =0;
     godY = 0f;
-    cloudY = -50.0f;
     cloudY = 0f;
 
     for (int i=0; i<imageCount; i++) {

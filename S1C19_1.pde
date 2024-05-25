@@ -1,6 +1,4 @@
 public class S1C19_1 extends Scene {
-  private int cloudX;
-  private int handY;
   private float tigerX = width - 200;
   private float tigerY = height - 150;
   private float bearX = width - 450;
@@ -15,11 +13,14 @@ public class S1C19_1 extends Scene {
   private int changeInterval = 3;
 
   public S1C19_1() {
-    cloudX = 0;
-    handY = 0;
   }
 
   @Override public void OnEnter() {
+    tigerX = width - 200;
+    tigerY = height - 150;
+    bearX = width - 450;
+    bearY = height - 150;
+
     image.LoadImage("background", "Images/S1/C19/background1");
     image.LoadImage("hwangwoong", "Images/S1/C19/hwanwoong_back");
     image.LoadImage("tiger_eyes", "Images/S1/C19/tiger_eyes");
