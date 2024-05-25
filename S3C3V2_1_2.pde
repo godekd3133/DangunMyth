@@ -8,6 +8,10 @@ public class S3C3V2_1_2 extends Scene {
   private float GIRL_HAND_Y = 550;
   //private int 변수는이렇게선언해주세요;
 
+  private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
+  private int startMinute;
+  private int startSecond;
+
   public S3C3V2_1_2() {
   }
 
@@ -23,17 +27,22 @@ public class S3C3V2_1_2 extends Scene {
     image.DrawImage("background", new PVector(width / 2, height / 2));
 
     GIRL_HAND_Y-=2;
-    if(abs(GIRL_HAND_Y) == 500 || abs(GIRL_HAND_Y) == 550) {
+    if (abs(GIRL_HAND_Y) == 500 || abs(GIRL_HAND_Y) == 550) {
       GIRL_HAND_Y*=-1;
     }
-    
+
     //girl
     image.DrawImageScale("girlbody", new PVector(GIRL_X, GIRL_Y), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
     image.DrawImageScale("girlhand", new PVector(GIRL_HAND_X, abs(GIRL_HAND_Y)), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
-    if((millis()/500)%2==0) {
+    if ((millis()/500)%2==0) {
       image.DrawImageScale("girlface", new PVector(GIRL_EYE_X, GIRL_EYE_Y), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
     } else {
       image.DrawImageScale("girlface2", new PVector(GIRL_EYE_X, GIRL_EYE_Y), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
+    }
+    
+    // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
+    if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
+      // scene.ChangeScene(new S3C3V2_1_3());
     }
   }
 
