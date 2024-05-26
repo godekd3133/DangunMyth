@@ -1,4 +1,5 @@
 public class S3C3V1_4_3 extends Scene {
+  private int SCENE_DURATION = 5; // 5초 동안 씬 진행
   private String[] imageNames = {
     "background", "body", "head", "arm", "mouth1", "mouth2", "ally", "enemy1", "enemy2", "enemy3"}
   ;
