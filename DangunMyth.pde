@@ -32,6 +32,7 @@ void setup() {
   sceneList.add(new S2C4()); // 17
   sceneList.add(new S2C5()); // 18
   sceneList.add(new S2C6V1()); // 19
+  sceneList.add(new S2C6V2()); // 20
   sceneList.add(new S3C1()); // 20
   sceneList.add(new S3C2());  // 21
   sceneList.add(new S3C3V1_2()); // 22
@@ -54,7 +55,7 @@ void setup() {
   size(1280, 720,P2D);
   S1C1 s1c1 = new S1C1();
   //scene.Setup(s1c1);
-  scene.Setup(sceneList.get(30));
+  scene.Setup(sceneList.get(20));
 
 }
 

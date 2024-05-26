@@ -1,5 +1,6 @@
 public class S2C6V2 extends Scene {
   private boolean showButton = false;
+  public float SCENE_DURATION =5f;
 
   private float bearArmX = width / 2 + 200;
   private float bearArmRotate = 0.0f;
@@ -39,6 +40,10 @@ public class S2C6V2 extends Scene {
 
     image.DrawImageScale("bear_arm", new PVector(bearArmX, bearArmY), new PVector(0.4f, 0.4f), bearArmRotate);
     image.DrawImageScale("tiger_arm", new PVector(tigerArmX, tigerArmY), new PVector(0.4f, 0.4f), tigerArmRotate);
+
+    if (time.time - enterTime > SCENE_DURATION) {
+      //  scene.ChangeScene(new S2C7());
+    }
   }
 
   @Override public void OnExit() {
