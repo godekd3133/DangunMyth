@@ -1,5 +1,5 @@
 public class S3C3V1_2_1 extends Scene {
-  private final static String PREFIX = "Images/S3/C3/V1/_2/";
+  private final static String PREFIX = "Images/S3/C3/V1/_2/_1/";
   private int SCENE_SCONDS = 7;
 
   private float 범녀_X = 300;

@@ -1,6 +1,5 @@
 public class S3C3V1_2_2 extends Scene {
-  private String PREFIX = "Images/S3/C3/V1/_2/"; // 1번과 같은경로를 사용함
-
+  private String PREFIX = "Images/S3/C3/V1/_2/_2/";
   private float moveMillis = 5000;
 
   private float 환웅_X = 1150;
