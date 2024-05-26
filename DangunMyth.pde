@@ -10,8 +10,9 @@ ArrayList<Scene> sceneList = new ArrayList<Scene>();
 
 void setup() {
   //씬들 순서대로 추가
+  //미리 50개 공간할당
+
   sceneList.add(new S1C1());
-  //sceneList.add(new S1C2()); // S1C3에 합쳐져있어서 나올필요 없음.
   sceneList.add(new S1C3());
   sceneList.add(new S1C4());
   sceneList.add(new S1C5());
@@ -20,7 +21,8 @@ void setup() {
   sceneList.add(new S1C7());
   sceneList.add(new S1C8());
   sceneList.add(new S1C9());
-  sceneList.add(new S1C11());
+  sceneList.add(new S1C15V1()); // 9
+  sceneList.add(new S1C15V2()); // 10
 
   frameRate(60);
   noStroke();
@@ -28,7 +30,7 @@ void setup() {
   size(1280, 720,P2D);
   S1C1 s1c1 = new S1C1();
   //scene.Setup(s1c1);
-  scene.Setup(sceneList.get(3));
+  scene.Setup(sceneList.get(9));
 
 }
 
