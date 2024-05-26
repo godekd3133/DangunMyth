@@ -1,4 +1,6 @@
 public class S2C4 extends Scene {
+  public float SCENE_DURATION =3f;
+
   private float animalScale = 0.25f;
   private float utilScale = 0.035f;
   private float tearScale = 0.025f;
@@ -26,6 +28,21 @@ public class S2C4 extends Scene {
     image.LoadImage("ssug", "Images/S2/C4/ssug");
     image.LoadImage("basket", "Images/S2/C4/basket");
     image.LoadImage("tear", "Images/S2/C4/tear");
+
+    animalScale = 0.25f;
+    utilScale = 0.035f;
+    tearScale = 0.025f;
+    bearY = height - 280;
+    tigerY = height - 305;
+    handX = 530f;
+    handY = 470;
+    handRotate = 0.0f;
+    handAngle = 0.6f;
+    handDir = -24f;
+    tearLeftY = height - 280f;
+    tearRightY = height - 290f;
+    tearSpeedL = 0f;
+    tearSpeedR = 0f;
   }
 
   @Override public void OnDraw() {
@@ -33,8 +50,8 @@ public class S2C4 extends Scene {
 
     // bear hand animation
     image.DrawImageScale("hand", new PVector(handX, handY), new PVector(animalScale, animalScale), handRotate);
-    handRotate += handAngle;
-    handX += handDir;
+    handRotate += handAngle * time.deltaTime;
+    handX += handDir * time.deltaTime;
     if (handX < 510 | handX > 530) {
       handAngle *= -1;
       handDir *= -1;
@@ -55,9 +72,11 @@ public class S2C4 extends Scene {
     image.DrawImageScale("tear", new PVector(width - 510, tearLeftY + tearSpeedL), new PVector(tearScale, tearScale));
     image.DrawImageScale("tear", new PVector(width - 440, tearRightY + tearSpeedR), new PVector(tearScale, tearScale));
 
+    if (time.time -enterTime > SCENE_DURATION) {
+      scene.ChangeScene(new S2C5());
+    }
   }
 
   @Override public void OnExit() {
-    // scene.ChangeScene(new S2C5());
   }
 }

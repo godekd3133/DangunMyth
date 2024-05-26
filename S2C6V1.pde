@@ -32,7 +32,7 @@ public class S2C6V1 extends Scene {
       @Override public void OnDraw(float time) {
         backgroundAlpha = lerp(0f, 188f, time / 10f);
       }
-    }, 10);
+    }, 6f);
 
     timelineManager.pushTimeline(new TimelineCallback() {
 
@@ -40,6 +40,16 @@ public class S2C6V1 extends Scene {
         showButton = true;
       }
     }, 1);
+    animalScale = 0.25f;
+    tearScale = 0.025f;
+    tigerTearSpeedL = 0f;
+    tigerTearSpeedR = 0f;
+    tigerTearLeftY = height - 280f;
+    tigerTearRightY = height - 290f;
+    bearTearSpeedL = 0f;
+    bearTearSpeedR = 0f;
+    bearTearLeftY = height - 280f;
+    bearTearRightY = height - 290f;
 
   }
 

@@ -1,4 +1,5 @@
 public class S2C3 extends Scene {
+  public float SCENE_DURATION =3f;
   private static final String background = "S2C3_background";
   private static final String bear = "S2S3_bear";
   private static final String bearEye = "S2S3_bear_eye";
@@ -31,6 +32,10 @@ public class S2C3 extends Scene {
     image.LoadImage(basket, "Images/S2/C3/basket");
     image.LoadImage(garlic, "Images/S2/C3/garlic");
     image.LoadImage(ssuk, "Images/S2/C3/ssuk");
+    basketPosition = new PVector(800, 570);
+    animalScale = new PVector(0.25f, 0.25);
+    tigerPosition = new PVector(510, 500);
+    tigerScale = new PVector(0.2f, 0.2f);
 
     startTime = millis();
   }
@@ -73,7 +78,7 @@ public class S2C3 extends Scene {
     basketPosition.x = lerp(700, 800, Ease.EaseOutCubic(basketPositionPercent));
     image.DrawImageScale(basket, basketPosition, new PVector(0.25f, 0.25f), getAngleByDegree(30));
 
-    if (currentTime > 2.5) {
+    if (currentTime > SCENE_DURATION) {
       scene.ChangeScene(new S2C4());
     }
   }
