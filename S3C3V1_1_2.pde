@@ -1,5 +1,4 @@
 public class S3C3V1_1_2 extends Scene {
-  public float SCENE_DURATION =5f;
   private int _time = 0;
 
   private float tiger_x = 800;
@@ -14,7 +13,6 @@ public class S3C3V1_1_2 extends Scene {
 
   public S3C3V1_1_2() {
     //backgroundAlpha = 255;
-
   }
 
   @Override public void OnEnter() {
@@ -31,28 +29,35 @@ public class S3C3V1_1_2 extends Scene {
     bear_y = 400;
     bear_star_size = 0.2;
     tiger_star_size = 0.1;
-    bear_star_a = 0.6;
-    tiger_star_a = -0.6;
+    bear_star_a = 0.03;
+    tiger_star_a = -0.03;
   }
 
   @Override public void OnDraw() {
-    if (time.time-enterTime > SCENE_DURATION) {
-      scene.ChangeScene(new S3C3V1_2_1());
+    if (_time > 300) {
+      // 다음 씬 이동?
+      return;
     }
+    _time++;
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(1, 1, 0));
 
     image.DrawImageScale("bear", new PVector(bear_x, bear_y, 0), new PVector(0.2, 0.2, 0));
     image.DrawImageScale("tiger", new PVector(tiger_x, tiger_y, 0), new PVector(0.2, 0.2, 0));
-    bear_star_size -= bear_star_a * time.deltaTime;
-    tiger_star_size -= tiger_star_a * time.deltaTime;
-    if (bear_star_size > 0.2 || bear_star_size < 0.1) {
-      bear_star_a *= -1;
-    }
-    if (tiger_star_size > 0.2 || tiger_star_size < 0.1) {
-      tiger_star_a *= -1;
+
+    if (_time % 3 == 0) {
+      bear_star_size -= bear_star_a;
+      tiger_star_size -= tiger_star_a;
+
+      if (bear_star_size > 0.2 || bear_star_size < 0.1) {
+        bear_star_a *= -1;
+      }
+      if (tiger_star_size > 0.2 || tiger_star_size < 0.1) {
+        tiger_star_a *= -1;
+      }
     }
     image.DrawImageScale("bear_star", new PVector(300, 200, 0), new PVector(bear_star_size, bear_star_size, 0));
     image.DrawImageScale("tiger_star", new PVector(1000, 200, 0), new PVector(tiger_star_size, tiger_star_size, 0));
+
   }
 
   @Override public void OnExit() {
