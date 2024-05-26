@@ -1,5 +1,5 @@
 public class S3C3V2_1_2 extends Scene {
-  private float SCENE_DURATION = 5f; // 5초 동안 씬 진행
+  private float SCENE_DURATION = 7f; // 5초 동안 씬 진행
   private float GIRL_X = 600;
   private float GIRL_Y = 550;
   private float GIRL_SCALE = 0.4;
