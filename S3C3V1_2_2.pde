@@ -14,7 +14,6 @@ public class S3C3V1_2_2 extends Scene {
   private int darkenMillis = 1500;
   private boolean selected = false;
 
-
   @Override public void OnEnter() {
     // 이미지 로드
     image.LoadImage("background", PREFIX+"background");
@@ -31,17 +30,16 @@ public class S3C3V1_2_2 extends Scene {
 
   @Override public void OnDraw() {
     tongueY+=0.5;
-    println("s3c3v1_2_1");
+    // println("s3c3v1_2_2");
 
     if (tongueY>13) {
       tongueY *=-1;
     }
-
     int elapsedMills = millis() - startMillis;
     image.DrawImage("background", new PVector(width / 2, height / 2));
 
     // 검은색 반투명
-    fill(0, min(128, lerp(255, 128, (float)darkenMillis / elapsedMills)));
+    fill(0, min(128, lerp(255, 128,(float)darkenMillis / elapsedMills)));
     rect(0, 0, width, height);
 
     image.DrawImageScale("범녀", new PVector(S3C3V1_2_1.범녀_X_End, S3C3V1_2_1.범녀_Y_End), new PVector(0.2, 0.2));
@@ -61,12 +59,12 @@ public class S3C3V1_2_2 extends Scene {
     if (mousePressed && selected == false) {
       if (mouseX > 310 && mouseX < 310 + 150 && mouseY > 70 && mouseY < 70 + 80) {
         println("범녀 선택");
-        scene.ChangeScene(new S3C3V1_4_2());
+        scene.ChangeScene(new S3C3V1_4_1());
         selected = true;
       }
       if (mouseX > 520 && mouseX < 520 + 150 && mouseY > 70 && mouseY < 70 + 80) {
         println("웅녀 선택");
-        scene.ChangeScene(new S3C3V1_3_2());
+        scene.ChangeScene(new S3C3V1_3_1());
         selected = true;
       }
     }

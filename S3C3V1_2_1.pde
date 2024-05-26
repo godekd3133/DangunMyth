@@ -42,7 +42,7 @@ public class S3C3V1_2_1 extends Scene {
 
   @Override public void OnDraw() {
     tongueY+=0.5;
-    println("s3c3v1_2_1");
+    // println("s3c3v1_2_1");
 
     if (tongueY>13) {
       tongueY *=-1;
