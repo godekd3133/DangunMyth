@@ -56,6 +56,7 @@ void setup() {
   sceneList.add(new S3C3V1_3_1());
 
   sceneList.add(new S3C3V1_4_1());
+  sceneList.add(new S3C3V2_2_3());
 
   frameRate(60);
   noStroke();
