@@ -7,8 +7,6 @@ public class S1C2 extends Scene {
   private int cloudX;
 
   public S1C2() {
-    backgroundAlpha = 255;
-    cloudX = 0;
   }
 
   @Override public void OnEnter() {
@@ -21,15 +19,13 @@ public class S1C2 extends Scene {
 
   @Override public void OnDraw() {
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(0.67f, 0.67f, 0));
-
     image.DrawImageScale("cloud01", new PVector(width / 2 - cloudX, height / 2, 0), new PVector(0.67f, 0.67f, 0));
 
-    noStroke();
     fill(0, backgroundAlpha);
     rect(0, 0, width, height);
 
     if (backgroundAlpha > 0) {
-      backgroundAlpha -= 4;
+      backgroundAlpha -= 70 - time.deltaTime;
     }
     if (cloudX > width / 2 + 200) {
       // scene.ChangeScene(new S1C3());

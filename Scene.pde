@@ -1,4 +1,5 @@
 public abstract class Scene {
+  public float enterTime;
 
   public Scene() {
   }

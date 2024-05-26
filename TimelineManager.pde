@@ -22,37 +22,42 @@ public class Timeline {
 public class TimelineManager {
   public ArrayList<Timeline> timelines = new ArrayList<Timeline>();
   public Timeline currentTimeline;
-  private TimeManager time = new TimeManager();
   private TimelineManagerEndCallback endCallback;
   private float totalTime = 0.0f;
   private float currentUseSceneTime = 0.0f;
+  private float currentTime;
 
   public TimelineManager() {
     this.initTimeline();
+    currentTime= time.time;
   }
 
   public void OnDraw() {
-    this.time.OnDraw();
     if (this.timelines.size() > 0) {
       if (this.currentTimeline == null) {
         this.currentTimeline = this.timelines.get(0);
-      }
-      if (this.time.deltaTime >= this.currentTimeline.endTime) {
-        this.timelines.remove(0);
-        if (this.timelines.size() > 0) {
-          this.currentUseSceneTime = this.currentTimeline.endTime;
-          this.currentTimeline = this.timelines.get(0);
-        } else {
-          this.currentTimeline = null;
+        currentTime = time.time;
+      } else {
+        float elapsedTime = time.time - currentTime;
+
+        if (time.time -currentTime >= this.currentTimeline.endTime) {
+          this.timelines.remove(0);
+          if (this.timelines.size() > 0) {
+            this.currentUseSceneTime = this.currentTimeline.endTime;
+            this.currentTimeline = this.timelines.get(0);
+            currentTime = time.time;
+          } else {
+            this.currentTimeline = null;
+          }
         }
       }
       if (this.currentTimeline != null) {
-        this.currentTimeline.OnDraw(this.time.deltaTime - this.currentUseSceneTime);
+        this.currentTimeline.OnDraw(time.time -currentTime);
       }
     } else {
       if (this.endCallback != null) {
-        this.clear();
         this.endCallback.OnEnd();
+        this.clear();
       }
     }
   }
@@ -63,7 +68,7 @@ public class TimelineManager {
 
   public void pushTimeline(TimelineCallback callback, float time) {
     this.totalTime += time;
-    this.timelines.add(new Timeline(callback, this.totalTime));
+    this.timelines.add(new Timeline(callback, time));
   }
 
   public void setEndCallback(TimelineManagerEndCallback callback) {
@@ -73,5 +78,6 @@ public class TimelineManager {
   public void clear() {
     this.currentTimeline = null;
     this.timelines.clear();
+    this.endCallback=null;
   }
 }

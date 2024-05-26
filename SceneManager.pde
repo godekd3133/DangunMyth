@@ -21,6 +21,7 @@ public class SceneManager {
       fadeOut = false;
       backgroundAlpha = 255f;
       firstScene = initialScene;
+      initialScene.enterTime = time.time;
       initialScene.OnEnter();
     }
   }
@@ -44,6 +45,7 @@ public class SceneManager {
         backgroundAlpha += time.deltaTime * fadeSpeed;
 
         if (backgroundAlpha >= 255f) {
+          fadeIn= true;
           backgroundAlpha = 255f;
           fadeOut = false;
           if (currentScene != null) {
@@ -51,8 +53,9 @@ public class SceneManager {
           }
           currentScene = nextScene;
           image.ResetImages();
+          currentScene.enterTime = time.time;
           currentScene.OnEnter();
-          fadeIn= true;
+
         }
       }
       if (fadeIn == true && fadeOut == false) {
@@ -71,6 +74,7 @@ public class SceneManager {
   }
 
   public void ChangeScene(Scene scene) {
+    if (nextScene != null) return;
     backgroundAlpha = 0f;
     fadeIn = false;
     fadeOut = true;

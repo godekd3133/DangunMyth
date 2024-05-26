@@ -1,6 +1,10 @@
 public class S1C6_1 extends Scene {
   int centerX = width/2;
   int centerY = height/2;
+  public float SCENE_DURATION = 10f;
+
+  float hwaninDuration = 5f;
+  float hwanwoongDuration = 5f;
 
   PVector hwaninCoor = new PVector((float)centerX-300,(float)centerY);
 
@@ -31,10 +35,11 @@ public class S1C6_1 extends Scene {
   }
 
   @Override public void OnEnter() {
-    println("[S1C6_1]");
     tick1Cnt=0;
     hwaninFaceCnt=0;
     hwanwoongFaceCnt=0;
+    hwaninDuration = SCENE_DURATION/2f;
+    hwanwoongDuration = SCENE_DURATION/2f;
 
     // int hwaninX = centerX-200;
     // int hwaninY = centerY;
@@ -53,7 +58,6 @@ public class S1C6_1 extends Scene {
     image.LoadImage("HwanwoongFace2-1", "./Images/S1/C6-1/HwanwoongFace2-1");
     image.LoadImage("HwanwoongFace2-2", "./Images/S1/C6-1/HwanwoongFace2-2");
 
-    // print("Enter");
     background(#ffffff);
   }
 
@@ -83,46 +87,43 @@ public class S1C6_1 extends Scene {
       }
     }
     //환웅 대사 시작지점
-    if (tick1Cnt >= 800) {
+    if (time.time - enterTime >= hwaninDuration) {
       hwanwoongFaceFlag=true;
       hwaninFaceFlag=false;
     }
     //EndPoint
-    if (tick1Cnt > 1000) {
-      //   if (tick1Cnt > 200) {
-        scene.ChangeScene(new S1C6_2());
-      }
-      image.DrawImageScale("Background", centerX, centerY, 1f, 0f, 255f);
+    if (time.time - enterTime >= hwaninDuration + hwanwoongDuration) {
+      scene.ChangeScene(new S1C6_2());
+    }
+    image.DrawImageScale("Background", centerX, centerY, 1f, 0f, 255f);
 
-      //환인 Draw
-      image.DrawImageScale("HwaninBody", hwaninX, hwaninY, 0.15, 0f, 255f);
-      if (hwaninFaceFlag == false) {
+    //환인 Draw
+    image.DrawImageScale("HwaninBody", hwaninX, hwaninY, 0.15, 0f, 255f);
+    if (hwaninFaceFlag == false) {
+      image.DrawImageScale("HwaninFace_MouseClose", hwaninX, hwaninY+hwaninfaceOffset, 0.15, 0f, 255f);
+    } else {
+
+      if (hwaninMouse) {
         image.DrawImageScale("HwaninFace_MouseClose", hwaninX, hwaninY+hwaninfaceOffset, 0.15, 0f, 255f);
       } else {
-
-        if (hwaninMouse) {
-          image.DrawImageScale("HwaninFace_MouseClose", hwaninX, hwaninY+hwaninfaceOffset, 0.15, 0f, 255f);
-        } else {
-          image.DrawImageScale("HwaninFace_MouseOpen", hwaninX, hwaninY+hwaninfaceOffset, 0.15, 0f, 255f);
-        }
+        image.DrawImageScale("HwaninFace_MouseOpen", hwaninX, hwaninY+hwaninfaceOffset, 0.15, 0f, 255f);
       }
-      //환웅 Draw
-
-      if (hwanwoongFaceFlag==false) {
-        image.DrawImageScale("HwanwoongBody1", hwanwoongX, hwanwoongY, 0.15, 0f, 255f);
-        image.DrawImageScale("HwanwoongFace1", hwanwoongX+(-10), hwanwoongY+hwanwoongfaceOffsetY, 0.15, 0f, 255f);
-      } else {
-        image.DrawImageScale("HwanwoongBody2", hwanwoongX, hwanwoongY, 0.15, 0f, 255f);
-
-        if (hwanwoongMouse) {
-          image.DrawImageScale("HwanwoongFace2-1", hwanwoongX+hwanwoongfaceOffsetX, hwanwoongY+hwanwoongfaceOffsetY, 0.15, 0f, 255f);
-        } else {
-          image.DrawImageScale("HwanwoongFace2-2", hwanwoongX+hwanwoongfaceOffsetX, hwanwoongY+hwanwoongfaceOffsetY, 0.15, 0f, 255f);
-        }
-      }
-      // print("Draw");
     }
+    //환웅 Draw
+    if (hwanwoongFaceFlag==false) {
+      image.DrawImageScale("HwanwoongBody1", hwanwoongX, hwanwoongY, 0.15, 0f, 255f);
+      image.DrawImageScale("HwanwoongFace1", hwanwoongX+(-10), hwanwoongY+hwanwoongfaceOffsetY, 0.15, 0f, 255f);
+    } else {
+      image.DrawImageScale("HwanwoongBody2", hwanwoongX, hwanwoongY, 0.15, 0f, 255f);
 
-    @Override public void OnExit() {
+      if (hwanwoongMouse) {
+        image.DrawImageScale("HwanwoongFace2-1", hwanwoongX+hwanwoongfaceOffsetX, hwanwoongY+hwanwoongfaceOffsetY, 0.15, 0f, 255f);
+      } else {
+        image.DrawImageScale("HwanwoongFace2-2", hwanwoongX+hwanwoongfaceOffsetX, hwanwoongY+hwanwoongfaceOffsetY, 0.15, 0f, 255f);
+      }
     }
   }
+
+  @Override public void OnExit() {
+  }
+}
