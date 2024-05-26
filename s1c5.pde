@@ -1,6 +1,4 @@
 public class S1C5 extends Scene {
-  private float backgroundAlpha = 255.0f;
-
   TimelineManager timelineManager = new TimelineManager();
 
   public S1C5() {
