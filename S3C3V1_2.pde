@@ -52,7 +52,7 @@ public class S3C3V1_2 extends Scene {
 
     // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
     if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
-      // scene.ChangeScene(new S3C3V1_1_1());
+      scene.ChangeScene(new S3C3V1_1_1());
     }
   }
 

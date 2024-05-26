@@ -1,24 +1,26 @@
 public class S3C3V2 extends Scene {
-  private float tiger_SCALE = 0.2;
-  private static final float bear_SCALE = 0.25;
+  private float SCENE_DURATION = 5; // 5초 동안 씬 진행
 
-  private static final float bear_X = 300;
-  private static final float bear_Y = 450;
+  private float tiger_SCALE = 0.2;
+  private float bear_SCALE = 0.25;
+
+  private float bear_X = 300;
+  private float bear_Y = 450;
   private float tiger_X = 800;
   private float tiger_Y = 250;
 
-  private static final float bear_EYE_X = 295;
-  private static final float bear_EYE_Y = 400;
-  private static final float bear_MOU_X = 305;
-  private static final float bear_MOU_Y = 460;
+  private float bear_EYE_X = 295;
+  private float bear_EYE_Y = 400;
+  private float bear_MOU_X = 305;
+  private float bear_MOU_Y = 460;
 
   private int imageIndex = 0;
   private String[] tigerList = {
     "tigerMove", "tigerStop" }
   ;
-  private int time = 0;
 
-  // private int 변수는이렇게선언해주세요;
+  private float WALK_INTERVAL = 0.075f;
+  private float walkTick = 0f;
 
   public S3C3V2() {
   }
@@ -28,9 +30,22 @@ public class S3C3V2 extends Scene {
     image.LoadImage("bear", "Images/S3/C3/V2/_1/_0/bear");
     image.LoadImage("bearE", "Images/S3/C3/V2/_1/_0/bearE");
     image.LoadImage("bearM", "Images/S3/C3/V2/_1/_0/bearM");
-    image.LoadImage("tiger", "Images/S3/C3/V2/_1/_0/tiger");
     image.LoadImage("tigerMove", "Images/S3/C3/V2/_1/_0/tigerMove");
     image.LoadImage("tigerStop", "Images/S3/C3/V2/_1/_0/tigerStop");
+    tiger_X = 800;
+    tiger_Y = 250;
+    bear_SCALE = 0.25;
+    bear_X = 300;
+    bear_Y = 450;
+    tiger_SCALE = 0.2;
+
+    bear_EYE_X = 295;
+    bear_EYE_Y = 400;
+    bear_MOU_X = 305;
+    bear_MOU_Y = 460;
+    imageIndex = 0;
+    walkTick = 0f;
+
   }
 
   @Override public void OnDraw() {
@@ -39,19 +54,22 @@ public class S3C3V2 extends Scene {
     image.DrawImageScale("bear", new PVector(bear_X, bear_Y), new PVector(bear_SCALE, bear_SCALE, 0));
     image.DrawImageScale("bearM", new PVector(bear_MOU_X, bear_MOU_Y), new PVector(bear_SCALE, bear_SCALE, 0));
 
-    if (time % 20 == 0 && tiger_X < 950) {
-      imageIndex++;
+    if (tiger_X < 950) {
+      walkTick += time.deltaTime;
+      if (walkTick > WALK_INTERVAL) {
+        walkTick =0f;
+        imageIndex++;
+      }
     }
-    imageIndex %= 2;
+    image.DrawImageScale(tigerList[imageIndex % 2], new PVector(tiger_X, tiger_Y), new PVector(tiger_SCALE, tiger_SCALE, 0));
 
-    image.DrawImageScale(tigerList[imageIndex], new PVector(tiger_X, tiger_Y), new PVector(tiger_SCALE, tiger_SCALE, 0));
-
-    if (time % 2 == 0 && tiger_X < 950) {
-      tiger_X += 3;
-      tiger_Y -= 1;
-      tiger_SCALE -= 0.002;
-    } else {
-      time++;
+    if (tiger_X < 950) {
+      tiger_X += 90* time.deltaTime;
+      tiger_Y -= 0.5f* time.deltaTime;
+      tiger_SCALE -= 0.06f * time.deltaTime;
+    }
+    if (time.time- enterTime > SCENE_DURATION) {
+      //scene.ChangeScene(new S3C3V2_1_1());
     }
   }
 

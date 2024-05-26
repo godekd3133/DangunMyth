@@ -1,13 +1,12 @@
 public class S3C3V1_2_2 extends Scene {
-  private final static String PREFIX = "Images/S3/C3/V1/_2/_1/"; // 1번과 같은경로를 사용함
+  private String PREFIX = "Images/S3/C3/V1/_2/"; // 1번과 같은경로를 사용함
 
-  private final static float moveMillis = 5000;
+  private float moveMillis = 5000;
 
-  private final static float 환웅_X = 1150;
-  private final static float 환웅_Y = 500;
+  private float 환웅_X = 1150;
+  private float 환웅_Y = 500;
   private float tongueY = 0;
 
-  private final static int SCENE_SCONDS = 15;
   private int startMinute;
   private int startSecond;
   private int startMillis;
