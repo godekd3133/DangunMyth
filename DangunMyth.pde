@@ -21,15 +21,16 @@ void setup() {
   sceneList.add(new S1C7());
   sceneList.add(new S1C8());
   sceneList.add(new S1C9());
-  sceneList.add(new S1C15V1()); // 9
-  sceneList.add(new S1C15V2()); // 10
-  sceneList.add(new S1C17()); // 11
-  sceneList.add(new S1C19_1()); // 12
-  sceneList.add(new S1C19_3()); // 13
-  sceneList.add(new S2C1()); // 14
-  sceneList.add(new S2C2()); // 15
-  sceneList.add(new S2C3()); // 16
-  sceneList.add(new S2C4()); // 17
+  sceneList.add(new S1C14()); 
+  sceneList.add(new S1C15V1()); // 10 
+  sceneList.add(new S1C15V2()); 
+  sceneList.add(new S1C17()); 
+  sceneList.add(new S1C19_1()); 
+  sceneList.add(new S1C19_3());
+  sceneList.add(new S2C1()); 
+  sceneList.add(new S2C2()); 
+  sceneList.add(new S2C3()); 
+  sceneList.add(new S2C4());
   sceneList.add(new S2C5());
   sceneList.add(new S2C6V1());
 
@@ -37,9 +38,7 @@ void setup() {
   noStroke();
   //size(1280, 720,FX2D);
   size(1280, 720,P2D);
-  S1C1 s1c1 = new S1C1();
-  //scene.Setup(s1c1);
-  scene.Setup(sceneList.get(19));
+  scene.Setup(sceneList.get(0));
 
 }
 
