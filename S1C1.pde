@@ -12,8 +12,8 @@ public class S1C1 extends Scene {
     image.LoadImage("cloud01", "Images/S1/C1/cloud_01");
     image.LoadImage("cloud02", "Images/S1/C1/cloud_02");
     image.LoadImage("cloud03", "Images/S1/C1/cloud_03");
-    sound.LoadSound("bgm", "Sounds/엔딩크레딧.wav");
-    sound.PlaySound("bgm");
+    sound.LoadSound("intro", "Sounds/intro.wav");
+    sound.PlaySound("intro");
 
     cloudX = 0f;
     zoomIn = 1f;
@@ -39,5 +39,6 @@ public class S1C1 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.StopSound("intro");
   }
 }
