@@ -53,7 +53,7 @@ public class S3C3V1_4_1 extends Scene {
     float d1 = minimumSize +(sin(angle) *(diameter)/2) +(diameter)/2;
 
     // heartSize += 0.005;
-    println("d1 : " + d1);
+    // println("d1 : " + d1);
 
     image.DrawImage("background", new PVector(width / 2, height / 2));
 

@@ -58,19 +58,14 @@ public class S3C3V1_2_2 extends Scene {
   private void checkClick() {
     if (mousePressed && selected == false) {
       if (mouseX > 310 && mouseX < 310 + 150 && mouseY > 70 && mouseY < 70 + 80) {
-        <<<<<<< HEAD println("범녀 선택");
+        println("범녀 선택");
         scene.ChangeScene(new S3C3V1_4_1());
         selected = true;
       }
       if (mouseX > 520 && mouseX < 520 + 150 && mouseY > 70 && mouseY < 70 + 80) {
         println("웅녀 선택");
         scene.ChangeScene(new S3C3V1_3_1());
-        ======= scene.ChangeScene(new S3C3V1_4_2());
         selected = true;
-      }
-      if (mouseX > 520 && mouseX < 520 + 150 && mouseY > 70 && mouseY < 70 + 80) {
-        scene.ChangeScene(new S3C3V1_3_2());
-        >>>>>>> de55631989de54d3ea05b5b4d0e3ae47ca5bf8e3 selected = true;
       }
     }
   }
