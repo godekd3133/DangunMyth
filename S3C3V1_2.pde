@@ -16,13 +16,13 @@ public class S3C3V1_2 extends Scene {
 
   private float tongueY = 0;
 
-  private final static int SCENE_SCONDS = 5; // 3초 동안 씬 진행
+  private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
   private int startMinute;
   private int startSecond;
 
   @Override public void OnEnter() {
     // 이미지 로드
-    image.LoadImage("background", PREFIX+"background");
+    image.LoadImage("background", PREFIX+"backgrnd");
 
     image.LoadImage("bear_body", PREFIX+"bear_body");
     image.LoadImage("bear_eye", PREFIX+"bear_eye");
@@ -36,7 +36,7 @@ public class S3C3V1_2 extends Scene {
   }
 
   @Override public void OnDraw() {
-    tongueY+=30 * time.deltaTime;
+    tongueY+=0.5;
 
     if (tongueY>13) {
       tongueY *=-1;
