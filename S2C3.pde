@@ -73,11 +73,14 @@ public class S2C3 extends Scene {
 
     basketPosition.x = lerp(700, 800, Ease.EaseOutCubic(basketPositionPercent));
     image.DrawImageScale(basket, basketPosition, new PVector(0.25f, 0.25f), getAngleByDegree(30));
+
+    if (currentTime > 2.5) {
+			scene.ChangeScene(new S2C4());
+    }
   }
 
   float getAngleByDegree(float degree) {
     return PI * degree / 180;
-
   }
 
   @Override public void OnExit() {
