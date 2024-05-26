@@ -1,4 +1,4 @@
-public class S3C3V1_3_2 extends Scene {
+public class S3C3V2_2_2 extends Scene {
   private float preparationTime = 3f;
   private String BACKGROUND_IMAGE = "Images/S3/C3/V1/_3/_2/Background";
   private String CHARACTER_IMAGE = "Images/S3/C3/V1/_3/_2/Characters";
@@ -6,7 +6,7 @@ public class S3C3V1_3_2 extends Scene {
 
   private float fadeoutTime = 4f;
 
-  public S3C3V1_3_2() {
+  public S3C3V2_2_2() {
   }
 
   @Override public void OnEnter() {

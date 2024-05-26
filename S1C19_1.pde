@@ -25,7 +25,7 @@ public class S1C19_1 extends Scene {
     bearY = height - 150;
     changeTick = 0f;
 
-    image.LoadImage("background", "Images/S1/C19/background1");
+    image.LoadImage("background", "Images/S1/C19/background0");
     image.LoadImage("hwangwoong", "Images/S1/C19/hwanwoong_back");
     image.LoadImage("tiger_eyes", "Images/S1/C19/tiger_eyes");
     image.LoadImage("tiger_skin", "Images/S1/C19/tiger_skin");

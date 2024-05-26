@@ -1,16 +1,17 @@
 public class S3C3V2_1_3 extends Scene {
-  private static final float GIRL_X = 900;
-  private static final float GIRL_Y = 480;
-  private static final float GIRL_SCALE = 0.15;
-  private static final float GIRL_EYE_Y = 410;
+  private float SCENE_DURATION = 5f; // 5초 동안 씬 진행
+
+  private float GIRL_X = 900;
+  private float GIRL_Y = 480;
+  private float GIRL_SCALE = 0.15;
+  private float GIRL_EYE_Y = 410;
 
   private float HWAN_X = 300;
-  private static final float HWAN_Y = 480;
-  private static final float HWAN_SCALE = 0.15;
-  private static final float HWAN_MOUSE_Y=405;
-  private static final float HWAN_SHOE_Y=HWAN_Y+140;
+  private float HWAN_Y = 480;
+  private float HWAN_SCALE = 0.15;
+  private float HWAN_MOUSE_Y=405;
+  private float HWAN_SHOE_Y=HWAN_Y+140;
 
-  private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
   private int startMinute;
   private int startSecond;
 
@@ -31,6 +32,17 @@ public class S3C3V2_1_3 extends Scene {
     image.LoadImage("hwan_mouse_2", "Images/S3/C3/V2/_1/_3/hwanmouse2");
     image.LoadImage("hwan_shoe_1", "Images/S3/C3/V2/_1/_3/hwanshoe");
     image.LoadImage("hwan_shoe_2", "Images/S3/C3/V2/_1/_3/hwanshoe2");
+
+    GIRL_X = 900;
+    GIRL_Y = 480;
+    GIRL_SCALE = 0.15;
+    GIRL_EYE_Y = 410;
+    HWAN_X = 300;
+    HWAN_Y = 480;
+    HWAN_SCALE = 0.15;
+    HWAN_MOUSE_Y=405;
+    HWAN_SHOE_Y=HWAN_Y+140;
+
   }
 
   @Override public void OnDraw() {
@@ -51,7 +63,6 @@ public class S3C3V2_1_3 extends Scene {
     } else {
       image.DrawImageScale("hwan_shoe_2", new PVector(HWAN_X+17, HWAN_SHOE_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
     }
-
     if ((millis()/500)%2==0) {
       image.DrawImageScale("girl_eye_1", new PVector(GIRL_X, GIRL_EYE_Y), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
       image.DrawImageScale("hwan_body", new PVector(HWAN_X, HWAN_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
@@ -62,8 +73,8 @@ public class S3C3V2_1_3 extends Scene {
       image.DrawImageScale("hwan_mouse_2", new PVector(HWAN_X+10, HWAN_MOUSE_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
     }
     // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
-    if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
-      // scene.ChangeScene(new S3C3V2_2_1());
+    if (time.time - enterTime >= SCENE_DURATION) {
+      scene.ChangeScene(new S3C3V2_2_1());
     }
   }
 
