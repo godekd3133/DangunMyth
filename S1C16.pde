@@ -14,7 +14,8 @@ public class S1C16 extends Scene {
     image.LoadImage("extra_3", "Images/S1/C16/extra_3");
     image.LoadImage("extra_4", "Images/S1/C16/extra_4");
     image.LoadImage("hwanung_arm", "Images/S1/C16/hwanung_arm");
-    image.LoadImage("hwanung_face", "Images/S1/C16/hwanung_face");
+    image.LoadImage("hwanung_face1", "Images/S1/C16/hwanung_face1");
+    image.LoadImage("hwanung_face2", "Images/S1/C16/hwanung_face2");
     image.LoadImage("hwanung", "Images/S1/C16/hwanung");
 
   }
@@ -28,8 +29,11 @@ public class S1C16 extends Scene {
     image.DrawImageScale("extra_4", new PVector(width / 2 - 50, height / 2 - 30), new PVector(0.1f, 0.1f));
 
     image.DrawImageScale("hwanung", new PVector(width / 2 + 500, height / 2), new PVector(0.3f, 0.3f));
-    image.DrawImageScale("hwanung_face", new PVector(width / 2 + 480, height / 2 - 190), new PVector(0.3f, 0.3f));
-
+    if ((millis()/500)%2==0) {
+      image.DrawImageScale("hwanung_face1", new PVector(width / 2 + 480, height / 2 - 165), new PVector(0.3f, 0.3f));
+    } else {
+      image.DrawImageScale("hwanung_face2", new PVector(width / 2 + 480, height / 2 - 165), new PVector(0.3f, 0.3f));
+    }
     handX += handDir;
     if (handX < 280f) {
       handDir = 0.4f;
