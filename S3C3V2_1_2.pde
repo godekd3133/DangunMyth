@@ -1,14 +1,14 @@
 public class S3C3V2_1_2 extends Scene {
-  private static final float GIRL_X = 600;
-  private static final float GIRL_Y = 550;
-  private static final float GIRL_SCALE = 0.4;
-  private static final float GIRL_EYE_Y = 380;
-  private static final float GIRL_EYE_X = 620;
-  private static final float GIRL_HAND_X = 630;
+  private float SCENE_DURATION = 5f; // 5초 동안 씬 진행
+  private float GIRL_X = 600;
+  private float GIRL_Y = 550;
+  private float GIRL_SCALE = 0.4;
+  private float GIRL_EYE_Y = 380;
+  private float GIRL_EYE_X = 620;
+  private float GIRL_HAND_X = 630;
   private float GIRL_HAND_Y = 550;
   //private int 변수는이렇게선언해주세요;
 
-  private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
   private int startMinute;
   private int startSecond;
 
@@ -21,6 +21,14 @@ public class S3C3V2_1_2 extends Scene {
     image.LoadImage("girlface", "Images/S3/C3/V2/_1/_2/girlface");
     image.LoadImage("girlface2", "Images/S3/C3/V2/_1/_2/girlface2");
     image.LoadImage("girlhand", "Images/S3/C3/V2/_1/_2/girlhand");
+    GIRL_X = 600;
+    GIRL_Y = 550;
+    GIRL_SCALE = 0.4;
+    GIRL_EYE_Y = 380;
+    GIRL_EYE_X = 620;
+    GIRL_HAND_X = 630;
+    GIRL_HAND_Y = 550;
+
   }
 
   @Override public void OnDraw() {
@@ -30,7 +38,6 @@ public class S3C3V2_1_2 extends Scene {
     if (abs(GIRL_HAND_Y) == 500 || abs(GIRL_HAND_Y) == 550) {
       GIRL_HAND_Y*=-1;
     }
-
     //girl
     image.DrawImageScale("girlbody", new PVector(GIRL_X, GIRL_Y), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
     image.DrawImageScale("girlhand", new PVector(GIRL_HAND_X, abs(GIRL_HAND_Y)), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
@@ -39,10 +46,9 @@ public class S3C3V2_1_2 extends Scene {
     } else {
       image.DrawImageScale("girlface2", new PVector(GIRL_EYE_X, GIRL_EYE_Y), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
     }
-    
     // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
-    if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
-      // scene.ChangeScene(new S3C3V2_1_3());
+    if (time.time - enterTime >= SCENE_DURATION) {
+      scene.ChangeScene(new S3C3V2_1_3());
     }
   }
 
