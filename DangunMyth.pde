@@ -45,6 +45,7 @@ void setup() {
   sceneList.add(new S3C3V1_4_2());//30
   sceneList.add(new S3C3V1_4_3());//31
   sceneList.add(new S3C3V2());//32
+  sceneList.add(new S3C3V2_1_1());
   sceneList.add(new S3C3V2_1_2());//33
   sceneList.add(new S3C3V2_1_3());//34
   sceneList.add(new S3C3V2_2_1());//35
