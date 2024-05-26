@@ -28,7 +28,7 @@ void setup() {
   size(1280, 720,P2D);
   S1C1 s1c1 = new S1C1();
   //scene.Setup(s1c1);
-  scene.Setup(sceneList.get(5));
+  scene.Setup(sceneList.get(8));
 
 }
 

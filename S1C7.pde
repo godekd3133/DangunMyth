@@ -1,11 +1,12 @@
 public class S1C7 extends Scene {
-  private final static String PREFIX = "Images/S1/C7/";
-  private static final float HWAN_BODY_X = 880.0f;
-  private static final float HWAN_BODY_Y = 760.0f;
-  private static final float HWAN_EYE_Y = 480.0f;
-  private static final float HWAN_SCALE = 0.4f;
+  private String PREFIX = "Images/S1/C7/";
+  public float SCENE_DURATION = 3f;
 
-  private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
+  private float HWAN_BODY_X = 880.0f;
+  private float HWAN_BODY_Y = 760.0f;
+  private float HWAN_EYE_Y = 480.0f;
+  private float HWAN_SCALE = 0.4f;
+
   private int startMinute;
   private int startSecond;
 
@@ -29,7 +30,7 @@ public class S1C7 extends Scene {
       image.DrawImageScale("hwan_expression2", new PVector(HWAN_BODY_X, HWAN_EYE_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
     }
     // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
-    if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
+    if (time.time - enterTime >= SCENE_DURATION) {
       scene.ChangeScene(new S1C8());
     }
   }

@@ -1,6 +1,8 @@
 public class S1C6_2 extends Scene {
   int centerX = width/2;
   int centerY = height/2;
+  public float SCENE_DURATION = 10f;
+  float hwaninFaceScale = 0.4f;
 
   boolean tick1Flag = true;
   int tick1Cnt = 0;
@@ -21,8 +23,7 @@ public class S1C6_2 extends Scene {
   }
 
   @Override public void OnEnter() {
-    println("[S1C6_2]");
-
+    hwaninFaceScale= 0.4f;
     // int hwaninX = centerX-200;
     // int hwaninY = centerY;
 
@@ -36,22 +37,20 @@ public class S1C6_2 extends Scene {
   }
 
   @Override public void OnDraw() {
-    if (hwaninFace) tick1Cnt++;
-    else tick1Cnt--;
+    if (hwaninFace) hwaninFaceScale += time.deltaTime * 0.2f;
+    else hwaninFaceScale -= time.deltaTime * 0.2f;
 
-    if (tick1Cnt >= 10 || tick1Cnt <= 0) {
+    if (hwaninFaceScale >= 0.5f || hwaninFaceScale <= 0.36f) {
       hwaninFace = !hwaninFace;
     }
-    endpointTick++;
-    // println(endpointTick);
-    if (endpointTick >= 200) {
-      scene.ChangeScene(new S1C6_1());
+    if (time.time - enterTime > SCENE_DURATION) {
+      scene.ChangeScene(new S1C7());
     }
     image.DrawImageScale("Background2", centerX, centerY, 1f, 0f, 255f);
 
     //환인 Draw
     image.DrawImageScale("HwaninBody", hwaninX, hwaninY, 0.4, 0f, 255f);
-    image.DrawImageScale("HwaninFace", hwaninX+15, hwaninY+hwaninfaceOffset, 0.4+((float)tick1Cnt/400), 0f, 255f);
+    image.DrawImageScale("HwaninFace", hwaninX+15, hwaninY+hwaninfaceOffset, hwaninFaceScale, 0f, 255f);
 
     // print("Draw");
   }

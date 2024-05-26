@@ -1,19 +1,19 @@
 public class S1C11 extends Scene {
   private final static String PREFIX = "Images/S1/C11/";
 
-  private static final float HWANIN_BODY_X = 250.0f;
-  private static final float HWANIN_BODY_Y = 520.0f;
-  private static final float HWANIN_EYE_X = 250.0f;
-  private static final float HWANIN_EYE_Y = 420.0f;
-  private static final float HWANIN_SCALE = 0.35f;
+  private float HWANIN_BODY_X = 250.0f;
+  private float HWANIN_BODY_Y = 520.0f;
+  private float HWANIN_EYE_X = 250.0f;
+  private float HWANIN_EYE_Y = 420.0f;
+  private float HWANIN_SCALE = 0.35f;
 
-  private static final float HWANWOONG_BODY_X = 1100.0f;
-  private static final float HWANWOONG_BODY_Y = 580.0f;
-  private static final float HWANWOONG_EYE_X = 1025.0f;
-  private static final float HWANWOONG_EYE_Y = 385.0f;
-  private static final float HWANWOONG_SCALE = 0.35f;
+  private float HWANWOONG_BODY_X = 1100.0f;
+  private float HWANWOONG_BODY_Y = 580.0f;
+  private float HWANWOONG_EYE_X = 1025.0f;
+  private float HWANWOONG_EYE_Y = 385.0f;
+  private float HWANWOONG_SCALE = 0.35f;
 
-  private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
+  private int SCENE_SCONDS = 3; // 3초 동안 씬 진행
   private int startMinute;
   private int startSecond;
 

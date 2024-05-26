@@ -8,8 +8,8 @@ public class S1C6_1 extends Scene {
 
   PVector hwaninCoor = new PVector((float)centerX-300,(float)centerY);
 
-  boolean tick1Flag = true;
-  int tick1Cnt = 0;
+  float mouseTickInterval = 10f/60f;
+  float mouseTick = 0f;
 
   //환인 위치
   int hwaninfaceOffset = -40;
@@ -35,9 +35,9 @@ public class S1C6_1 extends Scene {
   }
 
   @Override public void OnEnter() {
-    tick1Cnt=0;
     hwaninFaceCnt=0;
     hwanwoongFaceCnt=0;
+    mouseTick = 0f;
     hwaninDuration = SCENE_DURATION/2f;
     hwanwoongDuration = SCENE_DURATION/2f;
 
@@ -62,16 +62,9 @@ public class S1C6_1 extends Scene {
   }
 
   @Override public void OnDraw() {
-    if (tick1Flag == true) {
-      if (tick1Cnt <= 3000) {
-        tick1Cnt++;
-      }
-    }
-    else tick1Cnt=0;
-
-    if (tick1Cnt%10 == 0) {
-      // println("[S1C6] tick1Cnt : "+tick1Cnt);
-      //환인
+    mouseTick += time.deltaTime;
+    if (mouseTick >= mouseTickInterval) {
+      mouseTick = 0f;
 
       if (hwaninFaceFlag) {
         hwaninMouse = !hwaninMouse;

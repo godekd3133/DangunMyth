@@ -50,6 +50,5 @@ public class S1C4 extends Scene {
   }
 
   @Override public void OnExit() {
-    // scene.ChangeScene(new S1C5());
   }
 }
