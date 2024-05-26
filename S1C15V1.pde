@@ -36,7 +36,7 @@ public class S1C15V1 extends Scene {
     image.DrawImageScale("HWANUNG_SWEAT", new PVector(HWANUNG_SWEAT_X + 4, HWANUNG_SWEAT_Y), new PVector(HWANUNG_SWEAT_SCALE, HWANUNG_SWEAT_SCALE));
 
     if (time.time - enterTime > SCENE_DURATION) {
-      //scene.ChangeScene("S1C16");
+      scene.ChangeScene(new S1C15V2());
     }
   }
 

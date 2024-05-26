@@ -26,7 +26,7 @@ public class S3C3V1_3_3 extends Scene {
     if (alpha <= 0f) {
       preparationTime -= time.deltaTime;
       if (preparationTime <= 0f) {
-        //scene.ChangeScene(new S3C3V1_3_3());
+        //scene.ChangeScene(엔딩크래딧);
       }
     }
   }

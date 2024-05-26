@@ -27,7 +27,7 @@ public class S1C15V2 extends Scene {
     image.DrawImageScale("HWANUNG_FACE", new PVector(HWANUNG_FACE_X, HWANUNG_FACE_Y + faceY), new PVector(HWANUNG_FACE_SCALE, HWANUNG_FACE_SCALE));
 
     if (time.time - enterTime > SCENE_DURATION) {
-      //scene.ChangeScene("S1C16");
+      scene.ChangeScene(new S1C16());
     }
   }
 

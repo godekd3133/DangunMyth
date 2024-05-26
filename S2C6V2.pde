@@ -42,7 +42,7 @@ public class S2C6V2 extends Scene {
     image.DrawImageScale("tiger_arm", new PVector(tigerArmX, tigerArmY), new PVector(0.4f, 0.4f), tigerArmRotate);
 
     if (time.time - enterTime > SCENE_DURATION) {
-      //  scene.ChangeScene(new S2C7());
+      scene.ChangeScene(new S2C7());
     }
   }
 

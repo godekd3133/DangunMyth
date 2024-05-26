@@ -70,7 +70,7 @@ public class S1C19_1 extends Scene {
       changeTick = 0f;
     }
     if (time.time - enterTime >= SCENE_DURATION) {
-      // scene.ChangeScene(new S1C19_2());
+      scene.ChangeScene(new S1C19_2());
     }
   }
 

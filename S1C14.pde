@@ -13,7 +13,7 @@ public class S1C14 extends Scene {
     image.DrawImage("background", new PVector(width / 2, height / 2, 0));
     
     if (time.time - enterTime > SCENE_DURATION) {
-      scene.ChangeScene(new S1C3());
+      //scene.ChangeScene(new S1C15());
     }
   }
 

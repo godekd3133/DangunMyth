@@ -51,8 +51,8 @@ public class S3C2 extends Scene {
   public void mousePressed() {
 
     switch(selectOption) {
-      //case 1 : scene.ChangeScene(new S3C1);
-      //case 2 : scene.ChangeScene(new S3C3V1_4_3);
+      case 1 : scene.ChangeScene(new S3C3V1_1());
+      case 2 : scene.ChangeScene(new S3C3V2());
     }
   }
 }

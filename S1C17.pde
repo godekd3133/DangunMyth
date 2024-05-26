@@ -79,7 +79,7 @@ public class S1C17 extends Scene {
     image.DrawImageScale("BEAR", new PVector(BEAR_X, BEAR_Y - BEAR_POP), new PVector(BEAR_SCALE, BEAR_SCALE));
 
     if (time.time - enterTime > SCENE_SCONDS) {
-      //scene.ChangeScene(new S1C18());
+      scene.ChangeScene(new S1C18());
     }
   }
 

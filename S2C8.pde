@@ -40,7 +40,7 @@ public class S2C8 extends Scene {
       zoomIn += 0.1f * time.deltaTime;
     }
     if (time.time - enterTime > SCENE_DURATION) {
-      scene.ChangeScene(new S1C3());
+      scene.ChangeScene(new S3C1());
     }
   }
 
