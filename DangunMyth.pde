@@ -5,7 +5,6 @@ ImageManager image = new ImageManager();
 FontManager font = new FontManager();
 TimeManager time = new TimeManager();
 SoundManager sound = new SoundManager();
-TimelineManager timeline = new TimelineManager();
 //Scene List
 ArrayList<Scene> sceneList = new ArrayList<Scene>();
 
@@ -38,7 +37,6 @@ void draw() {
   fill(0);
   //print(1f/time.deltaTime + "\n");
   time.OnDraw();
-  timeline.OnDraw();
   scene.Draw();
 
   //오른쪽 키 누르면 현재씬의 다음씬으로, 왼쪽키 누르면 현재씬의 이전씬으로

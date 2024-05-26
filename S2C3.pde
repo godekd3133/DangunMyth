@@ -39,7 +39,6 @@ public class S2C3 extends Scene {
     // float currentTime =(millis() - startTime) / 1000;
     float currentTime =((millis() - startTime) / 1000 - 1) < 0 ? 0 :(millis() - startTime) / 1000 - 1;
 
-    timeline.OnDraw();
     image.DrawImageScale(background, backgroundPosition, backgroundSacle);
 
     float timeMovingTiger = 1.1;
@@ -75,7 +74,7 @@ public class S2C3 extends Scene {
     image.DrawImageScale(basket, basketPosition, new PVector(0.25f, 0.25f), getAngleByDegree(30));
 
     if (currentTime > 2.5) {
-			scene.ChangeScene(new S2C4());
+      scene.ChangeScene(new S2C4());
     }
   }
 
