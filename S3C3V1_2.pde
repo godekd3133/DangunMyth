@@ -22,7 +22,7 @@ public class S3C3V1_2 extends Scene {
 
   @Override public void OnEnter() {
     // 이미지 로드
-    image.LoadImage("background", PREFIX+"backgrnd");
+    image.LoadImage("background", PREFIX+"background");
 
     image.LoadImage("bear_body", PREFIX+"bear_body");
     image.LoadImage("bear_eye", PREFIX+"bear_eye");
