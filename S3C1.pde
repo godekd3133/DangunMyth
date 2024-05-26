@@ -1,4 +1,5 @@
 public class S3C1 extends Scene {
+  public float SCENE_DURATION =10f;
   private float animalScale = 0.25f;
   private float utilScale = 0.05f;
   private int animalY = height - 280;
@@ -29,6 +30,27 @@ public class S3C1 extends Scene {
     image.LoadImage("tiger", "Images/S3/C1/tiger");
     image.LoadImage("garlic", "Images/S3/C1/garlic");
     image.LoadImage("ssug", "Images/S3/C1/ssug");
+
+    animalScale = 0.25f;
+    utilScale = 0.05f;
+    animalY = height - 280;
+    jumpY = 0;
+    jumpDir = 1;
+    garlicX = width / 2 + 315;
+    garlicY = animalY - 15;
+    ssugX = width / 2 + 110;
+    ssugY = animalY - 15;
+    utilY = height - 120;
+    garlicInitVelY = 15;
+    garlicInitVelX = 5;
+    garlicCurrentVelY = garlicInitVelY;
+    garlicRotate = 1.0f;
+    garlicAngle = random(0.05f, 0.15f);
+    ssugInitVelY = 18;
+    ssugInitVelX = 3;
+    ssugCurrentVelY = ssugInitVelY;
+    ssugRotate = 1.0f;
+    ssugAngle = random(0.05f, 0.15f);
   }
 
   @Override public void OnDraw() {
@@ -60,9 +82,12 @@ public class S3C1 extends Scene {
       ssugRotate += ssugAngle;
     }
     image.DrawImageScale("ssug", new PVector(ssugX, ssugY), new PVector(utilScale, utilScale), ssugRotate);
+
+    if (time.time - enterTime > SCENE_DURATION) {
+      scene.ChangeScene(new S3C2());
+    }
   }
 
   @Override public void OnExit() {
-    // scene.ChangeScene(new S3C2());
   }
 }

@@ -1,5 +1,5 @@
 public class S3C3V1_2_1 extends Scene {
-  private final static String PREFIX = "Images/S3/C3/V1/_2/";
+  private final static String PREFIX = "Images/S3/C3/V1/_2/_1";
 
   private final static float 범녀_X = 300;
   private final static float 범녀_Y = 100;
@@ -47,24 +47,13 @@ public class S3C3V1_2_1 extends Scene {
     if (tongueY>13) {
       tongueY *=-1;
     }
-
     int elapsedMills = millis() - startMillis;
     image.DrawImage("background", new PVector(width / 2, height / 2));
 
-
-    String 범녀Name = "범녀" + ((elapsedMills / 300) % 3 + 1);
-    if (elapsedMills > moveMillis)
-      범녀Name = "범녀1";
-    image.DrawImageScale(범녀Name, new PVector(
-      lerp(범녀_X, 범녀_X_End, min(1, elapsedMills / moveMillis)),
-      lerp(범녀_Y, 범녀_Y_End, min(1, elapsedMills / moveMillis))
-      ),
-      new PVector(0.2f, 0.2f));
-        image.DrawImageScale("웅녀", new PVector(
-      lerp(웅녀_X, 웅녀_X_End, min(1, elapsedMills / moveMillis)),
-      lerp(웅녀_Y, 웅녀_Y_End, min(1, elapsedMills / moveMillis))
-      ),
-      new PVector(0.2f, 0.2f));
+    String 범녀Name = "범녀" +((elapsedMills / 300) % 3 + 1);
+    if (elapsedMills > moveMillis) 범녀Name = "범녀1";
+    image.DrawImageScale(범녀Name, new PVector(lerp(범녀_X, 범녀_X_End, min(1, elapsedMills / moveMillis)), lerp(범녀_Y, 범녀_Y_End, min(1, elapsedMills / moveMillis))), new PVector(0.2f, 0.2f));
+    image.DrawImageScale("웅녀", new PVector(lerp(웅녀_X, 웅녀_X_End, min(1, elapsedMills / moveMillis)), lerp(웅녀_Y, 웅녀_Y_End, min(1, elapsedMills / moveMillis))), new PVector(0.2f, 0.2f));
     image.DrawImageScale("환웅", new PVector(환웅_X, 환웅_Y), new PVector(0.3, 0.3));
 
     // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동

@@ -30,8 +30,13 @@ void setup() {
   sceneList.add(new S2C2()); // 15
   sceneList.add(new S2C3()); // 16
   sceneList.add(new S2C4()); // 17
-  sceneList.add(new S2C5());
-  sceneList.add(new S2C6V1());
+  sceneList.add(new S2C5()); // 18
+  sceneList.add(new S2C6V1()); // 19
+  sceneList.add(new S3C1());
+  sceneList.add(new S3C2());
+  sceneList.add(new S3C3V1_2());
+  sceneList.add(new S3C3V1_1_1());
+  sceneList.add(new S3C3V1_1_2());
 
   frameRate(60);
   noStroke();
@@ -39,7 +44,7 @@ void setup() {
   size(1280, 720,P2D);
   S1C1 s1c1 = new S1C1();
   //scene.Setup(s1c1);
-  scene.Setup(sceneList.get(19));
+  scene.Setup(sceneList.get(22));
 
 }
 

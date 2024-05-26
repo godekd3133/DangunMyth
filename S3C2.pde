@@ -43,6 +43,7 @@ public class S3C2 extends Scene {
       image.DrawImageScale("right", new PVector(thinkRightX, thinkY), new PVector(thinkScale, thinkScale));
     }
     if (selectOption == 0) image.DrawImageScale("eye_black", new PVector(width / 2 - 12, height - 245), new PVector(0.23f, 0.23f));
+
   }
 
   @Override public void OnExit() {
@@ -51,8 +52,8 @@ public class S3C2 extends Scene {
   public void mousePressed() {
 
     switch(selectOption) {
-      //case 1 : scene.ChangeScene(new S3C1);
-      //case 2 : scene.ChangeScene(new S3C3V1_4_3);
+      case 1 : scene.ChangeScene(new S3C3V1_1_1());
+      case 2 : scene.ChangeScene(new S3C3V2());
     }
   }
 }
