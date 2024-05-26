@@ -37,6 +37,8 @@ void setup() {
   sceneList.add(new S3C3V1_2());
   sceneList.add(new S3C3V1_1_1());
   sceneList.add(new S3C3V1_1_2());
+  sceneList.add(new S3C3V1_2_1());
+  sceneList.add(new S3C3V1_2_2());
 
   frameRate(60);
   noStroke();
@@ -44,7 +46,7 @@ void setup() {
   size(1280, 720,P2D);
   S1C1 s1c1 = new S1C1();
   //scene.Setup(s1c1);
-  scene.Setup(sceneList.get(22));
+  scene.Setup(sceneList.get(24));
 
 }
 

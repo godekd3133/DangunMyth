@@ -1,25 +1,25 @@
 public class S3C3V1_2_1 extends Scene {
-  private final static String PREFIX = "Images/S3/C3/V1/_2/_1";
+  private final static String PREFIX = "Images/S3/C3/V1/_2/_1/";
+  private int SCENE_SCONDS = 7;
 
-  private final static float 범녀_X = 300;
-  private final static float 범녀_Y = 100;
+  private float 범녀_X = 300;
+  private float 범녀_Y = 100;
 
-  public final static float 범녀_X_End = 375;
-  public final static float 범녀_Y_End = 350;
+  public float 범녀_X_End = 375;
+  public float 범녀_Y_End = 350;
 
-  private final static float 웅녀_X = 500;
-  private final static float 웅녀_Y = 100;
+  private float 웅녀_X = 500;
+  private float 웅녀_Y = 100;
 
-  public final static float 웅녀_X_End = 588;
-  public final static float 웅녀_Y_End = 350;
+  public float 웅녀_X_End = 588;
+  public float 웅녀_Y_End = 350;
 
-  private final static float moveMillis = 5000;
+  private float moveMillis = 5000;
 
-  private final static float 환웅_X = 1150;
-  private final static float 환웅_Y = 500;
+  private float 환웅_X = 1150;
+  private float 환웅_Y = 500;
   private float tongueY = 0;
 
-  private final static int SCENE_SCONDS = 7;
   private int startMinute;
   private int startSecond;
   private int startMillis;
@@ -38,11 +38,12 @@ public class S3C3V1_2_1 extends Scene {
     startMinute=minute();
     startSecond=second();
     startMillis=millis();
+    tongueY = 0;
+
   }
 
   @Override public void OnDraw() {
-    tongueY+=0.5;
-    println("s3c3v1_2_1");
+    tongueY+=30*time.deltaTime;
 
     if (tongueY>13) {
       tongueY *=-1;
