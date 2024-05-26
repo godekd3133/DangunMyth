@@ -26,6 +26,9 @@ public class S2C8 extends Scene {
   @Override public void OnDraw() {
     PVector scale = new PVector(zoomIn, zoomIn, 0);
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), scale);
+    image.DrawImageScale("sun", new PVector(width / 2, height / 2, 0), scale);
+    image.DrawImageScale("river", new PVector(width / 2, height / 2, 0), scale);
+    image.DrawImageScale("mountain", new PVector(width / 2, height / 2, 0), scale);
     image.DrawImageScale("cloud1", new PVector(width / 2 - cloudX, height / 2, 0), scale);
     image.DrawImageScale("cloud2", new PVector(width / 2 - cloudX, height / 2, 0), scale);
     image.DrawImageScale("cloud3", new PVector(width / 2 + cloudX, height / 2, 0), scale);
