@@ -1,4 +1,5 @@
 public class S1C19_1 extends Scene {
+  public float SCENE_DURATION = 10f;
   private float tigerX = width - 200;
   private float tigerY = height - 150;
   private float bearX = width - 450;
@@ -10,7 +11,9 @@ public class S1C19_1 extends Scene {
     "right_leg0", "right_leg2", "right_leg0", "right_leg1", "right_leg0"}
   ;
   private int currentIndex = 0;
-  private int changeInterval = 3;
+
+  private float changeInterval = 0.075f;
+  private float changeTick = 0f;
 
   public S1C19_1() {
   }
@@ -20,6 +23,7 @@ public class S1C19_1 extends Scene {
     tigerY = height - 150;
     bearX = width - 450;
     bearY = height - 150;
+    changeTick = 0f;
 
     image.LoadImage("background", "Images/S1/C19/background1");
     image.LoadImage("hwangwoong", "Images/S1/C19/hwanwoong_back");
@@ -53,15 +57,19 @@ public class S1C19_1 extends Scene {
     image.DrawImageScale("bear_skin", new PVector(bearX, bearY, 0), new PVector(0.2f, 0.2f, 0));
     image.DrawImageScale("bear_" + rightRoutine[currentIndex], new PVector(bearX, bearY, 0), new PVector(0.2f, 0.2f,0));
 
-    tigerX -= 0.5f;
-    bearX -= 0.5f;
-    if (frameCount % changeInterval == 0) {
+    if (bearX > width / 2) {
+      tigerX -= 30f*time.deltaTime;
+      bearX -= 30f*time.deltaTime;
+    }
+    changeTick += time.deltaTime;
+    if (changeTick >= changeInterval) {
       currentIndex++;
       if (currentIndex >= leftRoutine.length) {
         currentIndex = 0;
       }
+      changeTick = 0f;
     }
-    if (bearX <= width / 2) {
+    if (time.time - enterTime >= SCENE_DURATION) {
       // scene.ChangeScene(new S1C19_2());
     }
   }
