@@ -10,7 +10,7 @@ public class SceneManager {
   private boolean fadeIn = false;
   private boolean fadeOut = false;
 
-  float fadeSpeed = 5400f;
+  float fadeSpeed = 360f;
 
   public void Setup(Scene initialScene) {
     currentScene = null;
