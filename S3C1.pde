@@ -1,4 +1,5 @@
 public class S3C1 extends Scene {
+  public float SCENE_DURATION = 6f;
   private float animalScale = 0.25f;
   private float utilScale = 0.05f;
   private int animalY = height - 280;
@@ -60,9 +61,12 @@ public class S3C1 extends Scene {
       ssugRotate += ssugAngle;
     }
     image.DrawImageScale("ssug", new PVector(ssugX, ssugY), new PVector(utilScale, utilScale), ssugRotate);
+
+    if (time.time - enterTime > SCENE_DURATION) {
+      scene.ChangeScene(new S3C2());
+    }
   }
 
   @Override public void OnExit() {
-    // scene.ChangeScene(new S3C2());
   }
 }

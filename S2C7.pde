@@ -1,4 +1,5 @@
 public class S2C7 extends Scene {
+  public float SCENE_DURATION =5f;
   private float animalScale = 0.25f;
   private float utilScale = 0.035f;
   private float tearScale = 0.025f;
@@ -45,9 +46,12 @@ public class S2C7 extends Scene {
     image.DrawImageScale("tiger_body", new PVector(730, 500), new PVector(animalScale, animalScale));
     image.DrawImageScale("tiger_mouth", new PVector(695, 470 + positionToMoveHead), new PVector(animalScale, animalScale));
     image.DrawImageScale("tiger_head", new PVector(720, 370 + positionToMoveHead), new PVector(animalScale, animalScale));
+
+    if (time.time - enterTime > SCENE_DURATION) {
+      scene.ChangeScene(new S2C8());
+    }
   }
 
   @Override public void OnExit() {
-    // scene.ChangeScene(new S2C7());
   }
 }

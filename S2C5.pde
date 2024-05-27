@@ -21,7 +21,7 @@ public class S2C5 extends Scene {
 
     if (time.time - enterTime > SCENE_DURATION) {
       //미니게임
-      //scene.ChangeScene(new S2C6());
+      scene.ChangeScene(new S2C6V1());
     }
   }
 

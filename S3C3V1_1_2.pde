@@ -1,5 +1,6 @@
 public class S3C3V1_1_2 extends Scene {
   private int _time = 0;
+  private float SCENE_DURATION = 5f; // 5초 동안 씬 진행
 
   private float tiger_x = 800;
   private float tiger_y = 400;
@@ -34,9 +35,8 @@ public class S3C3V1_1_2 extends Scene {
   }
 
   @Override public void OnDraw() {
-    if (_time > 300) {
-      // 다음 씬 이동?
-      return;
+    if (time.time - enterTime > SCENE_DURATION) {
+      scene.ChangeScene(new S3C3V1_2_1());
     }
     _time++;
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(1, 1, 0));

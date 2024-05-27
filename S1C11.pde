@@ -47,7 +47,7 @@ public class S1C11 extends Scene {
     }
     // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
     if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
-      // scene.ChangeScene(new S1C13());
+      scene.ChangeScene(new S1C14());
     }
   }
 

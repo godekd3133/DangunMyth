@@ -13,6 +13,8 @@ public class S3C3V2_1_1 extends Scene {
     centerX = width / 2;
     centerY = height / 2;
     centerVector = new PVector(centerX, centerY);
+    sunY = 600;
+    cloudXDistance = 0;
 
     image.LoadImage("cloud_left", PREFIX+"cloud_left");
     image.LoadImage("cloud_right", PREFIX+"cloud_right");

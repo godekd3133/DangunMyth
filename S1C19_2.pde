@@ -1,4 +1,5 @@
 public class S1C19_2 extends Scene {
+  public float SCENE_DURATION = 10f;
   private float armInterval;
   private float mouthInterval;
   private float mouthChangeTick;
@@ -41,6 +42,9 @@ public class S1C19_2 extends Scene {
     if (armChangeTick >= armInterval) {
       armIndex ^= 1;
       armChangeTick = 0;
+    }
+    if (time.time - enterTime >= SCENE_DURATION) {
+      scene.ChangeScene(new S1C19_3());
     }
   }
 

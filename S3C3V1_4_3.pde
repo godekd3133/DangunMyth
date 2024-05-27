@@ -1,5 +1,5 @@
 public class S3C3V1_4_3 extends Scene {
-  private int SCENE_DURATION = 5; // 5초 동안 씬 진행
+  private float SCENE_DURATION = 5; // 5초 동안 씬 진행
   private String[] imageNames = {
     "background", "body", "head", "arm", "mouth1", "mouth2", "ally", "enemy1", "enemy2", "enemy3"}
   ;
@@ -8,7 +8,9 @@ public class S3C3V1_4_3 extends Scene {
   private float allyScale = 0.2f;
   private float enemyScale1 = 0.2f;
   private float enemyScale2 = 0.13f;
-  private int time = 0;
+
+  private float MOUTH_TICK_INTERVAL =0.4f;
+  private float mouthTick =0f;
   private boolean openMouth = true;
 
   public S3C3V1_4_3() {
@@ -16,6 +18,7 @@ public class S3C3V1_4_3 extends Scene {
 
   @Override public void OnEnter() {
     for(String imageName : imageNames) image.LoadImage(imageName, imagePath + imageName);
+    mouthTick =0f;
   }
 
   @Override public void OnDraw() {
@@ -29,11 +32,18 @@ public class S3C3V1_4_3 extends Scene {
     image.DrawImageScale("arm", new PVector(900, 300), new PVector(manScale, manScale), -0.4f);
     image.DrawImageScale("body", new PVector(900, 500), new PVector(manScale, manScale));
     image.DrawImageScale("head", new PVector(1050, 300), new PVector(manScale, manScale), 0.2f);
-    if (time % 20 == 0) openMouth = !openMouth;
+
+    mouthTick += time.deltaTime;
+    if (mouthTick >= MOUTH_TICK_INTERVAL) {
+      mouthTick = 0;
+      openMouth = !openMouth;
+    }
     if (openMouth) image.DrawImageScale("mouth1", new PVector(1050, 300), new PVector(manScale, manScale), 0.2f);
     else image.DrawImageScale("mouth2", new PVector(1050, 300), new PVector(manScale, manScale), 0.2f);
 
-    time++;
+    if (time.time - enterTime >= SCENE_DURATION) {
+      //엔딩 크레딧
+    }
   }
 
   @Override public void OnExit() {

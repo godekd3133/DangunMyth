@@ -10,8 +10,8 @@ public class S2C8 extends Scene {
   @Override public void OnEnter() {
     image.LoadImage("background", "Images/S2/C8/background");
     image.LoadImage("sun", "Images/S2/C8/sun");
-    image.LoadImage("river", "Images/S2/C8/river");
     image.LoadImage("mountain", "Images/S2/C8/mountain");
+    image.LoadImage("river", "Images/S2/C8/river");
     image.LoadImage("cloud1", "Images/S2/C8/cloud1");
     image.LoadImage("cloud2", "Images/S2/C8/cloud2");
     image.LoadImage("cloud3", "Images/S2/C8/cloud3");

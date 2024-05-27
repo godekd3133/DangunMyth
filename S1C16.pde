@@ -4,6 +4,7 @@ public class S1C16 extends Scene {
   private float handRotate = 0.0f;
   private float handAngle = 0.01f;
   private float handDir = -0.4f;
+  public float SCENE_DURATION = 10f;
 
   public S1C16() {
   }
@@ -61,6 +62,10 @@ public class S1C16 extends Scene {
     // image.DrawImageScale("hwanung_arm", new PVector(width / 2, height / 2), new PVector(0.1f, 0.1f));
     // image.DrawImageScale("hwanung_face", new PVector(width / 2, height / 2), new PVector(0.1f, 0.1f));
     // image.DrawImageScale("hwanung", new PVector(width / 2, height / 2), new PVector(0.3f, 0.3f));
+
+    if (time.time - enterTime > SCENE_DURATION) {
+      scene.ChangeScene(new S1C17());
+    }
   }
 
   @Override public void OnExit() {

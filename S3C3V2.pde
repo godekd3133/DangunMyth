@@ -69,7 +69,7 @@ public class S3C3V2 extends Scene {
       tiger_SCALE -= 0.06f * time.deltaTime;
     }
     if (time.time- enterTime > SCENE_DURATION) {
-      //scene.ChangeScene(new S3C3V2_1_1());
+      scene.ChangeScene(new S3C3V2_1_1());
     }
   }
 

@@ -11,9 +11,9 @@ public class S1C14 extends Scene {
 
   @Override public void OnDraw() {
     image.DrawImage("background", new PVector(width / 2, height / 2, 0));
-    
+
     if (time.time - enterTime > SCENE_DURATION) {
-      //scene.ChangeScene(new S1C15());
+      scene.ChangeScene(new S1C15V1()); //미니게임으로 가야함
     }
   }
 

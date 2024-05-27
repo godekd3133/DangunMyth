@@ -9,7 +9,7 @@ public class S3C3V1_3_1 extends Scene {
   private float 환웅_X = 1150;
   private float 환웅_Y = 500;
 
-  private int SCENE_SECONDS = 7;
+  private int SCENE_SECONDS;
   private int startMinute;
   private int startSecond;
   private int startMillis;
@@ -30,7 +30,7 @@ public class S3C3V1_3_1 extends Scene {
 
     heartSize = 0;
 
-    SCENE_SECONDS = 4;
+    SCENE_SECONDS = 6;
     diameter = height - 400; //최대크기
     minimumSize = diameter-300;
     angle = 0;

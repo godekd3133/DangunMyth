@@ -7,12 +7,13 @@ TimeManager time = new TimeManager();
 SoundManager sound = new SoundManager();
 //Scene List
 ArrayList<Scene> sceneList = new ArrayList<Scene>();
+int currentSceneIndex = 0;
 
 void setup() {
   //씬들 순서대로 추가
   //미리 50개 공간할당
 
-  // S1 (0 ~ 19)
+  // S1(0 ~ 19)
   sceneList.add(new S1C1());
   sceneList.add(new S1C3());
   sceneList.add(new S1C4());
@@ -32,13 +33,13 @@ void setup() {
   sceneList.add(new S1C18());
   sceneList.add(new S1C19_1());
   sceneList.add(new S1C19_2());
-  sceneList.add(new S1C19_3()); 
+  sceneList.add(new S1C19_3());
 
-  // S2 (20 ~ 29)
-  sceneList.add(new S2C1()); 
+  // S2(20 ~ 29)
+  sceneList.add(new S2C1());
   sceneList.add(new S2C2());
-  sceneList.add(new S2C3()); 
-  sceneList.add(new S2C4()); 
+  sceneList.add(new S2C3());
+  sceneList.add(new S2C4());
   sceneList.add(new S2C5());
   // sceneList.add(new S2C6()); // 미니게임
   sceneList.add(new S2C6V1());
@@ -46,10 +47,11 @@ void setup() {
   sceneList.add(new S2C7());
   sceneList.add(new S2C8());
 
-  // S3 (30 ~50)
+  // S3(30 ~50)
   sceneList.add(new S3C1());
   sceneList.add(new S3C2());
-  // S3 - V1 (32 ~ 43)
+
+  // S3 - V1(32 ~ 43)
   sceneList.add(new S3C3V1_1());
   sceneList.add(new S3C3V1_2());
   sceneList.add(new S3C3V1_1_1());
@@ -62,7 +64,7 @@ void setup() {
   sceneList.add(new S3C3V1_4_1());
   sceneList.add(new S3C3V1_4_2());
   sceneList.add(new S3C3V1_4_3());
-  // S3 - V2 (44 ~ 50)
+  // S3 - V2(44 ~ 50)
   sceneList.add(new S3C3V2());
   sceneList.add(new S3C3V2_1_1());
   sceneList.add(new S3C3V2_1_2());
@@ -75,7 +77,7 @@ void setup() {
   noStroke();
   //size(1280, 720,FX2D);
   size(1280, 720,P2D);
-  scene.Setup(sceneList.get(0));
+  scene.Setup(sceneList.get(27));
 
 }
 
@@ -91,7 +93,16 @@ void draw() {
 
 void keyPressed() {
   if (scene.firstScene == null) {
-    int index = sceneList.indexOf(scene.currentScene);
+    int index =0;
+    for(int i = 0;
+    i< sceneList.size();
+    i++) {
+      if (sceneList.get(i).getClass() == scene.currentScene.getClass()) {
+        index = i;
+        break;
+      }
+    }
+    if (index == -1) return;
     if (keyCode == RIGHT) {
       //findIndex
       if (index < sceneList.size() - 1) {
