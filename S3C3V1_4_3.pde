@@ -9,19 +9,26 @@ public class S3C3V1_4_3 extends Scene {
   private float enemyScale1 = 0.2f;
   private float enemyScale2 = 0.13f;
 
-  private float MOUTH_TICK_INTERVAL =0.4f;
-  private float mouthTick =0f;
+  private float ANIMATION_TICK_INTERVAL =0.4f;
+  private float animationTick =0f;
   private boolean openMouth = true;
+  private boolean upArm = true;
 
   public S3C3V1_4_3() {
   }
 
   @Override public void OnEnter() {
     for(String imageName : imageNames) image.LoadImage(imageName, imagePath + imageName);
-    mouthTick =0f;
+    animationTick =0f;
   }
 
   @Override public void OnDraw() {
+    animationTick += time.deltaTime;
+    if (animationTick >= ANIMATION_TICK_INTERVAL) {
+      animationTick = 0;
+      openMouth = !openMouth;
+      upArm = !upArm;
+    }
     image.DrawImageScale("background", new PVector(width / 2, height / 2), new PVector(1, 1));
 
     image.DrawImageScale("enemy2", new PVector(100, 450), new PVector(enemyScale2, enemyScale2));
@@ -29,15 +36,11 @@ public class S3C3V1_4_3 extends Scene {
     image.DrawImageScale("enemy1", new PVector(500, 450), new PVector(enemyScale2, enemyScale2));
     image.DrawImageScale("enemy3", new PVector(350, 450), new PVector(enemyScale1, enemyScale1));
     image.DrawImageScale("ally", new PVector(1180, 500), new PVector(allyScale, allyScale));
-    image.DrawImageScale("arm", new PVector(900, 300), new PVector(manScale, manScale), -0.4f);
+    if (upArm) image.DrawImageScale("arm", new PVector(950, 280), new PVector(manScale, manScale), 0.3f);
+    else image.DrawImageScale("arm", new PVector(900, 300), new PVector(manScale, manScale));
     image.DrawImageScale("body", new PVector(900, 500), new PVector(manScale, manScale));
     image.DrawImageScale("head", new PVector(1050, 300), new PVector(manScale, manScale), 0.2f);
 
-    mouthTick += time.deltaTime;
-    if (mouthTick >= MOUTH_TICK_INTERVAL) {
-      mouthTick = 0;
-      openMouth = !openMouth;
-    }
     if (openMouth) image.DrawImageScale("mouth1", new PVector(1050, 300), new PVector(manScale, manScale), 0.2f);
     else image.DrawImageScale("mouth2", new PVector(1050, 300), new PVector(manScale, manScale), 0.2f);
 
