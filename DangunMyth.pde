@@ -9,6 +9,11 @@ SoundManager sound = new SoundManager();
 ArrayList<Scene> sceneList = new ArrayList<Scene>();
 int currentSceneIndex = 0;
 
+void preload() {
+  sound.LoadSound("intro", "Sounds/intro.wav");
+
+}
+
 void setup() {
   //씬들 순서대로 추가
   //미리 50개 공간할당
@@ -77,7 +82,7 @@ void setup() {
   noStroke();
   //size(1280, 720,FX2D);
   size(1280, 720,P2D);
-  scene.Setup(sceneList.get(27));
+  scene.Setup(sceneList.get(0));
 
 }
 
