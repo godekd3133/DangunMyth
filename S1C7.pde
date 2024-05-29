@@ -2,7 +2,7 @@ public class S1C7 extends Scene {
   private String PREFIX = "S1/C7/";
   private String IMG_PREFIX = "Images/"+PREFIX;
   private String SOUND_PREFIX = "Sounds/"+PREFIX+"narr/";
-  public float SCENE_DURATION = 3f;
+  //public float SCENE_DURATION = 3f;
 
   private float HWAN_BODY_X = 880.0f;
   private float HWAN_BODY_Y = 760.0f;
@@ -10,7 +10,7 @@ public class S1C7 extends Scene {
   private float HWAN_SCALE = 0.4f;
 
   private int startMillis;
-  private float narr1Duration;
+  private float narrDuration;
 
   @Override public void OnEnter() {
     image.LoadImage("background", IMG_PREFIX+"background");
@@ -36,13 +36,19 @@ public class S1C7 extends Scene {
     }
     // 씬 시작 후 1.5초 뒤 대사1 시작
     if (sound.hasSound("narr")&&isTimeExceededMillis(startMillis, 1.5)) {
-      narr1Duration=sound.soundDuration("narr");
+      narrDuration=sound.soundDuration("narr");
       sound.playSoundOnce("narr");
       startMillis = millis(); // 대사 1 시작 millis
     }
-    // 대사 1종료 후 1초 뒤 대사2 시작
-    if (!sound.hasSound("narr")&&sound.hasSound("hwan")&&isTimeExceededMillis(startMillis, narr1Duration+1.0)) {
+    // 대사 1 종료 후 1초 뒤 대사2 시작
+    if (!sound.hasSound("narr")&&sound.hasSound("hwan")&&isTimeExceededMillis(startMillis, narrDuration+1.0)) {
+      narrDuration=sound.soundDuration("hwan");
       sound.playSoundOnce("hwan");
+      startMillis = millis();
+    }
+    // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
+    if (!sound.hasSound("narr")&&!sound.hasSound("hwan")&&isTimeExceededMillis(startMillis, narrDuration+1.0)) {
+      scene.ChangeScene(new S1C8());
     }
     // 다음 장면으로 이동
     // if (time.time - enterTime >= SCENE_DURATION) {
