@@ -14,3 +14,10 @@ public static boolean isTimeExceeded(int startMinute, int startSecond, int endSe
 
   return nowTotalSeconds-startTotalSeconds >= endSecond;
 }
+// startMillis기준 endSeconds초가 경과하면 true 반환
+
+public boolean isTimeExceededMillis(int startMillis, float endSeconds) {
+  int nowTotalMilliseconds = millis();
+  float endMilliseconds = endSeconds * 1000;
+  return nowTotalMilliseconds - startMillis >= endMilliseconds;
+}

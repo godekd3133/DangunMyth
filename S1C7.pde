@@ -1,5 +1,7 @@
 public class S1C7 extends Scene {
-  private String PREFIX = "Images/S1/C7/";
+  private String PREFIX = "S1/C7/";
+  private String IMG_PREFIX = "Images/"+PREFIX;
+  private String SOUND_PREFIX = "Sounds/"+PREFIX+"narr/";
   public float SCENE_DURATION = 3f;
 
   private float HWAN_BODY_X = 880.0f;
@@ -7,16 +9,19 @@ public class S1C7 extends Scene {
   private float HWAN_EYE_Y = 480.0f;
   private float HWAN_SCALE = 0.4f;
 
-  private int startMinute;
-  private int startSecond;
+  private int startMillis;
+  private float narr1Duration;
 
   @Override public void OnEnter() {
-    image.LoadImage("background", PREFIX+"background");
-    image.LoadImage("hwan_body", PREFIX+"hwan_body");
-    image.LoadImage("hwan_expression1", PREFIX+"hwan_expression1");
-    image.LoadImage("hwan_expression2", PREFIX+"hwan_expression2");
-    startMinute=minute();
-    startSecond=second();
+    image.LoadImage("background", IMG_PREFIX+"background");
+    image.LoadImage("hwan_body", IMG_PREFIX+"hwan_body");
+    image.LoadImage("hwan_expression1", IMG_PREFIX+"hwan_expression1");
+    image.LoadImage("hwan_expression2", IMG_PREFIX+"hwan_expression2");
+    sound.LoadSound("narr", SOUND_PREFIX+"narr.mp3");
+    sound.LoadSound("hwan", SOUND_PREFIX+"hwan.mp3");
+
+    // 씬 시작 millis
+    startMillis = millis();
   }
 
   @Override public void OnDraw() {
@@ -29,10 +34,20 @@ public class S1C7 extends Scene {
     } else {
       image.DrawImageScale("hwan_expression2", new PVector(HWAN_BODY_X, HWAN_EYE_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
     }
-    // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
-    if (time.time - enterTime >= SCENE_DURATION) {
-      scene.ChangeScene(new S1C8());
+    // 씬 시작 후 1.5초 뒤 대사1 시작
+    if (sound.hasSound("narr")&&isTimeExceededMillis(startMillis, 1.5)) {
+      narr1Duration=sound.soundDuration("narr");
+      sound.playSoundOnce("narr");
+      startMillis = millis(); // 대사 1 시작 millis
     }
+    // 대사 1종료 후 1초 뒤 대사2 시작
+    if (!sound.hasSound("narr")&&sound.hasSound("hwan")&&isTimeExceededMillis(startMillis, narr1Duration+1.0)) {
+      sound.playSoundOnce("hwan");
+    }
+    // 다음 장면으로 이동
+    // if (time.time - enterTime >= SCENE_DURATION) {
+      //   scene.ChangeScene(new S1C8());
+      // }
   }
 
   @Override public void OnExit() {
