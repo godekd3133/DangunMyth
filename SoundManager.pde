@@ -5,6 +5,7 @@ SoundFile LoadSound2(String filename2) {
 }
 public class SoundManager {
   HashMap<String, SoundFile> sounds = new HashMap<String, SoundFile>();
+  SoundFile nowPlaying;
 
   public void LoadSound(String name, String filename) {
     SoundFile sound = LoadSound2(filename);
@@ -14,6 +15,7 @@ public class SoundManager {
   public void PlaySound(String name) {
     SoundFile sound = sounds.get(name);
     sound.play();
+    nowPlaying = sound;
   }
 
   public void StopSound(String name) {
@@ -26,12 +28,23 @@ public class SoundManager {
   }
 
   public void playSoundOnce(String name) {
-    SoundFile sound = sounds.get(name);
-    sound.play();
+    PlaySound(name);
     sounds.remove(name);
   }
 
   public boolean hasSound(String name) {
     return sounds.containsKey(name);
+  }
+
+  public boolean isPlaying(String name) {
+    return sounds.get(name).isPlaying();
+  }
+
+  public void removeSound(String name) {
+    sounds.remove(name);
+  }
+
+  public void stopNowPlaying() {
+    nowPlaying.stop();
   }
 }
