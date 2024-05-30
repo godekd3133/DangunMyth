@@ -4,19 +4,23 @@ public class S1C9 extends Scene {
   public float PREPARATION_DURATION = 5f;
   private float cloudX;
   private float handY;
+  private int startMillis;
 
   public S1C9() {
   }
 
   @Override public void OnEnter() {
     image.LoadImage("background", "Images/S1/C9/background");
+    image.LoadImage("text", "Images/S1/C9/text");
     image.LoadImage("cloud01", "Images/S1/C9/cloud_01");
     image.LoadImage("cloud02", "Images/S1/C9/cloud_02");
     image.LoadImage("cloud03", "Images/S1/C9/cloud_03");
     image.LoadImage("hand", "Images/S1/C9/hand");
+    sound.LoadSound("hwanwoog", "Sounds/S1/C9/narr/hwanwoong.mp3");
 
     cloudX = 0;
     handY = 0;
+    startMillis = millis();
   }
 
   @Override public void OnDraw() {
@@ -33,8 +37,15 @@ public class S1C9 extends Scene {
     if ((time.time-enterTime) >= SCENE_DURATION) {
       scene.ChangeScene(new S1C11());
     }
+    image.DrawImage("text", new PVector(width / 2, height / 2, 0));
+
+    // 씬 시작 후 1초 뒤 대사1 시작
+    if (sound.hasSound("hwanwoog")&&isTimeExceededMillis(startMillis, 1)) {
+      sound.playSoundOnce("hwanwoog");
+    }
   }
 
   @Override public void OnExit() {
+    sound.stopNowPlaying();
   }
 }
