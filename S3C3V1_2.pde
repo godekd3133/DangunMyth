@@ -1,5 +1,7 @@
 public class S3C3V1_2 extends Scene {
   private final static String PREFIX = "Images/S3/C3/V1/_2/";
+  private final static String SOUND_PREFIX = "Sounds/S3/C3/V1/_2/narr/";
+
   private final static float CHARACTER_SCALE = 0.3;
 
   private final static float BEAR_X = 470;
@@ -16,9 +18,11 @@ public class S3C3V1_2 extends Scene {
 
   private float tongueY = 0;
 
-  private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
-  private int startMinute;
-  private int startSecond;
+  // private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
+  // private int startMinute;
+  // private int startSecond;
+  private int startMillis;
+  private float narrDuration;
 
   @Override public void OnEnter() {
     // 이미지 로드
@@ -30,9 +34,9 @@ public class S3C3V1_2 extends Scene {
     image.LoadImage("tiger_body", PREFIX+"tiger_body");
     image.LoadImage("tiger_head", PREFIX+"tiger_head");
     image.LoadImage("tiger_tongue", PREFIX+"tiger_tongue");
+    sound.LoadSound("tiger", SOUND_PREFIX+"tiger.mp3");
 
-    startMinute=minute();
-    startSecond=second();
+    startMillis = millis();
   }
 
   @Override public void OnDraw() {
@@ -49,11 +53,20 @@ public class S3C3V1_2 extends Scene {
     image.DrawImageScale("tiger_body", new PVector(TIGER_X, TIGER_Y), new PVector(CHARACTER_SCALE, CHARACTER_SCALE));
     image.DrawImageScale("tiger_tongue", new PVector(TIGER_TONGUE_X, TIGER_TONGUE_Y+abs(tongueY)), new PVector(CHARACTER_SCALE, CHARACTER_SCALE));
     image.DrawImageScale("tiger_head", new PVector(TIGER_HEAD_X, TIGER_HEAD_Y), new PVector(CHARACTER_SCALE, CHARACTER_SCALE));
-
-    // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
-    if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
+    // 씬 시작 후 1.5초 뒤 대사2 시작
+    if (sound.hasSound("tiger")&&isTimeExceededMillis(startMillis, narrDuration+1.5)) {
+      narrDuration=sound.soundDuration("tiger");
+      sound.playSoundOnce("tiger");
+      startMillis = millis();
+    }
+    // 대사 2 종료 후 1.5초 뒤 다음 장면으로 이동
+    if (!sound.hasSound("tiger")&&isTimeExceededMillis(startMillis, narrDuration+1.5)) {
       scene.ChangeScene(new S3C3V1_1_1());
     }
+    // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
+    // if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
+      //   scene.ChangeScene(new S3C3V1_1_1());
+      // }
   }
 
   @Override public void OnExit() {
