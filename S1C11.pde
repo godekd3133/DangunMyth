@@ -2,9 +2,9 @@ public class S1C11 extends Scene {
   private final static String IMG_PREFIX = "Images/S1/C11/";
   private final static String SOUND_PREFIX = "Sounds/S1/C11/narr/";
 
-  private float HWANIN_BODY_X = 250.0f;
+  private float HWANIN_BODY_X = 200.0f;
   private float HWANIN_BODY_Y = 520.0f;
-  private float HWANIN_EYE_X = 250.0f;
+  private float HWANIN_EYE_X = 200.0f;
   private float HWANIN_EYE_Y = 420.0f;
   private float HWANIN_SCALE = 0.35f;
 
@@ -23,6 +23,7 @@ public class S1C11 extends Scene {
 
   @Override public void OnEnter() {
     image.LoadImage("background", IMG_PREFIX+"background");
+    image.LoadImage("text", IMG_PREFIX+"text");
 
     image.LoadImage("hwanin_body", IMG_PREFIX+"hwanin_body");
     image.LoadImage("hwanin_expression1", IMG_PREFIX+"hwanin_expression1");
@@ -31,8 +32,8 @@ public class S1C11 extends Scene {
     image.LoadImage("hwanwoong_body", IMG_PREFIX+"hwanwoong_body");
     image.LoadImage("hwanwoong_expression1", IMG_PREFIX+"hwanwoong_expression1");
     image.LoadImage("hwanwoong_expression2", IMG_PREFIX+"hwanwoong_expression2");
-    startMinute=minute();
-    startSecond=second();
+    // startMinute=minute();
+    // startSecond=second();
     // 씬 시작 millis
     startMillis = millis();
 
@@ -42,6 +43,7 @@ public class S1C11 extends Scene {
 
   @Override public void OnDraw() {
     image.DrawImage("background", new PVector(width / 2, height / 2));
+    image.DrawImage("text", new PVector(width / 2, height / 2));
 
     image.DrawImageScale("hwanin_body", new PVector(HWANIN_BODY_X, HWANIN_BODY_Y), new PVector(HWANIN_SCALE, HWANIN_SCALE, 0));
     image.DrawImageScale("hwanwoong_body", new PVector(HWANWOONG_BODY_X, HWANWOONG_BODY_Y), new PVector(HWANWOONG_SCALE, HWANWOONG_SCALE, 0));
