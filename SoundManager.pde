@@ -29,7 +29,7 @@ public class SoundManager {
 
   public void playSoundOnce(String name) {
     PlaySound(name);
-    sounds.remove(name);
+    removeSound(name);
   }
 
   public boolean hasSound(String name) {
@@ -38,10 +38,6 @@ public class SoundManager {
 
   public boolean isPlaying(String name) {
     return sounds.get(name).isPlaying();
-  }
-
-  public void removeSound(String name) {
-    sounds.remove(name);
   }
 
   public void stopNowPlaying() {
