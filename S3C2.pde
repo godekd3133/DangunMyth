@@ -29,16 +29,18 @@ public class S3C2 extends Scene {
 
     // Mouse animation
     if (mouseX <= width / 2 - 200 & mouseY <= height / 2) {
+      selectOption = 1;
       image.DrawImageScale("left", new PVector(thinkLeftX + 60, thinkY + 50), new PVector(thinkScale + 0.1f, thinkScale + 0.1f));
       image.DrawImageScale("eye_black", new PVector(width / 2 - 15, height - 255), new PVector(0.23f, 0.23f));
-      selectOption = 1;
+      if (mousePressed) scene.ChangeScene(new S3C3V1_1());
     } else {
       image.DrawImageScale("left", new PVector(thinkLeftX, thinkY), new PVector(thinkScale, thinkScale));
     }
     if (mouseX >= width / 2 + 200 & mouseY <= height / 2) {
+      selectOption = 2;
       image.DrawImageScale("right", new PVector(thinkRightX - 60, thinkY + 50), new PVector(thinkScale + 0.1f, thinkScale + 0.1f));
       image.DrawImageScale("eye_black", new PVector(width / 2 - 9, height - 255), new PVector(0.23f, 0.23f));
-      selectOption = 2;
+      if (mousePressed) scene.ChangeScene(new S3C3V2());
     } else {
       image.DrawImageScale("right", new PVector(thinkRightX, thinkY), new PVector(thinkScale, thinkScale));
     }
@@ -46,13 +48,5 @@ public class S3C2 extends Scene {
   }
 
   @Override public void OnExit() {
-  }
-
-  public void mousePressed() {
-
-    switch(selectOption) {
-      case 1 : scene.ChangeScene(new S3C3V1_1());
-      case 2 : scene.ChangeScene(new S3C3V2());
-    }
   }
 }
