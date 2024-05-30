@@ -32,6 +32,10 @@ public class SoundManager {
     removeSound(name);
   }
 
+  public void removeSound(String name) {
+    sounds.remove(name);
+  }
+
   public boolean hasSound(String name) {
     return sounds.containsKey(name);
   }

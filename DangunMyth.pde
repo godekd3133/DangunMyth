@@ -29,6 +29,7 @@ void setup() {
   sceneList.add(new S1C8());
   sceneList.add(new S1C9());
   sceneList.add(new S1C11());
+  sceneList.add(new S1C13());
   sceneList.add(new S1C14());
   // sceneList.add(new S1C15()); // 미니게임
   sceneList.add(new S1C15V1());
@@ -59,6 +60,7 @@ void setup() {
   // S3 - V1(32 ~ 43)
   sceneList.add(new S3C3V1_1());
   sceneList.add(new S3C3V1_2());
+  sceneList.add(new S3C3V1_3());
   sceneList.add(new S3C3V1_1_1());
   sceneList.add(new S3C3V1_1_2());
   sceneList.add(new S3C3V1_2_1());
