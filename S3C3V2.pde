@@ -14,6 +14,8 @@ public class S3C3V2 extends Scene {
   private float bear_MOU_X = 305;
   private float bear_MOU_Y = 460;
 
+  private int startTime = 0;
+
   private int imageIndex = 0;
   private String[] tigerList = {
     "tigerMove", "tigerStop" }
@@ -49,10 +51,14 @@ public class S3C3V2 extends Scene {
   }
 
   @Override public void OnDraw() {
+    int currentProcessingTime =(millis() - startTime) / 1000;
+    boolean isEating = currentProcessingTime % 2 == 1;
+    int positionToMoveHead = isEating ? 5 : 0;  //입 왔다갔다
+
     image.DrawImage("background", new PVector(width / 2, height / 2));
     image.DrawImageScale("bearE", new PVector(bear_EYE_X, bear_EYE_Y), new PVector(bear_SCALE, bear_SCALE, 0));
     image.DrawImageScale("bear", new PVector(bear_X, bear_Y), new PVector(bear_SCALE, bear_SCALE, 0));
-    image.DrawImageScale("bearM", new PVector(bear_MOU_X, bear_MOU_Y), new PVector(bear_SCALE, bear_SCALE, 0));
+    image.DrawImageScale("bearM", new PVector(bear_MOU_X, bear_MOU_Y + positionToMoveHead), new PVector(bear_SCALE, bear_SCALE, 0));
 
     if (tiger_X < 950) {
       walkTick += time.deltaTime;
