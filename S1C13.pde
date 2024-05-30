@@ -32,6 +32,9 @@ public class S1C13 extends Scene {
     if (isTimeExceededMillis(startMillis, 5.0)) {
       image.DrawImage("background7", new PVector(width / 2, height / 2));
     }
+    if (isTimeExceededMillis(startMillis, 6.0)) {
+      scene.ChangeScene(new S1C14());
+    }
   }
 
   @Override public void OnExit() {

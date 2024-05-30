@@ -57,5 +57,6 @@ public class S1C7 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.stopNowPlaying();
   }
 }

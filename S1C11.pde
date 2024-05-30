@@ -68,7 +68,7 @@ public class S1C11 extends Scene {
     }
     // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
     if (!sound.hasSound("hwanin")&&!sound.hasSound("hwanwoong")&&isTimeExceededMillis(startMillis, narrDuration+1.0)) {
-      scene.ChangeScene(new S1C14());
+      scene.ChangeScene(new S1C13());
     }
     // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
     // if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
@@ -77,5 +77,6 @@ public class S1C11 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.stopNowPlaying();
   }
 }
