@@ -44,7 +44,7 @@ public class S2C6 extends Scene {
   }
 
   @Override public void OnDraw() {
-    int displayTime = DISPLAY_TIME -(int)time.time;
+    int displayTime = DISPLAY_TIME -(int)(time.time - enterTime);
 
     if (time.time- enterTime > SCENE_DURATION) {
       //scene.ChangeScene(new S2C6());
