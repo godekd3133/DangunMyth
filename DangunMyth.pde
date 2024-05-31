@@ -8,6 +8,7 @@ SoundManager sound = new SoundManager();
 //Scene List
 ArrayList<Scene> sceneList = new ArrayList<Scene>();
 int currentSceneIndex = 0;
+boolean QAMode = true; //이 변수를 true로 바꾸면 시간에따른 신전환 안됩니다
 
 void preload() {
   sound.LoadSound("intro", "Sounds/intro.wav");
@@ -89,10 +90,12 @@ void setup() {
 }
 
 void draw() {
+  time.OnDraw();
+  if (scene.looping == false) return;
+
   background(255);
   fill(0);
 
-  time.OnDraw();
   scene.Draw();
 
   //오른쪽 키 누르면 현재씬의 다음씬으로, 왼쪽키 누르면 현재씬의 이전씬으로
@@ -113,12 +116,14 @@ void keyPressed() {
     if (keyCode == RIGHT) {
       //findIndex
       if (index < sceneList.size() - 1) {
-        scene.ChangeScene(sceneList.get(index + 1));
+        scene.looping = true;
+        scene.ChangeSceneManually(sceneList.get(index + 1));
       }
     }
     else if (keyCode == LEFT) {
       if (index > 0) {
-        scene.ChangeScene(sceneList.get(index - 1));
+        scene.looping = true;
+        scene.ChangeSceneManually(sceneList.get(index - 1));
       }
     }
   }

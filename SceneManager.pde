@@ -11,6 +11,7 @@ public class SceneManager {
   private boolean fadeOut = false;
 
   float fadeSpeed = 360f;
+  public boolean looping = true;
 
   public void Setup(Scene initialScene) {
     currentScene = null;
@@ -75,10 +76,26 @@ public class SceneManager {
   }
 
   public void ChangeScene(Scene scene) {
+    if (QAMode == true) {
+      if (nextScene == null) looping= false;
+      return;
+    }
+    if (nextScene != null || firstScene != null) {
+      return;
+    }
+    backgroundAlpha = 0f;
+    fadeIn = false;
+    fadeOut = true;
+    nextScene = scene;
+    looping = true;
+  }
+
+  public void ChangeSceneManually(Scene scene) {
     if (nextScene != null || firstScene != null) return;
     backgroundAlpha = 0f;
     fadeIn = false;
     fadeOut = true;
     nextScene = scene;
+    looping = true;
   }
 }
