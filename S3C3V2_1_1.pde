@@ -16,6 +16,7 @@ public class S3C3V2_1_1 extends Scene {
     sunY = 600;
     cloudXDistance = 0;
 
+    image.LoadImage("text", PREFIX+"text");
     image.LoadImage("cloud_left", PREFIX+"cloud_left");
     image.LoadImage("cloud_right", PREFIX+"cloud_right");
     image.LoadImage("cloud_middle", PREFIX+"cloud_middle");
@@ -33,6 +34,7 @@ public class S3C3V2_1_1 extends Scene {
     image.DrawImage("cloud_left", new PVector(centerX - cloudXDistance, centerY));
     image.DrawImage("cloud_right", new PVector(centerX + cloudXDistance, centerY));
     image.DrawImage("cloud_middle", new PVector(centerX - cloudXDistance, centerY));
+    image.DrawImage("text", centerVector);
 
     if (sunY<400) {
       scene.ChangeScene(new S3C3V2_1_2());

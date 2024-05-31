@@ -28,12 +28,17 @@ public class S3C3V2 extends Scene {
   }
 
   @Override public void OnEnter() {
+    image.LoadImage("text", "Images/S3/C3/V2/_1/_0/text");
     image.LoadImage("background", "Images/S3/C3/V2/_1/_0/background");
     image.LoadImage("bear", "Images/S3/C3/V2/_1/_0/bear");
     image.LoadImage("bearE", "Images/S3/C3/V2/_1/_0/bearE");
     image.LoadImage("bearM", "Images/S3/C3/V2/_1/_0/bearM");
     image.LoadImage("tigerMove", "Images/S3/C3/V2/_1/_0/tigerMove");
     image.LoadImage("tigerStop", "Images/S3/C3/V2/_1/_0/tigerStop");
+
+    sound.LoadSound("woonggirl", "Sounds/S3/C3/V2/_0/narr/woonggirl.mp3");
+    sound.PlaySound("woonggirl");
+
     tiger_X = 800;
     tiger_Y = 250;
     bear_SCALE = 0.25;
@@ -68,6 +73,7 @@ public class S3C3V2 extends Scene {
       }
     }
     image.DrawImageScale(tigerList[imageIndex % 2], new PVector(tiger_X, tiger_Y), new PVector(tiger_SCALE, tiger_SCALE, 0));
+    image.DrawImage("text", new PVector(width / 2, height / 2));
 
     if (tiger_X < 950) {
       tiger_X += 90* time.deltaTime;
@@ -80,5 +86,6 @@ public class S3C3V2 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.stopNowPlaying();
   }
 }
