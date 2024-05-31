@@ -9,6 +9,7 @@ public class S2C8 extends Scene {
 
   @Override public void OnEnter() {
     image.LoadImage("background", "Images/S2/C8/background");
+    image.LoadImage("text", "Images/S2/C8/text");
     image.LoadImage("sun", "Images/S2/C8/sun");
     image.LoadImage("mountain", "Images/S2/C8/mountain");
     image.LoadImage("river", "Images/S2/C8/river");
@@ -26,6 +27,8 @@ public class S2C8 extends Scene {
   @Override public void OnDraw() {
     PVector scale = new PVector(zoomIn, zoomIn, 0);
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), scale);
+    image.DrawImage("text", new PVector(width / 2, height / 2, 0));
+
     image.DrawImageScale("sun", new PVector(width / 2, height / 2, 0), scale);
     image.DrawImageScale("river", new PVector(width / 2, height / 2, 0), scale);
     image.DrawImageScale("mountain", new PVector(width / 2, height / 2, 0), scale);
