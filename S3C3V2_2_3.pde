@@ -7,6 +7,7 @@ public class S3C3V2_2_3 extends Scene {
 
   @Override public void OnEnter() {
     image.LoadImage("background", PREFIX + "background");
+    image.LoadImage("text", PREFIX + "text");
     image.LoadImage("dangun", PREFIX + "dangun");
 
     enterTime = time.time;
@@ -15,6 +16,7 @@ public class S3C3V2_2_3 extends Scene {
   @Override public void OnDraw() {
     image.DrawImage("background", new PVector(width / 2, height / 2, 0));
     image.DrawImageScale("dangun", new PVector(width / 2, height / 2 + 60, 0), new PVector(0.22, 0.22, 0));
+    image.DrawImage("text", new PVector(width / 2, height / 2, 0));
 
     if (time.time - enterTime > SCENE_DURATION) {
       //scene.ChangeScene(엔딩크래딧);
@@ -22,6 +24,5 @@ public class S3C3V2_2_3 extends Scene {
   }
 
   @Override public void OnExit() {
-
   }
 }
