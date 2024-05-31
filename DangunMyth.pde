@@ -48,7 +48,7 @@ void setup() {
   sceneList.add(new S2C3());
   sceneList.add(new S2C4());
   sceneList.add(new S2C5());
-  // sceneList.add(new S2C6()); // 미니게임
+  sceneList.add(new S2C6()); // 미니게임
   sceneList.add(new S2C6V1());
   sceneList.add(new S2C6V2());
   sceneList.add(new S2C7());
@@ -126,5 +126,12 @@ void keyPressed() {
         scene.ChangeSceneManually(sceneList.get(index - 1));
       }
     }
+  }
+}
+// 미니게임2 클릭 처리
+
+void mousePressed() {
+  if (scene.currentScene instanceof S2C6) {((S2C6)scene.currentScene).OnMousePressed();
+    print("mouse clicked");
   }
 }
