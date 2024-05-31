@@ -3,13 +3,11 @@ public class S1C4 extends Scene {
   public float openDelay = 0.33f;
   public float closeMin = 1f;
   public float closeMax = 2f;
-
   public int eyeIndex = 0;
-
   public float nextCloseDuration = 0f;
-
   public float closeTime = 0f;
   public float openTime = 0f;
+  private boolean isNarrOut = false;
 
   public S1C4() {
   }
@@ -21,13 +19,20 @@ public class S1C4 extends Scene {
     image.LoadImage("eye1", "Images/S1/C4/eye1");
     image.LoadImage("eye2", "Images/S1/C4/eye2");
     image.LoadImage("eye3", "Images/S1/C4/eye3");
-    closeTime =enterTime;
+    image.LoadImage("text", "Images/S1/C4/text");
+    sound.LoadSound("narr", "Sounds/S1/C4/narr/narr.mp3");
+    closeTime = enterTime;
     openTime = enterTime;
     nextCloseDuration = random(closeMin *100, closeMax * 100)/100f;
   }
 
   @Override public void OnDraw() {
+    if (!isNarrOut) {
+      isNarrOut = !isNarrOut;
+      sound.PlaySound("narr");
+    }
     image.DrawImageScale("background", new PVector(width / 2, height / 2), new PVector(1, 1));
+    image.DrawImageScale("text", new PVector(width / 2, height / 2), new PVector(1, 1));
     image.DrawImageScale("man1", new PVector(width / 2 + 130, height - 165), new PVector(0.35f, 0.35f));
     image.DrawImageScale("eye3", new PVector(width / 2 + 80, height - 185), new PVector(0.35f, 0.35f));
     image.DrawImageScale("man2", new PVector(width / 2 + 400, height - 165), new PVector(0.43f, 0.43f));
