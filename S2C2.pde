@@ -23,6 +23,8 @@ public class S2C2 extends Scene {
 
   private int animation = 1;
 
+  private boolean isPlayedEffect = false;
+
   public S2C2() {
   }
 
@@ -38,6 +40,9 @@ public class S2C2 extends Scene {
     image.LoadImage("bear_face", "Images/S2/C2/bear_face");
     image.LoadImage("bear_left", "Images/S2/C2/bear_foot_right");
     image.LoadImage("bear_right", "Images/S2/C2/bear_foot_left");
+
+    sound.LoadSound("S2_S3_FootStuckRock", "Sounds/S2/C2/effect/FootStuckRock.mp3");
+
     _rock_size = 0.4;
     _rock_rotate = 0.01;
     tiger_x = 20;
@@ -47,6 +52,7 @@ public class S2C2 extends Scene {
     animation = 1;
     rotateTick = 0f;
     walkTick = 0f;
+    isPlayedEffect = false;
   }
 
   @Override public void OnDraw() {
@@ -88,6 +94,10 @@ public class S2C2 extends Scene {
 
     if (time.time- enterTime >SCENE_DURATION) {
       scene.ChangeScene(new S2C3());
+    }
+    if (!isPlayedEffect) {
+      sound.PlaySound("S2_S3_FootStuckRock");
+      isPlayedEffect = true;
     }
   }
 
