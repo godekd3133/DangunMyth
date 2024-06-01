@@ -1,5 +1,5 @@
 public class S3C1 extends Scene {
-  public float SCENE_DURATION = 6f;
+  public float SCENE_DURATION = 7f;
   private float animalScale = 0.25f;
   private float utilScale = 0.05f;
   private int animalY = height - 280;
@@ -20,6 +20,8 @@ public class S3C1 extends Scene {
   private int ssugCurrentVelY = ssugInitVelY;
   private float ssugRotate = 1.0f;
   private float ssugAngle = random(0.05f, 0.15f);
+  private boolean isNarrOut;
+
 
   public S3C1() {
   }
@@ -30,10 +32,20 @@ public class S3C1 extends Scene {
     image.LoadImage("tiger", "Images/S3/C1/tiger");
     image.LoadImage("garlic", "Images/S3/C1/garlic");
     image.LoadImage("ssug", "Images/S3/C1/ssug");
+    image.LoadImage("text", "Images/S3/C1/text");
+    sound.LoadSound("narr", "Sounds/S3/C1/narr/narr.mp3");
+    isNarrOut = false;
+
   }
 
   @Override public void OnDraw() {
+    if(!isNarrOut){
+      isNarrOut = !isNarrOut;
+      sound.PlaySound("narr");
+    }
+
     image.DrawImageScale("background", new PVector(width / 2, height / 2), new PVector(1, 1));
+    image.DrawImageScale("text", new PVector(width / 2, height / 2), new PVector(1, 1));
     image.DrawImageScale("bear", new PVector(width / 2 - 250, animalY), new PVector(animalScale, animalScale));
 
     // up and down animation

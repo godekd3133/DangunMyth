@@ -5,6 +5,7 @@ public class S3C2 extends Scene {
   private int thinkLeftX = 225;
   private int thinkRightX = width - 225;
   private int selectOption = 0; // 0 : None / 1 : Left / 2 : Right
+  private boolean isEffectOut;
 
   public S3C2() {
   }
@@ -16,6 +17,8 @@ public class S3C2 extends Scene {
     image.LoadImage("eye_white", "Images/S3/C2/eye_white");
     image.LoadImage("left", "Images/S3/C2/left");
     image.LoadImage("right", "Images/S3/C2/right");
+    sound.LoadSound("effect", "Sounds/S3/C2/effect/effect.wav");
+    isEffectOut = false;
 
   }
 
@@ -28,19 +31,31 @@ public class S3C2 extends Scene {
     image.DrawImageScale("body", new PVector(width / 2, height - 200), new PVector(0.23f, 0.23f));
 
     // Mouse animation
-    if (mouseX <= width / 2 - 200 & mouseY <= height / 2) {
+    if (mouseX <= width / 2 - 200 && mouseY <= height / 2) {
       selectOption = 1;
       image.DrawImageScale("left", new PVector(thinkLeftX + 60, thinkY + 50), new PVector(thinkScale + 0.1f, thinkScale + 0.1f));
       image.DrawImageScale("eye_black", new PVector(width / 2 - 15, height - 255), new PVector(0.23f, 0.23f));
-      if (mousePressed) scene.ChangeScene(new S3C3V1_1());
+      if (mousePressed) {
+        scene.ChangeScene(new S3C3V1_1());
+          if (!isEffectOut){
+            sound.PlaySound("effect");
+            isEffectOut = !isEffectOut;
+          } 
+      }
     } else {
       image.DrawImageScale("left", new PVector(thinkLeftX, thinkY), new PVector(thinkScale, thinkScale));
     }
-    if (mouseX >= width / 2 + 200 & mouseY <= height / 2) {
+    if (mouseX >= width / 2 + 200 && mouseY <= height / 2) {
       selectOption = 2;
       image.DrawImageScale("right", new PVector(thinkRightX - 60, thinkY + 50), new PVector(thinkScale + 0.1f, thinkScale + 0.1f));
       image.DrawImageScale("eye_black", new PVector(width / 2 - 9, height - 255), new PVector(0.23f, 0.23f));
-      if (mousePressed) scene.ChangeScene(new S3C3V2());
+      if (mousePressed) {
+        scene.ChangeScene(new S3C3V2());
+           if (!isEffectOut){
+            sound.PlaySound("effect");
+            isEffectOut = !isEffectOut;
+          } 
+      }
     } else {
       image.DrawImageScale("right", new PVector(thinkRightX, thinkY), new PVector(thinkScale, thinkScale));
     }
