@@ -13,13 +13,25 @@ public class S1C15V1 extends Scene {
   private float flowY = 0;
   private float faceX = 0;
 
+  HashMap<String, Integer> playedSoundMap = new HashMap<String, Integer>();
+  private float startTime;
+
   @Override public void OnEnter() {
     image.LoadImage("background", PREFIX + "background");
     image.LoadImage("HWANUNG_BODY", PREFIX + "HWANUNG_BODY");
     image.LoadImage("HWANUNG_FACE", PREFIX + "HWANUNG_FACE");
     image.LoadImage("HWANUNG_SWEAT", PREFIX + "HWANUNG_SWEAT");
+    image.LoadImage("HWANUNG_TEXT", PREFIX + "TEXT");
+
+    sound.LoadSound("HWANUNG_NARR1", "Sounds/S1/C15-1/narr/narr1.mp3");
+    sound.LoadSound("HWANUNG_NARR2", "Sounds/S1/C15-1/narr/narr2.mp3");
+    playedSoundMap = new HashMap<String, Integer>();
+    playedSoundMap.put("HWANUNG_NARR1", 0);
+    playedSoundMap.put("HWANUNG_NARR2", 0);
+
     flowY = 0;
     faceX = 0;
+    startTime = millis();
   }
 
   @Override public void OnDraw() {
@@ -35,9 +47,25 @@ public class S1C15V1 extends Scene {
     HWANUNG_SWEAT_Y = height / 2 +(flowY * 40) - 150;
     image.DrawImageScale("HWANUNG_SWEAT", new PVector(HWANUNG_SWEAT_X + 4, HWANUNG_SWEAT_Y), new PVector(HWANUNG_SWEAT_SCALE, HWANUNG_SWEAT_SCALE));
 
+    float currentTime =(millis() - startTime) / 1000;
+    PlaySoundOnce("HWANUNG_NARR1");
+		if (currentTime > 1.0f) {
+			PlaySoundOnce("HWANUNG_NARR2");
+		}
+
+    image.DrawImageScale("HWANUNG_TEXT", new PVector(290, 180), new PVector(0.5f, 0.5f));
+
     if (time.time - enterTime > SCENE_DURATION) {
       scene.ChangeScene(new S1C15V2());
     }
+  }
+
+  void PlaySoundOnce(String soundName) {
+    if (playedSoundMap.get(soundName) == 1) {
+      return;
+    }
+    sound.PlaySound(soundName);
+    playedSoundMap.put(soundName, 1);
   }
 
   @Override public void OnExit() {
