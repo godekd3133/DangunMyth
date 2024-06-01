@@ -24,6 +24,7 @@ public class S1C4 extends Scene {
     closeTime = enterTime;
     openTime = enterTime;
     nextCloseDuration = random(closeMin *100, closeMax * 100)/100f;
+    isNarrOut = false;
   }
 
   @Override public void OnDraw() {

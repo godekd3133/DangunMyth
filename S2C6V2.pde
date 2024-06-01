@@ -1,6 +1,7 @@
 public class S2C6V2 extends Scene {
   private boolean showButton = false;
-  public float SCENE_DURATION =5f;
+  public float SCENE_DURATION = 11.3f;
+  private float SCENE_TIME;
 
   private float bearArmX = width / 2 + 200;
   private float bearArmRotate = 0.0f;
@@ -15,6 +16,12 @@ public class S2C6V2 extends Scene {
   private float tigerArmY = height / 2 + 200;
   private float basketY = height / 2 + 190;
 
+  private int sessionIndex;
+  private float[] sessionDuration = {3f, 7f, 11.3f};
+  private String[] sessionSound = {"narr1", "narr2", "narr3"};
+  private String[] sessionText = {"text1", "text2", "text3"};
+  private boolean[] isSessionOut;
+
   public S2C6V2() {
   }
 
@@ -24,6 +31,14 @@ public class S2C6V2 extends Scene {
     image.LoadImage("tiger_arm", "Images/S2/C6/V2/tiger_arm");
     image.LoadImage("chars", "Images/S2/C6/V2/chars");
     image.LoadImage("basket", "Images/S2/C6/V2/basket");
+    image.LoadImage("text1", "Images/S2/C6/V2/text1");
+    image.LoadImage("text2", "Images/S2/C6/V2/text2");
+    image.LoadImage("text3", "Images/S2/C6/V2/text3");
+    sound.LoadSound("narr1", "Sounds/S2/C6/V2/narr/narr1.mp3");
+    sound.LoadSound("narr2", "Sounds/S2/C6/V2/narr/narr2.mp3");
+    sound.LoadSound("narr3", "Sounds/S2/C6/V2/narr/narr3.mp3");
+    isSessionOut = new boolean[] {false, false, false};
+    SCENE_TIME = 0f;
 
   }
 
@@ -41,7 +56,18 @@ public class S2C6V2 extends Scene {
     image.DrawImageScale("bear_arm", new PVector(bearArmX, bearArmY), new PVector(0.4f, 0.4f), bearArmRotate);
     image.DrawImageScale("tiger_arm", new PVector(tigerArmX, tigerArmY), new PVector(0.4f, 0.4f), tigerArmRotate);
 
-    if (time.time - enterTime > SCENE_DURATION) {
+    SCENE_TIME = time.time - enterTime - 3;
+    if (sessionIndex == 0) image.DrawImageScale(sessionText[sessionIndex], new PVector(width / 2, height / 2 - 60), new PVector(1, 1));
+    else image.DrawImageScale(sessionText[sessionIndex], new PVector(width / 2, height / 2), new PVector(1, 1));
+    if (!isSessionOut[sessionIndex]) {
+      sound.PlaySound(sessionSound[sessionIndex]);
+      isSessionOut[sessionIndex] = !isSessionOut[sessionIndex];
+    }
+    if (SCENE_TIME > sessionDuration[sessionIndex]) {
+      if (sessionDuration.length - 1 > sessionIndex) sessionIndex++;
+    }
+
+    if (SCENE_TIME > SCENE_DURATION) {
       scene.ChangeScene(new S2C7());
     }
   }
