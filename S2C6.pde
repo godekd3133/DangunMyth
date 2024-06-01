@@ -12,6 +12,8 @@ public class S2C6 extends Scene {
   private int m_SookCnt = 0;
   private int m_ManulCnt = 0;
 
+  private boolean m_IsTigerHand = false;
+
   public S2C6() {
   }
 
@@ -46,24 +48,15 @@ public class S2C6 extends Scene {
   @Override public void OnDraw() {
     int displayTime = DISPLAY_TIME -(int)(time.time - enterTime);
 
-    if (time.time- enterTime > SCENE_DURATION) {
-      //scene.ChangeScene(new S2C6());
+    if (m_ManulCnt >= 20 && m_SookCnt >= 5) {
+      //success
+      return;
+    }
+    if (displayTime <= 0) {
+      // failed(timeout)
+      return;
     }
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(1, 1, 0));
-
-    // clock base
-    image.DrawImageScale("clock", new PVector(1200, 75), new PVector(0.08,0.08,0));
-    // draw time
-    textSize(50);
-    text(displayTime, 1175, 100);
-
-    // draw score
-    fill(255);
-    image.DrawImageScale("sook", new PVector(20, 50), new PVector(0.05,0.05,0));
-    text(m_SookCnt, 60, 70);
-
-    image.DrawImageScale("manul", new PVector(130, 50), new PVector(0.05,0.05,0));
-    text(m_ManulCnt, 170, 70);
 
     // draw item
     for(int i=0;
@@ -81,6 +74,68 @@ public class S2C6 extends Scene {
         image.DrawImageScale("manul", m_ItemsLoc[i], new PVector(0.015,0.015,0));
       }
     }
+    // 마우스 커서 근처에만 화면이 보이도록 구현
+    fill(0);
+    int viewX = mouseX / 20;
+    int viewY = mouseY / 20;
+
+    int areaSize = 3;
+
+    if (displayTime <= 20) {
+      areaSize = 5;
+    }
+    for (int i=0; i<64; i++) {
+      for (int j=0; j<36; j++) {
+        if (viewX - areaSize < i && i < viewX + areaSize) {
+          if (viewY - areaSize < j && j < viewY + areaSize) {
+            continue;
+          }
+        }
+        // 마우스 근처가 아니면 검은 도형을 배치하여 안보이도록 구현
+        rect(i * 20,j * 20, 20,20);
+      }
+    }
+    // draw hand
+
+    if (!m_IsTigerHand) {
+
+      if (mousePressed) {
+        image.DrawImageScale("bear_click", new PVector(mouseX, mouseY), new PVector(0.12,0.12,0));
+      } else {
+        image.DrawImageScale("bear_hand", new PVector(mouseX, mouseY), new PVector(0.12,0.12,0));
+      }
+    } else {
+
+      if (mousePressed) {
+        image.DrawImageScale("tiger_click", new PVector(mouseX, mouseY), new PVector(0.12,0.12,0));
+      } else {
+        image.DrawImageScale("tiger_hand", new PVector(mouseX, mouseY), new PVector(0.12,0.12,0));
+      }
+    }
+    // clock base
+    image.DrawImageScale("clock", new PVector(1200, 75), new PVector(0.08,0.08,0));
+    // draw time
+    textSize(30);
+
+    fill(0);
+
+    String timeStr = "";
+    if (displayTime < 10) {
+      fill(255,0,0);
+      timeStr = " " + displayTime + " Days";
+    } else {
+      timeStr = displayTime + " Days";
+    }
+    text(timeStr, 1152, 94);
+
+    // draw score
+    textSize(50);
+    fill(255);
+    image.DrawImageScale("sook", new PVector(20, 50), new PVector(0.05,0.05,0));
+    text(m_SookCnt, 60, 70);
+
+    image.DrawImageScale("manul", new PVector(130, 50), new PVector(0.05,0.05,0));
+    text(m_ManulCnt, 170, 70);
   }
 
   @Override public void OnExit() {
@@ -90,8 +145,12 @@ public class S2C6 extends Scene {
     for(int i=0;
     i< m_ItemsLoc.length;
     i++) {
-      if (m_ItemsLoc[i].x - 10 <= mouseX && m_ItemsLoc[i].x + 10 >= mouseX) {
-        if (m_ItemsLoc[i].y - 10 <= mouseY && m_ItemsLoc[i].y + 10 >= mouseY) {
+      if (m_ItemsLoc[i].x - 15 <= mouseX && m_ItemsLoc[i].x + 15 >= mouseX) {
+        if (m_ItemsLoc[i].y - 15 <= mouseY && m_ItemsLoc[i].y + 15 >= mouseY) {
+          // 이미 클릭한 아이템은 갯수로 포함하지 않도록 구현
+          if ((m_Items[i] & TYPE_CLICKED) == TYPE_CLICKED) {
+            continue;
+          }
           m_Items[i] |= TYPE_CLICKED;
 
           if ((m_Items[i] & TYPE_MANUL) == TYPE_MANUL) {
@@ -104,5 +163,9 @@ public class S2C6 extends Scene {
         }
       }
     }
+  }
+
+  public void SetTigerHand(boolean options) {
+    m_IsTigerHand = options;
   }
 }
