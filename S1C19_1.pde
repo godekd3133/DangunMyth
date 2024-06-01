@@ -20,9 +20,9 @@ public class S1C19_1 extends Scene {
 
   @Override public void OnEnter() {
     tigerX = width - 200;
-    tigerY = height - 150;
-    bearX = width - 450;
-    bearY = height - 150;
+    tigerY = height - 350;
+    bearX = width - 400;
+    bearY = height - 350;
     changeTick = 0f;
 
     image.LoadImage("background", "Images/S1/C19/background0");
@@ -48,19 +48,19 @@ public class S1C19_1 extends Scene {
   @Override public void OnDraw() {
     image.DrawImage("background", new PVector(width / 2, height / 2, 0));
     image.DrawImageScale("hwangwoong", new PVector(320, height - 280, 0), new PVector(0.25f, 0.25f, 0));
-    image.DrawImageScale("tiger_eyes", new PVector(tigerX, tigerY, 0), new PVector(0.2f, 0.2f, 0));
-    image.DrawImageScale("tiger_"+ leftRoutine[currentIndex], new PVector(tigerX, tigerY, 0), new PVector(0.2f, 0.2f, 0));
-    image.DrawImageScale("tiger_skin", new PVector(tigerX, tigerY, 0), new PVector(0.2f, 0.2f, 0));
-    image.DrawImageScale("tiger_"+ rightRoutine[currentIndex], new PVector(tigerX, tigerY, 0), new PVector(0.2f, 0.2f, 0));
-    image.DrawImageScale("bear_eyes", new PVector(bearX, bearY, 0), new PVector(0.2f, 0.2f, 0));
-    image.DrawImageScale("bear_" + leftRoutine[currentIndex], new PVector(bearX, bearY, 0), new PVector(0.2f, 0.2f, 0));
-    image.DrawImageScale("bear_skin", new PVector(bearX, bearY, 0), new PVector(0.2f, 0.2f, 0));
-    image.DrawImageScale("bear_" + rightRoutine[currentIndex], new PVector(bearX, bearY, 0), new PVector(0.2f, 0.2f,0));
+    image.DrawImageScale("tiger_eyes", new PVector(tigerX, tigerY, 0), new PVector(0.15f, 0.15f, 0));
+    image.DrawImageScale("tiger_"+ leftRoutine[currentIndex], new PVector(tigerX, tigerY, 0), new PVector(0.15f, 0.15f, 0));
+    image.DrawImageScale("tiger_skin", new PVector(tigerX, tigerY, 0), new PVector(0.15f, 0.15f, 0));
+    image.DrawImageScale("tiger_"+ rightRoutine[currentIndex], new PVector(tigerX, tigerY, 0), new PVector(0.15f, 0.15f, 0));
+    image.DrawImageScale("bear_eyes", new PVector(bearX, bearY, 0), new PVector(0.15f, 0.15f, 0));
+    image.DrawImageScale("bear_" + leftRoutine[currentIndex], new PVector(bearX, bearY, 0), new PVector(0.15f, 0.15f, 0));
+    image.DrawImageScale("bear_skin", new PVector(bearX, bearY, 0), new PVector(0.15f, 0.15f, 0));
+    image.DrawImageScale("bear_" + rightRoutine[currentIndex], new PVector(bearX, bearY, 0), new PVector(0.15f, 0.15f,0));
 
-    if (bearX > width / 2) {
-      tigerX -= 30f*time.deltaTime;
-      bearX -= 30f*time.deltaTime;
-    }
+    // if (bearX > width / 2) {
+      //   tigerX -= 30f*time.deltaTime;
+      //   bearX -= 30f*time.deltaTime;
+      // }
     changeTick += time.deltaTime;
     if (changeTick >= changeInterval) {
       currentIndex++;

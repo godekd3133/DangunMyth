@@ -5,7 +5,7 @@ public class S1C13 extends Scene {
     "background1", "background2", "background3", "background4", "background5", "background6", "background7" }
   ;
   private float[] intervals = {
-    0.0, 2.0, 3.0, 3.5, 4.0, 4.5, 5
+    0.0, 0.5, 1.0, 1.3, 1.6, 1.9, 2.1
   }
   ;
 
@@ -27,10 +27,10 @@ public class S1C13 extends Scene {
       if (!isTimeExceededMillis(startMillis, intervals[i]) && isTimeExceededMillis(startMillis, intervals[i - 1])) {
         image.DrawImage("background" + i, new PVector(width / 2, height / 2));
         break;
+      } else {
+image.DrawImage("background7", new PVector(width / 2, height / 2));
+
       }
-    }
-    if (isTimeExceededMillis(startMillis, 5.0)) {
-      image.DrawImage("background7", new PVector(width / 2, height / 2));
     }
     if (isTimeExceededMillis(startMillis, 6.0)) {
       scene.ChangeScene(new S1C14());

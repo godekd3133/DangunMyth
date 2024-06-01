@@ -31,8 +31,8 @@ public class S1C19_2 extends Scene {
     armChangeTick += time.deltaTime;
 
     image.DrawImage("background", new PVector(width / 2, height / 2, 0));
+    image.DrawImageScale("arm" + armIndex, new PVector(550, height - 250, 0), new PVector(0.25, 0.25, 0));
     image.DrawImageScale("skin", new PVector(600, height - 250, 0), new PVector(0.25, 0.25, 0));
-    image.DrawImageScale("arm" + armIndex, new PVector(600, height - 250, 0), new PVector(0.25, 0.25, 0));
     image.DrawImageScale("mouth" + mouthIndex, new PVector(600, height - 250, 0), new PVector(0.25, 0.25, 0));
 
     if (mouthChangeTick >= mouthInterval) {

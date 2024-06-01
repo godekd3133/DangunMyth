@@ -1,6 +1,8 @@
 public class S1C5 extends Scene {
   TimelineManager timeline = new TimelineManager();
 
+  private boolean isNarrOut = false;
+
   float xPos;
   float yPos;
   float size;
@@ -12,6 +14,9 @@ public class S1C5 extends Scene {
     image.LoadImage("background", "Images/S1/C5/background");
     image.LoadImage("hwanin", "Images/S1/C5/hawnin");
     image.LoadImage("hwanwoong", "Images/S1/C5/hwanwoong");
+    image.LoadImage("text", "Images/S1/C5/text");
+    sound.LoadSound("narr", "Sounds/S1/C5/narr/narr.mp3");
+
     timeline = new TimelineManager();
 
     timeline.pushTimeline(new TimelineCallback() {
@@ -51,10 +56,15 @@ public class S1C5 extends Scene {
   }
 
   @Override public void OnDraw() {
+    if (!isNarrOut) {
+      isNarrOut = !isNarrOut;
+      sound.PlaySound("narr");
+    }
     timeline.OnDraw();
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(1, 1, 0));
     image.DrawImageScale("hwanwoong", new PVector(width * 0.64f, height * 0.35f, 0), new PVector(0.15f, 0.15f, 0));
     image.DrawImageScale("hwanin", new PVector(xPos, yPos, 0), new PVector(size, size, 0));
+    image.DrawImage("text", new PVector(width / 2, height / 2));
   }
 
   @Override public void OnExit() {

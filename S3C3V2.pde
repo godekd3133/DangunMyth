@@ -18,7 +18,7 @@ public class S3C3V2 extends Scene {
 
   private int imageIndex = 0;
   private String[] tigerList = {
-    "tigerMove", "tigerStop" }
+    "tiger1", "tiger2", "tiger3" }
   ;
 
   private float WALK_INTERVAL = 0.075f;
@@ -28,14 +28,18 @@ public class S3C3V2 extends Scene {
   }
 
   @Override public void OnEnter() {
-    image.LoadImage("text", "Images/S3/C3/V2/_1/_0/text");
-    image.LoadImage("background", "Images/S3/C3/V2/_1/_0/background");
-    image.LoadImage("bear", "Images/S3/C3/V2/_1/_0/bear");
-    image.LoadImage("bearE", "Images/S3/C3/V2/_1/_0/bearE");
-    image.LoadImage("bearM", "Images/S3/C3/V2/_1/_0/bearM");
-    image.LoadImage("tigerMove", "Images/S3/C3/V2/_1/_0/tigerMove");
-    image.LoadImage("tigerStop", "Images/S3/C3/V2/_1/_0/tigerStop");
+    image.LoadImage("text", "Images/S3/C3/V2/_0/text");
+    image.LoadImage("background", "Images/S3/C3/V2/_0/background");
 
+    image.LoadImage("bear1", "Images/S3/C3/V2/_0/bear1");
+    image.LoadImage("bear2", "Images/S3/C3/V2/_0/bear2");
+
+    for(int i=0;
+    i<tigerList.length;
+    i++) {
+      image.LoadImage("tiger"+(i+1), "Images/S3/C3/V2/_0/tiger"+(i+1));
+
+    }
     sound.LoadSound("woonggirl", "Sounds/S3/C3/V2/_0/narr/woonggirl.mp3");
     sound.PlaySound("woonggirl");
 
@@ -58,13 +62,14 @@ public class S3C3V2 extends Scene {
   @Override public void OnDraw() {
     int currentProcessingTime =(millis() - startTime) / 1000;
     boolean isEating = currentProcessingTime % 2 == 1;
-    int positionToMoveHead = isEating ? 5 : 0;  //입 왔다갔다
 
     image.DrawImage("background", new PVector(width / 2, height / 2));
-    image.DrawImageScale("bearE", new PVector(bear_EYE_X, bear_EYE_Y), new PVector(bear_SCALE, bear_SCALE, 0));
-    image.DrawImageScale("bear", new PVector(bear_X, bear_Y), new PVector(bear_SCALE, bear_SCALE, 0));
-    image.DrawImageScale("bearM", new PVector(bear_MOU_X, bear_MOU_Y + positionToMoveHead), new PVector(bear_SCALE, bear_SCALE, 0));
 
+    if ((millis()/300)%2==0) {
+      image.DrawImageScale("bear1", new PVector(bear_EYE_X, bear_EYE_Y), new PVector(bear_SCALE, bear_SCALE, 0));
+    } else {
+      image.DrawImageScale("bear2", new PVector(bear_EYE_X, bear_EYE_Y), new PVector(bear_SCALE, bear_SCALE, 0));
+    }
     if (tiger_X < 950) {
       walkTick += time.deltaTime;
       if (walkTick > WALK_INTERVAL) {
@@ -72,13 +77,13 @@ public class S3C3V2 extends Scene {
         imageIndex++;
       }
     }
-    image.DrawImageScale(tigerList[imageIndex % 2], new PVector(tiger_X, tiger_Y), new PVector(tiger_SCALE, tiger_SCALE, 0));
+    image.DrawImageScale(tigerList[imageIndex % 3], new PVector(tiger_X, tiger_Y), new PVector(tiger_SCALE, tiger_SCALE, 0));
     image.DrawImage("text", new PVector(width / 2, height / 2));
 
-    if (tiger_X < 950) {
+    if (tiger_X < 1000) {
       tiger_X += 90* time.deltaTime;
       tiger_Y -= 0.5f* time.deltaTime;
-      tiger_SCALE -= 0.06f * time.deltaTime;
+      tiger_SCALE -= 0.07f * time.deltaTime;
     }
     if (time.time- enterTime > SCENE_DURATION) {
       scene.ChangeScene(new S3C3V2_1_1());
