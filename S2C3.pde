@@ -7,6 +7,11 @@ public class S2C3 extends Scene {
   private static final String basket = "S2S3_basket";
   private static final String garlic = "S2S3_garlic";
   private static final String ssuk = "S2S3_ssuk";
+  private static final String text = "S2S3_text";
+
+  HashMap<String, Integer> playedSoundMap = new HashMap<String, Integer>();
+  private static final String narr1 = "S2C3_narr1";
+  private static final String narr2 = "S2C3_narr2";
 
   private PVector backgroundPosition = new PVector(width / 2, height / 2);
   private PVector backgroundSacle = new PVector(1, 1);
@@ -32,6 +37,14 @@ public class S2C3 extends Scene {
     image.LoadImage(basket, "Images/S2/C3/basket");
     image.LoadImage(garlic, "Images/S2/C3/garlic");
     image.LoadImage(ssuk, "Images/S2/C3/ssuk");
+    image.LoadImage(text, "Images/S2/C3/text");
+
+    sound.LoadSound(narr1, "Sounds/S2/C3/narr/narr1.mp3");
+    sound.LoadSound(narr2, "Sounds/S2/C3/narr/narr2.mp3");
+    playedSoundMap = new HashMap<String, Integer>();
+    playedSoundMap.put(narr1, 0);
+    playedSoundMap.put(narr2, 0);
+
     basketPosition = new PVector(800, 570);
     animalScale = new PVector(0.25f, 0.25);
     tigerPosition = new PVector(510, 500);
@@ -41,9 +54,13 @@ public class S2C3 extends Scene {
   }
 
   @Override public void OnDraw() {
-    // float currentTime =(millis() - startTime) / 1000;
-    float currentTime =((millis() - startTime) / 1000 - 1) < 0 ? 0 :(millis() - startTime) / 1000 - 1;
+    float currentTime =(millis() - startTime) / 1000;
 
+    PlaySoundOnce(narr1);
+
+    if (currentTime > 1) {
+      PlaySoundOnce(narr2);
+    }
     image.DrawImageScale(background, backgroundPosition, backgroundSacle);
 
     float timeMovingTiger = 1.1;
@@ -78,8 +95,28 @@ public class S2C3 extends Scene {
     basketPosition.x = lerp(700, 800, Ease.EaseOutCubic(basketPositionPercent));
     image.DrawImageScale(basket, basketPosition, new PVector(0.25f, 0.25f), getAngleByDegree(30));
 
-    if (currentTime > SCENE_DURATION) {
-      scene.ChangeScene(new S2C4());
+    // if (currentTime > SCENE_DURATION) {
+      //   scene.ChangeScene(new S2C4());
+      // }
+
+    PrintText();
+  }
+
+  void PlaySoundOnce(String soundName) {
+    if (playedSoundMap.get(soundName) == 1) {
+      return;
+    }
+    sound.PlaySound(soundName);
+    playedSoundMap.put(soundName, 1);
+  }
+
+  void PrintText() {
+    float currentTime =(millis() - startTime) / 1000;
+
+    if (currentTime > 1) {
+      image.DrawImageScale(text, new PVector(660, 280), new PVector(1f, 1f));
+    } else {
+      image.DrawImageScale(text, new PVector(960, 480), new PVector(1f, 1f));
     }
   }
 
