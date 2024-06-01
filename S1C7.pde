@@ -4,9 +4,9 @@ public class S1C7 extends Scene {
   private String SOUND_PREFIX = "Sounds/"+PREFIX+"narr/";
   //public float SCENE_DURATION = 3f;
 
-  private float HWAN_BODY_X = 950.0f;
-  private float HWAN_BODY_Y = 760.0f;
-  private float HWAN_EYE_Y = 480.0f;
+  private float HWAN_BODY_X = 980.0f;
+  private float HWAN_BODY_Y = 590.0f;
+  private float HWAN_EYE_Y = 310.0f;
   private float HWAN_SCALE = 0.4f;
 
   private int startMillis;
@@ -18,7 +18,6 @@ public class S1C7 extends Scene {
     image.LoadImage("hwan_body", IMG_PREFIX+"hwan_body");
     image.LoadImage("hwan_expression1", IMG_PREFIX+"hwan_expression1");
     image.LoadImage("hwan_expression2", IMG_PREFIX+"hwan_expression2");
-    sound.LoadSound("narr", SOUND_PREFIX+"narr.mp3");
     sound.LoadSound("hwan", SOUND_PREFIX+"hwan.mp3");
 
     startMillis = millis(); // 씬 시작 millis
