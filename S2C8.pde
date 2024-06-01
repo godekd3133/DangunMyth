@@ -27,7 +27,6 @@ public class S2C8 extends Scene {
   @Override public void OnDraw() {
     PVector scale = new PVector(zoomIn, zoomIn, 0);
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), scale);
-    image.DrawImage("text", new PVector(width / 2, height / 2, 0));
 
     image.DrawImageScale("sun", new PVector(width / 2, height / 2, 0), scale);
     image.DrawImageScale("river", new PVector(width / 2, height / 2, 0), scale);
@@ -45,6 +44,8 @@ public class S2C8 extends Scene {
     if (time.time - enterTime > SCENE_DURATION) {
       scene.ChangeScene(new S3C1());
     }
+    image.DrawImage("text", new PVector(width / 2, height / 2, 0));
+
   }
 
   @Override public void OnExit() {

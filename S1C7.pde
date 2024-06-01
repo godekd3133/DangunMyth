@@ -21,8 +21,7 @@ public class S1C7 extends Scene {
     sound.LoadSound("narr", SOUND_PREFIX+"narr.mp3");
     sound.LoadSound("hwan", SOUND_PREFIX+"hwan.mp3");
 
-    // 씬 시작 millis
-    startMillis = millis();
+    startMillis = millis(); // 씬 시작 millis
   }
 
   @Override public void OnDraw() {
@@ -37,13 +36,7 @@ public class S1C7 extends Scene {
       image.DrawImageScale("hwan_expression2", new PVector(HWAN_BODY_X, HWAN_EYE_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
     }
     // 씬 시작 후 1.5초 뒤 대사1 시작
-    if (sound.hasSound("narr")&&isTimeExceededMillis(startMillis, 1.5)) {
-      narrDuration=sound.soundDuration("narr");
-      sound.playSoundOnce("narr");
-      startMillis = millis(); // 대사 1 시작 millis
-    }
-    // 대사 1 종료 후 1초 뒤 대사2 시작
-    if (!sound.hasSound("narr")&&sound.hasSound("hwan")&&isTimeExceededMillis(startMillis, narrDuration+1.0)) {
+    if (sound.hasSound("hwan")&&isTimeExceededMillis(startMillis, 1.0)) {
       narrDuration=sound.soundDuration("hwan");
       sound.playSoundOnce("hwan");
       startMillis = millis();
