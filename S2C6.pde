@@ -28,6 +28,7 @@ public class S2C6 extends Scene {
     image.LoadImage("tiger_click", "Images/S2/C6/tiger_click");
     image.LoadImage("transparent", "Images/S2/C6/transparent");
     sound.LoadSound("item_click", "Sounds/S2/C6/item_click.wav");
+    sound.LoadSound("bgm", "Sounds/S2/C6/bgm.mp3");
     //sound.LoadSound("item_mouseOver", "Sounds/S1/C8/narr/narr.mp3");
 
     // set random item location
@@ -46,6 +47,8 @@ public class S2C6 extends Scene {
     }
     m_SookCnt = 0;
     m_ManulCnt = 0;
+
+    sound.PlaySound("bgm");
   }
 
   @Override public void OnDraw() {
@@ -144,6 +147,7 @@ public class S2C6 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.StopSound("bgm");
   }
 
   public void OnMousePressed() {
