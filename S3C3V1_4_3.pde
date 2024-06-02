@@ -13,12 +13,21 @@ public class S3C3V1_4_3 extends Scene {
   private float animationTick = 0f;
   private boolean isAnimating = true;
 
+  private boolean firstFlag = false;
+
   public S3C3V1_4_3() {
   }
 
   @Override public void OnEnter() {
+    // println("143 Enter");
     for(String imageName : imageNames) image.LoadImage(imageName, imagePath + imageName);
+
+    image.LoadImage("text", "Images/S3/C3/V1/_4/_3/text");
+    sound.LoadSound("narr", "Sounds/S3/C3/V1/_4/_3/narr.mp3");
+
     animationTick =0f;
+    firstFlag = false;
+
   }
 
   @Override public void OnDraw() {
@@ -42,8 +51,14 @@ public class S3C3V1_4_3 extends Scene {
     if (isAnimating) image.DrawImageScale("mouth1", new PVector(1050, 300), new PVector(manScale, manScale), 0.2f);
     else image.DrawImageScale("mouth2", new PVector(1050, 300), new PVector(manScale, manScale), 0.2f);
 
+    image.DrawImage("text", new PVector(width / 2, height / 2, 0));
+
     if (time.time - enterTime >= SCENE_DURATION) {
       //엔딩 크레딧
+    }
+    if (!firstFlag) {
+      firstFlag = true;
+      sound.PlaySound("narr");
     }
   }
 
