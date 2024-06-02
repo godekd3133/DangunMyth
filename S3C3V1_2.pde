@@ -21,7 +21,11 @@ public class S3C3V1_2 extends Scene {
   private int startMinute;
   private int startSecond;
 
+  private boolean narrFlag = false;
+
   @Override public void OnEnter() {
+    println("S3C3V1_2");
+
     // 이미지 로드
     image.LoadImage("background", PREFIX+"background");
     image.LoadImage("text", PREFIX+"text");
@@ -32,6 +36,10 @@ public class S3C3V1_2 extends Scene {
     image.LoadImage("tiger_body", PREFIX+"tiger_body");
     image.LoadImage("tiger_head", PREFIX+"tiger_head");
     image.LoadImage("tiger_tongue", PREFIX+"tiger_tongue");
+
+    sound.LoadSound("Tiger", "Sounds/S3/C3/V1/_2/Tiger.mp3");
+    narrFlag = false;
+
     startMinute = minute();
     startSecond = second();
   }
@@ -41,6 +49,10 @@ public class S3C3V1_2 extends Scene {
 
     if (tongueY>13) {
       tongueY *=-1;
+    }
+    if (!narrFlag) {
+      narrFlag = true;
+      sound.PlaySound("Tiger");
     }
     image.DrawImage("background", new PVector(width / 2, height / 2));
     image.DrawImage("text", new PVector(width / 2, height / 2));

@@ -15,6 +15,7 @@ public class S3C3V1_2_2 extends Scene {
   S3C3V1_2_1 lastScene;
 
   @Override public void OnEnter() {
+    println("S3C3V1_2_2");
     // 이미지 로드
     lastScene = new S3C3V1_2_1();
     image.LoadImage("background", PREFIX+"background");
