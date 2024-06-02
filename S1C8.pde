@@ -19,6 +19,9 @@ public class S1C8 extends Scene {
   int hwaninFaceCnt = 0;
   boolean hwaninFace = true;
 
+  HashMap<String, Integer> playedSoundMap = new HashMap<String, Integer>();
+  private float startTime;
+
   public S1C8() {
   }
 
@@ -34,6 +37,15 @@ public class S1C8 extends Scene {
     image.LoadImage("HwaninFace", "./Images/S1/C8/HwaninFace");
 
     image.LoadImage("HwaninHand", "./Images/S1/C8/HwaninHand");
+    image.LoadImage("NarrS1C8", "./Images/S1/C8/narr");
+
+    sound.LoadSound("NarrS1C8", "Sounds/S1/C8/narr/narr.mp3");
+    sound.LoadSound("HawninS1C8", "Sounds/S1/C8/narr/hwanin.mp3");
+    playedSoundMap = new HashMap<String, Integer>();
+    playedSoundMap.put("NarrS1C8", 0);
+    playedSoundMap.put("HawninS1C8", 0);
+
+    startTime = millis();
 
     // print("Enter");
     background(#ffffff);
@@ -64,11 +76,26 @@ public class S1C8 extends Scene {
     image.DrawImageScale("HwaninFace", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt, 0.4, 0f, 255f);
     image.DrawImageScale("HwaninHand", hwaninX+(-35), hwaninY+(-140), 0.3, 0.7, 255f);
 
+    float currentTime =(millis() - startTime) / 1000;
+
+    PlaySoundOnce("NarrS1C8");
+    if (currentTime > 3.0f) {
+      PlaySoundOnce("HawninS1C8");
+      image.DrawImageScale("NarrS1C8", new PVector(width, centerY), new PVector(1.0f, 1.0f));
+    }
     // print("Draw");
 
     if (time.time - enterTime > SCENE_DURATION) {
       scene.ChangeScene(new S1C9());
     }
+  }
+
+  void PlaySoundOnce(String soundName) {
+    if (playedSoundMap.get(soundName) == 1) {
+      return;
+    }
+    sound.PlaySound(soundName);
+    playedSoundMap.put(soundName, 1);
   }
 
   @Override public void OnExit() {
