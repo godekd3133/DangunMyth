@@ -30,10 +30,6 @@ public class S3C3V1_2 extends Scene {
     image.LoadImage("tiger1", PREFIX+"tiger1");
     image.LoadImage("tiger2", PREFIX+"tiger2");
 
-    image.LoadImage("tiger_body", PREFIX+"tiger_body");
-    image.LoadImage("tiger_head", PREFIX+"tiger_head");
-    image.LoadImage("tiger_tongue", PREFIX+"tiger_tongue");
-
     sound.LoadSound("Tiger", "Sounds/S3/C3/V1/_2/Tiger.mp3");
     narrFlag = false;
 
@@ -42,11 +38,6 @@ public class S3C3V1_2 extends Scene {
   }
 
   @Override public void OnDraw() {
-    tongueY+=0.5;
-
-    if (tongueY>13) {
-      tongueY *=-1;
-    }
     if (!narrFlag) {
       narrFlag = true;
       sound.PlaySound("Tiger");
@@ -66,5 +57,6 @@ public class S3C3V1_2 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.stopNowPlaying();
   }
 }
