@@ -27,6 +27,8 @@ public class S2C6 extends Scene {
     image.LoadImage("tiger_hand", "Images/S2/C6/tiger_hand");
     image.LoadImage("tiger_click", "Images/S2/C6/tiger_click");
     image.LoadImage("transparent", "Images/S2/C6/transparent");
+    sound.LoadSound("item_click", "Sounds/S2/C6/item_click.wav");
+    //sound.LoadSound("item_mouseOver", "Sounds/S1/C8/narr/narr.mp3");
 
     // set random item location
     m_Items = new int[25];
@@ -50,11 +52,11 @@ public class S2C6 extends Scene {
     int displayTime = DISPLAY_TIME -(int)(time.time - enterTime);
 
     if (m_ManulCnt >= 20 && m_SookCnt >= 5) {
-      //success
+      //success(성공 씬으로 이동)
       return;
     }
     if (displayTime <= 0) {
-      // failed(timeout)
+      // failed(timeout)(실패 씬으로 이동)
       return;
     }
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(1, 1, 0));
@@ -96,6 +98,7 @@ public class S2C6 extends Scene {
         rect(i * 20,j * 20, 20,20);
       }
     }
+    // 보이는 영역이 원형으로 보이도록 구현
     image.DrawImageScale("transparent", new PVector(mouseX, mouseY), new PVector(visibleArea,visibleArea,0));
     // draw hand
 
@@ -153,6 +156,7 @@ public class S2C6 extends Scene {
           if ((m_Items[i] & TYPE_CLICKED) == TYPE_CLICKED) {
             continue;
           }
+          sound.PlaySound("item_click");
           m_Items[i] |= TYPE_CLICKED;
 
           if ((m_Items[i] & TYPE_MANUL) == TYPE_MANUL) {

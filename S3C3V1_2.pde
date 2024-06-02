@@ -14,6 +14,7 @@ public class S3C3V1_2 extends Scene {
   private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
   private int startMinute;
   private int startSecond;
+  private float tongueY = 0; // ??????
 
   @Override public void OnEnter() {
     // 이미지 로드
