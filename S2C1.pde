@@ -7,7 +7,7 @@ public class S2C1 extends Scene {
   private String[] animalList = {
     "animal1", "animal2" }
   ;
-  private float WALK_INTERVAL = 0.075f;
+  private float WALK_INTERVAL = 0.2f;
   private float walkTick = 0f;
   private float SOUND_INTERVAL = 0.4f;
   private float soundTick = 0f;
