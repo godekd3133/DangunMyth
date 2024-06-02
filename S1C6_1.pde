@@ -48,6 +48,10 @@ public class S1C6_1 extends Scene {
     mouseTick = 0f;
     soundStartTime = 0f;
 
+    soundStartTime = 0f;
+    hwaninStartTime = 4f;
+    hwanwoongStartTime = 9f;
+
     // hwaninDuration = SCENE_DURATION/2f;
     // hwanwoongDuration = SCENE_DURATION/2f;
 
@@ -74,6 +78,7 @@ public class S1C6_1 extends Scene {
     sound.LoadSound("hwanwoong", "Sounds/S1/C6-1/narr/hwanwung.mp3");
 
     background(#ffffff);
+    enterTime = time.time;
   }
 
   @Override public void OnDraw() {

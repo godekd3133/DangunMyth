@@ -4,6 +4,12 @@ public class S1C19_1 extends Scene {
   private float tigerY = height - 150;
   private float bearX = width - 450;
   private float bearY = height - 150;
+
+  private boolean narrFlag = false;
+  private float narrDuration = 4.5f;
+
+  private boolean animalVoiceFlag = false;
+
   private String[] leftRoutine = {
     "left_leg0", "left_leg1", "left_leg0", "left_leg2", "left_leg0"}
   ;
@@ -25,6 +31,9 @@ public class S1C19_1 extends Scene {
     bearY = height - 350;
     changeTick = 0f;
 
+    animalVoiceFlag = false;
+    narrFlag = false;
+
     image.LoadImage("background", "Images/S1/C19/background0");
     image.LoadImage("hwangwoong", "Images/S1/C19/hwanwoong_back");
     image.LoadImage("tiger_eyes", "Images/S1/C19/tiger_eyes");
@@ -43,10 +52,18 @@ public class S1C19_1 extends Scene {
     image.LoadImage("bear_right_leg0", "Images/S1/C19/bear_right_leg0");
     image.LoadImage("bear_right_leg1", "Images/S1/C19/bear_right_leg1");
     image.LoadImage("bear_right_leg2", "Images/S1/C19/bear_right_leg2");
+
+    image.LoadImage("C19-1-Text", "Images/S1/C19/C19-1-Text");
+
+    sound.LoadSound("narr", "Sounds/S1/C19-1/narr.mp3");
+    sound.LoadSound("Tiger", "Sounds/S1/C19-1/Tiger.mp3");
+    sound.LoadSound("Bear", "Sounds/S1/C19-1/Bear.mp3");
+
   }
 
   @Override public void OnDraw() {
     image.DrawImage("background", new PVector(width / 2, height / 2, 0));
+    image.DrawImage("C19-1-Text", new PVector(width / 2, height / 2, 0));
     image.DrawImageScale("hwangwoong", new PVector(320, height - 280, 0), new PVector(0.25f, 0.25f, 0));
     image.DrawImageScale("tiger_eyes", new PVector(tigerX, tigerY, 0), new PVector(0.15f, 0.15f, 0));
     image.DrawImageScale("tiger_"+ leftRoutine[currentIndex], new PVector(tigerX, tigerY, 0), new PVector(0.15f, 0.15f, 0));
@@ -68,6 +85,20 @@ public class S1C19_1 extends Scene {
         currentIndex = 0;
       }
       changeTick = 0f;
+    }
+    //
+    if (!narrFlag) {
+      narrFlag = true;
+      sound.PlaySound("narr");
+    }
+    //
+    if (time.time - enterTime >= narrDuration) {
+      if (!animalVoiceFlag) {
+        animalVoiceFlag = true;
+        sound.PlaySound("Tiger");
+        sound.PlaySound("Bear");
+
+      }
     }
     if (time.time - enterTime >= SCENE_DURATION) {
       scene.ChangeScene(new S1C19_2());

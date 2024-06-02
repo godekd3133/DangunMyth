@@ -4,7 +4,7 @@ public class S1C6_2 extends Scene {
   public float SCENE_DURATION = 11f;
   float hwaninFaceScale = 0.4f;
 
-  float hwaninStartTime = 5.5f;
+  float hwaninStartTime = 4.0f;
 
   boolean narrFlag = false;
   boolean hwaninVoiceFlag = false;
