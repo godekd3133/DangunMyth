@@ -26,6 +26,7 @@ public class S2C6 extends Scene {
     image.LoadImage("bear_click", "Images/S2/C6/bear_click");
     image.LoadImage("tiger_hand", "Images/S2/C6/tiger_hand");
     image.LoadImage("tiger_click", "Images/S2/C6/tiger_click");
+    image.LoadImage("transparent", "Images/S2/C6/transparent");
 
     // set random item location
     m_Items = new int[25];
@@ -79,10 +80,10 @@ public class S2C6 extends Scene {
     int viewX = mouseX / 20;
     int viewY = mouseY / 20;
 
-    int areaSize = 3;
-
+    int areaSize = 4;
+    float visibleArea = 0.3;
     if (displayTime <= 20) {
-      areaSize = 5;
+      visibleArea = 0.4;
     }
     for (int i=0; i<64; i++) {
       for (int j=0; j<36; j++) {
@@ -95,6 +96,7 @@ public class S2C6 extends Scene {
         rect(i * 20,j * 20, 20,20);
       }
     }
+    image.DrawImageScale("transparent", new PVector(mouseX, mouseY), new PVector(visibleArea,visibleArea,0));
     // draw hand
 
     if (!m_IsTigerHand) {
