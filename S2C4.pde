@@ -13,8 +13,7 @@ public class S2C4 extends Scene {
   private float handDir = -0.4f;
   private float tearLeftY = height - 280f;
   private float tearRightY = height - 290f;
-  private float tearSpeedL = 0f;
-  private float tearSpeedR = 0f;
+  private float tearSpeed = 0f;
   private int sessionIndex;
   private float[] sessionDuration = {5f, 10f, 15f};
   private String[] sessionSound = {"narr1", "narr2", "narr3"};
@@ -54,8 +53,7 @@ public class S2C4 extends Scene {
     handDir = -24f;
     tearLeftY = height - 280f;
     tearRightY = height - 290f;
-    tearSpeedL = 0f;
-    tearSpeedR = 0f;
+    tearSpeed = 0f;
     sessionIndex = 0;
     SCENE_TIME = 0f;
   }
@@ -80,12 +78,10 @@ public class S2C4 extends Scene {
     image.DrawImageScale("ssug", new PVector(width - 240, height - 10), new PVector(utilScale, utilScale), -0.5f);
 
     // tear animation
-    if (tearLeftY + tearSpeedL > height - 260) tearSpeedL = 0;
-    if (tearRightY + tearSpeedR > height - 270) tearSpeedR = 0;
-    tearSpeedL += random(0.3f, 0.9f);
-    tearSpeedR += random(0.3f, 0.9f);
-    image.DrawImageScale("tear", new PVector(width - 510, tearLeftY + tearSpeedL), new PVector(tearScale, tearScale));
-    image.DrawImageScale("tear", new PVector(width - 440, tearRightY + tearSpeedR), new PVector(tearScale, tearScale));
+    if (tearLeftY + tearSpeed > height - 250) tearSpeed = 0;
+    tearSpeed += 0.5f;
+    image.DrawImageScale("tear", new PVector(width - 510, tearLeftY + tearSpeed), new PVector(tearScale, tearScale));
+    image.DrawImageScale("tear", new PVector(width - 440, tearRightY + tearSpeed), new PVector(tearScale, tearScale));
 
     SCENE_TIME = time.time - enterTime - 3;
     image.DrawImageScale(sessionText[sessionIndex], new PVector(width / 2, height / 2), new PVector(1, 1));
