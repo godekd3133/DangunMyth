@@ -16,8 +16,9 @@ public class S2C8 extends Scene {
     image.LoadImage("cloud1", "Images/S2/C8/cloud1");
     image.LoadImage("cloud2", "Images/S2/C8/cloud2");
     image.LoadImage("cloud3", "Images/S2/C8/cloud3");
-    //sound.LoadSound("bgm", "Sounds/엔딩크레딧.wav");
-    //sound.PlaySound("bgm");
+
+    sound.LoadSound("narr", "Sounds/S2/C8/narr/narr.mp3");
+    sound.PlaySound("narr");
 
     cloudX = 0f;
     zoomIn = 1f;
