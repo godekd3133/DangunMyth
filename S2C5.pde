@@ -1,5 +1,6 @@
 public class S2C5 extends Scene {
   private boolean isEffectOut;
+
   public S2C5() {
   }
 
@@ -15,13 +16,13 @@ public class S2C5 extends Scene {
     image.DrawImageScale("background", new PVector(width / 2, height / 2), new PVector(1, 1));
     image.DrawImageScale("button", new PVector(width / 2, height / 2), new PVector(1, 1));
 
-    if (mousePressed && mouseX >= 550 && mouseX <= width - 592 && mouseY >= 585 && mouseY <= height - 85){
-      if (!isEffectOut){
-      sound.PlaySound("effect");
-      isEffectOut = !isEffectOut;
+    if (mousePressed && mouseX >= 550 && mouseX <= width - 592 && mouseY >= 585 && mouseY <= height - 85) {
+      if (!isEffectOut) {
+        sound.PlaySound("effect");
+        isEffectOut = !isEffectOut;
       }
       // 미니 게임 씬 이동
-      //scene.ChangeScene(new S2C6());
+      scene.ChangeScene(new S2C6());
     }
   }
 
