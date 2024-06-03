@@ -52,12 +52,15 @@ public class S1C19_1 extends Scene {
     image.DrawImage("background", new PVector(width / 2, height / 2, 0));
     image.DrawImage("C19-1-Text", new PVector(width / 2, height / 2, 0));
     image.DrawImageScale("hwangwoong", new PVector(320, height - 280, 0), new PVector(0.25f, 0.25f, 0));
-    image.DrawImageScale(tigerRountine[((millis()/100)%5)], new PVector(tigerX, tigerY, 0), new PVector(0.15f, 0.15f, 0));
-    image.DrawImageScale(bearRountine[((millis()/100)%5)], new PVector(bearX, bearY, 0), new PVector(0.15f, 0.15f, 0));
 
     if (bearX > width / 2) {
       tigerX -= 40f*time.deltaTime;
       bearX -= 40f*time.deltaTime;
+      image.DrawImageScale(tigerRountine[((millis()/100)%5)], new PVector(tigerX, tigerY, 0), new PVector(0.15f, 0.15f, 0));
+      image.DrawImageScale(bearRountine[((millis()/100)%5)], new PVector(bearX, bearY, 0), new PVector(0.15f, 0.15f, 0));
+    } else {
+      image.DrawImageScale(tigerRountine[0], new PVector(tigerX, tigerY, 0), new PVector(0.15f, 0.15f, 0));
+      image.DrawImageScale(bearRountine[1], new PVector(bearX, bearY, 0), new PVector(0.15f, 0.15f, 0));
     }
     if (!narrFlag) {
       narrFlag = true;
@@ -71,9 +74,9 @@ public class S1C19_1 extends Scene {
 
       }
     }
-    if (time.time - enterTime >= SCENE_DURATION) {
-      scene.ChangeScene(new S1C19_2());
-    }
+    // if (time.time - enterTime >= SCENE_DURATION) {
+      //   scene.ChangeScene(new S1C19_2());
+      // }
   }
 
   @Override public void OnExit() {
