@@ -68,20 +68,21 @@ public class S2C3 extends Scene {
     tigerPosition.x = lerp(480, 570, Ease.EaseOutCubic(tigerPositionPercent));
     image.DrawImageScale(tiger, tigerPosition, tigerScale);
 
-    image.DrawImageScale(bearEye, new PVector(260, 400 - 65), animalScale);
+    image.DrawImageScale(bearEye, new PVector(257, 400 - 65), animalScale);
     image.DrawImageScale(bear, new PVector(260, 400), animalScale);
 
     float timeMovingBasket = 1.5;
     float basketPositionPercent =(currentTime > timeMovingBasket ? timeMovingBasket : currentTime) / timeMovingBasket;
 
+    //240603 마늘 사이즈 수정
     float garlicX1 = lerp(700, 820, Ease.EaseOutCubic(basketPositionPercent));
-    image.DrawImageScale(garlic, new PVector(garlicX1, 540), new PVector(0.02f, 0.02f), getAngleByDegree(-20));
+    image.DrawImageScale(garlic, new PVector(garlicX1, 540), new PVector(0.03f, 0.03f), getAngleByDegree(-20));
     float garlicX2 = lerp(720, 840, Ease.EaseOutCubic(basketPositionPercent));
-    image.DrawImageScale(garlic, new PVector(garlicX2, 570), new PVector(0.02f, 0.02f), getAngleByDegree(160));
+    image.DrawImageScale(garlic, new PVector(garlicX2, 570), new PVector(0.035f, 0.035f), getAngleByDegree(160));
     float garlicX3 = lerp(730, 940, Ease.EaseOutCubic(basketPositionPercent));
-    image.DrawImageScale(garlic, new PVector(garlicX3, 570), new PVector(0.02f, 0.02f), getAngleByDegree(-20));
+    image.DrawImageScale(garlic, new PVector(garlicX3, 570), new PVector(0.04f, 0.04f), getAngleByDegree(-20));
     float garlicX4 = lerp(740, 1000, Ease.EaseOutCubic(basketPositionPercent));
-    image.DrawImageScale(garlic, new PVector(garlicX4, 550), new PVector(0.02f, 0.02f), getAngleByDegree(30));
+    image.DrawImageScale(garlic, new PVector(garlicX4, 550), new PVector(0.033f, 0.033f), getAngleByDegree(30));
 
     float ssukX1 = lerp(720, 780, Ease.EaseOutCubic(basketPositionPercent));
     image.DrawImageScale(ssuk, new PVector(ssukX1, 520), new PVector(0.02f, 0.02f), getAngleByDegree(10));

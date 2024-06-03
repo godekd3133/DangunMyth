@@ -68,7 +68,7 @@ public class S1C6_2 extends Scene {
 
     //환인 Draw
     image.DrawImageScale("HwaninBody", hwaninX, hwaninY, 0.4, 0f, 255f);
-    image.DrawImageScale("HwaninFace", hwaninX+15, hwaninY+hwaninfaceOffset, hwaninFaceScale, 0f, 255f);
+    image.DrawImageScale("HwaninFace", hwaninX+15, hwaninY+hwaninfaceOffset, 0.4, 0f, 255f);
     image.DrawImage("text", new PVector(centerX, centerY, 0));
 
     // print("Draw");
