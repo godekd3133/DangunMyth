@@ -33,7 +33,7 @@ void setup() {
   sceneList.add(new S1C11());
   sceneList.add(new S1C13());
   sceneList.add(new S1C14());
-  // sceneList.add(new S1C15()); // 미니게임
+  sceneList.add(new S1C15()); // 미니게임
   sceneList.add(new S1C15V1());
   sceneList.add(new S1C15V2());
   sceneList.add(new S1C16());
