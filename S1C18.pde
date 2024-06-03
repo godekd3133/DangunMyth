@@ -56,11 +56,12 @@ public class S1C18 extends Scene {
     image.DrawImageScale("tiger_body", new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
     image.DrawImageScale("tiger_eyes" + currentIndex, new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
     image.DrawImageScale("tiger_head" + currentIndex, new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
+    //240603 수정
+    image.DrawImageScale("narr", new PVector(width / 2, height / 2), new PVector(1.0f, 1.0f));
 
     float currentTime =(millis() - startTime) / 1000;
     PlaySoundOnce("S1C18_NARR");
     if (currentTime >= tigerSoundTime) {
-      image.DrawImageScale("narr", new PVector(width / 2, height / 2), new PVector(1.0f, 1.0f));
       PlaySoundOnce("S1C18_TIGER");
     }
     if (currentTime >= bear_sound_time) {
