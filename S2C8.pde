@@ -1,52 +1,50 @@
 public class S2C8 extends Scene {
-  public float SCENE_DURATION = 10f;
+  private static final String PREFIX = "Images/S2/C8/";
+  private PVector centerVector;
+  private float centerX;
+  private float centerY;
+  private float sunY = 600;
+  private float cloudXDistance = 0;
+  private float speed = 0.8;
 
-  private float cloudX;
-  private float zoomIn;
-
-  public S2C8() {
-  }
+  public float SCENE_DURATION = 3f;
 
   @Override public void OnEnter() {
-    image.LoadImage("background", "Images/S2/C8/background");
-    image.LoadImage("text", "Images/S2/C8/text");
-    image.LoadImage("sun", "Images/S2/C8/sun");
-    image.LoadImage("mountain", "Images/S2/C8/mountain");
-    image.LoadImage("river", "Images/S2/C8/river");
-    image.LoadImage("cloud1", "Images/S2/C8/cloud1");
-    image.LoadImage("cloud2", "Images/S2/C8/cloud2");
-    image.LoadImage("cloud3", "Images/S2/C8/cloud3");
+    centerX = width / 2;
+    centerY = height / 2;
+    centerVector = new PVector(centerX, centerY);
+    sunY = 600;
+    cloudXDistance = 0;
 
+    image.LoadImage("cloud_left", PREFIX+"cloud_left");
+    image.LoadImage("cloud_right", PREFIX+"cloud_right");
+    image.LoadImage("cloud_middle", PREFIX+"cloud_middle");
+    image.LoadImage("lake", PREFIX+"lake");
+    image.LoadImage("mountains", PREFIX+"mountains");
+    image.LoadImage("sky", PREFIX+"sky");
+    image.LoadImage("sun", PREFIX+"sun");
+    image.LoadImage("text", PREFIX+"text");
     sound.LoadSound("narr", "Sounds/S2/C8/narr/narr.mp3");
     sound.PlaySound("narr");
 
-    cloudX = 0f;
-    zoomIn = 1f;
-    enterTime = time.time;
   }
 
   @Override public void OnDraw() {
-    PVector scale = new PVector(zoomIn, zoomIn, 0);
-    image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), scale);
+    image.DrawImage("sky", centerVector);
+    image.DrawImage("sun", new PVector(centerX, sunY));
+    image.DrawImage("mountains", centerVector);
+    image.DrawImage("lake", centerVector);
+    image.DrawImage("cloud_left", new PVector(centerX - cloudXDistance, centerY));
+    image.DrawImage("cloud_right", new PVector(centerX + cloudXDistance, centerY));
+    image.DrawImage("cloud_middle", new PVector(centerX - cloudXDistance, centerY));
+    image.DrawImage("text", centerVector);
 
-    image.DrawImageScale("sun", new PVector(width / 2, height / 2, 0), scale);
-    image.DrawImageScale("river", new PVector(width / 2, height / 2, 0), scale);
-    image.DrawImageScale("mountain", new PVector(width / 2, height / 2, 0), scale);
-    image.DrawImageScale("cloud1", new PVector(width / 2 - cloudX, height / 2, 0), scale);
-    image.DrawImageScale("cloud2", new PVector(width / 2 - cloudX, height / 2, 0), scale);
-    image.DrawImageScale("cloud3", new PVector(width / 2 + cloudX, height / 2, 0), scale);
-
-    if (time.time- enterTime > 0.25f) {
-      cloudX += 100f * time.deltaTime;
-    }
-    if (time.time- enterTime > 0.25f &&zoomIn <2f) {
-      zoomIn += 0.1f * time.deltaTime;
-    }
-    if (time.time - enterTime > SCENE_DURATION) {
+    if (sunY<400) {
       scene.ChangeScene(new S3C1());
+    } else {
+      sunY-=speed;
+      cloudXDistance+=speed;
     }
-    image.DrawImage("text", new PVector(width / 2, height / 2, 0));
-
   }
 
   @Override public void OnExit() {

@@ -35,7 +35,7 @@ public class S1C4 extends Scene {
     image.DrawImageScale("background", new PVector(width / 2, height / 2), new PVector(1, 1));
     image.DrawImageScale("text", new PVector(width / 2, height / 2), new PVector(1, 1));
     image.DrawImageScale("man1", new PVector(width / 2 + 130, height - 165), new PVector(0.35f, 0.35f));
-    image.DrawImageScale("eye3", new PVector(width / 2 + 80, height - 175), new PVector(0.38f, 0.38f));
+    image.DrawImageScale("eye3", new PVector(width / 2 + 130, height - 165), new PVector(0.35f, 0.35f));
     image.DrawImageScale("man2", new PVector(width / 2 + 400, height - 165), new PVector(0.43f, 0.43f));
 
     if (eyeIndex == 0) image.DrawImageScale("eye1", new PVector(width / 2 + 370, height - 390), new PVector(0.38f, 0.38f));
