@@ -44,7 +44,7 @@ public class S3C1 extends Scene {
     }
     image.DrawImageScale("background", new PVector(width / 2, height / 2), new PVector(1, 1));
     image.DrawImageScale("text", new PVector(width / 2, height / 2 - 50), new PVector(1, 1));
-    image.DrawImageScale("bear", new PVector(width / 2 - 250, animalY), new PVector(animalScale, animalScale));
+    image.DrawImageScale("bear", new PVector(width / 2 - 210, animalY), new PVector(animalScale, animalScale));
 
     // up and down animation
     if (jumpY < 0) jumpY = 0;
