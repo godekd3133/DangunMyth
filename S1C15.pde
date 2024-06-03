@@ -2,6 +2,7 @@ import java.util.*;
 
 public class S1C15 extends Scene {
 
+  private int ALTIMETER_MAX = 550;
   private float altimeterSpeed = 0.4;
   private float altimeter;
 
@@ -102,11 +103,11 @@ public class S1C15 extends Scene {
       indicator -= indicator > -200 ? 0.5 : 0;
     }
 
-    if (altimeter <= 550) {
+    if (altimeter <= ALTIMETER_MAX) {
       altimeter += altimeterSpeed;
     }
 
-    if (collisionActionSpeed == 0 && altimeter <= 550) {
+    if (collisionActionSpeed == 0 && altimeter <= ALTIMETER_MAX) {
       hwanungX = mouseX;
     } else {
       mouseX = (int)hwanungX;
@@ -270,7 +271,7 @@ public class S1C15 extends Scene {
     } 
 
     // 게임 종료
-    if (altimeter >= 550 && groundY <= 500) {
+    if (altimeter >= ALTIMETER_MAX && groundY <= 500) {
       altimeterSpeed = 0;
       delay(1000);
       if (Math.abs(indicator * 6) < 600) {
