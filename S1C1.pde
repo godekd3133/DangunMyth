@@ -51,8 +51,8 @@ public class S1C1 extends Scene {
     if (time.time- enterTime > 0.25f) {
       cloudX += 100f * time.deltaTime;
     }
-    if (time.time- enterTime > 0.25f &&zoomIn <2f) {
-      zoomIn += 0.1f * time.deltaTime;
+    if (time.time- enterTime > 0.25f &&zoomIn <1.8f) {
+      zoomIn += 0.02f * time.deltaTime;
     }
     image.DrawImage(sessionText[sessionIndex], new PVector(width / 2, height / 2));
     if (!isSessionOut[sessionIndex]) {
