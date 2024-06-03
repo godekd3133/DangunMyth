@@ -57,7 +57,7 @@ public class Opening extends Scene {
       //마우스가
 
       if (mousePos.x > 540 && mousePos.x < 736&& mousePos.y > 381 && mousePos.y < 456) {
-        image.DrawImage("btn_start", new PVector(width / 2, height / 2), 0f,255,100,100,100);
+        image.DrawImage("btn_start", new PVector(width / 2, height / 2), 0f,255,220,220,220);
         if (mousePressed == true && pressedMouse == false && mouseButton == LEFT) {
           if (selectedSequence == 0) {
             scene.ChangeScene(new S1C1());
