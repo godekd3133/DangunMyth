@@ -20,6 +20,7 @@ void setup() {
   font.LoadFont("font", "NanumGothic.ttf");
 
   // S1(0 ~ 19)
+  sceneList.add(new Opening());
   sceneList.add(new S1C1());
   sceneList.add(new S1C3());
   sceneList.add(new S1C4());
@@ -86,7 +87,7 @@ void setup() {
   noStroke();
   //size(1280, 720,FX2D);
   size(1280, 720,P2D);
-  scene.Setup(sceneList.get(33));
+  scene.Setup(sceneList.get(0));
 
 }
 

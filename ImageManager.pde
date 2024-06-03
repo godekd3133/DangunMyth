@@ -5,9 +5,11 @@ public class ImageManager {
 
   public ImageManager() {
   }
+
   public void ResetImages() {
     images.clear();
   }
+
   public void SetPivot(PVector p) {
     SetPivot(p.x, p.y);
   }
@@ -68,7 +70,20 @@ public class ImageManager {
     popMatrix();
   }
 
-  
+  void DrawImage(String key, PVector position, float angle, float alpha, float r, float g, float b) {
+    PImage img = images.get(key);
+
+    if (ValidateImage(key) == false) {
+      return;
+    }
+    pushMatrix();
+    translate(position.x, position.y);
+    rotate(angle);
+    imageMode(CENTER);
+    tint(r,g,b, alpha);
+    image(img, 0, 0);
+    popMatrix();
+  }
 
   void DrawImageScale(String key, PVector position, PVector scale) {
     DrawImageScale(key, position, scale, 0f);
@@ -79,7 +94,7 @@ public class ImageManager {
   }
 
   void DrawImageScale(String key, int x, int y, float scale, float angle, float alpha) {
-    DrawImageScale(key, new PVector((float)x, (float)y), new PVector(scale,scale,0), angle, alpha);
+    DrawImageScale(key, new PVector((float)x,(float)y), new PVector(scale,scale,0), angle, alpha);
   }
 
   void DrawImageScale(String key, PVector position, PVector scale, float angle, float alpha) {
