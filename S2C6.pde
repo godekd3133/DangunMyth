@@ -1,5 +1,5 @@
 public class S2C6 extends Scene {
-  private static final int DISPLAY_TIME = 9;
+  private static final int DISPLAY_TIME = 99;
 
   private static final int TYPE_SOOK = 0x1;
   private static final int TYPE_MANUL= 0x2;
@@ -51,6 +51,7 @@ public class S2C6 extends Scene {
     m_ManulCnt = 0;
 
     sound.PlaySound("bgm");
+    font.LoadFont("lee", "LeeSeoyun.otf");
   }
 
   @Override public void OnDraw() {
@@ -126,19 +127,18 @@ public class S2C6 extends Scene {
       }
     }
     // draw score
-    textSize(50);
-    fill(255);
     image.DrawImageScale("sook", new PVector(40, 50), new PVector(0.05,0.05,0));
-    text(m_SookCnt, 80, 70);
+
+    font.DrawFont("lee", ""+m_SookCnt, 255, 50, 80, 70);
 
     image.DrawImageScale("manul", new PVector(150, 50), new PVector(0.05,0.05,0));
-    text(m_ManulCnt, 190, 70);
+    font.DrawFont("lee", ""+m_ManulCnt, 255, 50, 190, 70);
 
     // clock base
     image.DrawImageScale("clock", new PVector(1225, 55), new PVector(0.055,0.055,0));
     // draw time
 
-    textSize(30);
+    textSize(28);
     fill(0);
     String timeStr = "";
     if (displayTime < 10) {
@@ -147,7 +147,7 @@ public class S2C6 extends Scene {
     } else {
       timeStr = "D-" + displayTime;
     }
-    text(timeStr, 1195, 70);
+    text(timeStr, 1193, 70);
 
   }
 
