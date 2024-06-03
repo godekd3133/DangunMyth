@@ -22,7 +22,6 @@ public class S3C1 extends Scene {
   private float ssugAngle = random(0.05f, 0.15f);
   private boolean isNarrOut;
 
-
   public S3C1() {
   }
 
@@ -39,13 +38,12 @@ public class S3C1 extends Scene {
   }
 
   @Override public void OnDraw() {
-    if(!isNarrOut){
+    if (!isNarrOut) {
       isNarrOut = !isNarrOut;
       sound.PlaySound("narr");
     }
-
     image.DrawImageScale("background", new PVector(width / 2, height / 2), new PVector(1, 1));
-    image.DrawImageScale("text", new PVector(width / 2, height / 2), new PVector(1, 1));
+    image.DrawImageScale("text", new PVector(width / 2, height / 2 - 50), new PVector(1, 1));
     image.DrawImageScale("bear", new PVector(width / 2 - 250, animalY), new PVector(animalScale, animalScale));
 
     // up and down animation
