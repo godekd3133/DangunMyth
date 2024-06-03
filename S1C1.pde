@@ -24,7 +24,6 @@ public class S1C1 extends Scene {
     image.LoadImage("cloud01", "Images/S1/C1/cloud_01");
     image.LoadImage("cloud02", "Images/S1/C1/cloud_02");
     image.LoadImage("cloud03", "Images/S1/C1/cloud_03");
-    sound.LoadSound("intro", "Sounds/intro.wav");
     sound.PlaySound("intro");
     image.LoadImage("text1", "Images/S1/C1/text_01");
     image.LoadImage("text2", "Images/S1/C1/text_02");
@@ -51,8 +50,8 @@ public class S1C1 extends Scene {
     if (time.time- enterTime > 0.25f) {
       cloudX += 100f * time.deltaTime;
     }
-    if (time.time- enterTime > 0.25f &&zoomIn <2f) {
-      zoomIn += 0.1f * time.deltaTime;
+    if (time.time- enterTime > 0.25f &&zoomIn <1.8f) {
+      zoomIn += 0.02f * time.deltaTime;
     }
     image.DrawImage(sessionText[sessionIndex], new PVector(width / 2, height / 2));
     if (!isSessionOut[sessionIndex]) {
