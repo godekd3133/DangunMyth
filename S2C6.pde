@@ -26,6 +26,10 @@ public class S2C6 extends Scene {
     image.LoadImage("bear_click", "Images/S2/C6/bear_click");
     image.LoadImage("tiger_hand", "Images/S2/C6/tiger_hand");
     image.LoadImage("tiger_click", "Images/S2/C6/tiger_click");
+    image.LoadImage("transparent", "Images/S2/C6/transparent");
+    sound.LoadSound("item_click", "Sounds/S2/C6/item_click.wav");
+    sound.LoadSound("bgm", "Sounds/S2/C6/bgm.mp3");
+    //sound.LoadSound("item_mouseOver", "Sounds/S1/C8/narr/narr.mp3");
 
     // set random item location
     m_Items = new int[25];
@@ -43,17 +47,19 @@ public class S2C6 extends Scene {
     }
     m_SookCnt = 0;
     m_ManulCnt = 0;
+
+    sound.PlaySound("bgm");
   }
 
   @Override public void OnDraw() {
     int displayTime = DISPLAY_TIME -(int)(time.time - enterTime);
 
     if (m_ManulCnt >= 20 && m_SookCnt >= 5) {
-      //success
+      //success(성공 씬으로 이동)
       return;
     }
     if (displayTime <= 0) {
-      // failed(timeout)
+      // failed(timeout)(실패 씬으로 이동)
       return;
     }
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(1, 1, 0));
@@ -79,10 +85,10 @@ public class S2C6 extends Scene {
     int viewX = mouseX / 20;
     int viewY = mouseY / 20;
 
-    int areaSize = 3;
-
+    int areaSize = 4;
+    float visibleArea = 0.3;
     if (displayTime <= 20) {
-      areaSize = 5;
+      visibleArea = 0.4;
     }
     for (int i=0; i<64; i++) {
       for (int j=0; j<36; j++) {
@@ -95,6 +101,8 @@ public class S2C6 extends Scene {
         rect(i * 20,j * 20, 20,20);
       }
     }
+    // 보이는 영역이 원형으로 보이도록 구현
+    image.DrawImageScale("transparent", new PVector(mouseX, mouseY), new PVector(visibleArea,visibleArea,0));
     // draw hand
 
     if (!m_IsTigerHand) {
@@ -139,6 +147,7 @@ public class S2C6 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.StopSound("bgm");
   }
 
   public void OnMousePressed() {
@@ -151,6 +160,7 @@ public class S2C6 extends Scene {
           if ((m_Items[i] & TYPE_CLICKED) == TYPE_CLICKED) {
             continue;
           }
+          sound.PlaySound("item_click");
           m_Items[i] |= TYPE_CLICKED;
 
           if ((m_Items[i] & TYPE_MANUL) == TYPE_MANUL) {

@@ -10,6 +10,7 @@ public class S3C3V1_3_2 extends Scene {
   }
 
   @Override public void OnEnter() {
+    // println("132 enter");
     image.LoadImage("background", BACKGROUND_IMAGE);
     image.LoadImage("character", CHARACTER_IMAGE);
     alpha=255f;

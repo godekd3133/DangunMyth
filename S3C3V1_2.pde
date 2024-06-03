@@ -9,38 +9,38 @@ public class S3C3V1_2 extends Scene {
   private final static float BEAR_EYE_Y = BEAR_Y-60;
 
   private final static float TIGER_X = BEAR_X+350;
-  private final static float TIGER_Y = BEAR_Y+70;
-  private final static float TIGER_HEAD_X = TIGER_X-30;
-  private final static float TIGER_HEAD_Y = TIGER_Y-145;
-  private final static float TIGER_TONGUE_X = TIGER_HEAD_X-25;
-  private final static float TIGER_TONGUE_Y = TIGER_HEAD_Y+110;
-
-  private float tongueY = 0;
+  private final static float TIGER_Y = BEAR_Y;
 
   private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
   private int startMinute;
   private int startSecond;
+  private float tongueY = 0; // ??????
+
+  private boolean narrFlag = false;
 
   @Override public void OnEnter() {
+    println("S3C3V1_2");
+
     // 이미지 로드
     image.LoadImage("background", PREFIX+"background");
     image.LoadImage("text", PREFIX+"text");
 
     image.LoadImage("bear_body", PREFIX+"bear_body");
     image.LoadImage("bear_eye", PREFIX+"bear_eye");
+    image.LoadImage("tiger1", PREFIX+"tiger1");
+    image.LoadImage("tiger2", PREFIX+"tiger2");
 
-    image.LoadImage("tiger_body", PREFIX+"tiger_body");
-    image.LoadImage("tiger_head", PREFIX+"tiger_head");
-    image.LoadImage("tiger_tongue", PREFIX+"tiger_tongue");
+    sound.LoadSound("Tiger", "Sounds/S3/C3/V1/_2/Tiger.mp3");
+    narrFlag = false;
+
     startMinute = minute();
     startSecond = second();
   }
 
   @Override public void OnDraw() {
-    tongueY+=0.5;
-
-    if (tongueY>13) {
-      tongueY *=-1;
+    if (!narrFlag) {
+      narrFlag = true;
+      sound.PlaySound("Tiger");
     }
     image.DrawImage("background", new PVector(width / 2, height / 2));
     image.DrawImage("text", new PVector(width / 2, height / 2));
@@ -48,9 +48,7 @@ public class S3C3V1_2 extends Scene {
     image.DrawImageScale("bear_eye", new PVector(BEAR_EYE_X, BEAR_EYE_Y), new PVector(CHARACTER_SCALE, CHARACTER_SCALE));
     image.DrawImageScale("bear_body", new PVector(BEAR_X, BEAR_Y), new PVector(CHARACTER_SCALE, CHARACTER_SCALE));
 
-    image.DrawImageScale("tiger_body", new PVector(TIGER_X, TIGER_Y), new PVector(CHARACTER_SCALE, CHARACTER_SCALE));
-    image.DrawImageScale("tiger_tongue", new PVector(TIGER_TONGUE_X, TIGER_TONGUE_Y+abs(tongueY)), new PVector(CHARACTER_SCALE, CHARACTER_SCALE));
-    image.DrawImageScale("tiger_head", new PVector(TIGER_HEAD_X, TIGER_HEAD_Y), new PVector(CHARACTER_SCALE, CHARACTER_SCALE));
+    image.DrawImageScale("tiger"+((millis()/500)%2+1), new PVector(TIGER_X, TIGER_Y), new PVector(CHARACTER_SCALE, CHARACTER_SCALE));
 
     // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
     if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
@@ -59,5 +57,6 @@ public class S3C3V1_2 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.stopNowPlaying();
   }
 }

@@ -1,5 +1,7 @@
 public class S1C18 extends Scene {
-  public float SCENE_DURATION = 10f;
+  public float SCENE_DURATION = 14f;
+  private float tigerSoundTime = 5.1f;
+  private float bear_sound_time = 9.2f;
   private float bearX = width / 2 - 100;
   private float animalY = height / 2 + 50;
   private float tigerX = width / 2 + 200;
@@ -7,6 +9,9 @@ public class S1C18 extends Scene {
   private float changeInterval;
   private float changeTick;
   private int currentIndex;
+
+  HashMap<String, Integer> playedSoundMap = new HashMap<String, Integer>();
+  private float startTime;
 
   public S1C18() {
   }
@@ -27,6 +32,17 @@ public class S1C18 extends Scene {
     image.LoadImage("tiger_head1", "Images/S1/C18/tiger_head1");
     image.LoadImage("tiger_eyes0", "Images/S1/C18/tiger_eyes0");
     image.LoadImage("tiger_eyes1", "Images/S1/C18/tiger_eyes1");
+    image.LoadImage("narr", "Images/S1/C18/narr");
+
+    playedSoundMap = new HashMap<String, Integer>();
+    sound.LoadSound("S1C18_NARR", "Sounds/S1/C18/narr/narr.mp3");
+    sound.LoadSound("S1C18_TIGER", "Sounds/S1/C18/narr/tiger.mp3");
+    sound.LoadSound("S1C18_BEAR", "Sounds/S1/C18/narr/bear.mp3");
+    playedSoundMap.put("S1C18_NARR", 0);
+    playedSoundMap.put("S1C18_TIGER", 0);
+    playedSoundMap.put("S1C18_BEAR", 0);
+
+    startTime = millis();
 
   }
 
@@ -41,6 +57,15 @@ public class S1C18 extends Scene {
     image.DrawImageScale("tiger_eyes" + currentIndex, new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
     image.DrawImageScale("tiger_head" + currentIndex, new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
 
+    float currentTime =(millis() - startTime) / 1000;
+    PlaySoundOnce("S1C18_NARR");
+    if (currentTime >= tigerSoundTime) {
+      image.DrawImageScale("narr", new PVector(width / 2, height / 2), new PVector(1.0f, 1.0f));
+      PlaySoundOnce("S1C18_TIGER");
+    }
+    if (currentTime >= bear_sound_time) {
+      PlaySoundOnce("S1C18_BEAR");
+    }
     if (changeTick >= changeInterval) {
       currentIndex ^= 1;
       changeTick = 0;
@@ -48,6 +73,14 @@ public class S1C18 extends Scene {
     if (time.time - enterTime >= SCENE_DURATION) {
       scene.ChangeScene(new S1C19_1());
     }
+  }
+
+  void PlaySoundOnce(String soundName) {
+    if (playedSoundMap.get(soundName) == 1) {
+      return;
+    }
+    sound.PlaySound(soundName);
+    playedSoundMap.put(soundName, 1);
   }
 
   @Override public void OnExit() {

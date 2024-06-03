@@ -1,5 +1,7 @@
 public class S3C3V2_1_1 extends Scene {
   private static final String PREFIX = "Images/S3/C3/V2/_1/_1/";
+  private static final String SOUND_PREFIX = "Sounds/S3/C3/V2/_1/_1/narr/";
+
   private PVector centerVector;
   private float centerX;
   private float centerY;
@@ -24,6 +26,9 @@ public class S3C3V2_1_1 extends Scene {
     image.LoadImage("mountains", PREFIX+"mountains");
     image.LoadImage("sky", PREFIX+"sky");
     image.LoadImage("sun", PREFIX+"sun");
+
+    sound.LoadSound("narr", SOUND_PREFIX+"narr.mp3");
+    sound.PlaySound("narr");
   }
 
   @Override public void OnDraw() {
@@ -45,5 +50,6 @@ public class S3C3V2_1_1 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.stopNowPlaying();
   }
 }

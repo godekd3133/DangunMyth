@@ -95,10 +95,9 @@ public class S2C3 extends Scene {
     basketPosition.x = lerp(700, 800, Ease.EaseOutCubic(basketPositionPercent));
     image.DrawImageScale(basket, basketPosition, new PVector(0.25f, 0.25f), getAngleByDegree(30));
 
-    // if (currentTime > SCENE_DURATION) {
-      //   scene.ChangeScene(new S2C4());
-      // }
-
+    if (currentTime > SCENE_DURATION) {
+      scene.ChangeScene(new S2C4());
+    }
     PrintText();
   }
 

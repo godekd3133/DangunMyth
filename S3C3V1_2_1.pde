@@ -27,6 +27,7 @@ public class S3C3V1_2_1 extends Scene {
   private int 범녀숫자 = 1;
 
   @Override public void OnEnter() {
+    println("S3C3V1_2_1");
     // 이미지 로드
     image.LoadImage("background", PREFIX+"background");
     image.LoadImage("범녀1", PREFIX+"범녀1");
