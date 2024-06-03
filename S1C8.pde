@@ -54,12 +54,12 @@ public class S1C8 extends Scene {
   @Override public void OnDraw() {
     // int mouseMove =(int)random(0,15);
 
-    if (hwaninFace) tick1Cnt++;
-    else tick1Cnt--;
+    // if (hwaninFace) tick1Cnt++;
+    // else tick1Cnt--;
 
-    if (tick1Cnt >= 20 || tick1Cnt <= 0) {
-      hwaninFace = !hwaninFace;
-    }
+    // if (tick1Cnt >= 20 || tick1Cnt <= 0) {
+      //   hwaninFace = !hwaninFace;
+      // }
     // endpointTick++;
     // println(endpointTick);
     // if (endpointTick >= 200) {
@@ -69,19 +69,19 @@ public class S1C8 extends Scene {
     image.DrawImageScale("BackgroundS1C8", centerX, centerY, 1f, 0f, 255f);
 
     //환인 Draw
-    image.DrawImageScale("HwaninBody", hwaninX, hwaninY, 0.4, 0f, 255f);
+    image.DrawImageScale("HwaninBody", hwaninX, hwaninY, 0.49, 0f, 255f);
     // if (mouseMove < 10) image.DrawImageScale("HwaninFace_MouseClose", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt, 0.4, 0f, 255f);
     // else image.DrawImageScale("HwaninFace_MouseOpen", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt, 0.4, 0f, 255f);
 
-    image.DrawImageScale("HwaninFace", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt, 0.4, 0f, 255f);
-    image.DrawImageScale("HwaninHand", hwaninX+(-35), hwaninY+(-140), 0.3, 0.7, 255f);
+    image.DrawImageScale("HwaninFace", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt-80, 0.49, 0f, 255f);
+    image.DrawImageScale("HwaninHand", hwaninX+(-35-40), hwaninY+(-140-20), 0.4, 0.7, 255f);
 
     float currentTime =(millis() - startTime) / 1000;
 
     PlaySoundOnce("NarrS1C8");
     if (currentTime > 3.0f) {
       PlaySoundOnce("HawninS1C8");
-      image.DrawImageScale("NarrS1C8", new PVector(width, centerY), new PVector(1.0f, 1.0f));
+      image.DrawImageScale("NarrS1C8", new PVector(centerX, centerY), new PVector(1.0f, 1.0f));
     }
     // print("Draw");
 
