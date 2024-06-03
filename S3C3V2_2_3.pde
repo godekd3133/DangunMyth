@@ -22,7 +22,7 @@ public class S3C3V2_2_3 extends Scene {
     image.DrawImage("text", new PVector(width / 2, height / 2, 0));
 
     if (time.time - enterTime > SCENE_DURATION) {
-      //scene.ChangeScene(엔딩크래딧);
+      scene.CreditScene();
     }
   }
 
