@@ -3,7 +3,7 @@ import java.util.*;
 public class S1C15 extends Scene {
 
   private int ALTIMETER_MAX = 550;
-  private float altimeterSpeed = 0.4;
+  private float altimeterSpeed;
   private float altimeter;
 
   private float indicator;
@@ -13,7 +13,7 @@ public class S1C15 extends Scene {
   private String[] obstacles;
   private float[] obstaclesImageScale;
   private int[] obstaclesProbability;
-  List<Obstacle> obstacleList = new ArrayList<>();
+  List<Obstacle> obstacleList;
   private float obstacleCreatedTime;
   private float obstacleIntervalTime;
 
@@ -29,7 +29,7 @@ public class S1C15 extends Scene {
   private float collisionActionSpeed;
   private int[] collisionLightning;
   private int collisionLightningIndex;
-  private boolean soundPlayFlag = false;
+  private boolean collisionSoundPlayFlag;
 
   public S1C15() {
   }
@@ -69,12 +69,14 @@ public class S1C15 extends Scene {
     hwanungX = width / 2;
     hwanungY = height / 2 - 170;
 
+    altimeterSpeed = 0.4;
     altimeter = 150;
 
     indicator = (int)(Math.random() * 400 - 200);
 
+    obstacleList = new ArrayList();
     obstacles = new String[] {"bird", "gust", "plane", "UFO", "cloud", "lightning"};
-    obstaclesImageScale = new float[] {0.2, 0.3, 0.7, 0.3, 0.3, 0.3};
+    obstaclesImageScale = new float[] {0.2, 0.3, 0.7, 0.3, 0.3, 0.25};
     obstaclesProbability = new int[] {0, 0, 0, 1, 1, 1, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5}; // 비행기 등장 확률을 낮춤
 
     obstacleCreatedTime = time.time;
@@ -84,6 +86,7 @@ public class S1C15 extends Scene {
     collisionActionSpeed = 0f;
     collisionLightning = new int[]{6, 10, 6, 10, 6, 15, 15};
     collisionLightningIndex = 0;
+    collisionSoundPlayFlag = false;
   }
 
   @Override public void OnDraw() {
@@ -191,9 +194,9 @@ public class S1C15 extends Scene {
 
     // 장애물 효과 출력
     if (collisionTime != 0f) {
-      if (!soundPlayFlag) {
+      if (!collisionSoundPlayFlag) {
         sound.PlaySound("crash");
-        soundPlayFlag = true;
+        collisionSoundPlayFlag = true;
       }
 
       switch (collisionObstacle) {
@@ -258,14 +261,14 @@ public class S1C15 extends Scene {
         collisionTime = 0f;
         collisionActionSpeed = 0f;
         collisionDirection = 0;
-        soundPlayFlag = false;
+        collisionSoundPlayFlag = false;
       } else if (collisionObstacle.equals("lightning") && collisionLightningIndex == 6 && collisionLightning[collisionLightningIndex] == 0) {
         collisionLightning = new int[]{6, 10, 6, 10, 6, 15, 15};
         collisionLightningIndex = 0;
         collisionTime = 0f;
         collisionActionSpeed = 0f;
         collisionDirection = 0;
-        soundPlayFlag = false;
+        collisionSoundPlayFlag = false;
       }
 
     } 
