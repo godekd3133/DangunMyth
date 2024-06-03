@@ -87,7 +87,8 @@ public class S2C6V1 extends Scene {
       if (mousePressed && mouseButton == LEFT) {
         /// x 480 ~ 800 y237 ~ 324
         if (mouseX > 480 && mouseX < 800 && mouseY >237 && mouseY < 324) {
-          print('1');
+          // go back
+          scene.ChangeScene(new S2C6());
           showButton = false;
         }
         /// x 480 ~ 800 y 375 ~ 459

@@ -1,6 +1,5 @@
 public class S2C6 extends Scene {
-  private float SCENE_DURATION = 100f;
-  private static final int DISPLAY_TIME = 99;
+  private static final int DISPLAY_TIME = 9;
 
   private static final int TYPE_SOOK = 0x1;
   private static final int TYPE_MANUL= 0x2;
@@ -15,7 +14,7 @@ public class S2C6 extends Scene {
   private static final int TOTAL_SOOK_CNT = 5;
   private static final int TOTAL_MANUL_CNT = 20;
 
-  private boolean m_IsTigerHand = false;
+  private boolean m_IsTigerHand = true;
 
   public S2C6() {
   }
@@ -59,11 +58,13 @@ public class S2C6 extends Scene {
 
     if (m_ManulCnt >= TOTAL_MANUL_CNT && m_SookCnt >= TOTAL_SOOK_CNT) {
       //success(성공 씬으로 이동)
-      return;
+      scene.ChangeScene(new S2C6V2());
+      //return;
     }
     if (displayTime <= 0) {
       // failed(timeout)(실패 씬으로 이동)
-      return;
+      scene.ChangeScene(new S2C6V1());
+      //return;
     }
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(1, 1, 0));
 

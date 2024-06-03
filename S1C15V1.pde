@@ -39,21 +39,22 @@ public class S1C15V1 extends Scene {
     image.DrawImageScale("HWANUNG_BODY", new PVector(HWANUNG_BODY_X, HWANUNG_BODY_Y), new PVector(HWANUNG_BODY_SCALE, HWANUNG_BODY_SCALE));
     faceX = sin(float(millis()) * 0.004) * 4;
     image.DrawImageScale("HWANUNG_FACE", new PVector(HWANUNG_FACE_X + faceX + 2, HWANUNG_FACE_Y), new PVector(HWANUNG_FACE_SCALE, HWANUNG_FACE_SCALE));
-    if (flowY <= 1.0) {
-      flowY += 0.02;
+    //240603 수정 : Drop 속도 Down 및 반복 삭제
+    if (flowY <= 1.5) {
+      flowY += 0.005;
     } else {
-      flowY = 0;
+      // flowY = 0;
     }
     HWANUNG_SWEAT_Y = height / 2 +(flowY * 40) - 150;
     image.DrawImageScale("HWANUNG_SWEAT", new PVector(HWANUNG_SWEAT_X + 4, HWANUNG_SWEAT_Y), new PVector(HWANUNG_SWEAT_SCALE, HWANUNG_SWEAT_SCALE));
 
     float currentTime =(millis() - startTime) / 1000;
     PlaySoundOnce("HWANUNG_NARR1");
-		if (currentTime > 1.0f) {
-			PlaySoundOnce("HWANUNG_NARR2");
-		}
-
-    image.DrawImageScale("HWANUNG_TEXT", new PVector(290, 180), new PVector(0.5f, 0.5f));
+    if (currentTime > 1.0f) {
+      PlaySoundOnce("HWANUNG_NARR2");
+    }
+    //240603 텍스트 수정
+    image.DrawImage("HWANUNG_TEXT", new PVector(width / 2, height / 2+50));
 
     if (time.time - enterTime > SCENE_DURATION) {
       scene.ChangeScene(new S1C15V2());
