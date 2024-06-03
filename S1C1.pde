@@ -24,7 +24,6 @@ public class S1C1 extends Scene {
     image.LoadImage("cloud01", "Images/S1/C1/cloud_01");
     image.LoadImage("cloud02", "Images/S1/C1/cloud_02");
     image.LoadImage("cloud03", "Images/S1/C1/cloud_03");
-    sound.LoadSound("intro", "Sounds/intro.wav");
     sound.PlaySound("intro");
     image.LoadImage("text1", "Images/S1/C1/text_01");
     image.LoadImage("text2", "Images/S1/C1/text_02");
