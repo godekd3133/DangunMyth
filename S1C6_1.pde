@@ -32,8 +32,8 @@ public class S1C6_1 extends Scene {
   //환웅 위치
   int hwanwoongfaceOffsetY = -80;
   int hwanwoongfaceOffsetX = -25;
-  int hwanwoongX = centerX+300;
-  int hwanwoongY = centerY+180;
+  int hwanwoongX = centerX+200;
+  int hwanwoongY = centerY+100;
   //환웅 얼굴 움직이는 변수
   boolean hwanwoongFaceFlag=false;
   int hwanwoongFaceCnt = 0;
