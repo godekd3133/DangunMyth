@@ -85,10 +85,10 @@ public class S2C6 extends Scene {
     int viewX = mouseX / 20;
     int viewY = mouseY / 20;
 
-    int areaSize = 4;
+    int areaSize = 6;
     float visibleArea = 0.3;
     if (displayTime <= 20) {
-      visibleArea = 0.4;
+      visibleArea = 0.5;
     }
     for (int i=0; i<64; i++) {
       for (int j=0; j<36; j++) {
