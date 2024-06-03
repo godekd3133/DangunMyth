@@ -12,6 +12,9 @@ public class S2C6 extends Scene {
   private int m_SookCnt = 0;
   private int m_ManulCnt = 0;
 
+  private static final int TOTAL_SOOK_CNT = 5;
+  private static final int TOTAL_MANUL_CNT = 20;
+
   private boolean m_IsTigerHand = false;
 
   public S2C6() {
@@ -54,7 +57,7 @@ public class S2C6 extends Scene {
   @Override public void OnDraw() {
     int displayTime = DISPLAY_TIME -(int)(time.time - enterTime);
 
-    if (m_ManulCnt >= 20 && m_SookCnt >= 5) {
+    if (m_ManulCnt >= TOTAL_MANUL_CNT && m_SookCnt >= TOTAL_SOOK_CNT) {
       //success(성공 씬으로 이동)
       return;
     }
@@ -85,11 +88,12 @@ public class S2C6 extends Scene {
     int viewX = mouseX / 20;
     int viewY = mouseY / 20;
 
-    int areaSize = 6;
-    float visibleArea = 0.3;
-    if (displayTime <= 20) {
-      visibleArea = 0.5;
+    int areaSize = 10;
+    float visibleArea = 0.7;
+    /*if (displayTime <= 20) {
+      visibleArea = 0.8;
     }
+    */
     for (int i=0; i<64; i++) {
       for (int j=0; j<36; j++) {
         if (viewX - areaSize < i && i < viewX + areaSize) {
@@ -120,30 +124,30 @@ public class S2C6 extends Scene {
         image.DrawImageScale("tiger_hand", new PVector(mouseX, mouseY), new PVector(0.12,0.12,0));
       }
     }
-    // clock base
-    image.DrawImageScale("clock", new PVector(1200, 75), new PVector(0.08,0.08,0));
-    // draw time
-    textSize(30);
-
-    fill(0);
-
-    String timeStr = "";
-    if (displayTime < 10) {
-      fill(255,0,0);
-      timeStr = " " + displayTime + " Days";
-    } else {
-      timeStr = displayTime + " Days";
-    }
-    text(timeStr, 1152, 94);
-
     // draw score
     textSize(50);
     fill(255);
-    image.DrawImageScale("sook", new PVector(20, 50), new PVector(0.05,0.05,0));
-    text(m_SookCnt, 60, 70);
+    image.DrawImageScale("sook", new PVector(40, 50), new PVector(0.05,0.05,0));
+    text(m_SookCnt, 80, 70);
 
-    image.DrawImageScale("manul", new PVector(130, 50), new PVector(0.05,0.05,0));
-    text(m_ManulCnt, 170, 70);
+    image.DrawImageScale("manul", new PVector(150, 50), new PVector(0.05,0.05,0));
+    text(m_ManulCnt, 190, 70);
+
+    // clock base
+    image.DrawImageScale("clock", new PVector(1225, 55), new PVector(0.055,0.055,0));
+    // draw time
+
+    textSize(30);
+    fill(0);
+    String timeStr = "";
+    if (displayTime < 10) {
+      fill(255,0,0);
+      timeStr = " D-" + displayTime;
+    } else {
+      timeStr = "D-" + displayTime;
+    }
+    text(timeStr, 1195, 70);
+
   }
 
   @Override public void OnExit() {
