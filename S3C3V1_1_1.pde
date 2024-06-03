@@ -31,16 +31,13 @@ public class S3C3V1_1_1 extends Scene {
     if (_time < 100) {
       image.DrawImageScale("bear_before", new PVector(bear_x, bear_y, 0), new PVector(0.3, 0.3, 0), 0);
       image.DrawImageScale("tiger_before", new PVector(tiger_x, tiger_y, 0), new PVector(0.3, 0.3, 0), 0);
-    }
-    else if (_time < 200) {
+    } else {
       image.DrawImageScale("bear_before", new PVector(bear_x, bear_y, 0), new PVector(0.3, 0.3, 0), 0, 255);
       image.DrawImageScale("bear_after", new PVector(bear_x, bear_y, 0), new PVector(0.3, 0.3, 0), 0, _time);
 
       image.DrawImageScale("tiger_before", new PVector(tiger_x, tiger_y, 0), new PVector(0.3, 0.3, 0), 0, 255);
       image.DrawImageScale("tiger_after", new PVector(tiger_x, tiger_y, 0), new PVector(0.3, 0.3, 0), 0, _time);
-    } else {
-      image.DrawImageScale("bear_after", new PVector(bear_x, bear_y, 0), new PVector(0.3, 0.3, 0), 0);
-      image.DrawImageScale("tiger_after", new PVector(tiger_x, tiger_y, 0), new PVector(0.3, 0.3, 0), 0);
+
     }
   }
 
