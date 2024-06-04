@@ -25,8 +25,8 @@ public class S2C4 extends Scene {
 
   @Override public void OnEnter() {
     image.LoadImage("background", "Images/S2/C4/background");
-    image.LoadImage("bear", "Images/S2/C4/bear");
-    image.LoadImage("hand", "Images/S2/C4/hand");
+    image.LoadImage("bear1", "Images/S2/C4/bear1");
+    image.LoadImage("bear2", "Images/S2/C4/bear2");
     image.LoadImage("tiger", "Images/S2/C4/tiger");
     image.LoadImage("garlic", "Images/S2/C4/garlic");
     image.LoadImage("ssug", "Images/S2/C4/ssug");
@@ -60,16 +60,7 @@ public class S2C4 extends Scene {
 
   @Override public void OnDraw() {
     image.DrawImageScale("background", new PVector(width / 2, height / 2), new PVector(1, 1));
-
-    // bear hand animation
-    image.DrawImageScale("hand", new PVector(handX, handY), new PVector(animalScale, animalScale), handRotate);
-    handRotate += handAngle * time.deltaTime;
-    handX += handDir * time.deltaTime;
-    if (handX < 510 | handX > 530) {
-      handAngle *= -1;
-      handDir *= -1;
-    }
-    image.DrawImageScale("bear", new PVector(width / 2 - 200, height - 280), new PVector(animalScale, animalScale));
+    image.DrawImageScale("bear"+((millis()/500)%2+1), new PVector(width / 2 - 200, height - 280), new PVector(animalScale, animalScale));
     image.DrawImageScale("tiger", new PVector(width / 2 + 50, height - 305), new PVector(animalScale, animalScale));
     image.DrawImageScale("basket", new PVector(width / 2 + 360, height - 105), new PVector(0.2f, 0.2f), -0.27f);
     image.DrawImageScale("garlic", new PVector(width - 130, height - 210), new PVector(utilScale, utilScale), -0.3f);
@@ -92,8 +83,7 @@ public class S2C4 extends Scene {
     if (SCENE_TIME > sessionDuration[sessionIndex]) {
       if (sessionDuration.length - 1 > sessionIndex) sessionIndex++;
     }
-    /*
-    textSize(128);
+    /* textSize(128);
     text(SCENE_TIME, 12, 40);
     */
     if (SCENE_TIME > SCENE_DURATION) {
