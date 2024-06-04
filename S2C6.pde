@@ -127,18 +127,18 @@ public class S2C6 extends Scene {
       }
     }
     // draw score
-    image.DrawImageScale("sook", new PVector(40, 50), new PVector(0.05,0.05,0));
+    image.DrawImageScale("sook", new PVector(50, 50), new PVector(0.05,0.05,0));
 
-    font.DrawFont("lee", ""+m_SookCnt, 255, 50, 80, 70);
+    font.DrawFont("lee", ""+m_SookCnt, 255, 50, 90, 70);
 
-    image.DrawImageScale("manul", new PVector(150, 50), new PVector(0.05,0.05,0));
-    font.DrawFont("lee", ""+m_ManulCnt, 255, 50, 190, 70);
+    image.DrawImageScale("manul", new PVector(160, 50), new PVector(0.05,0.05,0));
+    font.DrawFont("lee", ""+m_ManulCnt, 255, 50, 200, 70);
 
     // clock base
     image.DrawImageScale("clock", new PVector(1225, 55), new PVector(0.055,0.055,0));
     // draw time
 
-    textSize(28);
+    textSize(25);
     fill(0);
     String timeStr = "";
     if (displayTime < 10) {
@@ -147,7 +147,7 @@ public class S2C6 extends Scene {
     } else {
       timeStr = "D-" + displayTime;
     }
-    text(timeStr, 1193, 70);
+    text(timeStr, 1196, 70);
 
   }
 
