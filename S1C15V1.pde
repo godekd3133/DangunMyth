@@ -1,6 +1,8 @@
 public class S1C15V1 extends Scene {
   private final static String PREFIX = "Images/S1/C15-1/";
-  public float SCENE_DURATION = 10f;
+  private float backgroundAlpha = 188f;
+
+  public float SCENE_DURATION = 20f;
   private float HWANUNG_BODY_X = width / 2;
   private float HWANUNG_BODY_Y = height / 2 + 50;
   private float HWANUNG_BODY_SCALE = 0.25;
@@ -64,12 +66,18 @@ public class S1C15V1 extends Scene {
     if (time.time - enterTime > SCENE_DURATION) {
       scene.ChangeScene(new S1C15V2());
     }
+    //240605 QA 배경에 어두운거 추가
+    if (backgroundAlpha<=230) backgroundAlpha = lerp(0f, 188f, time.time / 10f);
+
+    fill(0, backgroundAlpha);
+    rect(0, 0, width, height);
+
+    //240605 QA 버튼 추가
 
     if (showButton) {
-      image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1));
-      image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1));
+      // image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1));
+      // image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1));
 
-      //240605 QA
       //Mouse Hover
       if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
         image.DrawImage("button_top", new PVector(width / 2, height / 2), 0f,255,220,220,220);
