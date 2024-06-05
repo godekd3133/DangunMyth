@@ -8,18 +8,19 @@ SoundManager sound = new SoundManager();
 //Scene List
 ArrayList<Scene> sceneList = new ArrayList<Scene>();
 int currentSceneIndex = 0;
-boolean QAMode = true; //이 변수를 true로 바꾸면 시간에따른 신전환 안됩니다
+boolean QAMode = false; //이 변수를 true로 바꾸면 시간에따른 신전환 안됩니다
 
 void preload() {
   sound.LoadSound("intro", "Sounds/intro.wav");
-
 }
 
 void setup() {
   //씬들 순서대로 추가
   //미리 50개 공간할당
+  font.LoadFont("font", "NanumGothic.ttf");
 
   // S1(0 ~ 19)
+  sceneList.add(new Opening());
   sceneList.add(new S1C1());
   sceneList.add(new S1C3());
   sceneList.add(new S1C4());
@@ -32,7 +33,7 @@ void setup() {
   sceneList.add(new S1C11());
   sceneList.add(new S1C13());
   sceneList.add(new S1C14());
-  // sceneList.add(new S1C15()); // 미니게임
+  sceneList.add(new S1C15()); // 미니게임
   sceneList.add(new S1C15V1());
   sceneList.add(new S1C15V2());
   sceneList.add(new S1C16());
@@ -80,6 +81,7 @@ void setup() {
   sceneList.add(new S3C3V2_2_1());
   sceneList.add(new S3C3V2_2_2());
   sceneList.add(new S3C3V2_2_3());
+  scene.SetCreditScene(new EndingCredit());
 
   frameRate(60);
   noStroke();

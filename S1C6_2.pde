@@ -15,8 +15,8 @@ public class S1C6_2 extends Scene {
   int endpointTick = 0;
 
   //환인 위치
-  int hwaninfaceOffset = -120;
-  int hwaninX = centerX-250;
+  int hwaninfaceOffset = -130;
+  int hwaninX = centerX-310;
   int hwaninY = centerY+350;
 
   //환인 얼굴 움직이는 변수
@@ -67,8 +67,8 @@ public class S1C6_2 extends Scene {
     image.DrawImageScale("Background2", centerX, centerY, 1f, 0f, 255f);
 
     //환인 Draw
-    image.DrawImageScale("HwaninBody", hwaninX, hwaninY, 0.4, 0f, 255f);
-    image.DrawImageScale("HwaninFace", hwaninX+15, hwaninY+hwaninfaceOffset, hwaninFaceScale, 0f, 255f);
+    image.DrawImageScale("HwaninBody", hwaninX, hwaninY, 0.47, 0f, 255f);
+    image.DrawImageScale("HwaninFace", hwaninX, hwaninY+hwaninfaceOffset, 0.47, 0f, 255f);
     image.DrawImage("text", new PVector(centerX, centerY, 0));
 
     // print("Draw");

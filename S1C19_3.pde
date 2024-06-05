@@ -39,9 +39,6 @@ public class S1C19_3 extends Scene {
 
     image.LoadImage("C19-3-Text", "Images/S1/C19/C19-3-Text");
 
-    // image.LoadImage("mugwort", "Images/S1/C19/mugwort");
-    // image.LoadImage("garlic", "Images/S1/C19/garlic");
-
     sound.LoadSound("hwanwoong1", "Sounds/S1/C19-3/hwanwoong1.mp3");
     sound.LoadSound("hwanwoong2", "Sounds/S1/C19-3/hwanwoong2.mp3");
     sound.LoadSound("Tiger", "Sounds/S1/C19-3/Tiger.mp3");
@@ -55,8 +52,6 @@ public class S1C19_3 extends Scene {
     image.DrawImageScale("hands", new PVector(animalX, animalY, 0), new PVector(0.3, 0.3, 0));
     image.DrawImageScale("hwangwoong", new PVector(handX, 150, 0), new PVector(0.7, 0.7, 0), 90);
     image.DrawImageScale("basket", new PVector(basketX, basketY, 0), new PVector(0.45, 0.45, 0));
-    // image.DrawImageScale("garlic", new PVector(handX, 150, 0), new PVector(0.25, 0.25, 0));
-    // image.DrawImageScale("mugwort", new PVector(handX, 150, 0), new PVector(0.25, 0.25, 0));
 
     image.DrawImage("C19-3-Text", new PVector(width / 2, height / 2, 0));
 

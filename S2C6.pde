@@ -1,5 +1,4 @@
 public class S2C6 extends Scene {
-  private float SCENE_DURATION = 100f;
   private static final int DISPLAY_TIME = 99;
 
   private static final int TYPE_SOOK = 0x1;
@@ -12,7 +11,10 @@ public class S2C6 extends Scene {
   private int m_SookCnt = 0;
   private int m_ManulCnt = 0;
 
-  private boolean m_IsTigerHand = false;
+  private static final int TOTAL_SOOK_CNT = 5;
+  private static final int TOTAL_MANUL_CNT = 20;
+
+  private boolean m_IsTigerHand = true;
 
   public S2C6() {
   }
@@ -43,24 +45,27 @@ public class S2C6 extends Scene {
       } else {
         m_Items[i] = TYPE_SOOK;
       }
-      m_ItemsLoc[i] = new PVector(random(22) * 50 + 5, random(12) * 50 + 100,0); // dead zone
+      m_ItemsLoc[i] = new PVector(random(22) * 50 + 5, random(11) * 50 + 150,0); // dead zone
     }
     m_SookCnt = 0;
     m_ManulCnt = 0;
 
     sound.PlaySound("bgm");
+    font.LoadFont("lee", "LeeSeoyun.otf");
   }
 
   @Override public void OnDraw() {
     int displayTime = DISPLAY_TIME -(int)(time.time - enterTime);
 
-    if (m_ManulCnt >= 20 && m_SookCnt >= 5) {
+    if (m_ManulCnt >= TOTAL_MANUL_CNT && m_SookCnt >= TOTAL_SOOK_CNT) {
       //success(성공 씬으로 이동)
-      return;
+      scene.ChangeScene(new S2C6V2());
+      //return;
     }
     if (displayTime <= 0) {
       // failed(timeout)(실패 씬으로 이동)
-      return;
+      scene.ChangeScene(new S2C6V1());
+      //return;
     }
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(1, 1, 0));
 
@@ -74,10 +79,10 @@ public class S2C6 extends Scene {
         continue;
       }
       if ((item & TYPE_SOOK) == TYPE_SOOK) {
-        image.DrawImageScale("sook", m_ItemsLoc[i], new PVector(0.015,0.015,0));
+        image.DrawImageScale("sook", m_ItemsLoc[i], new PVector(0.025,0.025,0));
       }
       if ((item & TYPE_MANUL) == TYPE_MANUL) {
-        image.DrawImageScale("manul", m_ItemsLoc[i], new PVector(0.015,0.015,0));
+        image.DrawImageScale("manul", m_ItemsLoc[i], new PVector(0.025,0.025,0));
       }
     }
     // 마우스 커서 근처에만 화면이 보이도록 구현
@@ -85,11 +90,12 @@ public class S2C6 extends Scene {
     int viewX = mouseX / 20;
     int viewY = mouseY / 20;
 
-    int areaSize = 4;
-    float visibleArea = 0.3;
-    if (displayTime <= 20) {
-      visibleArea = 0.4;
+    int areaSize = 10;
+    float visibleArea = 0.7;
+    /*if (displayTime <= 20) {
+      visibleArea = 0.8;
     }
+    */
     for (int i=0; i<64; i++) {
       for (int j=0; j<36; j++) {
         if (viewX - areaSize < i && i < viewX + areaSize) {
@@ -120,30 +126,29 @@ public class S2C6 extends Scene {
         image.DrawImageScale("tiger_hand", new PVector(mouseX, mouseY), new PVector(0.12,0.12,0));
       }
     }
+    // draw score
+    image.DrawImageScale("sook", new PVector(70, 70), new PVector(0.05,0.05,0));
+
+    font.DrawFont("lee", ""+(TOTAL_SOOK_CNT - m_SookCnt), 255, 50, 110, 90);
+
+    image.DrawImageScale("manul", new PVector(180, 70), new PVector(0.05,0.05,0));
+    font.DrawFont("lee", ""+(TOTAL_MANUL_CNT - m_ManulCnt), 255, 50, 220, 90);
+
     // clock base
-    image.DrawImageScale("clock", new PVector(1200, 75), new PVector(0.08,0.08,0));
+    image.DrawImageScale("clock", new PVector(1205, 75), new PVector(0.055,0.055,0));
     // draw time
-    textSize(30);
 
+    textSize(25);
     fill(0);
-
     String timeStr = "";
     if (displayTime < 10) {
       fill(255,0,0);
-      timeStr = " " + displayTime + " Days";
+      timeStr = " D-" + displayTime;
     } else {
-      timeStr = displayTime + " Days";
+      timeStr = "D-" + displayTime;
     }
-    text(timeStr, 1152, 94);
+    text(timeStr, 1176, 90);
 
-    // draw score
-    textSize(50);
-    fill(255);
-    image.DrawImageScale("sook", new PVector(20, 50), new PVector(0.05,0.05,0));
-    text(m_SookCnt, 60, 70);
-
-    image.DrawImageScale("manul", new PVector(130, 50), new PVector(0.05,0.05,0));
-    text(m_ManulCnt, 170, 70);
   }
 
   @Override public void OnExit() {
@@ -154,8 +159,8 @@ public class S2C6 extends Scene {
     for(int i=0;
     i< m_ItemsLoc.length;
     i++) {
-      if (m_ItemsLoc[i].x - 15 <= mouseX && m_ItemsLoc[i].x + 15 >= mouseX) {
-        if (m_ItemsLoc[i].y - 15 <= mouseY && m_ItemsLoc[i].y + 15 >= mouseY) {
+      if (m_ItemsLoc[i].x - 25 <= mouseX && m_ItemsLoc[i].x + 25 >= mouseX) {
+        if (m_ItemsLoc[i].y - 25 <= mouseY && m_ItemsLoc[i].y + 25 >= mouseY) {
           // 이미 클릭한 아이템은 갯수로 포함하지 않도록 구현
           if ((m_Items[i] & TYPE_CLICKED) == TYPE_CLICKED) {
             continue;

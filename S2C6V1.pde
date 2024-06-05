@@ -9,8 +9,8 @@ public class S2C6V1 extends Scene {
   private float tigerTearRightY = height - 290f;
   private float bearTearSpeedL = 0f;
   private float bearTearSpeedR = 0f;
-  private float bearTearLeftY = height - 280f;
-  private float bearTearRightY = height - 290f;
+  private float bearTearLeftY = height - 270f;
+  private float bearTearRightY = height - 280f;
 
   private boolean showButton = false;
 
@@ -40,6 +40,7 @@ public class S2C6V1 extends Scene {
         showButton = true;
       }
     }, 1);
+    showButton = true;
     animalScale = 0.25f;
     tearScale = 0.025f;
     tigerTearSpeedL = 0f;
@@ -48,8 +49,8 @@ public class S2C6V1 extends Scene {
     tigerTearRightY = height - 290f;
     bearTearSpeedL = 0f;
     bearTearSpeedR = 0f;
-    bearTearLeftY = height - 280f;
-    bearTearRightY = height - 290f;
+    bearTearLeftY = height - 270f;
+    bearTearRightY = height - 280f;
 
   }
 
@@ -64,14 +65,14 @@ public class S2C6V1 extends Scene {
     tigerTearSpeedL += random(0.3f, 0.9f);
     tigerTearSpeedR += random(0.3f, 0.9f);
     image.DrawImageScale("tiger_tear", new PVector(width - 510, tigerTearLeftY + tigerTearSpeedL), new PVector(tearScale, tearScale));
-    image.DrawImageScale("tiger_tear", new PVector(width - 440, tigerTearRightY + tigerTearSpeedR), new PVector(tearScale, tearScale));
+    image.DrawImageScale("tiger_tear", new PVector(width - 440, tigerTearRightY + tigerTearSpeedL), new PVector(tearScale, tearScale));
 
-    if (bearTearLeftY + bearTearSpeedL > height - 260) bearTearSpeedL = 0;
-    if (bearTearRightY + bearTearSpeedR > height - 270) bearTearSpeedR = 0;
+    if (bearTearLeftY + bearTearSpeedL > height - 250) bearTearSpeedL = 0;
+    if (bearTearRightY + bearTearSpeedR > height - 260) bearTearSpeedR = 0;
     bearTearSpeedL += random(0.3f, 0.9f);
     bearTearSpeedR += random(0.3f, 0.9f);
     image.DrawImageScale("bear_tear", new PVector(width - 810, bearTearLeftY + bearTearSpeedL), new PVector(tearScale, tearScale));
-    image.DrawImageScale("bear_tear", new PVector(width - 890, bearTearRightY + bearTearSpeedR), new PVector(tearScale, tearScale));
+    image.DrawImageScale("bear_tear", new PVector(width - 890, bearTearRightY + bearTearSpeedL), new PVector(tearScale, tearScale));
     // image.DrawImageScale("bear_tear", new PVector(width - 510, bearTearLeftY + bearTearSpeedL), new PVector(tearScale, tearScale));
     // image.DrawImageScale("bear_tear", new PVector(width - 440, bearTearRightY + bearTearSpeedR), new PVector(tearScale, tearScale));
 
@@ -80,17 +81,31 @@ public class S2C6V1 extends Scene {
     rect(0, 0, width, height);
 
     if (showButton) {
-      image.DrawImageScale("button_top", new PVector(width / 2, height / 2 - 50), new PVector(1, 1));
-      image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2 + 50), new PVector(1, 1));
+      image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1));
+      image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1));
 
+      //240605 QA
+      //Mouse Hover
+      if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
+        image.DrawImage("button_top", new PVector(width / 2, height / 2), 0f,255,220,220,220);
+      } else {
+        image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1));
+      }
+      //Mouse Hover
+      if (mouseX > 480 && mouseX < 800 && mouseY >237 && mouseY < 324) {
+        image.DrawImage("button_bottom", new PVector(width / 2, height / 2), 0f,255,220,220,220);
+      } else {
+        image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1));
+      }
       if (mousePressed && mouseButton == LEFT) {
-        /// x 473 ~ 816 y 189 ~ 276
-        if (mouseX > 473 && mouseX < 816 && mouseY > 189 && mouseY < 276) {
-          print('1');
+        /// x 480 ~ 800 y237 ~ 324
+        if (mouseX > 480 && mouseX < 800 && mouseY >237 && mouseY < 324) {
+          // go back
+          scene.ChangeScene(new S2C6());
           showButton = false;
         }
-        /// x 472 ~ 816 y 427 ~ 511
-        else if (mouseX > 472 && mouseX < 816 && mouseY > 427 && mouseY < 511) {
+        /// x 480 ~ 800 y 375 ~ 459
+        else if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
           print('2');
           showButton = false;
 

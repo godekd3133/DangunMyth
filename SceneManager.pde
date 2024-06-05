@@ -5,6 +5,7 @@ public class SceneManager {
   public Scene currentScene;
   public Scene nextScene;
   public Scene firstScene;
+  public Scene creditScene;
   private float backgroundAlpha;
 
   private boolean fadeIn = false;
@@ -12,6 +13,15 @@ public class SceneManager {
 
   float fadeSpeed = 360f;
   public boolean looping = true;
+
+  public void CreditScene() {
+    ChangeScene(creditScene);
+
+  }
+
+  public void SetCreditScene(Scene scene) {
+    creditScene = scene;
+  }
 
   public void Setup(Scene initialScene) {
     currentScene = null;

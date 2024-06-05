@@ -37,8 +37,7 @@ public class S1C19_2 extends Scene {
     thridFlag = false;
 
     image.LoadImage("background", "Images/S1/C19/background1");
-    image.LoadImage("arm0", "Images/S1/C19/hwanwoong_arm1");
-    image.LoadImage("arm1", "Images/S1/C19/hwanwoong_arm0");
+    image.LoadImage("arm", "Images/S1/C19/hwanwoong_arm");
     image.LoadImage("mouth0", "Images/S1/C19/hwanwoong_mouth1");
     image.LoadImage("mouth1", "Images/S1/C19/hwanwoong_mouth0");
     image.LoadImage("skin", "Images/S1/C19/hwanwoong_skin");
@@ -54,19 +53,20 @@ public class S1C19_2 extends Scene {
     armChangeTick += time.deltaTime;
 
     image.DrawImage("background", new PVector(width / 2, height / 2, 0));
-    image.DrawImageScale("arm" + armIndex, new PVector(550, height - 250, 0), new PVector(0.25, 0.25, 0));
+    if (armIndex == 0) image.DrawImageScale("arm", new PVector(650, height - 350), new PVector(0.25, 0.25, 0));
+    else image.DrawImageScale("arm", new PVector(630, height - 330), new PVector(0.25, 0.25), 0.3f);
     image.DrawImageScale("skin", new PVector(600, height - 250, 0), new PVector(0.25, 0.25, 0));
     image.DrawImageScale("mouth" + mouthIndex, new PVector(600, height - 250, 0), new PVector(0.25, 0.25, 0));
 
     image.DrawImage("C19-2-Text", new PVector(width / 2, height / 2, 0));
 
     //그렇구나
-    if (!firstFlag) {
+    if (time.time - enterTime > 3f && !firstFlag) {
       firstFlag = true;
       sound.PlaySound("hwanwoong1");
     }
     //너희의 소원을 들어주마
-    if (time.time - enterTime >= firstDuration) {
+    if (time.time - enterTime >= firstDuration + 1.5f) {
       if (!secondFlag) {
         secondFlag = true;
         sound.PlaySound("hwanwoong2");

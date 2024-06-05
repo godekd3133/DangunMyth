@@ -25,8 +25,8 @@ public class S2C4 extends Scene {
 
   @Override public void OnEnter() {
     image.LoadImage("background", "Images/S2/C4/background");
-    image.LoadImage("bear", "Images/S2/C4/bear");
-    image.LoadImage("hand", "Images/S2/C4/hand");
+    image.LoadImage("bear1", "Images/S2/C4/bear1");
+    image.LoadImage("bear2", "Images/S2/C4/bear2");
     image.LoadImage("tiger", "Images/S2/C4/tiger");
     image.LoadImage("garlic", "Images/S2/C4/garlic");
     image.LoadImage("ssug", "Images/S2/C4/ssug");
@@ -38,7 +38,7 @@ public class S2C4 extends Scene {
     sound.LoadSound("narr1", "Sounds/S2/C4/narr/narr1.mp3");
     sound.LoadSound("narr2", "Sounds/S2/C4/narr/narr2.mp3");
     sound.LoadSound("narr3", "Sounds/S2/C4/narr/narr3.mp3");
-    isSessionOut = new boolean[] {false, false, false};
+        isSessionOut = new boolean[] {false, false, false};
 
 
     animalScale = 0.25f;
@@ -60,16 +60,12 @@ public class S2C4 extends Scene {
 
   @Override public void OnDraw() {
     image.DrawImageScale("background", new PVector(width / 2, height / 2), new PVector(1, 1));
+    if (sessionIndex==1) {
+      image.DrawImageScale("bear"+((millis()/300)%2+1), new PVector(width / 2 - 200, height - 280), new PVector(animalScale, animalScale));
+    } else {
+      image.DrawImageScale("bear2", new PVector(width / 2 - 200, height - 280), new PVector(animalScale, animalScale));
 
-    // bear hand animation
-    image.DrawImageScale("hand", new PVector(handX, handY), new PVector(animalScale, animalScale), handRotate);
-    handRotate += handAngle * time.deltaTime;
-    handX += handDir * time.deltaTime;
-    if (handX < 510 | handX > 530) {
-      handAngle *= -1;
-      handDir *= -1;
     }
-    image.DrawImageScale("bear", new PVector(width / 2 - 200, height - 280), new PVector(animalScale, animalScale));
     image.DrawImageScale("tiger", new PVector(width / 2 + 50, height - 305), new PVector(animalScale, animalScale));
     image.DrawImageScale("basket", new PVector(width / 2 + 360, height - 105), new PVector(0.2f, 0.2f), -0.27f);
     image.DrawImageScale("garlic", new PVector(width - 130, height - 210), new PVector(utilScale, utilScale), -0.3f);
@@ -92,8 +88,7 @@ public class S2C4 extends Scene {
     if (SCENE_TIME > sessionDuration[sessionIndex]) {
       if (sessionDuration.length - 1 > sessionIndex) sessionIndex++;
     }
-    /*
-    textSize(128);
+    /* textSize(128);
     text(SCENE_TIME, 12, 40);
     */
     if (SCENE_TIME > SCENE_DURATION) {
@@ -102,5 +97,6 @@ public class S2C4 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.stopNowPlaying();
   }
 }
