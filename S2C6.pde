@@ -45,7 +45,7 @@ public class S2C6 extends Scene {
       } else {
         m_Items[i] = TYPE_SOOK;
       }
-      m_ItemsLoc[i] = new PVector(random(22) * 50 + 5, random(12) * 50 + 100,0); // dead zone
+      m_ItemsLoc[i] = new PVector(random(22) * 50 + 5, random(11) * 50 + 150,0); // dead zone
     }
     m_SookCnt = 0;
     m_ManulCnt = 0;
@@ -127,15 +127,15 @@ public class S2C6 extends Scene {
       }
     }
     // draw score
-    image.DrawImageScale("sook", new PVector(50, 50), new PVector(0.05,0.05,0));
+    image.DrawImageScale("sook", new PVector(70, 70), new PVector(0.05,0.05,0));
 
-    font.DrawFont("lee", ""+m_SookCnt, 255, 50, 90, 70);
+    font.DrawFont("lee", ""+(TOTAL_SOOK_CNT - m_SookCnt), 255, 50, 110, 90);
 
-    image.DrawImageScale("manul", new PVector(160, 50), new PVector(0.05,0.05,0));
-    font.DrawFont("lee", ""+m_ManulCnt, 255, 50, 200, 70);
+    image.DrawImageScale("manul", new PVector(180, 70), new PVector(0.05,0.05,0));
+    font.DrawFont("lee", ""+(TOTAL_MANUL_CNT - m_ManulCnt), 255, 50, 220, 90);
 
     // clock base
-    image.DrawImageScale("clock", new PVector(1225, 55), new PVector(0.055,0.055,0));
+    image.DrawImageScale("clock", new PVector(1205, 75), new PVector(0.055,0.055,0));
     // draw time
 
     textSize(25);
@@ -147,7 +147,7 @@ public class S2C6 extends Scene {
     } else {
       timeStr = "D-" + displayTime;
     }
-    text(timeStr, 1196, 70);
+    text(timeStr, 1176, 90);
 
   }
 
