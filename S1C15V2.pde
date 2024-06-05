@@ -9,10 +9,10 @@ public class S1C15V2 extends Scene {
   private float HWANUNG_FACE_SCALE = 0.25;
   private int startMinute;
   private int startSecond;
-  private float cloudY = 30f;
+  private float cloudY;
 
   @Override public void OnEnter() {
-    cloudY = 30f;
+    cloudY = 50f;
     image.LoadImage("background", PREFIX + "background");
     image.LoadImage("HWANUNG_BODY", PREFIX + "HWANUNG_BODY");
     image.LoadImage("HWANUNG_FACE", PREFIX + "HWANUNG_FACE");
@@ -26,7 +26,7 @@ public class S1C15V2 extends Scene {
     image.DrawImageScale("HWANUNG_BODY", new PVector(HWANUNG_BODY_X, HWANUNG_BODY_Y - cloudY), new PVector(HWANUNG_BODY_SCALE, HWANUNG_BODY_SCALE));
     image.DrawImageScale("HWANUNG_FACE", new PVector(HWANUNG_FACE_X, HWANUNG_FACE_Y - cloudY), new PVector(HWANUNG_FACE_SCALE, HWANUNG_FACE_SCALE));
     image.DrawImage("cloud", new PVector(width / 2, height / 2 - cloudY));
-    cloudY -= 0.2f;
+    cloudY -= 0.13f;
     if (time.time - enterTime > SCENE_DURATION) {
       scene.ChangeScene(new S1C16());
     }

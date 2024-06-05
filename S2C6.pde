@@ -79,10 +79,10 @@ public class S2C6 extends Scene {
         continue;
       }
       if ((item & TYPE_SOOK) == TYPE_SOOK) {
-        image.DrawImageScale("sook", m_ItemsLoc[i], new PVector(0.015,0.015,0));
+        image.DrawImageScale("sook", m_ItemsLoc[i], new PVector(0.025,0.025,0));
       }
       if ((item & TYPE_MANUL) == TYPE_MANUL) {
-        image.DrawImageScale("manul", m_ItemsLoc[i], new PVector(0.015,0.015,0));
+        image.DrawImageScale("manul", m_ItemsLoc[i], new PVector(0.025,0.025,0));
       }
     }
     // 마우스 커서 근처에만 화면이 보이도록 구현
@@ -127,18 +127,18 @@ public class S2C6 extends Scene {
       }
     }
     // draw score
-    image.DrawImageScale("sook", new PVector(40, 50), new PVector(0.05,0.05,0));
+    image.DrawImageScale("sook", new PVector(50, 50), new PVector(0.05,0.05,0));
 
-    font.DrawFont("lee", ""+m_SookCnt, 255, 50, 80, 70);
+    font.DrawFont("lee", ""+m_SookCnt, 255, 50, 90, 70);
 
-    image.DrawImageScale("manul", new PVector(150, 50), new PVector(0.05,0.05,0));
-    font.DrawFont("lee", ""+m_ManulCnt, 255, 50, 190, 70);
+    image.DrawImageScale("manul", new PVector(160, 50), new PVector(0.05,0.05,0));
+    font.DrawFont("lee", ""+m_ManulCnt, 255, 50, 200, 70);
 
     // clock base
     image.DrawImageScale("clock", new PVector(1225, 55), new PVector(0.055,0.055,0));
     // draw time
 
-    textSize(28);
+    textSize(25);
     fill(0);
     String timeStr = "";
     if (displayTime < 10) {
@@ -147,7 +147,7 @@ public class S2C6 extends Scene {
     } else {
       timeStr = "D-" + displayTime;
     }
-    text(timeStr, 1193, 70);
+    text(timeStr, 1196, 70);
 
   }
 
@@ -159,8 +159,8 @@ public class S2C6 extends Scene {
     for(int i=0;
     i< m_ItemsLoc.length;
     i++) {
-      if (m_ItemsLoc[i].x - 15 <= mouseX && m_ItemsLoc[i].x + 15 >= mouseX) {
-        if (m_ItemsLoc[i].y - 15 <= mouseY && m_ItemsLoc[i].y + 15 >= mouseY) {
+      if (m_ItemsLoc[i].x - 25 <= mouseX && m_ItemsLoc[i].x + 25 >= mouseX) {
+        if (m_ItemsLoc[i].y - 25 <= mouseY && m_ItemsLoc[i].y + 25 >= mouseY) {
           // 이미 클릭한 아이템은 갯수로 포함하지 않도록 구현
           if ((m_Items[i] & TYPE_CLICKED) == TYPE_CLICKED) {
             continue;

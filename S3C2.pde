@@ -1,4 +1,3 @@
-
 public class S3C2 extends Scene {
   private float thinkScale = 0.3f;
   private int thinkY = 230;
@@ -18,6 +17,8 @@ public class S3C2 extends Scene {
     image.LoadImage("left", "Images/S3/C2/left");
     image.LoadImage("right", "Images/S3/C2/right");
     sound.LoadSound("effect", "Sounds/S3/C2/effect/effect.wav");
+    image.LoadImage("Button1", "Images/S3/C2/Button1");
+    image.LoadImage("Button2", "Images/S3/C2/Button2");
     isEffectOut = false;
 
   }
@@ -35,12 +36,14 @@ public class S3C2 extends Scene {
       selectOption = 1;
       image.DrawImageScale("left", new PVector(thinkLeftX + 60, thinkY + 50), new PVector(thinkScale + 0.1f, thinkScale + 0.1f));
       image.DrawImageScale("eye_black", new PVector(width / 2 - 15, height - 255), new PVector(0.23f, 0.23f));
+      image.DrawImageScale("Button1", new PVector(width / 2, height / 2), new PVector(1, 1));
+
       if (mousePressed) {
         scene.ChangeScene(new S3C3V1_1());
-          if (!isEffectOut){
-            sound.PlaySound("effect");
-            isEffectOut = !isEffectOut;
-          } 
+        if (!isEffectOut) {
+          sound.PlaySound("effect");
+          isEffectOut = !isEffectOut;
+        }
       }
     } else {
       image.DrawImageScale("left", new PVector(thinkLeftX, thinkY), new PVector(thinkScale, thinkScale));
@@ -49,12 +52,14 @@ public class S3C2 extends Scene {
       selectOption = 2;
       image.DrawImageScale("right", new PVector(thinkRightX - 60, thinkY + 50), new PVector(thinkScale + 0.1f, thinkScale + 0.1f));
       image.DrawImageScale("eye_black", new PVector(width / 2 - 9, height - 255), new PVector(0.23f, 0.23f));
+      image.DrawImageScale("Button2", new PVector(width / 2, height / 2), new PVector(1, 1));
+
       if (mousePressed) {
         scene.ChangeScene(new S3C3V2());
-           if (!isEffectOut){
-            sound.PlaySound("effect");
-            isEffectOut = !isEffectOut;
-          } 
+        if (!isEffectOut) {
+          sound.PlaySound("effect");
+          isEffectOut = !isEffectOut;
+        }
       }
     } else {
       image.DrawImageScale("right", new PVector(thinkRightX, thinkY), new PVector(thinkScale, thinkScale));

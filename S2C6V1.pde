@@ -84,6 +84,19 @@ public class S2C6V1 extends Scene {
       image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1));
       image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1));
 
+      //240605 QA
+      //Mouse Hover
+      if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
+        image.DrawImage("button_top", new PVector(width / 2, height / 2), 0f,255,220,220,220);
+      } else {
+        image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1));
+      }
+      //Mouse Hover
+      if (mouseX > 480 && mouseX < 800 && mouseY >237 && mouseY < 324) {
+        image.DrawImage("button_bottom", new PVector(width / 2, height / 2), 0f,255,220,220,220);
+      } else {
+        image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1));
+      }
       if (mousePressed && mouseButton == LEFT) {
         /// x 480 ~ 800 y237 ~ 324
         if (mouseX > 480 && mouseX < 800 && mouseY >237 && mouseY < 324) {

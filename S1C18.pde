@@ -22,17 +22,23 @@ public class S1C18 extends Scene {
     currentIndex = 0;
 
     image.LoadImage("background", "Images/S1/C18/background");
-    image.LoadImage("bear_body", "Images/S1/C18/bear_body");
-    image.LoadImage("bear_eyes0", "Images/S1/C18/bear_eyes0");
-    image.LoadImage("bear_eyes1", "Images/S1/C18/bear_eyes1");
-    image.LoadImage("bear_head0", "Images/S1/C18/bear_head0");
-    image.LoadImage("bear_head1", "Images/S1/C18/bear_head1");
-    image.LoadImage("tiger_body", "Images/S1/C18/tiger_body");
-    image.LoadImage("tiger_head0", "Images/S1/C18/tiger_head0");
-    image.LoadImage("tiger_head1", "Images/S1/C18/tiger_head1");
-    image.LoadImage("tiger_eyes0", "Images/S1/C18/tiger_eyes0");
-    image.LoadImage("tiger_eyes1", "Images/S1/C18/tiger_eyes1");
+    // image.LoadImage("bear_body", "Images/S1/C18/bear_body");
+    // image.LoadImage("bear_eyes0", "Images/S1/C18/bear_eyes0");
+    // image.LoadImage("bear_eyes1", "Images/S1/C18/bear_eyes1");
+    // image.LoadImage("bear_head0", "Images/S1/C18/bear_head0");
+    // image.LoadImage("bear_head1", "Images/S1/C18/bear_head1");
+    // image.LoadImage("tiger_body", "Images/S1/C18/tiger_body");
+    // image.LoadImage("tiger_head0", "Images/S1/C18/tiger_head0");
+    // image.LoadImage("tiger_head1", "Images/S1/C18/tiger_head1");
+    // image.LoadImage("tiger_eyes0", "Images/S1/C18/tiger_eyes0");
+    // image.LoadImage("tiger_eyes1", "Images/S1/C18/tiger_eyes1");
     image.LoadImage("narr", "Images/S1/C18/narr");
+
+    image.LoadImage("tiger0", "Images/S1/C18/tiger0");
+    image.LoadImage("tiger1", "Images/S1/C18/tiger1");
+
+    image.LoadImage("bear0", "Images/S1/C18/bear0");
+    image.LoadImage("bear1", "Images/S1/C18/bear1");
 
     playedSoundMap = new HashMap<String, Integer>();
     sound.LoadSound("S1C18_NARR", "Sounds/S1/C18/narr/narr.mp3");
@@ -50,12 +56,17 @@ public class S1C18 extends Scene {
     changeTick += time.deltaTime;
 
     image.DrawImage("background", new PVector(width / 2, height / 2, 0));
-    image.DrawImageScale("bear_body", new PVector(bearX, animalY, 0), new PVector(0.25, 0.25, 0));
-    image.DrawImageScale("bear_eyes" + currentIndex, new PVector(bearX, animalY, 0), new PVector(0.25, 0.25, 0));
-    image.DrawImageScale("bear_head" + currentIndex, new PVector(bearX, animalY, 0), new PVector(0.25, 0.25, 0));
-    image.DrawImageScale("tiger_body", new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
-    image.DrawImageScale("tiger_eyes" + currentIndex, new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
-    image.DrawImageScale("tiger_head" + currentIndex, new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
+    // image.DrawImageScale("bear_body", new PVector(bearX, animalY, 0), new PVector(0.25, 0.25, 0));
+    // image.DrawImageScale("bear_eyes" + currentIndex, new PVector(bearX, animalY, 0), new PVector(0.25, 0.25, 0));
+    // image.DrawImageScale("bear_head" + currentIndex, new PVector(bearX, animalY, 0), new PVector(0.25, 0.25, 0));
+    // image.DrawImageScale("tiger_body", new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
+    // image.DrawImageScale("tiger_eyes" + currentIndex, new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
+    // image.DrawImageScale("tiger_head" + currentIndex, new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
+
+    //240604 수정
+    image.DrawImageScale("bear"+currentIndex, new PVector(bearX, animalY, 0), new PVector(0.25, 0.25, 0));
+    image.DrawImageScale("tiger"+currentIndex, new PVector(tigerX, animalY, 0), new PVector(0.25, 0.25, 0));
+
     //240603 수정
     image.DrawImageScale("narr", new PVector(width / 2, height / 2), new PVector(1.0f, 1.0f));
 
