@@ -38,7 +38,7 @@ public class S2C4 extends Scene {
     sound.LoadSound("narr1", "Sounds/S2/C4/narr/narr1.mp3");
     sound.LoadSound("narr2", "Sounds/S2/C4/narr/narr2.mp3");
     sound.LoadSound("narr3", "Sounds/S2/C4/narr/narr3.mp3");
-    isSessionOut = new boolean[] {false, false, false};
+        isSessionOut = new boolean[] {false, false, false};
 
 
     animalScale = 0.25f;
@@ -60,7 +60,12 @@ public class S2C4 extends Scene {
 
   @Override public void OnDraw() {
     image.DrawImageScale("background", new PVector(width / 2, height / 2), new PVector(1, 1));
-    image.DrawImageScale("bear"+((millis()/500)%2+1), new PVector(width / 2 - 200, height - 280), new PVector(animalScale, animalScale));
+    if (sessionIndex==1) {
+      image.DrawImageScale("bear"+((millis()/300)%2+1), new PVector(width / 2 - 200, height - 280), new PVector(animalScale, animalScale));
+    } else {
+      image.DrawImageScale("bear2", new PVector(width / 2 - 200, height - 280), new PVector(animalScale, animalScale));
+
+    }
     image.DrawImageScale("tiger", new PVector(width / 2 + 50, height - 305), new PVector(animalScale, animalScale));
     image.DrawImageScale("basket", new PVector(width / 2 + 360, height - 105), new PVector(0.2f, 0.2f), -0.27f);
     image.DrawImageScale("garlic", new PVector(width - 130, height - 210), new PVector(utilScale, utilScale), -0.3f);
@@ -92,5 +97,6 @@ public class S2C4 extends Scene {
   }
 
   @Override public void OnExit() {
+    sound.stopNowPlaying();
   }
 }
