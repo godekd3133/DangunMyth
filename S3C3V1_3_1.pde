@@ -32,7 +32,7 @@ public class S3C3V1_3_1 extends Scene {
 
     SCENE_SECONDS = 6;
     diameter = height - 400; //최대크기
-    minimumSize = diameter-300;
+    minimumSize = diameter-350;
     angle = 0;
 
     // 이미지 로드
@@ -42,7 +42,7 @@ public class S3C3V1_3_1 extends Scene {
     image.LoadImage("환웅", PREFIX+"환웅");
 
     image.LoadImage("heart", PREFIX+"heart");
-    
+
     sound.LoadSound("Choice","Sounds/Effects/Choice.mp3");
     sound.PlaySound("Choice");
 
@@ -71,9 +71,9 @@ public class S3C3V1_3_1 extends Scene {
     if (isTimeExceeded(startMinute, startSecond, SCENE_SECONDS)) {
       scene.ChangeScene(new S3C3V1_3_2());
     }
-    angle += 0.07; //크기 증가 속도
-    diameter+=0.2; //최대크기 증가
-    minimumSize+=3.0; //최소크기 증가
+    angle += 0.1; //크기 증가 속도
+    diameter+=7.0; //최대크기 증가
+    minimumSize+=15; //최소크기 증가
 
   }
 
