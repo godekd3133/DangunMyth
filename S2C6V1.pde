@@ -30,9 +30,9 @@ public class S2C6V1 extends Scene {
     timelineManager.pushTimeline(new TimelineCallback() {
 
       @Override public void OnDraw(float time) {
-        backgroundAlpha = lerp(0f, 188f, time / 10f);
+        backgroundAlpha = lerp(150f, 180f, time / 10f);
       }
-    }, 6f);
+    }, 3f);
 
     timelineManager.pushTimeline(new TimelineCallback() {
 
@@ -76,6 +76,7 @@ public class S2C6V1 extends Scene {
     // image.DrawImageScale("bear_tear", new PVector(width - 510, bearTearLeftY + bearTearSpeedL), new PVector(tearScale, tearScale));
     // image.DrawImageScale("bear_tear", new PVector(width - 440, bearTearRightY + bearTearSpeedR), new PVector(tearScale, tearScale));
 
+    println("alpht", backgroundAlpha);
     timelineManager.OnDraw();
     fill(0, backgroundAlpha);
     rect(0, 0, width, height);
