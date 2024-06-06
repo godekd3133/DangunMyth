@@ -4,8 +4,11 @@ public class S2C2 extends Scene {
   public float ROTATE_INTERVAL = 0.167f;
   public float rotateTick = 0f;
 
-  public float WALK_INTERVAL = 0.075f;
+  public float WALK_INTERVAL = 0.090f;
   public float walkTick = 0f;
+  private int imageNumber = 1;
+  private int imageMaxNumber = 3;
+  private int imageNumberDelta = 1;
 
   private int rock_x = 1100;
   private int rock_y = 500;
@@ -22,7 +25,7 @@ public class S2C2 extends Scene {
   private float bear_y = 400;
 
   private int animation = 1;
-  
+
   private float stepDuration = 0f;
   private float stepSoundInterval = 0.3f;
   private float stepSeconds = 0;
@@ -50,6 +53,14 @@ public class S2C2 extends Scene {
     sound.LoadSound("step1", "Sounds/Effects/Step_Cave2.mp3");
     sound.LoadSound("step2", "Sounds/Effects/Step_Cave3.mp3");
     sound.LoadSound("step3", "Sounds/Effects/Step_Cave4.mp3");
+    image.LoadImage("tiger1", "Images/S2/C2/tiger1");
+    image.LoadImage("tiger2", "Images/S2/C2/tiger2");
+    image.LoadImage("tiger3", "Images/S2/C2/tiger3");
+    image.LoadImage("bear1", "Images/S2/C2/bear1");
+    image.LoadImage("bear2", "Images/S2/C2/bear2");
+    image.LoadImage("bear3", "Images/S2/C2/bear3");
+
+    sound.LoadSound("S2_S3_FootStuckRock", "Sounds/S2/C2/effect/FootStuckRock.mp3");
 
     _rock_size = 0.4;
     _rock_rotate = 0.01;
@@ -70,7 +81,7 @@ public class S2C2 extends Scene {
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(1, 1, 0));
 
     // move tiger, bear
-    if (time.time -enterTime > 3.167f) {
+    if (time.time - enterTime > 4.167f) {
       rotateTick += time.deltaTime;
       if (rotateTick > ROTATE_INTERVAL) {
         rotateTick = 0;
@@ -78,7 +89,7 @@ public class S2C2 extends Scene {
       }
       image.DrawImageScale("rock", new PVector(rock_x, rock_y, 0), new PVector(_rock_size, _rock_size, 0), _rock_rotate);
 
-      if (_rock_size >= 0.2f) {
+      if (_rock_size >= 0.25f) {
         _rock_size -= 0.6f * time.deltaTime;
       }
     } else {
@@ -86,36 +97,49 @@ public class S2C2 extends Scene {
       if (walkTick > WALK_INTERVAL) {
         walkTick = 0;
         animation *= -1;
-      }
-      tiger_x += 240 * time.deltaTime;
-      bear_x += 240 * time.deltaTime;
-    }
-    image.DrawImageScale("tiger_face", new PVector(tiger_x + 30, tiger_y - 50, 0), new PVector(0.2,0.2,0));
-    image.DrawImageScale("tiger_left", new PVector(tiger_x - 30, tiger_y + 140, 0), new PVector(0.2,0.2,0), animation * -0.15);
-    image.DrawImageScale("tiger_right", new PVector(tiger_x + 30, tiger_y + 140, 0), new PVector(0.2,0.2,0), animation * 0.15);
-    image.DrawImageScale("tiger_body", new PVector(tiger_x, tiger_y, 0), new PVector(0.2,0.2,0));
 
-    image.DrawImageScale("bear_face", new PVector(bear_x + 20, bear_y - 30, 0), new PVector(0.2,0.2,0));
-    image.DrawImageScale("bear_left", new PVector(bear_x - 30, bear_y + 140, 0), new PVector(0.2,0.2,0), animation * -0.15);
-    image.DrawImageScale("bear_right", new PVector(bear_x + 30, bear_y + 140, 0), new PVector(0.2,0.2,0), animation * 0.15);
-    image.DrawImageScale("bear_body", new PVector(bear_x, bear_y, 0), new PVector(0.2,0.2,0));
-  
-    //발소리
-    if (stepSeconds >= stepSoundInterval && stepDuration < 3.1f){
-      stepID = int(random(2));
-      if(stepID == 0){
-        sound.PlaySound("step1");
-      }else if(stepID == 1){
-        sound.PlaySound("step2");
-      }else if(stepID == 2){
-        sound.PlaySound("step3");
+        //발소리
+        if (stepSeconds >= stepSoundInterval && stepDuration < 3.1f) {
+          stepID = int(random(2));
+          if (stepID == 0) {
+            sound.PlaySound("step1");
+          }
+          else if (stepID == 1) {
+            sound.PlaySound("step2");
+          }
+          else if (stepID == 2) {
+            sound.PlaySound("step3");
+          }
+          stepSeconds = 0;
+        } else {
+          stepDuration += time.deltaTime;
+          stepSeconds += time.deltaTime;
+        }
+        imageNumber += imageNumberDelta;
+
+        // if (imageNumber == 1 || imageNumber == imageMaxNumber) {
+          //   imageNumberDelta *= -1;
+          // }
+        if (imageNumber == imageMaxNumber) {
+          imageNumber = 1;
+        }
       }
-      stepSeconds = 0;
-    }else{
-      stepDuration += time.deltaTime;
-      stepSeconds += time.deltaTime; 
+      tiger_x += 180 * time.deltaTime;
+      bear_x += 180 * time.deltaTime;
     }
-  
+    // image.DrawImageScale("tiger_face", new PVector(tiger_x + 30, tiger_y - 50, 0), new PVector(0.2,0.2,0));
+    // image.DrawImageScale("tiger_left", new PVector(tiger_x - 30, tiger_y + 140, 0), new PVector(0.2,0.2,0), animation * -0.15);
+    // image.DrawImageScale("tiger_right", new PVector(tiger_x + 30, tiger_y + 140, 0), new PVector(0.2,0.2,0), animation * 0.15);
+    // image.DrawImageScale("tiger_body", new PVector(tiger_x, tiger_y, 0), new PVector(0.2,0.2,0));
+
+    // image.DrawImageScale("bear_face", new PVector(bear_x + 20, bear_y - 30, 0), new PVector(0.2,0.2,0));
+    // image.DrawImageScale("bear_left", new PVector(bear_x - 30, bear_y + 140, 0), new PVector(0.2,0.2,0), animation * -0.15);
+    // image.DrawImageScale("bear_right", new PVector(bear_x + 30, bear_y + 140, 0), new PVector(0.2,0.2,0), animation * 0.15);
+    // image.DrawImageScale("bear_body", new PVector(bear_x, bear_y, 0), new PVector(0.2,0.2,0));
+
+    image.DrawImageScale("tiger" + imageNumber, new PVector(tiger_x, tiger_y + 30, 0), new PVector(0.2,0.2,0));
+    image.DrawImageScale("bear" + imageNumber, new PVector(bear_x, bear_y + 30, 0), new PVector(0.2,0.2,0));
+
     if (time.time- enterTime >SCENE_DURATION) {
       scene.ChangeScene(new S2C3());
     }
