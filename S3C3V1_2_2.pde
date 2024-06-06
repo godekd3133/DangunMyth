@@ -45,8 +45,11 @@ public class S3C3V1_2_2 extends Scene {
     fill(0, min(128, lerp(255, 128,(float)darkenMillis / elapsedMills)));
     rect(0, 0, width, height);
 
-    image.DrawImageScale("범녀", new PVector(lastScene .범녀_X_End, lastScene .범녀_Y_End), new PVector(0.2, 0.2));
-    image.DrawImageScale("웅녀", new PVector(lastScene .웅녀_X_End, lastScene .웅녀_Y_End), new PVector(0.2, 0.2));
+    float tigerScale = mouseX > 260 && mouseX < 260 + 230 && mouseY > 75 && mouseY < 75 + 65 ? 0.22f : 0.2f;
+    float bearScale = mouseX > 500 && mouseX < 500 + 205 && mouseY > 75 && mouseY < 75 + 65 ? 0.22f : 0.2f;
+
+    image.DrawImageScale("범녀", new PVector(lastScene .범녀_X_End, lastScene .범녀_Y_End), new PVector(tigerScale, tigerScale));
+    image.DrawImageScale("웅녀", new PVector(lastScene .웅녀_X_End, lastScene .웅녀_Y_End), new PVector(bearScale, bearScale));
     image.DrawImageScale("환웅", new PVector(환웅_X, 환웅_Y), new PVector(0.3, 0.3));
 
     image.DrawImageScale("button_left", new PVector(width / 2 - 60, height / 2 - 80), new PVector(0.8f, 0.8f));
