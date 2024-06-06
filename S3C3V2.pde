@@ -80,17 +80,21 @@ public class S3C3V2 extends Scene {
     image.DrawImageScale(tigerList[imageIndex % 3], new PVector(tiger_X, tiger_Y), new PVector(tiger_SCALE, tiger_SCALE, 0));
     image.DrawImage("text", new PVector(width / 2, height / 2));
 
-    if (tiger_X < 1000) {
-      tiger_X += 90* time.deltaTime;
-      tiger_Y -= 0.5f* time.deltaTime;
-      tiger_SCALE -= 0.07f * time.deltaTime;
+    // if (tiger_X < 1000) {
+      //   tiger_X += 90* time.deltaTime;
+      //   tiger_Y -= 0.5f* time.deltaTime;
+      //   tiger_SCALE -= 0.07f * time.deltaTime;
+      if (tiger_X < 800) {
+        tiger_X += 57.6f* time.deltaTime;
+        tiger_Y -= 0.32f* time.deltaTime;
+        tiger_SCALE -= 0.0448f * time.deltaTime;
+      }
+      if (time.time- enterTime > SCENE_DURATION) {
+        scene.ChangeScene(new S3C3V2_1_1());
+      }
     }
-    if (time.time- enterTime > SCENE_DURATION) {
-      scene.ChangeScene(new S3C3V2_1_1());
-    }
-  }
 
-  @Override public void OnExit() {
-    sound.stopNowPlaying();
+    @Override public void OnExit() {
+      sound.stopNowPlaying();
+    }
   }
-}
