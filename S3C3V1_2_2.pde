@@ -49,20 +49,20 @@ public class S3C3V1_2_2 extends Scene {
     image.DrawImageScale("웅녀", new PVector(lastScene .웅녀_X_End, lastScene .웅녀_Y_End), new PVector(0.2, 0.2));
     image.DrawImageScale("환웅", new PVector(환웅_X, 환웅_Y), new PVector(0.3, 0.3));
 
-    image.DrawImage("button_left", new PVector(width / 2, height / 2));
-    image.DrawImage("button_right", new PVector(width / 2, height / 2));
+    image.DrawImageScale("button_left", new PVector(width / 2 - 60, height / 2 - 80), new PVector(0.8f, 0.8f));
+    image.DrawImageScale("button_right", new PVector(width / 2, height / 2 - 55), new PVector(0.8f, 0.8f));
 
     checkClick();
   }
 
   private void checkClick() {
     if (mousePressed && selected == false) {
-      if (mouseX > 310 && mouseX < 310 + 150 && mouseY > 70 && mouseY < 70 + 80) {
+      if (mouseX > 260 && mouseX < 260 + 230 && mouseY > 75 && mouseY < 75 + 65) {
         println("범녀 선택");
         scene.ChangeScene(new S3C3V1_4_1());
         selected = true;
       }
-      if (mouseX > 520 && mouseX < 520 + 150 && mouseY > 70 && mouseY < 70 + 80) {
+      if (mouseX > 500 && mouseX < 500 + 205 && mouseY > 75 && mouseY < 75 + 65) {
         println("웅녀 선택");
         scene.ChangeScene(new S3C3V1_3_1());
         selected = true;
