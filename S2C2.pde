@@ -10,13 +10,13 @@ public class S2C2 extends Scene {
   private int imageMaxNumber = 3;
   private int imageNumberDelta = 1;
 
-  private int rock_x = 1100;
-  private int rock_y = 500;
+  private int rock_x = 1000;
+  private int rock_y = 450;
 
   private int rock_width = 200;
   private int rock_height = 200;
 
-  private float _rock_size = 0.4;
+  private float _rock_size = 0.5;
   private float _rock_rotate = 0.01;
 
   private float tiger_x = 20;
@@ -60,7 +60,7 @@ public class S2C2 extends Scene {
     image.LoadImage("bear2", "Images/S2/C2/bear2");
     image.LoadImage("bear3", "Images/S2/C2/bear3");
 
-    _rock_size = 0.4;
+    _rock_size = 0.5;
     _rock_rotate = 0.01;
     tiger_x = 20;
     tiger_y = 400;
@@ -78,6 +78,19 @@ public class S2C2 extends Scene {
     }
     image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), new PVector(1, 1, 0));
 
+    // image.DrawImageScale("tiger_face", new PVector(tiger_x + 30, tiger_y - 50, 0), new PVector(0.2,0.2,0));
+    // image.DrawImageScale("tiger_left", new PVector(tiger_x - 30, tiger_y + 140, 0), new PVector(0.2,0.2,0), animation * -0.15);
+    // image.DrawImageScale("tiger_right", new PVector(tiger_x + 30, tiger_y + 140, 0), new PVector(0.2,0.2,0), animation * 0.15);
+    // image.DrawImageScale("tiger_body", new PVector(tiger_x, tiger_y, 0), new PVector(0.2,0.2,0));
+
+    // image.DrawImageScale("bear_face", new PVector(bear_x + 20, bear_y - 30, 0), new PVector(0.2,0.2,0));
+    // image.DrawImageScale("bear_left", new PVector(bear_x - 30, bear_y + 140, 0), new PVector(0.2,0.2,0), animation * -0.15);
+    // image.DrawImageScale("bear_right", new PVector(bear_x + 30, bear_y + 140, 0), new PVector(0.2,0.2,0), animation * 0.15);
+    // image.DrawImageScale("bear_body", new PVector(bear_x, bear_y, 0), new PVector(0.2,0.2,0));
+
+    image.DrawImageScale("tiger" + imageNumber, new PVector(tiger_x, tiger_y + 30, 0), new PVector(0.2,0.2,0));
+    image.DrawImageScale("bear" + imageNumber, new PVector(bear_x, bear_y + 30, 0), new PVector(0.2,0.2,0));
+
     // move tiger, bear
     if (time.time - enterTime > 4.167f) {
       rotateTick += time.deltaTime;
@@ -87,7 +100,7 @@ public class S2C2 extends Scene {
       }
       image.DrawImageScale("rock", new PVector(rock_x, rock_y, 0), new PVector(_rock_size, _rock_size, 0), _rock_rotate);
 
-      if (_rock_size >= 0.25f) {
+      if (_rock_size >= 0.4f) {
         _rock_size -= 0.6f * time.deltaTime;
       }
     } else {
@@ -126,19 +139,6 @@ public class S2C2 extends Scene {
       tiger_x += 180 * time.deltaTime;
       bear_x += 180 * time.deltaTime;
     }
-    // image.DrawImageScale("tiger_face", new PVector(tiger_x + 30, tiger_y - 50, 0), new PVector(0.2,0.2,0));
-    // image.DrawImageScale("tiger_left", new PVector(tiger_x - 30, tiger_y + 140, 0), new PVector(0.2,0.2,0), animation * -0.15);
-    // image.DrawImageScale("tiger_right", new PVector(tiger_x + 30, tiger_y + 140, 0), new PVector(0.2,0.2,0), animation * 0.15);
-    // image.DrawImageScale("tiger_body", new PVector(tiger_x, tiger_y, 0), new PVector(0.2,0.2,0));
-
-    // image.DrawImageScale("bear_face", new PVector(bear_x + 20, bear_y - 30, 0), new PVector(0.2,0.2,0));
-    // image.DrawImageScale("bear_left", new PVector(bear_x - 30, bear_y + 140, 0), new PVector(0.2,0.2,0), animation * -0.15);
-    // image.DrawImageScale("bear_right", new PVector(bear_x + 30, bear_y + 140, 0), new PVector(0.2,0.2,0), animation * 0.15);
-    // image.DrawImageScale("bear_body", new PVector(bear_x, bear_y, 0), new PVector(0.2,0.2,0));
-
-    image.DrawImageScale("tiger" + imageNumber, new PVector(tiger_x, tiger_y + 30, 0), new PVector(0.2,0.2,0));
-    image.DrawImageScale("bear" + imageNumber, new PVector(bear_x, bear_y + 30, 0), new PVector(0.2,0.2,0));
-
     if (time.time- enterTime >SCENE_DURATION) {
       scene.ChangeScene(new S2C3());
     }
