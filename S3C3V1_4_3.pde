@@ -1,7 +1,7 @@
 public class S3C3V1_4_3 extends Scene {
   private float SCENE_DURATION = 7; // 5초 동안 씬 진행
   private String[] imageNames = {
-    "background", "body", "head", "arm", "mouth1", "mouth2", "ally", "enemy1", "enemy2", "enemy3"}
+    "background", "body", "head", "arm", "mouth1", "mouth2", "ally", "enemy1", "enemy2", "enemy3", "flag"}
   ;
   private String imagePath = "Images/S3/C3/V1/_4/_3/";
   private float manScale = 0.3f;
@@ -43,6 +43,7 @@ public class S3C3V1_4_3 extends Scene {
     image.DrawImageScale("enemy1", new PVector(500, 450), new PVector(enemyScale2, enemyScale2));
     image.DrawImageScale("enemy3", new PVector(350, 450), new PVector(enemyScale1, enemyScale1));
     image.DrawImageScale("ally", new PVector(1180, 500), new PVector(allyScale, allyScale));
+    image.DrawImageScale("flag", new PVector(1300, 250), new PVector(0.25f, 0.25f), 0.3f);
     if (isAnimating) image.DrawImageScale("arm", new PVector(950, 280), new PVector(manScale, manScale), 0.3f);
     else image.DrawImageScale("arm", new PVector(900, 300), new PVector(manScale, manScale));
     image.DrawImageScale("body", new PVector(900, 500), new PVector(manScale, manScale));
