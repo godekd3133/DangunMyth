@@ -43,6 +43,46 @@ public class S1C6_1 extends Scene {
   }
 
   @Override public void OnEnter() {
+    centerX = width/2;
+    centerY = height/2;
+    SCENE_DURATION = 14f;
+
+    hwaninDuration = 4f;
+    hwanwoongDuration = 3f;
+
+    soundStartTime = 0f;
+    hwaninStartTime = 4f;
+    hwanwoongStartTime = 9f;
+
+    narrFlag = false;
+    hwaninVoiceFlag = false;
+    hwanwoongVoiceFlag = false;
+
+    hwaninCoor = new PVector((float)centerX-300,(float)centerY);
+
+    mouseTickInterval = 10f/60f;
+    mouseTick = 0f;
+
+    //환인 위치
+    hwaninfaceOffset = -40;
+    hwaninX = centerX-250;
+    hwaninY = centerY-50;
+
+    //환인 얼굴 움직이는 변수
+    hwaninFaceFlag=false;
+    hwaninFaceCnt = 0;
+    hwaninMouse = true;
+
+    //환웅 위치
+    hwanwoongfaceOffsetY = -80;
+    hwanwoongfaceOffsetX = -25;
+    hwanwoongX = centerX+300;
+    hwanwoongY = centerY+180;
+    //환웅 얼굴 움직이는 변수
+    hwanwoongFaceFlag=false;
+    hwanwoongFaceCnt = 0;
+    hwanwoongMouse = true;
+
     hwaninFaceCnt=0;
     hwanwoongFaceCnt=0;
     mouseTick = 0f;
@@ -59,6 +99,7 @@ public class S1C6_1 extends Scene {
     // int hwaninY = centerY;
 
     //나레이션
+    image.LoadImage("text", "./Images/S1/C6-1/text");
     sound.LoadSound("narr", "Sounds/S1/C6-1/narr/narr.mp3");
 
     //환인
@@ -123,15 +164,16 @@ public class S1C6_1 extends Scene {
         hwanwoongVoiceFlag = true;
         sound.PlaySound("hwanwoong");
       }
-      if (hwanwoongVoiceFlag && time.time - soundStartTime > hwanwoongDuration) {
-        hwanwoongFaceFlag = false;
-      }
+      // if (hwanwoongVoiceFlag && time.time - soundStartTime > hwanwoongDuration) {
+        //   hwanwoongFaceFlag = false;
+        // }
     }
     //EndPoint
     if (time.time - enterTime >= SCENE_DURATION) {
       scene.ChangeScene(new S1C6_2());
     }
     image.DrawImageScale("Background", centerX, centerY, 1f, 0f, 255f);
+    image.DrawImageScale("text", centerX, centerY, 1f, 0f, 255f);
 
     //환인 Draw
     image.DrawImageScale("HwaninBody", hwaninX, hwaninY, 0.15, 0f, 255f);
