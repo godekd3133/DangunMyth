@@ -1,6 +1,6 @@
 public class S2C6V1 extends Scene {
   TimelineManager timelineManager = new TimelineManager();
-  private float backgroundAlpha = 188f;
+  private float backgroundAlpha = 0f;
   private float animalScale = 0.25f;
   private float tearScale = 0.025f;
   private float tigerTearSpeedL = 0f;
@@ -30,17 +30,10 @@ public class S2C6V1 extends Scene {
     timelineManager.pushTimeline(new TimelineCallback() {
 
       @Override public void OnDraw(float time) {
-        backgroundAlpha = lerp(0f, 128f, time / 3f);
-        println("backgroundAlpha",backgroundAlpha);
-      }
-    }, 3f);
-
-    timelineManager.pushTimeline(new TimelineCallback() {
-
-      @Override public void OnDraw(float time) {
         showButton = true;
       }
     }, 1);
+    backgroundAlpha = 0f;
     showButton = true;
     animalScale = 0.25f;
     tearScale = 0.025f;
@@ -78,7 +71,8 @@ public class S2C6V1 extends Scene {
     // image.DrawImageScale("bear_tear", new PVector(width - 440, bearTearRightY + bearTearSpeedR), new PVector(tearScale, tearScale));
 
     timelineManager.OnDraw();
-    fill(0, 128f);
+    if (showButton && backgroundAlpha<=180) backgroundAlpha += 1.2;
+    fill(0, backgroundAlpha);
     rect(0, 0, width, height);
 
     if (showButton) {
