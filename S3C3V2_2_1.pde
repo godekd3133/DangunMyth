@@ -18,7 +18,6 @@ public class S3C3V2_2_1 extends Scene {
     image.LoadImage("extra_left", PREFIX+"extra_left");
     image.LoadImage("extra_right", PREFIX+"extra_right");
     sound.LoadSound("haha", SOUND_PREFIX+"haha.mp3");
-    sound.LoadSound("thank", SOUND_PREFIX+"thank.mp3");
 
     startMillis = millis();// 씬 시작 millis
   }
@@ -37,13 +36,7 @@ public class S3C3V2_2_1 extends Scene {
       sound.playSoundOnce("haha");
       startMillis = millis(); // 대사 1 시작 millis
     }
-    // 대사 1 종료 후 1초 뒤 대사2 시작
-    if (!sound.hasSound("haha")&&sound.hasSound("thank")&&isTimeExceededMillis(startMillis, narrDuration+1)) {
-      narrDuration=sound.soundDuration("thank");
-      sound.playSoundOnce("thank");
-      startMillis = millis();
-    }
-    // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
+    // 대사 1 종료 후 1초 뒤 다음 장면으로 이동
     if (!sound.hasSound("haha")&&!sound.hasSound("thank")&&isTimeExceededMillis(startMillis, narrDuration+1.0)) {
       scene.ChangeScene(new S3C3V2_2_2());
     }

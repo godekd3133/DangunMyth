@@ -1,5 +1,5 @@
 public class S1C4 extends Scene {
-  public float SCENE_DURATION = 10f;
+  public float SCENE_DURATION = 7.5f;
   public float openDelay = 0.33f;
   public float closeMin = 1f;
   public float closeMax = 2f;

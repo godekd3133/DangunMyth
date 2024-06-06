@@ -1,5 +1,5 @@
 public class S1C9 extends Scene {
-  public float SCENE_DURATION = 10f;
+  public float SCENE_DURATION = 6f;
   public float MOVING_DURATION = 5f;
   public float PREPARATION_DURATION = 5f;
   private float cloudX;

@@ -7,7 +7,7 @@ public class S1C19_2 extends Scene {
   private int mouthIndex;
   private int armIndex;
 
-  private float firstDuration = 4.5f;
+  private float firstDuration = 3.5f;
   private float secondDuration = 4.0f;
   private float thridDuration = 5.5f;
 
@@ -44,7 +44,6 @@ public class S1C19_2 extends Scene {
     image.LoadImage("C19-2-Text", "Images/S1/C19/C19-2-Text");
 
     sound.LoadSound("hwanwoong1", "Sounds/S1/C19-2/hwanwoong1.mp3");
-    sound.LoadSound("hwanwoong2", "Sounds/S1/C19-2/hwanwoong2.mp3");
     enterTime = time.time;
   }
 
@@ -60,17 +59,10 @@ public class S1C19_2 extends Scene {
 
     image.DrawImage("C19-2-Text", new PVector(width / 2, height / 2, 0));
 
-    //그렇구나
-    if (time.time - enterTime > 3f && !firstFlag) {
+    //그렇구나 너희의 소원을 들어주마
+    if (time.time - enterTime > 1.5f && !firstFlag) {
       firstFlag = true;
       sound.PlaySound("hwanwoong1");
-    }
-    //너희의 소원을 들어주마
-    if (time.time - enterTime >= firstDuration + 1.5f) {
-      if (!secondFlag) {
-        secondFlag = true;
-        sound.PlaySound("hwanwoong2");
-      }
     }
     //입 flag
     if (mouthChangeTick >= mouthInterval) {
@@ -82,7 +74,7 @@ public class S1C19_2 extends Scene {
       armIndex ^= 1;
       armChangeTick = 0;
     }
-    if (time.time - enterTime >= firstDuration+secondDuration+2.0f) {
+    if (time.time - enterTime >= 5.5f) {
       scene.ChangeScene(new S1C19_3());
     }
   }

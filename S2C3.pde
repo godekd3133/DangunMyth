@@ -1,5 +1,5 @@
 public class S2C3 extends Scene {
-  public float SCENE_DURATION =3f;
+  public float SCENE_DURATION =2f;
   private static final String background = "S2C3_background";
   private static final String bear = "S2S3_bear";
   private static final String bearEye = "S2S3_bear_eye";
@@ -40,10 +40,8 @@ public class S2C3 extends Scene {
     image.LoadImage(text, "Images/S2/C3/text");
 
     sound.LoadSound(narr1, "Sounds/S2/C3/narr/narr1.mp3");
-    sound.LoadSound(narr2, "Sounds/S2/C3/narr/narr2.mp3");
     playedSoundMap = new HashMap<String, Integer>();
     playedSoundMap.put(narr1, 0);
-    playedSoundMap.put(narr2, 0);
 
     basketPosition = new PVector(800, 570);
     animalScale = new PVector(0.25f, 0.25);
@@ -57,10 +55,6 @@ public class S2C3 extends Scene {
     float currentTime =(millis() - startTime) / 1000;
 
     PlaySoundOnce(narr1);
-
-    if (currentTime > 1) {
-      PlaySoundOnce(narr2);
-    }
     image.DrawImageScale(background, backgroundPosition, backgroundSacle);
 
     float timeMovingTiger = 1.1;

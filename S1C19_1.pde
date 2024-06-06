@@ -1,5 +1,5 @@
 public class S1C19_1 extends Scene {
-  public float SCENE_DURATION = 10f;
+  public float SCENE_DURATION = 8.5f;
   private float tigerX = width - 200;
   private float tigerY = height - 150;
   private float bearX = width - 450;
@@ -43,7 +43,6 @@ public class S1C19_1 extends Scene {
     image.LoadImage("C19-1-Text", "Images/S1/C19/C19-1-Text");
 
     sound.LoadSound("narr", "Sounds/S1/C19-1/narr.mp3");
-    sound.LoadSound("Tiger", "Sounds/S1/C19-1/Tiger.mp3");
     sound.LoadSound("Bear", "Sounds/S1/C19-1/Bear.mp3");
 
   }
@@ -69,14 +68,12 @@ public class S1C19_1 extends Scene {
     if (time.time - enterTime >= narrDuration) {
       if (!animalVoiceFlag) {
         animalVoiceFlag = true;
-        sound.PlaySound("Tiger");
         sound.PlaySound("Bear");
-
       }
     }
-    // if (time.time - enterTime >= SCENE_DURATION) {
-      //   scene.ChangeScene(new S1C19_2());
-      // }
+    if (time.time - enterTime >= SCENE_DURATION) {
+         scene.ChangeScene(new S1C19_2());
+    }
   }
 
   @Override public void OnExit() {

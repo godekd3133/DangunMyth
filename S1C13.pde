@@ -18,6 +18,8 @@ public class S1C13 extends Scene {
       image.LoadImage(backgroundImage, IMG_PREFIX+backgroundImage);
       startMillis=millis();
     }
+    sound.LoadSound("Door","Sounds/Effects/WoodenDoorOpen.mp3");
+    sound.PlaySound("Door");
   }
 
   @Override public void OnDraw() {
@@ -32,7 +34,7 @@ image.DrawImage("background7", new PVector(width / 2, height / 2));
 
       }
     }
-    if (isTimeExceededMillis(startMillis, 6.0)) {
+    if (isTimeExceededMillis(startMillis, 4.0)) {
       scene.ChangeScene(new S1C14());
     }
   }

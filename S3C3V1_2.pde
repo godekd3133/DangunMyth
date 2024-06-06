@@ -11,7 +11,7 @@ public class S3C3V1_2 extends Scene {
   private final static float TIGER_X = BEAR_X+350;
   private final static float TIGER_Y = BEAR_Y;
 
-  private final static int SCENE_SCONDS = 3; // 3초 동안 씬 진행
+  private final static int SCENE_SCONDS = 4; // 4초 동안 씬 진행
   private int startMinute;
   private int startSecond;
   private float tongueY = 0; // ??????

@@ -1,5 +1,5 @@
 public class S1C19_3 extends Scene {
-  public float SCENE_DURATION = 10f;
+  public float SCENE_DURATION = 9f;
   private float handX;
   private float animalX;
   private float animalY;
@@ -41,7 +41,6 @@ public class S1C19_3 extends Scene {
 
     sound.LoadSound("hwanwoong1", "Sounds/S1/C19-3/hwanwoong1.mp3");
     sound.LoadSound("hwanwoong2", "Sounds/S1/C19-3/hwanwoong2.mp3");
-    sound.LoadSound("Tiger", "Sounds/S1/C19-3/Tiger.mp3");
     sound.LoadSound("Bear", "Sounds/S1/C19-3/Bear.mp3");
 
   }
@@ -55,23 +54,15 @@ public class S1C19_3 extends Scene {
 
     image.DrawImage("C19-3-Text", new PVector(width / 2, height / 2, 0));
 
-    //단, 동굴에서 마늘과 쑥을 먹으며...
+    //단, 동굴에서 마늘과 쑥을 먹으며..자, 여기 가져가거라.
     if (!firstFlag) {
       firstFlag = true;
       sound.PlaySound("hwanwoong1");
     }
-    //자, 여기 가져가거라
-    if (time.time - enterTime >= firstDuration) {
-      if (!secondFlag) {
-        secondFlag = true;
-        sound.PlaySound("hwanwoong2");
-      }
-    }
-    //너희의 소원을 들어주마
-    if (time.time - enterTime >= firstDuration+secondDuration) {
+    //감사합니다
+    if (time.time - enterTime >= 7.f) {
       if (!thridFlag) {
         thridFlag = true;
-        sound.PlaySound("Tiger");
         sound.PlaySound("Bear");
       }
     }

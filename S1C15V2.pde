@@ -1,6 +1,6 @@
 public class S1C15V2 extends Scene {
   private final static String PREFIX = "Images/S1/C15-2/";
-  public float SCENE_DURATION = 10f;
+  public float SCENE_DURATION = 5f;
   private float HWANUNG_BODY_X = width / 2;
   private float HWANUNG_BODY_Y = height / 2 + 20;
   private float HWANUNG_BODY_SCALE = 0.215;

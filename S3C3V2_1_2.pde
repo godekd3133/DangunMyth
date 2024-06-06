@@ -1,5 +1,5 @@
 public class S3C3V2_1_2 extends Scene {
-  private float SCENE_DURATION = 7f;
+  private float SCENE_DURATION = 4f;
   private float GIRL_X = 600;
   private float GIRL_Y = 550;
   private float GIRL_SCALE = 0.4;

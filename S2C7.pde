@@ -15,6 +15,7 @@ public class S2C7 extends Scene {
   private float tearSpeedL = 0f;
   private float tearSpeedR = 0f;
   private int startTime = 0;
+  private boolean playingYum = false;
 
   public S2C7() {
   }
@@ -35,6 +36,7 @@ public class S2C7 extends Scene {
 
     image.LoadImage("bear1", "Images/S2/C7/bear1");
     image.LoadImage("bear2", "Images/S2/C7/bear2");
+    sound.LoadSound("yum","Sounds/Effects/YumYum.mp3");
 
     startTime = millis();
   }
@@ -62,6 +64,11 @@ public class S2C7 extends Scene {
       image.DrawImageScale("bear2", new PVector(520, 440), new PVector(animalScale, animalScale));
       image.DrawImageScale("tiger2", new PVector(660, 405), new PVector(animalScale, animalScale));
     }
+    if(time.time - enterTime > 1.f && !playingYum){
+      sound.PlaySound("yum");
+      playingYum = true;
+    }
+    
     if (time.time - enterTime > SCENE_DURATION) {
       scene.ChangeScene(new S2C8());
     }

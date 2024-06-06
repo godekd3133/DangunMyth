@@ -39,6 +39,8 @@ public class EndingCredit extends Scene {
   }
 
   @Override public void OnEnter() {
+    sound.LoadSound("Credit","Sounds/BGM/EndingCredit.mp3");
+    sound.PlaySound("Credit");
     creditTextList.clear();
     offSetY =0f;
     scrollAmount = 0f;

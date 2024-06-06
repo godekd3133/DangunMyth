@@ -1,5 +1,5 @@
 public class S2C4 extends Scene {
-  public float SCENE_DURATION = 14.7f;
+  public float SCENE_DURATION = 11f;
   private float SCENE_TIME;
   private float animalScale = 0.25f;
   private float utilScale = 0.035f;
@@ -15,7 +15,7 @@ public class S2C4 extends Scene {
   private float tearRightY = height - 290f;
   private float tearSpeed = 0f;
   private int sessionIndex;
-  private float[] sessionDuration = {5f, 10f, 15f};
+  private float[] sessionDuration = {4f, 8f, 12f};
   private String[] sessionSound = {"narr1", "narr2", "narr3"};
   private String[] sessionText = {"text1", "text2", "text3"};
   private boolean[] isSessionOut;
@@ -79,7 +79,7 @@ public class S2C4 extends Scene {
     image.DrawImageScale("tear", new PVector(width - 510, tearLeftY + tearSpeed), new PVector(tearScale, tearScale));
     image.DrawImageScale("tear", new PVector(width - 440, tearRightY + tearSpeed), new PVector(tearScale, tearScale));
 
-    SCENE_TIME = time.time - enterTime - 3;
+    SCENE_TIME = time.time - enterTime;
     image.DrawImageScale(sessionText[sessionIndex], new PVector(width / 2, height / 2), new PVector(1, 1));
     if (!isSessionOut[sessionIndex]) {
       sound.PlaySound(sessionSound[sessionIndex]);

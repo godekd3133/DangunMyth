@@ -1,5 +1,5 @@
 public class S1C8 extends Scene {
-  public float SCENE_DURATION = 10f;
+  public float SCENE_DURATION = 6f;
 
   int centerX = width/2;
   int centerY = height/2;

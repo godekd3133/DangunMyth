@@ -25,6 +25,12 @@ public class S3C3V1_2_1 extends Scene {
   private int startMillis;
 
   private int 범녀숫자 = 1;
+  
+  private float stepDuration = 0f;
+  private float stepSoundInterval = 0.5f;
+  private float stepSeconds = 0;
+  private int stepID = 0;
+
 
   @Override public void OnEnter() {
     println("S3C3V1_2_1");
@@ -35,6 +41,9 @@ public class S3C3V1_2_1 extends Scene {
     image.LoadImage("범녀3", PREFIX+"범녀3");
     image.LoadImage("웅녀", PREFIX+"웅녀");
     image.LoadImage("환웅", PREFIX+"환웅");
+    sound.LoadSound("step1", "Sounds/Effects/Step_Grass_01.wav");
+    sound.LoadSound("step2", "Sounds/Effects/Step_Grass_02.wav");
+    sound.LoadSound("step3", "Sounds/Effects/Step_Grass_02.wav");
 
     startMinute=minute();
     startSecond=second();
@@ -62,6 +71,23 @@ public class S3C3V1_2_1 extends Scene {
     if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
       scene.ChangeScene(new S3C3V1_2_2());
     }
+    
+    //발소리
+    if (stepSeconds >= stepSoundInterval && stepDuration < 5f){
+      stepID = int(random(2));
+      if(stepID == 0){
+        sound.PlaySound("step1");
+      }else if(stepID == 1){
+        sound.PlaySound("step2");
+      }else if(stepID == 2){
+        sound.PlaySound("step3");
+      }
+      stepSeconds = 0;
+    }else{
+      stepDuration += time.deltaTime;
+      stepSeconds += time.deltaTime; 
+    }
+  
   }
 
   @Override public void OnExit() {

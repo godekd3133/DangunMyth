@@ -1,7 +1,7 @@
 public class S1C18 extends Scene {
-  public float SCENE_DURATION = 14f;
-  private float tigerSoundTime = 5.1f;
-  private float bear_sound_time = 9.2f;
+  public float SCENE_DURATION = 15f;
+  private float tigerSoundTime = 7f;
+  private float bear_sound_time = 10f;
   private float bearX = width / 2 - 100;
   private float animalY = height / 2 + 50;
   private float tigerX = width / 2 + 200;

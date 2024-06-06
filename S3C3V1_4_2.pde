@@ -2,7 +2,7 @@ public class S3C3V1_4_2 extends Scene {
   private int SCENE_SCONDS = 5; // 5초 동안 씬 진행
   private String PREFIX = "Images/S3/C3/V1/_4/_2/";
 
-  private float preparationTime = 3f;
+  private float preparationTime = 1f;
   private float alpha = 1f;
   private float fadeoutTime = 4f;
 

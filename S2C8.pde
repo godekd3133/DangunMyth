@@ -6,7 +6,8 @@ public class S2C8 extends Scene {
   private float sunY = 600;
   private float cloudXDistance = 0;
   private float speed = 0.8;
-
+  private boolean playingNarr = false;
+  private boolean Chicken = false;
   public float SCENE_DURATION = 3f;
 
   @Override public void OnEnter() {
@@ -25,8 +26,7 @@ public class S2C8 extends Scene {
     image.LoadImage("sun", PREFIX+"sun");
     image.LoadImage("text", PREFIX+"text");
     sound.LoadSound("narr", "Sounds/S2/C8/narr/narr.mp3");
-    sound.PlaySound("narr");
-
+    sound.LoadSound("Chicken", "Sounds/Effects/Chicken_02.mp3");
   }
 
   @Override public void OnDraw() {
@@ -38,7 +38,16 @@ public class S2C8 extends Scene {
     image.DrawImage("cloud_right", new PVector(centerX + cloudXDistance, centerY));
     image.DrawImage("cloud_middle", new PVector(centerX - cloudXDistance, centerY));
     image.DrawImage("text", centerVector);
-
+    
+    if(time.time - enterTime > 1.f && !playingNarr){
+      sound.PlaySound("narr");
+      playingNarr = true;
+    }
+    if(time.time - enterTime > 3.f && !Chicken){
+      sound.PlaySound("Chicken");
+      Chicken = true;
+    }
+    
     if (sunY<400) {
       scene.ChangeScene(new S3C1());
     } else {

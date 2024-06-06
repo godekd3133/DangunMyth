@@ -1,7 +1,7 @@
 public class S1C6_2 extends Scene {
   int centerX = width/2;
   int centerY = height/2;
-  public float SCENE_DURATION = 11f;
+  public float SCENE_DURATION = 8.5f;
   float hwaninFaceScale = 0.4f;
 
   float hwaninStartTime = 4.0f;

@@ -1,6 +1,6 @@
 public class S2C6V2 extends Scene {
   private boolean showButton = false;
-  public float SCENE_DURATION = 11.3f;
+  public float SCENE_DURATION = 10f;
   private float SCENE_TIME;
 
   private float bearArmX = width / 2 + 200;
@@ -17,7 +17,7 @@ public class S2C6V2 extends Scene {
   private float basketY = height / 2 + 190;
 
   private int sessionIndex;
-  private float[] sessionDuration = {3f, 7f, 11.3f};
+  private float[] sessionDuration = {3f, 6f, 10f};
   private String[] sessionSound = {"narr1", "narr2", "narr3"};
   private String[] sessionText = {"text1", "text2", "text3"};
   private boolean[] isSessionOut;
@@ -56,7 +56,7 @@ public class S2C6V2 extends Scene {
     image.DrawImageScale("bear_arm", new PVector(bearArmX, bearArmY), new PVector(0.4f, 0.4f), bearArmRotate);
     image.DrawImageScale("tiger_arm", new PVector(tigerArmX, tigerArmY), new PVector(0.4f, 0.4f), tigerArmRotate);
 
-    SCENE_TIME = time.time - enterTime - 3;
+    SCENE_TIME = time.time - enterTime;
     if (sessionIndex == 0) image.DrawImageScale(sessionText[sessionIndex], new PVector(width / 2, height / 2 - 60), new PVector(1, 1));
     else image.DrawImageScale(sessionText[sessionIndex], new PVector(width / 2, height / 2), new PVector(1, 1));
     if (!isSessionOut[sessionIndex]) {

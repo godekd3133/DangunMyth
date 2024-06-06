@@ -1,5 +1,5 @@
 public class S3C3V2_2_2 extends Scene {
-  private float preparationTime = 3f;
+  private float preparationTime = 1f;
   private String BACKGROUND_IMAGE = "Images/S3/C3/V1/_3/_2/Background";
   private String CHARACTER_IMAGE = "Images/S3/C3/V1/_3/_2/Characters";
   private float alpha = 1f;
@@ -13,8 +13,8 @@ public class S3C3V2_2_2 extends Scene {
     image.LoadImage("background", BACKGROUND_IMAGE);
     image.LoadImage("character", CHARACTER_IMAGE);
     alpha=255f;
-    fadeoutTime= 4f;
-    preparationTime= 3f;
+    //fadeoutTime= 4f;
+    //preparationTime= 3f;
   }
 
   @Override public void OnDraw() {

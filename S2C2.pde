@@ -1,5 +1,5 @@
 public class S2C2 extends Scene {
-  public float SCENE_DURATION = 10f;
+  public float SCENE_DURATION = 6f;
 
   public float ROTATE_INTERVAL = 0.167f;
   public float rotateTick = 0f;
@@ -22,6 +22,11 @@ public class S2C2 extends Scene {
   private float bear_y = 400;
 
   private int animation = 1;
+  
+  private float stepDuration = 0f;
+  private float stepSoundInterval = 0.3f;
+  private float stepSeconds = 0;
+  private int stepID = 0;
 
   private boolean isPlayedEffect = false;
 
@@ -41,7 +46,10 @@ public class S2C2 extends Scene {
     image.LoadImage("bear_left", "Images/S2/C2/bear_foot_right");
     image.LoadImage("bear_right", "Images/S2/C2/bear_foot_left");
 
-    sound.LoadSound("S2_S3_FootStuckRock", "Sounds/S2/C2/effect/FootStuckRock.mp3");
+    sound.LoadSound("S2_S3_FootStuckRock", "Sounds/Effects/FootStuckRock2.mp3");
+    sound.LoadSound("step1", "Sounds/Effects/Step_Cave2.mp3");
+    sound.LoadSound("step2", "Sounds/Effects/Step_Cave3.mp3");
+    sound.LoadSound("step3", "Sounds/Effects/Step_Cave4.mp3");
 
     _rock_size = 0.4;
     _rock_rotate = 0.01;
@@ -91,11 +99,27 @@ public class S2C2 extends Scene {
     image.DrawImageScale("bear_left", new PVector(bear_x - 30, bear_y + 140, 0), new PVector(0.2,0.2,0), animation * -0.15);
     image.DrawImageScale("bear_right", new PVector(bear_x + 30, bear_y + 140, 0), new PVector(0.2,0.2,0), animation * 0.15);
     image.DrawImageScale("bear_body", new PVector(bear_x, bear_y, 0), new PVector(0.2,0.2,0));
-
+  
+    //발소리
+    if (stepSeconds >= stepSoundInterval && stepDuration < 3.1f){
+      stepID = int(random(2));
+      if(stepID == 0){
+        sound.PlaySound("step1");
+      }else if(stepID == 1){
+        sound.PlaySound("step2");
+      }else if(stepID == 2){
+        sound.PlaySound("step3");
+      }
+      stepSeconds = 0;
+    }else{
+      stepDuration += time.deltaTime;
+      stepSeconds += time.deltaTime; 
+    }
+  
     if (time.time- enterTime >SCENE_DURATION) {
       scene.ChangeScene(new S2C3());
     }
-    if (!isPlayedEffect) {
+    if (!isPlayedEffect && time.time- enterTime > 3.2f) {
       sound.PlaySound("S2_S3_FootStuckRock");
       isPlayedEffect = true;
     }

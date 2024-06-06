@@ -1,5 +1,5 @@
 public class S3C1 extends Scene {
-  public float SCENE_DURATION = 7f;
+  public float SCENE_DURATION = 3f;
   private float animalScale = 0.25f;
   private float utilScale = 0.05f;
   private int animalY = height - 280;

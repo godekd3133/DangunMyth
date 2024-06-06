@@ -3,7 +3,7 @@ public class S1C16 extends Scene {
   private float handRotate = 0.0f;
   private float handAngle = 0.01f;
   private float handDir = -0.4f;
-  public float SCENE_DURATION = 10f;
+  public float SCENE_DURATION = 7f;
   private boolean isNarrOut;
 
   public S1C16() {

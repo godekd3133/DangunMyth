@@ -1,10 +1,10 @@
 public class S3C3V1_3_3 extends Scene {
-  private float preparationTime = 3f;
+  private float preparationTime = 5f;
   private String BACKGROUND_IMAGE = "Images/S3/C3/V1/_3/_3/Background";
   private String DANGUN_IMAGE = "Images/S3/C3/V1/_3/_3/Dangun";
   private float alpha = 1f;
 
-  private float fadeoutTime = 4f;
+  private float fadeoutTime = 6f;
 
   private boolean firstFlag = false;
 
@@ -21,8 +21,8 @@ public class S3C3V1_3_3 extends Scene {
     sound.LoadSound("narr", "Sounds/S3/C3/V1/_3/_3/narr.mp3");
     firstFlag=false;
     alpha=255f;
-    fadeoutTime= 4f;
-    preparationTime= 3f;
+    fadeoutTime= 6f;
+    preparationTime= 5f;
   }
 
   @Override public void OnDraw() {

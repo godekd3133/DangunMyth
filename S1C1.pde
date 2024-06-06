@@ -1,12 +1,12 @@
 public class S1C1 extends Scene {
-  public float SCENE_DURATION = 22f; // narr. 2 + 4 + 7 sec
+  public float SCENE_DURATION = 17f; // narr. 2 + 4 + 7 sec
 
   private float cloudX;
   private float zoomIn;
 
   private int sessionIndex;
   private float[] sessionDuration = {
-    8f, 15f, 21f, }
+    4f, 9.5f, 15f, }
   ;
   private String[] sessionSound = {
     "narr1", "narr2", "narr3"}

@@ -2,7 +2,7 @@ public class S1C7 extends Scene {
   private String PREFIX = "S1/C7/";
   private String IMG_PREFIX = "Images/"+PREFIX;
   private String SOUND_PREFIX = "Sounds/"+PREFIX+"narr/";
-  //public float SCENE_DURATION = 3f;
+  public float SCENE_DURATION = 6f;
 
   private float HWAN_BODY_X = 980.0f;
   private float HWAN_BODY_Y = 590.0f;
@@ -40,14 +40,16 @@ public class S1C7 extends Scene {
       sound.playSoundOnce("hwan");
       startMillis = millis();
     }
+    /*
     // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
     if (!sound.hasSound("narr")&&!sound.hasSound("hwan")&&isTimeExceededMillis(startMillis, narrDuration+1.0)) {
       scene.ChangeScene(new S1C8());
     }
+    */
     // 다음 장면으로 이동
-    // if (time.time - enterTime >= SCENE_DURATION) {
-      //   scene.ChangeScene(new S1C8());
-      // }
+    if (time.time - enterTime >= SCENE_DURATION) {
+        scene.ChangeScene(new S1C8());
+    }
   }
 
   @Override public void OnExit() {

@@ -41,7 +41,8 @@ public class S3C3V1_4_1 extends Scene {
     image.LoadImage("환웅", PREFIX+"환웅");
 
     image.LoadImage("heart", PREFIX+"heart");
-
+    sound.LoadSound("Choice","Sounds/Effects/Choice.mp3");
+    sound.PlaySound("Choice");
     startMinute=minute();
     startSecond=second();
     startMillis=millis();

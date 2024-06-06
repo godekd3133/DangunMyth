@@ -30,10 +30,8 @@ public class S1C15V1 extends Scene {
     image.LoadImage("button_bottom", "Images/S1/C15-1/button_bottom");
 
     sound.LoadSound("HWANUNG_NARR1", "Sounds/S1/C15-1/narr/narr1.mp3");
-    sound.LoadSound("HWANUNG_NARR2", "Sounds/S1/C15-1/narr/narr2.mp3");
     playedSoundMap = new HashMap<String, Integer>();
     playedSoundMap.put("HWANUNG_NARR1", 0);
-    playedSoundMap.put("HWANUNG_NARR2", 0);
     showButton = true;
 
     flowY = 0;
@@ -57,9 +55,6 @@ public class S1C15V1 extends Scene {
 
     float currentTime =(millis() - startTime) / 1000;
     PlaySoundOnce("HWANUNG_NARR1");
-    if (currentTime > 1.0f) {
-      PlaySoundOnce("HWANUNG_NARR2");
-    }
     //240603 텍스트 수정
     image.DrawImage("HWANUNG_TEXT", new PVector(width / 2, height / 2+50));
 

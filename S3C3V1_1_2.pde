@@ -24,6 +24,8 @@ public class S3C3V1_1_2 extends Scene {
     image.LoadImage("bear_star", "Images/S3/C3/V1/_1/_2/bear_star");
     image.LoadImage("tiger", "Images/S3/C3/V1/_1/_2/tiger");
     image.LoadImage("tiger_star", "Images/S3/C3/V1/_1/_2/tiger_star");
+    sound.LoadSound("harp","Sounds/Effects/HarpSound.mp3");
+    sound.PlaySound("harp");
 
     _time = 0;
     tiger_x = 800;

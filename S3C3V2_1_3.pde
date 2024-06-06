@@ -12,6 +12,9 @@ public class S3C3V2_1_3 extends Scene {
 
   private int startMillis;
   private float narrDuration;
+  
+  private float stepTime = 0;
+  private float curTime = 0;
 
   public S3C3V2_1_3() {
   }
@@ -35,6 +38,7 @@ public class S3C3V2_1_3 extends Scene {
     image.LoadImage("hwan_mouse_2", "Images/S3/C3/V2/_1/_3/hwanmouse2");
     image.LoadImage("hwan_shoe_1", "Images/S3/C3/V2/_1/_3/hwanshoe");
     image.LoadImage("hwan_shoe_2", "Images/S3/C3/V2/_1/_3/hwanshoe2");
+    sound.LoadSound("Step","Sounds/Effects/Step_Rock_02.mp3");
 
     GIRL_X = 900;
     GIRL_Y = 480;
@@ -79,6 +83,15 @@ public class S3C3V2_1_3 extends Scene {
       image.DrawImageScale("hwan_body", new PVector(HWAN_X, HWAN_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
       image.DrawImageScale("hwan_mouse_2", new PVector(HWAN_X+10, HWAN_MOUSE_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
     }
+    if(stepTime > 0.5 && curTime < 4.8f){
+     sound.PlaySound("Step");
+     stepTime = 0;
+    }else{
+     stepTime += time.deltaTime; 
+    }
+    curTime += time.deltaTime;
+    
+    
   }
 
   @Override public void OnExit() {
@@ -98,8 +111,8 @@ public class S3C3V2_1_3 extends Scene {
       sound.playSoundOnce("woonggirl");
       startMillis = millis();
     }
-    // 대사 2 종료 후 2초 뒤 다음 장면으로 이동
-    if (!sound.hasSound("hwanwoong")&&!sound.hasSound("woonggirl")&&isTimeExceededMillis(startMillis, narrDuration+2.0)) {
+    // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
+    if (!sound.hasSound("hwanwoong")&&!sound.hasSound("woonggirl")&&isTimeExceededMillis(startMillis, narrDuration+1.0)) {
       scene.ChangeScene(new S3C3V2_2_1());
     }
   }

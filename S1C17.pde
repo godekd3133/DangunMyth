@@ -28,9 +28,10 @@ public class S1C17 extends Scene {
   private float BEAR_POP = 0;
   private float TIGER_POP = 0;
   private float BUSH_OFFSET = 0;
-  private final static int SCENE_SCONDS = 5; // 3초 동안 씬 진행
+  private final static float SCENE_SCONDS = 6.5f; // 6.5초 동안 씬 진행
   private int startMinute;
   private int startSecond;
+  private boolean playingBushRustle = false;
 
   @Override public void OnEnter() {
     image.LoadImage("background", PREFIX + "background");
@@ -42,6 +43,7 @@ public class S1C17 extends Scene {
     image.LoadImage("VASSAL3", PREFIX + "VASSAL3");
     image.LoadImage("BEAR", PREFIX + "BEAR");
     image.LoadImage("TIGER", PREFIX + "TIGER");
+    sound.LoadSound("Bush", "Sounds/Effects/BushRustle.mp3");
     startMinute=minute();
     startSecond=second();
     BEAR_POP = 0;
@@ -59,6 +61,11 @@ public class S1C17 extends Scene {
     VASSAL1_JUMP = max((abs(sin(float(millis()) / 135 + 0.146))) * 1.4 - 0.4, 0) * 10;
     VASSAL2_JUMP = max((abs(sin(float(millis()) / 170 + 0.5))) * 2 - 1, 0) * 10;
     VASSAL3_JUMP = max((abs(sin(float(millis()) / 120 + 0.674))) * 1.6 - 0.6, 0) * 10;
+    
+    if (time.time - enterTime > 1.5f && playingBushRustle == false){
+      sound.PlaySound("Bush");  
+      playingBushRustle = true;
+    }
     if (BEAR_POP <= 450) {
       BEAR_POP += 2;
     }

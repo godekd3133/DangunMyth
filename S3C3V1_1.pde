@@ -1,6 +1,6 @@
 public class S3C3V1_1 extends Scene {
   private final static String PREFIX = "Images/S3/C3/V1/_1/";
-  private float SCENE_DURATION = 7f;
+  private float SCENE_DURATION = 4.5f;
 
   private boolean narrFlag = false;
 
