@@ -24,8 +24,8 @@ public class S3C3V1_1 extends Scene {
 
   @Override public void OnDraw() {
     image.DrawImage("background", new PVector(width / 2, height / 2, 0));
-    image.DrawImageScale("bear"+((millis()/500)%2+1), new PVector(500, 400, 0), new PVector(0.25, 0.25, 0));
-    image.DrawImageScale("tiger", new PVector(width / 2, height / 2, 0), new PVector(0.25, 0.25, 0));
+    image.DrawImageScale("bear"+((millis()/500)%2+1), new PVector(475, 400, 0), new PVector(0.25, 0.25, 0));
+    image.DrawImageScale("tiger", new PVector(width / 2 + 25, height / 2, 0), new PVector(0.25, 0.25, 0));
 
     image.DrawImage("text", new PVector(width / 2, height / 2, 0));
 
