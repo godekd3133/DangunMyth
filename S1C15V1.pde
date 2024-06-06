@@ -1,6 +1,6 @@
 public class S1C15V1 extends Scene {
   private final static String PREFIX = "Images/S1/C15-1/";
-  private float backgroundAlpha = 188f;
+  private float backgroundAlpha = 50;
 
   public float SCENE_DURATION = 20f;
   private float HWANUNG_BODY_X = width / 2;
@@ -33,7 +33,7 @@ public class S1C15V1 extends Scene {
     sound.LoadSound("HWANUNG_NARR2", "Sounds/S1/C15-1/narr/narr2.mp3");
     playedSoundMap = new HashMap<String, Integer>();
     playedSoundMap.put("HWANUNG_NARR1", 0);
-    playedSoundMap.put("HWANUNG_NARR2", 0);
+    // playedSoundMap.put("HWANUNG_NARR2", 0);
     showButton = true;
 
     flowY = 0;
@@ -58,7 +58,7 @@ public class S1C15V1 extends Scene {
     float currentTime =(millis() - startTime) / 1000;
     PlaySoundOnce("HWANUNG_NARR1");
     if (currentTime > 1.0f) {
-      PlaySoundOnce("HWANUNG_NARR2");
+      // PlaySoundOnce("HWANUNG_NARR2");
     }
     //240603 텍스트 수정
     image.DrawImage("HWANUNG_TEXT", new PVector(width / 2, height / 2+50));
@@ -67,7 +67,8 @@ public class S1C15V1 extends Scene {
       scene.ChangeScene(new S1C15V2());
     }
     //240605 QA 배경에 어두운거 추가
-    if (backgroundAlpha<=230) backgroundAlpha = lerp(0f, 188f, time.time / 10f);
+    // println(backgroundAlpha);
+    if (backgroundAlpha<=230) backgroundAlpha += 0.3;
 
     fill(0, backgroundAlpha);
     rect(0, 0, width, height);
@@ -102,6 +103,7 @@ public class S1C15V1 extends Scene {
           print('2');
 
           //Home 버튼 눌렀을 떄 어떻게 해야하는지 안정해져있음
+          scene.ChangeScene(new Opening());
           showButton = false;
 
         }

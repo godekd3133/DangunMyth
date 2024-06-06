@@ -26,8 +26,8 @@ public class S1C8 extends Scene {
   }
 
   @Override public void OnEnter() {
-    // int hwaninX = centerX-200;
-    // int hwaninY = centerY;
+    hwaninX = centerX-310;
+    hwaninY = centerY+350;
 
     //환인
     image.LoadImage("BackgroundS1C8", "./Images/S1/C8/Background");
@@ -76,12 +76,14 @@ public class S1C8 extends Scene {
     image.DrawImageScale("HwaninFace", hwaninX+15, hwaninY+hwaninfaceOffset+tick1Cnt-80, 0.49, 0f, 255f);
     image.DrawImageScale("HwaninHand", hwaninX+(-35-40), hwaninY+(-140-20), 0.4, 0.7, 255f);
 
+    image.DrawImageScale("NarrS1C8", new PVector(centerX, centerY), new PVector(1.0f, 1.0f));
+
     float currentTime =(millis() - startTime) / 1000;
 
     PlaySoundOnce("NarrS1C8");
     if (currentTime > 3.0f) {
       PlaySoundOnce("HawninS1C8");
-      image.DrawImageScale("NarrS1C8", new PVector(centerX, centerY), new PVector(1.0f, 1.0f));
+
     }
     // print("Draw");
 

@@ -1,8 +1,9 @@
 public class S3C2 extends Scene {
+  // private float thinkScale = 0.3f;
   private float thinkScale = 0.3f;
-  private int thinkY = 230;
-  private int thinkLeftX = 225;
-  private int thinkRightX = width - 225;
+  private int thinkY = 200;
+  private int thinkLeftX = 200;
+  private int thinkRightX = width - 200;
   private int selectOption = 0; // 0 : None / 1 : Left / 2 : Right
   private boolean isEffectOut;
 
@@ -34,9 +35,8 @@ public class S3C2 extends Scene {
     // Mouse animation
     if (mouseX <= width / 2 - 200 && mouseY <= height / 2) {
       selectOption = 1;
-      image.DrawImageScale("left", new PVector(thinkLeftX + 60, thinkY + 50), new PVector(thinkScale + 0.1f, thinkScale + 0.1f));
+      image.DrawImageScale("left", new PVector(thinkLeftX + 60, thinkY + 50), new PVector(thinkScale + 0.04f, thinkScale + 0.04f));
       image.DrawImageScale("eye_black", new PVector(width / 2 - 15, height - 255), new PVector(0.23f, 0.23f));
-      image.DrawImageScale("Button1", new PVector(width / 2, height / 2), new PVector(1, 1));
 
       if (mousePressed) {
         scene.ChangeScene(new S3C3V1_1());
@@ -50,9 +50,8 @@ public class S3C2 extends Scene {
     }
     if (mouseX >= width / 2 + 200 && mouseY <= height / 2) {
       selectOption = 2;
-      image.DrawImageScale("right", new PVector(thinkRightX - 60, thinkY + 50), new PVector(thinkScale + 0.1f, thinkScale + 0.1f));
+      image.DrawImageScale("right", new PVector(thinkRightX - 60, thinkY + 50), new PVector(thinkScale + 0.04f, thinkScale + 0.04f));
       image.DrawImageScale("eye_black", new PVector(width / 2 - 9, height - 255), new PVector(0.23f, 0.23f));
-      image.DrawImageScale("Button2", new PVector(width / 2, height / 2), new PVector(1, 1));
 
       if (mousePressed) {
         scene.ChangeScene(new S3C3V2());
@@ -63,6 +62,13 @@ public class S3C2 extends Scene {
       }
     } else {
       image.DrawImageScale("right", new PVector(thinkRightX, thinkY), new PVector(thinkScale, thinkScale));
+    }
+    //Button
+    if (mouseX <= width / 2 - 200 && mouseY <= height / 2) {
+      image.DrawImageScale("Button1", new PVector(width / 2, height / 2), new PVector(0.7, 0.7));
+    }
+    else if (mouseX >= width / 2 + 200 && mouseY <= height / 2) {
+      image.DrawImageScale("Button2", new PVector(width / 2, height / 2), new PVector(0.7, 0.7));
     }
     if (selectOption == 0) image.DrawImageScale("eye_black", new PVector(width / 2 - 12, height - 245), new PVector(0.23f, 0.23f));
   }
