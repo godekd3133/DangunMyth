@@ -9,7 +9,7 @@ public class S3C3V1_4_1 extends Scene {
   private float 환웅_X = 1150;
   private float 환웅_Y = 500;
 
-  private int SCENE_SECONDS = 7;
+  private int SCENE_SECONDS = 6;
   private int startMinute;
   private int startSecond;
   private int startMillis;
@@ -67,9 +67,9 @@ public class S3C3V1_4_1 extends Scene {
     if (isTimeExceeded(startMinute, startSecond, SCENE_SECONDS)) {
       scene.ChangeScene(new S3C3V1_4_2());
     }
-    angle += 0.07; //크기 증가 속도
-    diameter+=0.2; //최대크기 증가
-    minimumSize+=3.0; //최소크기 증가
+    angle += 0.1; //크기 증가 속도
+    diameter+=7.0; //최대크기 증가
+    minimumSize+=15; //최소크기 증가
   }
 
   @Override public void OnExit() {
