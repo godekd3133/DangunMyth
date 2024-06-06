@@ -1,7 +1,7 @@
 public class S3C3V1_2 extends Scene {
   private final static String PREFIX = "Images/S3/C3/V1/_2/";
 
-  private final static float CHARACTER_SCALE = 0.3;
+  private final static float CHARACTER_SCALE = 0.25f;
 
   private final static float BEAR_X = 470;
   private final static float BEAR_Y = 460;
