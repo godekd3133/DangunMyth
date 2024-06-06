@@ -45,27 +45,34 @@ public class S3C3V1_2_2 extends Scene {
     fill(0, min(128, lerp(255, 128,(float)darkenMillis / elapsedMills)));
     rect(0, 0, width, height);
 
-    float tigerScale = mouseX > 260 && mouseX < 260 + 230 && mouseY > 75 && mouseY < 75 + 65 ? 0.22f : 0.2f;
-    float bearScale = mouseX > 500 && mouseX < 500 + 205 && mouseY > 75 && mouseY < 75 + 65 ? 0.22f : 0.2f;
+    boolean hoveredTiger = mouseX > 280 && mouseX < 280 + 200 && mouseY > 150 && mouseY < 150 + 460;
+    boolean hoveredBear = mouseX > 500 && mouseX < 500 + 200 && mouseY > 150 && mouseY < 150 + 460;
+
+    float tigerScale = hoveredTiger ? 0.22f : 0.2f;
+    float bearScale = hoveredBear ? 0.22f : 0.2f;
 
     image.DrawImageScale("범녀", new PVector(lastScene .범녀_X_End, lastScene .범녀_Y_End), new PVector(tigerScale, tigerScale));
     image.DrawImageScale("웅녀", new PVector(lastScene .웅녀_X_End, lastScene .웅녀_Y_End), new PVector(bearScale, bearScale));
     image.DrawImageScale("환웅", new PVector(환웅_X, 환웅_Y), new PVector(0.3, 0.3));
 
-    image.DrawImageScale("button_left", new PVector(width / 2 - 60, height / 2 - 80), new PVector(0.8f, 0.8f));
-    image.DrawImageScale("button_right", new PVector(width / 2, height / 2 - 55), new PVector(0.8f, 0.8f));
+    if (hoveredTiger) {
+      image.DrawImageScale("button_left", new PVector(width / 2 - 60, height / 2 - 80), new PVector(0.8f, 0.8f));
+    }
 
+    if (hoveredBear) {
+      image.DrawImageScale("button_right", new PVector(width / 2, height / 2 - 55), new PVector(0.8f, 0.8f));
+    }
     checkClick();
   }
 
   private void checkClick() {
     if (mousePressed && selected == false) {
-      if (mouseX > 260 && mouseX < 260 + 230 && mouseY > 75 && mouseY < 75 + 65) {
+      if (mouseX > 280 && mouseX < 280 + 200 && mouseY > 150 && mouseY < 150 + 460) {
         println("범녀 선택");
         scene.ChangeScene(new S3C3V1_4_1());
         selected = true;
       }
-      if (mouseX > 500 && mouseX < 500 + 205 && mouseY > 75 && mouseY < 75 + 65) {
+      if (mouseX > 500 && mouseX < 500 + 200 && mouseY > 150 && mouseY < 150 + 460) {
         println("웅녀 선택");
         scene.ChangeScene(new S3C3V1_3_1());
         selected = true;
