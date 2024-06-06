@@ -4,9 +4,12 @@ public class S3C3V1_2_1 extends Scene {
 
   private float 범녀_X = 300;
   private float 범녀_Y = 100;
+  private String 범녀Name = "범녀1";
 
   public float 범녀_X_End = 375;
   public float 범녀_Y_End = 350;
+
+  boolean animationCompleted = false;
 
   private float 웅녀_X = 500;
   private float 웅녀_Y = 100;
@@ -25,14 +28,15 @@ public class S3C3V1_2_1 extends Scene {
   private int startMillis;
 
   private int 범녀숫자 = 1;
-  
+
   private float stepDuration = 0f;
   private float stepSoundInterval = 0.5f;
   private float stepSeconds = 0;
   private int stepID = 0;
 
-
   @Override public void OnEnter() {
+    animationCompleted = false;
+
     println("S3C3V1_2_1");
     // 이미지 로드
     image.LoadImage("background", PREFIX+"background");
@@ -60,9 +64,10 @@ public class S3C3V1_2_1 extends Scene {
     }
     int elapsedMills = millis() - startMillis;
     image.DrawImage("background", new PVector(width / 2, height / 2));
-
-    String 범녀Name = "범녀" +((elapsedMills / 300) % 3 + 1);
-    if (elapsedMills > moveMillis) 범녀Name = "범녀1";
+    String prevName = 범녀Name;
+    범녀Name = "범녀" +((elapsedMills / 300) % 3 + 1);
+    if (prevName.equals("범녀3") && 범녀Name.equals("범녀1")) animationCompleted = true;
+    if (animationCompleted) 범녀Name = "범녀1";
     image.DrawImageScale(범녀Name, new PVector(lerp(범녀_X, 범녀_X_End, min(1, elapsedMills / moveMillis)), lerp(범녀_Y, 범녀_Y_End, min(1, elapsedMills / moveMillis))), new PVector(0.2f, 0.2f));
     image.DrawImageScale("웅녀", new PVector(lerp(웅녀_X, 웅녀_X_End, min(1, elapsedMills / moveMillis)), lerp(웅녀_Y, 웅녀_Y_End, min(1, elapsedMills / moveMillis))), new PVector(0.2f, 0.2f));
     image.DrawImageScale("환웅", new PVector(환웅_X, 환웅_Y), new PVector(0.3, 0.3));
@@ -71,23 +76,23 @@ public class S3C3V1_2_1 extends Scene {
     if (isTimeExceeded(startMinute, startSecond, SCENE_SCONDS)) {
       scene.ChangeScene(new S3C3V1_2_2());
     }
-    
     //발소리
-    if (stepSeconds >= stepSoundInterval && stepDuration < 5f){
+    if (stepSeconds >= stepSoundInterval && stepDuration < 5f) {
       stepID = int(random(2));
-      if(stepID == 0){
+      if (stepID == 0) {
         sound.PlaySound("step1");
-      }else if(stepID == 1){
+      }
+      else if (stepID == 1) {
         sound.PlaySound("step2");
-      }else if(stepID == 2){
+      }
+      else if (stepID == 2) {
         sound.PlaySound("step3");
       }
       stepSeconds = 0;
-    }else{
+    } else {
       stepDuration += time.deltaTime;
-      stepSeconds += time.deltaTime; 
+      stepSeconds += time.deltaTime;
     }
-  
   }
 
   @Override public void OnExit() {
