@@ -13,6 +13,7 @@ public class S2C6V1 extends Scene {
   private float bearTearRightY = height - 280f;
 
   private boolean showButton = false;
+  private int startTime = millis();
 
   public S2C6V1() {
   }
@@ -32,7 +33,7 @@ public class S2C6V1 extends Scene {
       @Override public void OnDraw(float time) {
         showButton = true;
       }
-    }, 1);
+    }, 2f);
     backgroundAlpha = 0f;
     showButton = true;
     animalScale = 0.25f;
@@ -45,6 +46,7 @@ public class S2C6V1 extends Scene {
     bearTearSpeedR = 0f;
     bearTearLeftY = height - 270f;
     bearTearRightY = height - 280f;
+    startTime = millis();
 
   }
 
@@ -69,6 +71,8 @@ public class S2C6V1 extends Scene {
     image.DrawImageScale("bear_tear", new PVector(width - 890, bearTearRightY + bearTearSpeedL), new PVector(tearScale, tearScale));
     // image.DrawImageScale("bear_tear", new PVector(width - 510, bearTearLeftY + bearTearSpeedL), new PVector(tearScale, tearScale));
     // image.DrawImageScale("bear_tear", new PVector(width - 440, bearTearRightY + bearTearSpeedR), new PVector(tearScale, tearScale));
+
+    if (millis() - startTime < 2000) return;
 
     timelineManager.OnDraw();
     if (showButton && backgroundAlpha<=180) backgroundAlpha += 1.2;
