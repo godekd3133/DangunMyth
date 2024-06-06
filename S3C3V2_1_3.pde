@@ -12,7 +12,7 @@ public class S3C3V2_1_3 extends Scene {
 
   private int startMillis;
   private float narrDuration;
-  
+
   private float stepTime = 0;
   private float curTime = 0;
 
@@ -57,14 +57,14 @@ public class S3C3V2_1_3 extends Scene {
     sound();
     // 배경화면
     image.DrawImage("background", new PVector(width / 2, height / 2));
-    image.DrawImage("hwanwoong_text", new PVector(width / 2, height / 2));
-    image.DrawImage("girl_text", new PVector(width / 2, height / 2));
+    image.DrawImage("hwanwoong_text", new PVector(width / 2, height / 2 + 100));
+    image.DrawImage("girl_text", new PVector(width / 2, height / 2+ 100));
 
     // girl
     image.DrawImageScale("girl_body", new PVector(GIRL_X, GIRL_Y), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
 
     // hwan
-    if (HWAN_X <= GIRL_X-200) {
+    if (HWAN_X <= GIRL_X-400) {
       HWAN_X+=1.5;
       if ((millis()/500)%2==0) {
         image.DrawImageScale("hwan_shoe_1", new PVector(HWAN_X+17, HWAN_SHOE_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
@@ -83,15 +83,14 @@ public class S3C3V2_1_3 extends Scene {
       image.DrawImageScale("hwan_body", new PVector(HWAN_X, HWAN_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
       image.DrawImageScale("hwan_mouse_2", new PVector(HWAN_X+10, HWAN_MOUSE_Y), new PVector(HWAN_SCALE, HWAN_SCALE, 0));
     }
-    if(stepTime > 0.5 && curTime < 4.8f){
-     sound.PlaySound("Step");
-     stepTime = 0;
-    }else{
-     stepTime += time.deltaTime; 
+    if (stepTime > 0.5 && curTime < 4.8f) {
+      sound.PlaySound("Step");
+      stepTime = 0;
+    } else {
+      stepTime += time.deltaTime;
     }
     curTime += time.deltaTime;
-    
-    
+
   }
 
   @Override public void OnExit() {
