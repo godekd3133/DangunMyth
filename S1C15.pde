@@ -111,7 +111,7 @@ public class S1C15 extends Scene {
     }
 
     if (collisionActionSpeed == 0 && altimeter <= ALTIMETER_MAX) {
-      hwanungX = mouseX;
+      hwanungX = lerp(hwanungX, mouseX, time.deltaTime);
     } else {
       mouseX = (int)hwanungX;
     }
