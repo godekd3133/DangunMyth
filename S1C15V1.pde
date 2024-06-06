@@ -3,6 +3,7 @@ public class S1C15V1 extends Scene {
   private float backgroundAlpha = 0;
 
   public float SCENE_DURATION = 20f;
+  public float narrDuration = 2.7f;
   private float HWANUNG_BODY_X = width / 2;
   private float HWANUNG_BODY_Y = height / 2 + 50;
   private float HWANUNG_BODY_SCALE = 0.25;
@@ -34,7 +35,7 @@ public class S1C15V1 extends Scene {
     playedSoundMap = new HashMap<String, Integer>();
     playedSoundMap.put("HWANUNG_NARR1", 0);
     // playedSoundMap.put("HWANUNG_NARR2", 0);
-    showButton = true;
+    showButton = false;
 
     flowY = 0;
     faceX = 0;
@@ -68,9 +69,14 @@ public class S1C15V1 extends Scene {
     if (time.time - enterTime > SCENE_DURATION) {
       // scene.ChangeScene(new S1C15V2());
     }
+    //240606 QA 나레이션 종료된 다음에 배경에 어두운거 나오기
+    if (time.time - enterTime > narrDuration) {
+      showButton = true;
+      // scene.ChangeScene(new S1C15V2());
+    }
     //240605 QA 배경에 어두운거 추가
     // println(backgroundAlpha);
-    if (backgroundAlpha<=180) backgroundAlpha += 0.7;
+    if (showButton && backgroundAlpha<=180) backgroundAlpha += 1.2;
 
     fill(0, backgroundAlpha);
     rect(0, 0, width, height);
