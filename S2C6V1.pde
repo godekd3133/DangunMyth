@@ -108,6 +108,7 @@ public class S2C6V1 extends Scene {
         /// x 480 ~ 800 y 375 ~ 459
         else if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
           print('2');
+          scene.Setup(sceneList.get(0));
           showButton = false;
 
         }

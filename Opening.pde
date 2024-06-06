@@ -14,7 +14,7 @@ public class Opening extends Scene {
   private String prefix = "Images/Opening/";
 
   @Override public void OnEnter() {
-    image.LoadImage("background", prefix+"background/1");
+    image.LoadImage("Opening_background", prefix+"background/1");
     image.LoadImage("cloud01", prefix+"background/2");
     image.LoadImage("cloud02", prefix+"background/3");
     image.LoadImage("cloud03", prefix+"background/4");
@@ -38,7 +38,7 @@ public class Opening extends Scene {
 
   @Override public void OnDraw() {
     PVector scale = new PVector(zoomIn, zoomIn, 0);
-    image.DrawImageScale("background", new PVector(width / 2, height / 2, 0), scale);
+    image.DrawImageScale("Opening_background", new PVector(width / 2, height / 2, 0), scale);
     image.DrawImageScale("cloud01", new PVector(width / 2 - cloudX, height / 2, 0), scale);
     image.DrawImageScale("cloud02", new PVector(width / 2 - cloudX, height / 2, 0), scale);
     image.DrawImageScale("cloud03", new PVector(width / 2 + cloudX, height / 2, 0), scale);
