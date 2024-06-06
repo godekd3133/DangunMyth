@@ -1,6 +1,6 @@
 public class S1C15V1 extends Scene {
   private final static String PREFIX = "Images/S1/C15-1/";
-  private float backgroundAlpha = 50;
+  private float backgroundAlpha = 0;
 
   public float SCENE_DURATION = 20f;
   private float HWANUNG_BODY_X = width / 2;
@@ -30,7 +30,7 @@ public class S1C15V1 extends Scene {
     image.LoadImage("button_bottom", "Images/S1/C15-1/button_bottom");
 
     sound.LoadSound("HWANUNG_NARR1", "Sounds/S1/C15-1/narr/narr1.mp3");
-    sound.LoadSound("HWANUNG_NARR2", "Sounds/S1/C15-1/narr/narr2.mp3");
+    // sound.LoadSound("HWANUNG_NARR2", "Sounds/S1/C15-1/narr/narr2.mp3");
     playedSoundMap = new HashMap<String, Integer>();
     playedSoundMap.put("HWANUNG_NARR1", 0);
     // playedSoundMap.put("HWANUNG_NARR2", 0);
@@ -39,6 +39,8 @@ public class S1C15V1 extends Scene {
     flowY = 0;
     faceX = 0;
     startTime = millis();
+    backgroundAlpha = 0;
+
   }
 
   @Override public void OnDraw() {
@@ -64,11 +66,11 @@ public class S1C15V1 extends Scene {
     image.DrawImage("HWANUNG_TEXT", new PVector(width / 2, height / 2+50));
 
     if (time.time - enterTime > SCENE_DURATION) {
-      scene.ChangeScene(new S1C15V2());
+      // scene.ChangeScene(new S1C15V2());
     }
     //240605 QA 배경에 어두운거 추가
     // println(backgroundAlpha);
-    if (backgroundAlpha<=230) backgroundAlpha += 0.3;
+    if (backgroundAlpha<=180) backgroundAlpha += 0.7;
 
     fill(0, backgroundAlpha);
     rect(0, 0, width, height);
