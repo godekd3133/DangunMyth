@@ -38,10 +38,8 @@ public class S3C3V2_1_2 extends Scene {
     image.DrawImage("background", new PVector(width / 2, height / 2));
     image.DrawImage("text", new PVector(width / 2, height / 2));
 
-    GIRL_HAND_Y-=2;
-    if (abs(GIRL_HAND_Y) == 500 || abs(GIRL_HAND_Y) == 550) {
-      GIRL_HAND_Y*=-1;
-    }
+    GIRL_HAND_Y = lerp(550, 515,(time.time - enterTime) / SCENE_DURATION);
+
     //girl
     image.DrawImageScale("girlbody", new PVector(GIRL_X, GIRL_Y), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
     image.DrawImageScale("girlhand", new PVector(GIRL_HAND_X, abs(GIRL_HAND_Y)), new PVector(GIRL_SCALE, GIRL_SCALE, 0));
