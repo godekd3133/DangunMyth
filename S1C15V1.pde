@@ -83,15 +83,18 @@ public class S1C15V1 extends Scene {
 
       //Mouse Hover
       if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
-        image.DrawImage("button_top", new PVector(width / 2, height / 2), 0f,255,220,220,220);
+        image.DrawImage("button_top", new PVector(width / 2, height / 2), 0f,180,220,220,220);
       } else {
-        image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1));
+        // image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1));
+        image.DrawImage("button_top", new PVector(width / 2, height / 2), 0f,backgroundAlpha+80,220,220,220);
       }
       //Mouse Hover
       if (mouseX > 480 && mouseX < 800 && mouseY >237 && mouseY < 324) {
-        image.DrawImage("button_bottom", new PVector(width / 2, height / 2), 0f,255,220,220,220);
+        image.DrawImage("button_bottom", new PVector(width / 2, height / 2), 0f,180,220,220,220);
       } else {
-        image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1));
+        // image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1));
+        image.DrawImage("button_bottom", new PVector(width / 2, height / 2), 0f,backgroundAlpha+80,220,220,220);
+
       }
       if (mousePressed && mouseButton == LEFT) {
         /// x 480 ~ 800 y237 ~ 324
