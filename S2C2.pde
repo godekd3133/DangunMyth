@@ -60,8 +60,6 @@ public class S2C2 extends Scene {
     image.LoadImage("bear2", "Images/S2/C2/bear2");
     image.LoadImage("bear3", "Images/S2/C2/bear3");
 
-    sound.LoadSound("S2_S3_FootStuckRock", "Sounds/S2/C2/effect/FootStuckRock.mp3");
-
     _rock_size = 0.4;
     _rock_rotate = 0.01;
     tiger_x = 20;
@@ -94,27 +92,28 @@ public class S2C2 extends Scene {
       }
     } else {
       walkTick += time.deltaTime;
+
+      //발소리
+      if (stepSeconds >= stepSoundInterval && stepDuration < 4.167f) {
+        stepID = int(random(2));
+        if (stepID == 0) {
+          sound.PlaySound("step1");
+        }
+        else if (stepID == 1) {
+          sound.PlaySound("step2");
+        }
+        else if (stepID == 2) {
+          sound.PlaySound("step3");
+        }
+        stepSeconds = 0;
+      } else {
+        stepDuration += time.deltaTime;
+        stepSeconds += time.deltaTime;
+      }
       if (walkTick > WALK_INTERVAL) {
         walkTick = 0;
         animation *= -1;
 
-        //발소리
-        if (stepSeconds >= stepSoundInterval && stepDuration < 3.1f) {
-          stepID = int(random(2));
-          if (stepID == 0) {
-            sound.PlaySound("step1");
-          }
-          else if (stepID == 1) {
-            sound.PlaySound("step2");
-          }
-          else if (stepID == 2) {
-            sound.PlaySound("step3");
-          }
-          stepSeconds = 0;
-        } else {
-          stepDuration += time.deltaTime;
-          stepSeconds += time.deltaTime;
-        }
         imageNumber += imageNumberDelta;
 
         // if (imageNumber == 1 || imageNumber == imageMaxNumber) {
@@ -143,7 +142,7 @@ public class S2C2 extends Scene {
     if (time.time- enterTime >SCENE_DURATION) {
       scene.ChangeScene(new S2C3());
     }
-    if (!isPlayedEffect && time.time- enterTime > 3.2f) {
+    if (!isPlayedEffect && time.time- enterTime > 4.367f) {
       sound.PlaySound("S2_S3_FootStuckRock");
       isPlayedEffect = true;
     }
