@@ -6,6 +6,8 @@ public class S3C3V1_3 extends Scene {
   private float sunY = 600;
   private float cloudXDistance = 0;
   private float speed = 0.8;
+  private boolean playingChicken = false;
+  private float chickenTime = 0f;
 
   public float SCENE_DURATION = 3f;
 
@@ -24,6 +26,9 @@ public class S3C3V1_3 extends Scene {
     image.LoadImage("sky", PREFIX+"sky");
     image.LoadImage("sun", PREFIX+"sun");
     image.LoadImage("text", PREFIX+"text");
+    sound.LoadSound("bird","Sounds/Effects/NatureSound.wav");
+    sound.LoadSound("chicken","Sounds/Effects/Chicken_02.mp3");
+    sound.PlaySound("bird");
 
   }
 
@@ -36,6 +41,12 @@ public class S3C3V1_3 extends Scene {
     image.DrawImage("cloud_right", new PVector(centerX + cloudXDistance, centerY));
     image.DrawImage("cloud_middle", new PVector(centerX - cloudXDistance, centerY));
     image.DrawImage("text", centerVector);
+    if(!playingChicken && chickenTime > 1.f){
+      sound.PlaySound("chicken");
+      playingChicken = true;
+    }else{
+     chickenTime += time.deltaTime; 
+    }
 
     if (sunY<400) {
       scene.ChangeScene(new S3C3V1_1_1());
