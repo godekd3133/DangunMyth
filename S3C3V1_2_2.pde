@@ -15,7 +15,6 @@ public class S3C3V1_2_2 extends Scene {
   S3C3V1_2_1 lastScene;
 
   @Override public void OnEnter() {
-    println("S3C3V1_2_2");
     // 이미지 로드
     lastScene = new S3C3V1_2_1();
     image.LoadImage("background", PREFIX+"background");
@@ -68,12 +67,10 @@ public class S3C3V1_2_2 extends Scene {
   private void checkClick() {
     if (mousePressed && selected == false) {
       if (mouseX > 280 && mouseX < 280 + 200 && mouseY > 150 && mouseY < 150 + 460) {
-        println("범녀 선택");
         scene.ChangeScene(new S3C3V1_4_1());
         selected = true;
       }
       if (mouseX > 500 && mouseX < 500 + 200 && mouseY > 150 && mouseY < 150 + 460) {
-        println("웅녀 선택");
         scene.ChangeScene(new S3C3V1_3_1());
         selected = true;
       }

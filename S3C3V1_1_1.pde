@@ -12,7 +12,6 @@ public class S3C3V1_1_1 extends Scene {
   }
 
   @Override public void OnEnter() {
-    println("Enter S3C3V1_1_1");
     image.LoadImage("background", "Images/S3/C3/V1/_1/_1/background");
     image.LoadImage("bear_before", "Images/S3/C3/V1/_1/_1/bear_before");
     image.LoadImage("bear_after", "Images/S3/C3/V1/_1/_1/bear_after");

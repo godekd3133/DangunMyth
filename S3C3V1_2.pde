@@ -19,7 +19,6 @@ public class S3C3V1_2 extends Scene {
   private boolean narrFlag = false;
 
   @Override public void OnEnter() {
-    println("S3C3V1_2");
 
     // 이미지 로드
     image.LoadImage("background", PREFIX+"background");

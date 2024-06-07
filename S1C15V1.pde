@@ -111,7 +111,6 @@ public class S1C15V1 extends Scene {
         }
         /// x 480 ~ 800 y 375 ~ 459
         else if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
-          print('2');
 
           //Home 버튼 눌렀을 떄 어떻게 해야하는지 안정해져있음
           scene.ChangeScene(new Opening());
