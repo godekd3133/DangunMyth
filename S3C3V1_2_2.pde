@@ -23,6 +23,7 @@ public class S3C3V1_2_2 extends Scene {
     image.LoadImage("환웅", PREFIX+"환웅");
     image.LoadImage("button_left", PREFIX+"button_left");
     image.LoadImage("button_right", PREFIX+"button_right");
+    image.LoadImage("S3C3V1_2_2_TEXT", PREFIX+"text");
 
     startMinute=minute();
     startSecond=second();
@@ -53,6 +54,7 @@ public class S3C3V1_2_2 extends Scene {
     image.DrawImageScale("범녀", new PVector(lastScene .범녀_X_End, lastScene .범녀_Y_End), new PVector(tigerScale, tigerScale));
     image.DrawImageScale("웅녀", new PVector(lastScene .웅녀_X_End, lastScene .웅녀_Y_End), new PVector(bearScale, bearScale));
     image.DrawImageScale("환웅", new PVector(환웅_X, 환웅_Y), new PVector(0.3, 0.3));
+    image.DrawImageScale("S3C3V1_2_2_TEXT", new PVector(width / 2, height / 2), new PVector(1.0f, 1.0f));
 
     if (hoveredTiger) {
       image.DrawImageScale("button_left", new PVector(width / 2 - 60, height / 2 - 80), new PVector(0.8f, 0.8f));
