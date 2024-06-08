@@ -20,9 +20,9 @@ class S3C3V1_2_2 extends Scene {
     image.LoadImage("button_left", this.PREFIX + "button_left");
     image.LoadImage("button_right", this.PREFIX + "button_right");
     image.LoadImage("S3C3V1_2_2_TEXT", this.PREFIX + "text");
-    this.startMinute = new Date().getMinutes();
-    this.startSecond = new Date().getSeconds();
-    this.startMillis = Date.now();
+    this.startMinute = minute();
+    this.startSecond = second();
+    this.startMillis = millis();
     this.tongueY = 0;
   }
   OnDraw() {
@@ -30,7 +30,7 @@ class S3C3V1_2_2 extends Scene {
     if (this.tongueY > 13) {
       this.tongueY *= -1;
     }
-    let elapsedMills = Date.now() - this.startMillis;
+    let elapsedMills = millis() - this.startMillis;
     image.DrawImage("background", new p5.Vector(width / 2, height / 2)); // 검은색 반투명
     fill(0, Matn.min(128, lerp(255, 128, this.darkenMillis / elapsedMills)));
     rect(0, 0, width, height);

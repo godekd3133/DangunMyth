@@ -40,10 +40,10 @@ class S3C3V2 extends Scene {
     this.walkTick = 0;
   }
   OnDraw() {
-    let currentProcessingTime = (Date.now() - this.startTime) / 1000;
+    let currentProcessingTime = (millis() - this.startTime) / 1000;
     let isEating = currentProcessingTime % 2 == 1;
     image.DrawImage("background", new p5.Vector(width / 2, height / 2));
-    if ((Date.now() / 300) % 2 == 0) {
+    if ((millis() / 300) % 2 == 0) {
       image.DrawImageScale(
         "bear1",
         new p5.Vector(this.bear_EYE_X, this.bear_EYE_Y),

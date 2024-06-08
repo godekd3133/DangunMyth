@@ -34,9 +34,9 @@ class S3C3V1_2_1 extends Scene {
     sound.LoadSound("step1", "Sounds/Effects/Step_Grass_01.wav");
     sound.LoadSound("step2", "Sounds/Effects/Step_Grass_02.wav");
     sound.LoadSound("step3", "Sounds/Effects/Step_Grass_02.wav");
-    this.startMinute = new Date().getMinutes();
-    this.startSecond = new Date().getSeconds();
-    this.startMillis = Date.now();
+    this.startMinute = minute();
+    this.startSecond = second();
+    this.startMillis = millis();
     this.tongueY = 0;
   }
   OnDraw() {
@@ -44,7 +44,7 @@ class S3C3V1_2_1 extends Scene {
     if (this.tongueY > 13) {
       this.tongueY *= -1;
     }
-    let elapsedMills = Date.now() - this.startMillis;
+    let elapsedMills = millis() - this.startMillis;
     image.DrawImage("background", new p5.Vector(width / 2, height / 2));
     let prevName = this.범녀Name;
     this.범녀Name = "범녀" + (((elapsedMills / 300) % 3) + 1);

@@ -29,9 +29,9 @@ class S3C3V1_4_1 extends Scene {
     image.LoadImage("heart", S3C3V1_4_1.PREFIX + "heart");
     sound.LoadSound("Choice", "Sounds/Effects/Choice.mp3");
     sound.PlaySound("Choice");
-    this.startMinute = new Date().getMinutes();
-    this.startSecond = new Date().getSeconds();
-    this.startMillis = Date.now();
+    this.startMinute = minute();
+    this.startSecond = second();
+    this.startMillis = millis();
   }
   OnDraw() {
     //           최소크기                    최대크기

@@ -37,7 +37,7 @@ class S3C3V2_1_3 extends Scene {
     this.HWAN_SCALE = 0.15;
     this.HWAN_MOUSE_Y = 405;
     this.HWAN_SHOE_Y = this.HWAN_Y + 140;
-    this.startMillis = Date.now();
+    this.startMillis = millis();
   }
   OnDraw() {
     this.sound(); // 배경화면
@@ -54,7 +54,7 @@ class S3C3V2_1_3 extends Scene {
     ); // hwan
     if (this.HWAN_X <= this.GIRL_X - 400) {
       this.HWAN_X += 1.5;
-      if ((Date.now() / 500) % 2 == 0) {
+      if ((millis() / 500) % 2 == 0) {
         image.DrawImageScale(
           "hwan_shoe_1",
           new p5.Vector(this.HWAN_X + 17, this.HWAN_SHOE_Y),
@@ -74,7 +74,7 @@ class S3C3V2_1_3 extends Scene {
         new p5.Vector(this.HWAN_SCALE, this.HWAN_SCALE, 0)
       );
     }
-    if ((Date.now() / 500) % 2 == 0) {
+    if ((millis() / 500) % 2 == 0) {
       image.DrawImageScale(
         "girl_eye_1",
         new p5.Vector(this.GIRL_X, this.GIRL_EYE_Y),
@@ -126,7 +126,7 @@ class S3C3V2_1_3 extends Scene {
     ) {
       this.narrDuration = sound.soundDuration("hwanwoong");
       sound.playSoundOnce("hwanwoong");
-      this.startMillis = Date.now(); // 대사 1 시작 millis
+      this.startMillis = millis(); // 대사 1 시작 millis
     } // 대사 1 종료 후 1.2초 뒤 대사2 시작
     if (
       !sound.hasSound("hwanwoong") &&
@@ -135,7 +135,7 @@ class S3C3V2_1_3 extends Scene {
     ) {
       this.narrDuration = sound.soundDuration("woonggirl");
       sound.playSoundOnce("woonggirl");
-      this.startMillis = Date.now();
+      this.startMillis = millis();
     } // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
     if (
       !sound.hasSound("hwanwoong") &&

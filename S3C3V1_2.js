@@ -22,8 +22,8 @@ class S3C3V1_2 extends Scene {
     image.LoadImage("tiger2", S3C3V1_2.PREFIX + "tiger2");
     sound.LoadSound("Tiger", "Sounds/S3/C3/V1/_2/Tiger.mp3");
     this.narrFlag = false;
-    this.startMinute = new Date().getMinutes();
-    this.startSecond = new Date().getSeconds();
+    this.startMinute = minute();
+    this.startSecond = second();
   }
   OnDraw() {
     if (!this.narrFlag) {
@@ -43,7 +43,7 @@ class S3C3V1_2 extends Scene {
       new p5.Vector(S3C3V1_2.CHARACTER_SCALE, S3C3V1_2.CHARACTER_SCALE)
     );
     image.DrawImageScale(
-      "tiger" + (((Date.now() / 500) % 2) + 1),
+      "tiger" + (((millis() / 500) % 2) + 1),
       new p5.Vector(S3C3V1_2.TIGER_X, S3C3V1_2.TIGER_Y),
       new p5.Vector(S3C3V1_2.CHARACTER_SCALE, S3C3V1_2.CHARACTER_SCALE)
     ); // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동

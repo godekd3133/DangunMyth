@@ -14,7 +14,7 @@ class S3C3V2_2_1 extends Scene {
     image.LoadImage("extra_left", S3C3V2_2_1.PREFIX + "extra_left");
     image.LoadImage("extra_right", S3C3V2_2_1.PREFIX + "extra_right");
     sound.LoadSound("haha", S3C3V2_2_1.SOUND_PREFIX + "haha.mp3");
-    this.startMillis = Date.now(); // 씬 시작 millis
+    this.startMillis = millis(); // 씬 시작 millis
   }
   OnDraw() {
     image.DrawImage("background", new p5.Vector(width / 2, height / 2));
@@ -36,7 +36,7 @@ class S3C3V2_2_1 extends Scene {
     if (sound.hasSound("haha") && isTimeExceededMillis(this.startMillis, 1)) {
       this.narrDuration = sound.soundDuration("haha");
       sound.playSoundOnce("haha");
-      this.startMillis = Date.now(); // 대사 1 시작 millis
+      this.startMillis = millis(); // 대사 1 시작 millis
     } // 대사 1 종료 후 1초 뒤 다음 장면으로 이동
     if (
       !sound.hasSound("haha") &&

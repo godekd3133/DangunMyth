@@ -30,10 +30,10 @@ class S2C7 extends Scene {
     image.LoadImage("bear1", "Images/S2/C7/bear1");
     image.LoadImage("bear2", "Images/S2/C7/bear2");
     sound.LoadSound("yum", "Sounds/Effects/YumYum.mp3");
-    this.startTime = Date.now();
+    this.startTime = millis();
   }
   OnDraw() {
-    let currentProcessingTime = (Date.now() - this.startTime) / 500;
+    let currentProcessingTime = (millis() - this.startTime) / 500;
     let isEating = currentProcessingTime % 2 == 1;
     let positionToMoveHead = isEating ? 10 : 0;
     image.DrawImageScale(

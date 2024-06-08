@@ -17,7 +17,7 @@ class S3C3V2_1_2 extends Scene {
     image.LoadImage("girlface2", "Images/S3/C3/V2/_1/_2/girlface2");
     image.LoadImage("girlhand", "Images/S3/C3/V2/_1/_2/girlhand");
     sound.LoadSound("woonggirl", "Sounds/S3/C3/V2/_1/_2/narr/woonggirl.mp3");
-    this.startMillis = Date.now();
+    this.startMillis = millis();
     this.GIRL_X = 600;
     this.GIRL_Y = 550;
     this.GIRL_SCALE = 0.4;
@@ -44,7 +44,7 @@ class S3C3V2_1_2 extends Scene {
       new p5.Vector(this.GIRL_HAND_X, Math.abs(this.GIRL_HAND_Y)),
       new p5.Vector(this.GIRL_SCALE, this.GIRL_SCALE, 0)
     );
-    if ((Date.now() / 500) % 2 == 0) {
+    if ((millis() / 500) % 2 == 0) {
       image.DrawImageScale(
         "girlface",
         new p5.Vector(this.GIRL_EYE_X, this.GIRL_EYE_Y),
