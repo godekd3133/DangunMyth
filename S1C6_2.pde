@@ -36,10 +36,10 @@ public class S1C6_2 extends Scene {
     sound.LoadSound("narr", "Sounds/S1/C6-2/narr/narr.mp3");
 
     //환인
-    image.LoadImage("Background2", "./Images/S1/C6-2/Background");
-    image.LoadImage("HwaninBody", "./Images/S1/C6-2/HwaninBody");
-    image.LoadImage("HwaninFace", "./Images/S1/C6-2/HwaninFace");
-    image.LoadImage("text", "./Images/S1/C6-2/text");
+    image.LoadImage("Background2", "Images/S1/C6-2/Background");
+    image.LoadImage("HwaninBody", "Images/S1/C6-2/HwaninBody");
+    image.LoadImage("HwaninFace", "Images/S1/C6-2/HwaninFace");
+    image.LoadImage("text", "Images/S1/C6-2/text");
     sound.LoadSound("hwanin", "Sounds/S1/C6-2/narr/hwanin.mp3");
 
     // print("Enter");

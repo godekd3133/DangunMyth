@@ -27,11 +27,11 @@ class S3C3V1_4_2 extends Scene {
       this.alpha
     );
 
-    if (time.time - enterTime >= 1) {
-      this.alpha -= (255 / this.fadeoutTime) * time.deltaTime;
+    if (timeManager.time - timeManager.enterTime >= 1) {
+      this.alpha -= (255 / this.fadeoutTime) * timeManager.deltaTime;
     }
     if (this.alpha <= 0) {
-      this.preparationTime -= time.deltaTime;
+      this.preparationTime -= timeManager.deltaTime;
       if (this.preparationTime <= 0) {
         sceneManager.ChangeScene(new S3C3V1_4_3());
       }

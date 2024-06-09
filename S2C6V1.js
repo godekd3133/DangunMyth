@@ -26,12 +26,9 @@ class S2C6V1 extends Scene {
     imageManager.LoadImage("button_top", "Images/S2/C6/V1/button_top");
     imageManager.LoadImage("button_bottom", "Images/S2/C6/V1/button_bottom");
 
-    this.timelineManager.pushTimeline(
-      new TimelineCallback(() => {
-        this.showButton = true;
-      }),
-      2
-    );
+    this.timelineManager.pushTimeline(() => {
+      this.showButton = true;
+    }, 2);
 
     this.backgroundAlpha = 0;
     this.showButton = true;

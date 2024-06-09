@@ -34,7 +34,7 @@ class S3C3V1_1_2 extends Scene {
   }
 
   OnDraw() {
-    if (time.time - enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C3V1_2_1());
     }
     this._time++;

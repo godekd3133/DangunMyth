@@ -23,7 +23,11 @@ public class ImageManager {
     if (images.containsKey(name)) {
       return;
     }
-    PImage img = loadImage(path + ".png");
+    /// if not conatin ext add it
+    if (path.indexOf(".png") == -1) {
+      path += ".png";
+    }
+    PImage img = loadImage(path);
     images.put(name, img);
 
   }

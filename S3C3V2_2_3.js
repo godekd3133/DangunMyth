@@ -12,7 +12,7 @@ class S3C3V2_2_3 extends Scene {
     imageManager.LoadImage("dangun", this.PREFIX + "dangun");
     soundManager.LoadSound("narr", this.SOUND_PREFIX + "narr.mp3");
     soundManager.PlaySound("narr");
-    this.enterTime = timeManager.time;
+    timeManager.enterTime = timeManager.time;
   }
 
   OnDraw() {
@@ -27,7 +27,7 @@ class S3C3V2_2_3 extends Scene {
     );
     imageManager.DrawImage("text", createVector(width / 2, height / 2, 0));
 
-    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
       sceneManager.CreditScene();
     }
   }

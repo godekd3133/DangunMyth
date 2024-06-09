@@ -142,7 +142,7 @@ class S3C3V2_1_3 extends Scene {
     // 씬 시작 후 1초 뒤 대사1 시작
     if (
       soundManager.hasSound("hwanwoong") &&
-      this.isTimeExceededMillis(this.startMillis, 1)
+      isTimeExceededMillis(this.startMillis, 1)
     ) {
       this.narrDuration = soundManager.soundDuration("hwanwoong");
       soundManager.playSoundOnce("hwanwoong");
@@ -152,7 +152,7 @@ class S3C3V2_1_3 extends Scene {
     if (
       !soundManager.hasSound("hwanwoong") &&
       soundManager.hasSound("woonggirl") &&
-      this.isTimeExceededMillis(this.startMillis, this.narrDuration + 1.2)
+      isTimeExceededMillis(this.startMillis, this.narrDuration + 1.2)
     ) {
       this.narrDuration = soundManager.soundDuration("woonggirl");
       soundManager.playSoundOnce("woonggirl");
@@ -162,7 +162,7 @@ class S3C3V2_1_3 extends Scene {
     if (
       !soundManager.hasSound("hwanwoong") &&
       !soundManager.hasSound("woonggirl") &&
-      this.isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
+      isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
     ) {
       sceneManager.ChangeScene(new S3C3V2_2_1());
     }

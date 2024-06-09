@@ -1,23 +1,17 @@
 class FontManager {
   constructor() {
-    this.fonts = new Map();
+    this.fonts = {};
   }
 
   LoadFont(name, path) {
-    loadFont("Fonts/" + path, (font) => {
-      this.fonts.set(name, font);
-    });
+    this.fonts[name] = loadFont("Fonts/" + path);
   }
 
-  DrawFont(fontName, text, col, size, x, y) {
+  DrawFont(fontName, txt, col, size, x, y) {
     push();
     fill(col);
-    let font = this.fonts.get(fontName);
-    if (font) {
-      textFont(font);
-      textSize(size);
-      text(text, x, y);
-    }
+    textFont(this.fonts[fontName], size);
+    text(txt, x, y);
     pop();
   }
 }

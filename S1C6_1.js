@@ -21,23 +21,22 @@ class S1C6_1 extends Scene {
     this.mouseTickInterval = 10 / 60;
     this.mouseTick = 0;
 
-    // Hwanin position
+    //환인 위치
     this.hwaninfaceOffset = -40;
     this.hwaninX = this.centerX - 250;
     this.hwaninY = this.centerY - 50;
 
-    // Hwanin face movement variables
+    //환인 얼굴 움직이는 변수
     this.hwaninFaceFlag = false;
     this.hwaninFaceCnt = 0;
     this.hwaninMouse = true;
 
-    // Hwanwoong position
+    //환웅 위치
     this.hwanwoongfaceOffsetY = -80;
     this.hwanwoongfaceOffsetX = -25;
-    this.hwanwoongX = this.centerX + 200;
+    this.hwanwoongX = this.centerX + 300;
     this.hwanwoongY = this.centerY + 180;
-
-    // Hwanwoong face movement variables
+    //환웅 얼굴 움직이는 변수
     this.hwanwoongFaceFlag = false;
     this.hwanwoongFaceCnt = 0;
     this.hwanwoongMouse = true;
@@ -46,6 +45,7 @@ class S1C6_1 extends Scene {
   OnEnter() {
     this.centerX = width / 2;
     this.centerY = height / 2;
+    this.SCENE_DURATION = 14;
 
     this.hwaninDuration = 4;
     this.hwanwoongDuration = 3;
@@ -63,19 +63,22 @@ class S1C6_1 extends Scene {
     this.mouseTickInterval = 10 / 60;
     this.mouseTick = 0;
 
+    //환인 위치
     this.hwaninfaceOffset = -40;
     this.hwaninX = this.centerX - 250;
     this.hwaninY = this.centerY - 50;
 
+    //환인 얼굴 움직이는 변수
     this.hwaninFaceFlag = false;
     this.hwaninFaceCnt = 0;
     this.hwaninMouse = true;
 
+    //환웅 위치
     this.hwanwoongfaceOffsetY = -80;
     this.hwanwoongfaceOffsetX = -25;
     this.hwanwoongX = this.centerX + 300;
     this.hwanwoongY = this.centerY + 180;
-
+    //환웅 얼굴 움직이는 변수
     this.hwanwoongFaceFlag = false;
     this.hwanwoongFaceCnt = 0;
     this.hwanwoongMouse = true;
@@ -89,45 +92,47 @@ class S1C6_1 extends Scene {
     this.hwaninStartTime = 4;
     this.hwanwoongStartTime = 9;
 
-    // Load images and sounds
-    imageManager.LoadImage("text", "Images/S1/C6-1/text.png");
+    // hwaninDuration = SCENE_DURATION/2f;
+    // hwanwoongDuration = SCENE_DURATION/2f;
+
+    // int hwaninX = centerX-200;
+    // int hwaninY = centerY;
+
+    //나레이션
+    imageManager.LoadImage("text", "Images/S1/C6-1/text");
     soundManager.LoadSound("narr", "Sounds/S1/C6-1/narr/narr.mp3");
 
-    imageManager.LoadImage("Background", "Images/S1/C6-1/Background.png");
-    imageManager.LoadImage("HwaninBody", "Images/S1/C6-1/HwaninBody.png");
+    //환인
+    imageManager.LoadImage("Background", "Images/S1/C6-1/Background");
+    imageManager.LoadImage("HwaninBody", "Images/S1/C6-1/HwaninBody");
     imageManager.LoadImage(
       "HwaninFace_MouseClose",
-      "Images/S1/C6-1/HwaninFace_MouseClose.png"
+      "Images/S1/C6-1/HwaninFace_MouseClose"
     );
     imageManager.LoadImage(
       "HwaninFace_MouseOpen",
-      "Images/S1/C6-1/HwaninFace_MouseOpen.png"
+      "Images/S1/C6-1/HwaninFace_MouseOpen"
+    );
+    imageManager.LoadImage(
+      "HwaninFace_MouseClose",
+      "Images/S1/C6-1/HwaninFace_MouseClose"
     );
     soundManager.LoadSound("hwanin", "Sounds/S1/C6-1/narr/hwanin.mp3");
 
-    imageManager.LoadImage(
-      "HwanwoongBody1",
-      "Images/S1/C6-1/HwanwoongBody1.png"
-    );
-    imageManager.LoadImage(
-      "HwanwoongBody2",
-      "Images/S1/C6-1/HwanwoongBody2.png"
-    );
-    imageManager.LoadImage(
-      "HwanwoongFace1",
-      "Images/S1/C6-1/HwanwoongFace1.png"
-    );
+    //환웅
+    imageManager.LoadImage("HwanwoongBody1", "Images/S1/C6-1/HwanwoongBody1");
+    imageManager.LoadImage("HwanwoongBody2", "Images/S1/C6-1/HwanwoongBody2");
+    imageManager.LoadImage("HwanwoongFace1", "Images/S1/C6-1/HwanwoongFace1");
     imageManager.LoadImage(
       "HwanwoongFace2-1",
-      "Images/S1/C6-1/HwanwoongFace2-1.png"
+      "Images/S1/C6-1/HwanwoongFace2-1"
     );
     imageManager.LoadImage(
       "HwanwoongFace2-2",
-      "Images/S1/C6-1/HwanwoongFace2-2.png"
+      "Images/S1/C6-1/HwanwoongFace2-2"
     );
-    soundManager.LoadSound("hwanwoong", "Sounds/S1/C6-1/narr/hwanwoong.mp3");
+    soundManager.LoadSound("hwanwoong", "Sounds/S1/C6-1/narr/hwanwung.mp3");
 
-    background(255);
     this.enterTime = timeManager.time;
   }
 
@@ -136,7 +141,6 @@ class S1C6_1 extends Scene {
       this.narrFlag = true;
       soundManager.PlaySound("narr");
     }
-
     this.mouseTick += timeManager.deltaTime;
     if (this.mouseTick >= this.mouseTickInterval) {
       this.mouseTick = 0;
@@ -146,6 +150,7 @@ class S1C6_1 extends Scene {
       } else {
         this.hwaninMouse = false;
       }
+      //환웅
 
       if (this.hwanwoongFaceFlag) {
         this.hwanwoongMouse = !this.hwanwoongMouse;
@@ -153,7 +158,6 @@ class S1C6_1 extends Scene {
         this.hwanwoongMouse = false;
       }
     }
-
     if (timeManager.time - this.enterTime >= this.hwaninStartTime) {
       this.hwaninFaceFlag = true;
       if (!this.hwaninVoiceFlag) {
@@ -168,7 +172,7 @@ class S1C6_1 extends Scene {
         this.hwaninFaceFlag = false;
       }
     }
-
+    //환웅 대사 시작지점
     if (timeManager.time - this.enterTime >= this.hwanwoongStartTime) {
       this.hwanwoongFaceFlag = true;
       this.hwaninFaceFlag = false;
@@ -178,11 +182,10 @@ class S1C6_1 extends Scene {
         soundManager.PlaySound("hwanwoong");
       }
     }
-
+    //EndPoint
     if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S1C6_2());
     }
-
     imageManager.DrawImageScale(
       "Background",
       this.centerX,
@@ -193,6 +196,7 @@ class S1C6_1 extends Scene {
     );
     imageManager.DrawImageScale("text", this.centerX, this.centerY, 1, 0, 255);
 
+    //환인 Draw
     imageManager.DrawImageScale(
       "HwaninBody",
       this.hwaninX,
@@ -201,7 +205,7 @@ class S1C6_1 extends Scene {
       0,
       255
     );
-    if (!this.hwaninFaceFlag) {
+    if (this.hwaninFaceFlag == false) {
       imageManager.DrawImageScale(
         "HwaninFace_MouseClose",
         this.hwaninX,
@@ -231,8 +235,8 @@ class S1C6_1 extends Scene {
         );
       }
     }
-
-    if (!this.hwanwoongFaceFlag) {
+    //환웅 Draw
+    if (this.hwanwoongFaceFlag == false) {
       imageManager.DrawImageScale(
         "HwanwoongBody1",
         this.hwanwoongX,
@@ -258,6 +262,7 @@ class S1C6_1 extends Scene {
         0,
         255
       );
+
       if (this.hwanwoongMouse) {
         imageManager.DrawImageScale(
           "HwanwoongFace2-1",

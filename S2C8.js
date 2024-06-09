@@ -51,11 +51,11 @@ class S2C8 extends Scene {
     );
     imageManager.DrawImage("text", this.centerVector);
 
-    if (time.time - enterTime > 1 && !this.playingNarr) {
+    if (timeManager.time - timeManager.enterTime > 1 && !this.playingNarr) {
       soundManager.PlaySound("narr");
       this.playingNarr = true;
     }
-    if (time.time - enterTime > 3 && !this.Chicken) {
+    if (timeManager.time - timeManager.enterTime > 3 && !this.Chicken) {
       soundManager.PlaySound("Chicken");
       this.Chicken = true;
     }

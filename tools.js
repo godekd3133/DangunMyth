@@ -30,6 +30,12 @@ const getFileContent = (filePath) => {
     '"../../../../Fonts/NanumGothic.ttf'
   );
 
+  /// LeeSeoyun.otf -> ../../../../Fonts/LeeSeoyun.otf
+  jsFileContent = jsFileContent.replace(
+    /"LeeSeoyun\.otf/g,
+    '"../../../../Fonts/LeeSeoyun.otf'
+  );
+
   /// Sounds -> "../../../Sounds
   jsFileContent = jsFileContent.replace(/"Sounds/g, '"../../../Sounds');
 

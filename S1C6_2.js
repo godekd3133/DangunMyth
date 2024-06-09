@@ -1,8 +1,8 @@
 class S1C6_2 extends Scene {
   constructor() {
     super();
-    this.centerX = windowWidth / 2;
-    this.centerY = windowHeight / 2;
+    this.centerX = width / 2;
+    this.centerY = height / 2;
     this.SCENE_DURATION = 8.5;
     this.hwaninFaceScale = 0.4;
 
@@ -16,106 +16,82 @@ class S1C6_2 extends Scene {
 
     this.endpointTick = 0;
 
-    // 환인 위치
+    //환인 위치
     this.hwaninfaceOffset = -130;
     this.hwaninX = this.centerX - 310;
     this.hwaninY = this.centerY + 350;
 
-    // 환인 얼굴 움직이는 변수
+    //환인 얼굴 움직이는 변수
     this.hwaninFaceFlag = true;
     this.hwaninFaceCnt = 0;
     this.hwaninFace = true;
-  }
-
-  preload() {
-    this.images = {
-      background2: loadImage("Images/S1/C6-2/Background.png"),
-      hwaninBody: loadImage("Images/S1/C6-2/HwaninBody.png"),
-      hwaninFace: loadImage("Images/S1/C6-2/HwaninFace.png"),
-      text: loadImage("Images/S1/C6-2/text.png"),
-    };
-    this.sounds = {
-      narr: loadSound("Sounds/S1/C6-2/narr/narr.mp3"),
-      hwanin: loadSound("Sounds/S1/C6-2/narr/hwanin.mp3"),
-    };
   }
 
   OnEnter() {
     this.hwaninFaceScale = 0.4;
-    this.narrFlag = false;
-    this.hwaninVoiceFlag = false;
+    // int hwaninX = centerX-200;
+    // int hwaninY = centerY;
 
-    this.hwaninFaceFlag = true;
-    this.hwaninFaceCnt = 0;
-    this.hwaninFace = true;
+    //나레이션
+    soundManager.LoadSound("narr", "Sounds/S1/C6-2/narr/narr.mp3");
 
-    background(255); // #ffffff
+    //환인
+    imageManager.LoadImage("Background2", "Images/S1/C6-2/Background");
+    imageManager.LoadImage("HwaninBody", "Images/S1/C6-2/HwaninBody");
+    imageManager.LoadImage("HwaninFace", "Images/S1/C6-2/HwaninFace");
+    imageManager.LoadImage("text", "Images/S1/C6-2/text");
+    soundManager.LoadSound("hwanin", "Sounds/S1/C6-2/narr/hwanin.mp3");
   }
 
   OnDraw() {
     if (!this.narrFlag) {
       this.narrFlag = true;
-      this.sounds.narr.play();
+      soundManager.PlaySound("narr");
     }
-
-    let currentTime = millis() / 1000;
-
     if (
-      currentTime - this.enterTime > this.hwaninStartTime &&
+      timeManager.time - this.enterTime > this.hwaninStartTime &&
       !this.hwaninVoiceFlag
     ) {
       this.hwaninVoiceFlag = true;
-      this.sounds.hwanin.play();
+      soundManager.PlaySound("hwanin");
     }
-
-    if (this.hwaninFace) {
-      this.hwaninFaceScale += deltaTime * 0.0002;
-    } else {
-      this.hwaninFaceScale -= deltaTime * 0.0002;
-    }
+    if (this.hwaninFace) this.hwaninFaceScale += timeManager.deltaTime * 0.2;
+    else this.hwaninFaceScale -= timeManager.deltaTime * 0.2;
 
     if (this.hwaninFaceScale >= 0.5 || this.hwaninFaceScale <= 0.36) {
       this.hwaninFace = !this.hwaninFace;
     }
-
-    if (currentTime - this.enterTime > this.SCENE_DURATION) {
-      // Implement scene change logic
-      // scene.ChangeScene(new S1C7());
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
+      sceneManager.ChangeScene(new S1C7());
     }
+    imageManager.DrawImageScale(
+      "Background2",
+      this.centerX,
+      this.centerY,
+      1,
+      0,
+      255
+    );
 
-    this.drawImageScale(this.images.background2, this.centerX, this.centerY, 1);
-
-    // 환인 Draw
-    this.drawImageScale(
-      this.images.hwaninBody,
+    //환인 Draw
+    imageManager.DrawImageScale(
+      "HwaninBody",
       this.hwaninX,
       this.hwaninY,
-      0.47
+      0.47,
+      0,
+      255
     );
-    this.drawImageScale(
-      this.images.hwaninFace,
+    imageManager.DrawImageScale(
+      "HwaninFace",
       this.hwaninX,
       this.hwaninY + this.hwaninfaceOffset,
-
-      this.hwaninFaceScale
+      0.47,
+      0,
+      255
     );
-    this.drawImage(this.images.text, this.centerX, this.centerY);
+    imageManager.DrawImage("text", createVector(this.centerX, this.centerY, 0));
   }
 
-  drawImageScale(img, x, y, scale) {
-    push();
-    translate(x, y);
-    scale(scale);
-    image(img, 0, 0);
-    pop();
-  }
-
-  drawImage(img, x, y) {
-    imageMode(CENTER);
-    image(img, x, y);
-  }
-
-  OnExit() {
-    // Implement any necessary cleanup logic
-  }
+  OnExit() {}
 }

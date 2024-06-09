@@ -98,7 +98,7 @@ class S1C11 extends Scene {
     // 씬 시작 후 1.5초 뒤 대사1 시작
     if (
       soundManager.hasSound("hwanin") &&
-      this.isTimeExceededMillis(this.startMillis, 1.5)
+      isTimeExceededMillis(this.startMillis, 1.5)
     ) {
       this.narrDuration = soundManager.soundDuration("hwanin");
       soundManager.playSoundOnce("hwanin");
@@ -109,7 +109,7 @@ class S1C11 extends Scene {
     if (
       !soundManager.hasSound("hwanin") &&
       soundManager.hasSound("hwanwoong") &&
-      this.isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
+      isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
     ) {
       this.narrDuration = soundManager.soundDuration("hwanwoong");
       soundManager.playSoundOnce("hwanwoong");
@@ -120,7 +120,7 @@ class S1C11 extends Scene {
     if (
       !soundManager.hasSound("hwanin") &&
       !soundManager.hasSound("hwanwoong") &&
-      this.isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
+      isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
     ) {
       sceneManager.ChangeScene(new S1C13());
     }

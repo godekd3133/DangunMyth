@@ -37,12 +37,12 @@ class S1C19_2 extends Scene {
     this.secondFlag = false;
     this.thirdFlag = false;
 
-    imageManager.LoadImage("background", "Images/S1/C19/background1.png");
-    imageManager.LoadImage("arm", "Images/S1/C19/hwanwoong_arm.png");
-    imageManager.LoadImage("mouth0", "Images/S1/C19/hwanwoong_mouth1.png");
-    imageManager.LoadImage("mouth1", "Images/S1/C19/hwanwoong_mouth0.png");
-    imageManager.LoadImage("skin", "Images/S1/C19/hwanwoong_skin.png");
-    imageManager.LoadImage("C19-2-Text", "Images/S1/C19/C19-2-Text.png");
+    imageManager.LoadImage("background", "Images/S1/C19/background1");
+    imageManager.LoadImage("arm", "Images/S1/C19/hwanwoong_arm");
+    imageManager.LoadImage("mouth0", "Images/S1/C19/hwanwoong_mouth1");
+    imageManager.LoadImage("mouth1", "Images/S1/C19/hwanwoong_mouth0");
+    imageManager.LoadImage("skin", "Images/S1/C19/hwanwoong_skin");
+    imageManager.LoadImage("C19-2-Text", "Images/S1/C19/C19-2-Text");
 
     soundManager.LoadSound("hwanwoong1", "Sounds/S1/C19-2/hwanwoong1.mp3");
     this.enterTime = timeManager.time;

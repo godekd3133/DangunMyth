@@ -26,7 +26,7 @@ class S3C3V1_1_1 extends Scene {
   }
 
   OnDraw() {
-    if (time.time - enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C3V1_1_2());
     }
     this._time += 2;
@@ -84,7 +84,7 @@ class S3C3V1_1_1 extends Scene {
       soundManager.PlaySound("evolution");
       this.effectPlaying = true;
     } else if (!this.effectPlaying) {
-      this.effectTime += time.deltaTime;
+      this.effectTime += timeManager.deltaTime;
     }
   }
 

@@ -64,11 +64,7 @@ class S3C3V1_3_1 extends Scene {
     );
 
     if (
-      this.isTimeExceeded(
-        this.startMinute,
-        this.startSecond,
-        this.SCENE_SECONDS
-      )
+      isTimeExceeded(this.startMinute, this.startSecond, this.SCENE_SECONDS)
     ) {
       sceneManager.ChangeScene(new S3C3V1_3_2());
     }

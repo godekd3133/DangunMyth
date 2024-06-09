@@ -33,7 +33,7 @@ class S3C3V1_2_2 extends Scene {
   }
 
   OnDraw() {
-    this.tongueY += 30 * time.deltaTime;
+    this.tongueY += 30 * timeManager.deltaTime;
 
     if (this.tongueY > 13) {
       this.tongueY *= -1;

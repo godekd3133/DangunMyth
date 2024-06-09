@@ -56,17 +56,13 @@ class S3C3V1_2 extends Scene {
 
     // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
     if (
-      this.isTimeExceeded(
-        this.startMinute,
-        this.startSecond,
-        this.SCENE_SECONDS
-      )
+      isTimeExceeded(this.startMinute, this.startSecond, this.SCENE_SECONDS)
     ) {
       sceneManager.ChangeScene(new S3C3V1_3());
     }
   }
 
   OnExit() {
-    soundManager.StopNowPlaying();
+    soundManager.stopNowPlaying();
   }
 }

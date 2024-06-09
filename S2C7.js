@@ -64,12 +64,12 @@ class S2C7 extends Scene {
       );
     }
 
-    if (time.time - enterTime > 1 && !this.playingYum) {
+    if (timeManager.time - timeManager.enterTime > 1 && !this.playingYum) {
       soundManager.PlaySound("yum");
       this.playingYum = true;
     }
 
-    if (time.time - enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S2C8());
     }
   }

@@ -28,7 +28,7 @@ class S2C3 extends Scene {
   }
 
   OnEnter() {
-    font.LoadFont("LeeSeoyun.otf", "LeeSeoyun.otf");
+    fontManager.LoadFont("lee", "LeeSeoyun.otf");
     imageManager.LoadImage(this.background, "Images/S2/C3/background");
     imageManager.LoadImage(this.bear, "Images/S2/C3/bear");
     imageManager.LoadImage(this.bearEye, "Images/S2/C3/bear_eye");

@@ -33,8 +33,8 @@ class S1C13 extends Scene {
   OnDraw() {
     for (let i = 1; i < this.intervals.length; i++) {
       if (
-        !this.isTimeExceededMillis(this.startMillis, this.intervals[i]) &&
-        this.isTimeExceededMillis(this.startMillis, this.intervals[i - 1])
+        !isTimeExceededMillis(this.startMillis, this.intervals[i]) &&
+        isTimeExceededMillis(this.startMillis, this.intervals[i - 1])
       ) {
         imageManager.DrawImage(
           "background" + i,
@@ -48,7 +48,7 @@ class S1C13 extends Scene {
         );
       }
     }
-    if (this.isTimeExceededMillis(this.startMillis, 4.0)) {
+    if (isTimeExceededMillis(this.startMillis, 4.0)) {
       sceneManager.ChangeScene(new S1C14());
     }
   }

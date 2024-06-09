@@ -92,7 +92,7 @@ class S3C3V2 extends Scene {
       this.tiger_Y -= 0.5 * timeManager.deltaTime;
       this.tiger_SCALE -= 0.03 * timeManager.deltaTime;
     }
-    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C3V2_1_1());
     }
   }

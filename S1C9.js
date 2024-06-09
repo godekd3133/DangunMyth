@@ -68,7 +68,7 @@ class S1C9 extends Scene {
     // 씬 시작 후 1초 뒤 대사1 시작
     if (
       soundManager.hasSound("hwanwoog") &&
-      this.isTimeExceededMillis(this.startMillis, 1)
+      isTimeExceededMillis(this.startMillis, 1)
     ) {
       soundManager.playSoundOnce("hwanwoog");
     }

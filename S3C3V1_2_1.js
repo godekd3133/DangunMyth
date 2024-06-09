@@ -47,7 +47,7 @@ class S3C3V1_2_1 extends Scene {
   }
 
   OnDraw() {
-    this.tongueY += 30 * time.deltaTime;
+    this.tongueY += 30 * timeManager.deltaTime;
 
     if (this.tongueY > 13) {
       this.tongueY *= -1;
@@ -99,11 +99,7 @@ class S3C3V1_2_1 extends Scene {
 
     // 씬 시작 후 SCENE_SECONDS 초 경과시 다음 장면으로 이동
     if (
-      this.isTimeExceeded(
-        this.startMinute,
-        this.startSecond,
-        this.SCENE_SECONDS
-      )
+      isTimeExceeded(this.startMinute, this.startSecond, this.SCENE_SECONDS)
     ) {
       sceneManager.ChangeScene(new S3C3V1_2_2());
     }
@@ -119,8 +115,8 @@ class S3C3V1_2_1 extends Scene {
       }
       this.stepSeconds = 0;
     } else {
-      this.stepDuration += time.deltaTime;
-      this.stepSeconds += time.deltaTime;
+      this.stepDuration += timeManager.deltaTime;
+      this.stepSeconds += timeManager.deltaTime;
     }
   }
 

@@ -30,14 +30,14 @@ class S1C8 extends Scene {
     this.hwaninY = this.centerY + 350;
 
     // 환인
-    imageManager.LoadImage("BackgroundS1C8", "./Images/S1/C8/Background");
-    imageManager.LoadImage("HwaninBody", "./Images/S1/C8/HwaninBody");
-    // imageManager.LoadImage("HwaninFace_MouseClose", "./Images/S1/C8/HwaninFace_MouseClose");
-    // imageManager.LoadImage("HwaninFace_MouseOpen", "./Images/S1/C8/HwaninFace_MouseOpen");
-    imageManager.LoadImage("HwaninFace", "./Images/S1/C8/HwaninFace");
+    imageManager.LoadImage("BackgroundS1C8", "Images/S1/C8/Background");
+    imageManager.LoadImage("HwaninBody", "Images/S1/C8/HwaninBody");
+    // imageManager.LoadImage("HwaninFace_MouseClose", "Images/S1/C8/HwaninFace_MouseClose");
+    // imageManager.LoadImage("HwaninFace_MouseOpen", "Images/S1/C8/HwaninFace_MouseOpen");
+    imageManager.LoadImage("HwaninFace", "Images/S1/C8/HwaninFace");
 
-    imageManager.LoadImage("HwaninHand", "./Images/S1/C8/HwaninHand");
-    imageManager.LoadImage("NarrS1C8", "./Images/S1/C8/narr");
+    imageManager.LoadImage("HwaninHand", "Images/S1/C8/HwaninHand");
+    imageManager.LoadImage("NarrS1C8", "Images/S1/C8/narr");
 
     soundManager.LoadSound("NarrS1C8", "Sounds/S1/C8/narr/narr.mp3");
     soundManager.LoadSound("HawninS1C8", "Sounds/S1/C8/narr/hwanin.mp3");

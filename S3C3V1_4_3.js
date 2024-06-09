@@ -41,7 +41,7 @@ class S3C3V1_4_3 extends Scene {
   }
 
   OnDraw() {
-    this.animationTick += time.deltaTime;
+    this.animationTick += timeManager.deltaTime;
     if (this.animationTick >= this.ANIMATION_TICK_INTERVAL) {
       this.animationTick = 0;
       this.isAnimating = !this.isAnimating;
@@ -128,7 +128,7 @@ class S3C3V1_4_3 extends Scene {
 
     imageManager.DrawImage("text", createVector(width / 2, height / 2));
 
-    if (time.time - enterTime >= this.SCENE_DURATION) {
+    if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
       sceneManager.CreditScene();
     }
     if (!this.firstFlag) {

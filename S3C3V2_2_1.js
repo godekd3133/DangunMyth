@@ -45,7 +45,7 @@ class S3C3V2_2_1 extends Scene {
     // 씬 시작 후 1초 뒤 대사1 시작
     if (
       soundManager.hasSound("haha") &&
-      this.isTimeExceededMillis(this.startMillis, 1)
+      isTimeExceededMillis(this.startMillis, 1)
     ) {
       this.narrDuration = soundManager.soundDuration("haha");
       soundManager.playSoundOnce("haha");
@@ -55,7 +55,7 @@ class S3C3V2_2_1 extends Scene {
     if (
       !soundManager.hasSound("haha") &&
       !soundManager.hasSound("thank") &&
-      this.isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
+      isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
     ) {
       sceneManager.ChangeScene(new S3C3V2_2_2());
     }
