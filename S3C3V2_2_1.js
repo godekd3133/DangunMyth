@@ -1,52 +1,67 @@
 class S3C3V2_2_1 extends Scene {
-  SCENE_DURATION = 5; // 5초 동안 씬 진행
-  static PREFIX = "Images/S3/C3/V2/_2/_1/";
-  static SOUND_PREFIX = "Sounds/S3/C3/V2/_2/_1/narr/";
-  static EXTRA_Y = 580;
-  static COUPLE_Y = 500;
-  extraScale = new p5.Vector(0.2, 0.2, 0);
-  coupleScale = new p5.Vector(0.33, 0.33, 0);
-  startMillis;
-  narrDuration;
+  constructor() {
+    super();
+    this.SCENE_DURATION = 5; // 5초 동안 씬 진행
+    this.PREFIX = "Images/S3/C3/V2/_2/_1/";
+    this.SOUND_PREFIX = "Sounds/S3/C3/V2/_2/_1/narr/";
+    this.EXTRA_Y = 580;
+    this.COUPLE_Y = 500;
+    this.extraScale = createVector(0.2, 0.2, 0);
+    this.coupleScale = createVector(0.33, 0.33, 0);
+    this.startMillis = 0;
+    this.narrDuration = 0;
+  }
+
   OnEnter() {
-    image.LoadImage("background", S3C3V2_2_1.PREFIX + "background");
-    image.LoadImage("couple", S3C3V2_2_1.PREFIX + "couple");
-    image.LoadImage("extra_left", S3C3V2_2_1.PREFIX + "extra_left");
-    image.LoadImage("extra_right", S3C3V2_2_1.PREFIX + "extra_right");
-    sound.LoadSound("haha", S3C3V2_2_1.SOUND_PREFIX + "haha.mp3");
+    imageManager.LoadImage("background", this.PREFIX + "background");
+    imageManager.LoadImage("couple", this.PREFIX + "couple");
+    imageManager.LoadImage("extra_left", this.PREFIX + "extra_left");
+    imageManager.LoadImage("extra_right", this.PREFIX + "extra_right");
+    soundManager.LoadSound("haha", this.SOUND_PREFIX + "haha.mp3");
+
     this.startMillis = millis(); // 씬 시작 millis
   }
+
   OnDraw() {
-    image.DrawImage("background", new p5.Vector(width / 2, height / 2));
-    image.DrawImageScale(
+    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+
+    imageManager.DrawImageScale(
       "extra_left",
-      new p5.Vector(150, S3C3V2_2_1.EXTRA_Y),
+      createVector(150, this.EXTRA_Y),
       this.extraScale
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "extra_right",
-      new p5.Vector(1150, S3C3V2_2_1.EXTRA_Y),
+      createVector(1150, this.EXTRA_Y),
       this.extraScale
     );
-    image.DrawImageScale(
+
+    imageManager.DrawImageScale(
       "couple",
-      new p5.Vector(width / 2, S3C3V2_2_1.COUPLE_Y),
+      createVector(width / 2, this.COUPLE_Y),
       this.coupleScale
-    ); // 씬 시작 후 1초 뒤 대사1 시작
-    if (sound.hasSound("haha") && isTimeExceededMillis(this.startMillis, 1)) {
-      this.narrDuration = sound.soundDuration("haha");
-      sound.playSoundOnce("haha");
-      this.startMillis = millis(); // 대사 1 시작 millis
-    } // 대사 1 종료 후 1초 뒤 다음 장면으로 이동
+    );
+
+    // 씬 시작 후 1초 뒤 대사1 시작
     if (
-      !sound.hasSound("haha") &&
-      !sound.hasSound("thank") &&
-      isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
+      soundManager.hasSound("haha") &&
+      this.isTimeExceededMillis(this.startMillis, 1)
     ) {
-      scene.ChangeScene(new S3C3V2_2_2());
+      this.narrDuration = soundManager.soundDuration("haha");
+      soundManager.playSoundOnce("haha");
+      this.startMillis = millis(); // 대사 1 시작 millis
+    }
+    // 대사 1 종료 후 1초 뒤 다음 장면으로 이동
+    if (
+      !soundManager.hasSound("haha") &&
+      !soundManager.hasSound("thank") &&
+      this.isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
+    ) {
+      sceneManager.ChangeScene(new S3C3V2_2_2());
     }
   }
+
   OnExit() {
-    sound.stopNowPlaying();
+    soundManager.stopNowPlaying();
   }
 }

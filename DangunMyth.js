@@ -1,9 +1,3 @@
-import ImageManager from "./ImageManager.js";
-import FontManager from "./FontManager.js";
-import TimeManager from "./TimeManager.js";
-import SoundManager from "./SoundManager.js";
-import SceneManager from "./SceneManager.js";
-
 let sceneManager;
 let imageManager;
 let fontManager;
@@ -11,11 +5,6 @@ let timeManager;
 let soundManager;
 let sceneList = [];
 let QAMode = false; // 이 변수를 true로 바꾸면 시간에 따른 씬 전환 안됩니다
-
-function preload() {
-  soundManager = new SoundManager();
-  soundManager.LoadSound("intro", "Sounds/intro.wav");
-}
 
 function setup() {
   createCanvas(1280, 720, P2D);

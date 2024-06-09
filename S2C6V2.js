@@ -1,102 +1,105 @@
 class S2C6V2 extends Scene {
-  showButton = false;
-  SCENE_DURATION = 10.0;
-  SCENE_TIME;
+  constructor() {
+    super();
+    this.showButton = false;
+    this.SCENE_DURATION = 10;
+    this.SCENE_TIME = 0;
 
-  bearArmX = width / 2 + 200;
-  bearArmRotate = 0.0;
-  bearArmAngle = 0.01;
-  bearArmDir = -0.4;
+    this.bearArmX = width / 2 + 200;
+    this.bearArmRotate = 0.0;
+    this.bearArmAngle = 0.01;
+    this.bearArmDir = -0.4;
 
-  tigerArmX = width / 2 - 200;
-  tigerArmRotate = 0.0;
-  tigerArmAngle = 0.01;
-  tigerArmDir = 0.4;
-  bearArmY = height / 2 + 200;
-  tigerArmY = height / 2 + 200;
-  basketY = height / 2 + 190;
+    this.tigerArmX = width / 2 - 200;
+    this.tigerArmRotate = 0.0;
+    this.tigerArmAngle = 0.01;
+    this.tigerArmDir = 0.4;
+    this.bearArmY = height / 2 + 200;
+    this.tigerArmY = height / 2 + 200;
+    this.basketY = height / 2 + 190;
 
-  sessionIndex;
-  sessionDuration = [3.0, 6.0, 10.0];
-  sessionSound = ["narr1", "narr2", "narr3"];
-  sessionText = ["text1", "text2", "text3"];
-  isSessionOut;
-
-  constructor() {}
+    this.sessionIndex = 0;
+    this.sessionDuration = [3, 6];
+    this.sessionSound = ["narr1", "narr2", "narr3"];
+    this.sessionText = ["text1", "text2", "text3"];
+    this.isSessionOut = [false, false];
+  }
 
   OnEnter() {
-    image.LoadImage("background", "Images/S2/C6/V2/background");
-    image.LoadImage("bear_arm", "Images/S2/C6/V2/bear_arm");
-    image.LoadImage("tiger_arm", "Images/S2/C6/V2/tiger_arm");
-    image.LoadImage("chars", "Images/S2/C6/V2/chars");
-    image.LoadImage("basket", "Images/S2/C6/V2/basket");
-    image.LoadImage("text1", "Images/S2/C6/V2/text1");
-    image.LoadImage("text2", "Images/S2/C6/V2/text2");
-    image.LoadImage("text3", "Images/S2/C6/V2/text3");
-    sound.LoadSound("narr1", "Sounds/S2/C6/V2/narr/narr1.mp3");
-    sound.LoadSound("narr2", "Sounds/S2/C6/V2/narr/narr2.mp3");
-    sound.LoadSound("narr3", "Sounds/S2/C6/V2/narr/narr3.mp3");
-    this.isSessionOut = [false, false, false];
-    SCENE_TIME = 0.0;
+    imageManager.LoadImage("background", "Images/S2/C6/V2/background");
+    imageManager.LoadImage("bear_arm", "Images/S2/C6/V2/bear_arm");
+    imageManager.LoadImage("tiger_arm", "Images/S2/C6/V2/tiger_arm");
+    imageManager.LoadImage("chars", "Images/S2/C6/V2/chars");
+    imageManager.LoadImage("basket", "Images/S2/C6/V2/basket");
+    imageManager.LoadImage("text1", "Images/S2/C6/V2/text1");
+    imageManager.LoadImage("text2", "Images/S2/C6/V2/text2");
+    imageManager.LoadImage("text3", "Images/S2/C6/V2/text3");
+    soundManager.LoadSound("narr1", "Sounds/S2/C6/V2/narr/narr1.mp3");
+    soundManager.LoadSound("narr2", "Sounds/S2/C6/V2/narr/narr2.mp3");
+    soundManager.LoadSound("narr3", "Sounds/S2/C6/V2/narr/narr3.mp3");
+    this.isSessionOut = [false, false];
+    this.SCENE_TIME = 0;
   }
 
   OnDraw() {
-    // 시간에 따라 y 좌표를 업데이트합니다.
     this.bearArmY = height / 2 + 220 + sin(millis() / 1000.0) * 20;
     this.tigerArmY = height / 2 + 220 + sin(millis() / 1000.0) * 20;
     this.basketY = height / 2 + 210 + sin(millis() / 1000.0) * 20;
-    image.DrawImageScale(
+
+    imageManager.DrawImageScale(
       "background",
-      new p5.Vector(width / 2, height / 2),
-      new p5.Vector(1, 1)
+      createVector(width / 2, height / 2),
+      createVector(1, 1)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "chars",
-      new p5.Vector(width / 2, height / 2 + 150),
-      new p5.Vector(0.4, 0.4)
+      createVector(width / 2, height / 2 + 150),
+      createVector(0.4, 0.4)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "basket",
-      new p5.Vector(width / 2, this.basketY),
-      new p5.Vector(0.4, 0.4)
+      createVector(width / 2, this.basketY),
+      createVector(0.4, 0.4)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "bear_arm",
-      new p5.Vector(this.bearArmX, this.bearArmY),
-      new p5.Vector(0.4, 0.4),
+      createVector(this.bearArmX, this.bearArmY),
+      createVector(0.4, 0.4),
       this.bearArmRotate
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "tiger_arm",
-      new p5.Vector(this.tigerArmX, this.tigerArmY),
-      new p5.Vector(0.4, 0.4),
+      createVector(this.tigerArmX, this.tigerArmY),
+      createVector(0.4, 0.4),
       this.tigerArmRotate
     );
+
     this.SCENE_TIME = time.time - enterTime;
-    if (this.sessionIndex == 0)
-      image.DrawImageScale(
+    if (this.sessionIndex == 0) {
+      imageManager.DrawImageScale(
         this.sessionText[this.sessionIndex],
-        new p5.Vector(width / 2, height / 2 - 60),
-        new p5.Vector(1, 1)
+        createVector(width / 2, height / 2 - 60),
+        createVector(1, 1)
       );
-    else
-      image.DrawImageScale(
+    } else {
+      imageManager.DrawImageScale(
         this.sessionText[this.sessionIndex],
-        new p5.Vector(width / 2, height / 2),
-        new p5.Vector(1, 1)
+        createVector(width / 2, height / 2),
+        createVector(1, 1)
       );
+    }
     if (!this.isSessionOut[this.sessionIndex]) {
-      sound.PlaySound(this.sessionSound[this.sessionIndex]);
-      this.isSessionOut[this.sessionIndex] =
-        !this.isSessionOut[this.sessionIndex];
+      soundManager.PlaySound(this.sessionSound[this.sessionIndex]);
+      this.isSessionOut[this.sessionIndex] = true;
     }
     if (this.SCENE_TIME > this.sessionDuration[this.sessionIndex]) {
       if (this.sessionDuration.length - 1 > this.sessionIndex)
         this.sessionIndex++;
     }
     if (this.SCENE_TIME > this.SCENE_DURATION) {
-      scene.ChangeScene(new S2C7());
+      sceneManager.ChangeScene(new S2C7());
     }
   }
+
   OnExit() {}
 }

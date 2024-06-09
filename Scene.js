@@ -3,5 +3,6 @@ export class Scene {
   constructor() {}
   OnEnter() {}
   OnDraw() {}
-  OnExit() {}
+  OnExit() { }
+  
 }

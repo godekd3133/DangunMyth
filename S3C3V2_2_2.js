@@ -1,38 +1,42 @@
 class S3C3V2_2_2 extends Scene {
-  preparationTime = 1;
-  BACKGROUND_IMAGE = "Images/S3/C3/V1/_3/_2/Background";
-  CHARACTER_IMAGE = "Images/S3/C3/V1/_3/_2/Characters";
-  alpha = 1;
-  fadeoutTime = 4;
-  constructor() {}
-  OnEnter() {
-    image.LoadImage("background", this.BACKGROUND_IMAGE);
-    image.LoadImage("character", this.CHARACTER_IMAGE);
-    this.alpha = 255; //fadeoutTime= 4f;
-    //preparationTime= 3f;
+  constructor() {
+    super();
+    this.preparationTime = 1;
+    this.BACKGROUND_IMAGE = "Images/S3/C3/V1/_3/_2/Background";
+    this.CHARACTER_IMAGE = "Images/S3/C3/V1/_3/_2/Characters";
+    this.alpha = 255;
+    this.fadeoutTime = 4;
   }
+
+  OnEnter() {
+    imageManager.LoadImage("background", this.BACKGROUND_IMAGE);
+    imageManager.LoadImage("character", this.CHARACTER_IMAGE);
+    this.alpha = 255;
+  }
+
   OnDraw() {
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "background",
-      new p5.Vector(width / 2, height / 2, 0),
-      new p5.Vector(1, 1, 0)
+      createVector(width / 2, height / 2, 0),
+      createVector(1, 1, 0)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "character",
-      new p5.Vector(width / 2, height / 2, 0),
-      new p5.Vector(0.25, 0.25, 0),
+      createVector(width / 2, height / 2, 0),
+      createVector(0.25, 0.25, 0),
       0,
       this.alpha
     );
-    if (time.time - this.enterTime >= 1) {
-      this.alpha -= (255 / this.fadeoutTime) * time.deltaTime;
+    if (timeManager.time - this.enterTime >= 1) {
+      this.alpha -= (255 / this.fadeoutTime) * timeManager.deltaTime;
     }
     if (this.alpha <= 0) {
-      this.preparationTime -= time.deltaTime;
+      this.preparationTime -= timeManager.deltaTime;
       if (this.preparationTime <= 0) {
-        scene.ChangeScene(new S3C3V2_2_3());
+        sceneManager.ChangeScene(new S3C3V2_2_3());
       }
     }
   }
+
   OnExit() {}
 }

@@ -1,59 +1,72 @@
 class S3C3V1_2 extends Scene {
-  static PREFIX = "Images/S3/C3/V1/_2/";
-  static CHARACTER_SCALE = 0.25;
-  static BEAR_X = 470;
-  static BEAR_Y = 460;
-  static BEAR_EYE_X = S3C3V1_2.BEAR_X - 5;
-  static BEAR_EYE_Y = S3C3V1_2.BEAR_Y - 50;
-  static TIGER_X = S3C3V1_2.BEAR_X + 350;
-  static TIGER_Y = S3C3V1_2.BEAR_Y;
-  static SCENE_SCONDS = 4; // 4초 동안 씬 진행
-  startMinute;
-  startSecond;
-  tongueY = 0; // ??????
-  narrFlag = false;
+  constructor() {
+    super();
+    this.PREFIX = "Images/S3/C3/V1/_2/";
+    this.CHARACTER_SCALE = 0.25;
+    this.BEAR_X = 470;
+    this.BEAR_Y = 460;
+    this.BEAR_EYE_X = this.BEAR_X - 5;
+    this.BEAR_EYE_Y = this.BEAR_Y - 50;
+    this.TIGER_X = this.BEAR_X + 350;
+    this.TIGER_Y = this.BEAR_Y;
+    this.SCENE_SECONDS = 4; // 4초 동안 씬 진행
+    this.startMinute = 0;
+    this.startSecond = 0;
+    this.tongueY = 0; // Not sure what this is for
+    this.narrFlag = false;
+  }
+
   OnEnter() {
     // 이미지 로드
-    image.LoadImage("background", S3C3V1_2.PREFIX + "background");
-    image.LoadImage("text", S3C3V1_2.PREFIX + "text");
-    image.LoadImage("bear_body", S3C3V1_2.PREFIX + "bear_body");
-    image.LoadImage("bear_eye", S3C3V1_2.PREFIX + "bear_eye");
-    image.LoadImage("tiger1", S3C3V1_2.PREFIX + "tiger1");
-    image.LoadImage("tiger2", S3C3V1_2.PREFIX + "tiger2");
-    sound.LoadSound("Tiger", "Sounds/S3/C3/V1/_2/Tiger.mp3");
+    imageManager.LoadImage("background", this.PREFIX + "background");
+    imageManager.LoadImage("text", this.PREFIX + "text");
+    imageManager.LoadImage("bear_body", this.PREFIX + "bear_body");
+    imageManager.LoadImage("bear_eye", this.PREFIX + "bear_eye");
+    imageManager.LoadImage("tiger1", this.PREFIX + "tiger1");
+    imageManager.LoadImage("tiger2", this.PREFIX + "tiger2");
+    soundManager.LoadSound("Tiger", "Sounds/S3/C3/V1/_2/Tiger.mp3");
+
     this.narrFlag = false;
     this.startMinute = minute();
     this.startSecond = second();
   }
+
   OnDraw() {
     if (!this.narrFlag) {
       this.narrFlag = true;
-      sound.PlaySound("Tiger");
+      soundManager.PlaySound("Tiger");
     }
-    image.DrawImage("background", new p5.Vector(width / 2, height / 2));
-    image.DrawImage("text", new p5.Vector(width / 2, height / 2));
-    image.DrawImageScale(
+    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImageScale(
       "bear_eye",
-      new p5.Vector(S3C3V1_2.BEAR_EYE_X, S3C3V1_2.BEAR_EYE_Y),
-      new p5.Vector(S3C3V1_2.CHARACTER_SCALE, S3C3V1_2.CHARACTER_SCALE)
+      createVector(this.BEAR_EYE_X, this.BEAR_EYE_Y),
+      createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "bear_body",
-      new p5.Vector(S3C3V1_2.BEAR_X, S3C3V1_2.BEAR_Y),
-      new p5.Vector(S3C3V1_2.CHARACTER_SCALE, S3C3V1_2.CHARACTER_SCALE)
+      createVector(this.BEAR_X, this.BEAR_Y),
+      createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "tiger" + (((millis() / 500) % 2) + 1),
-      new p5.Vector(S3C3V1_2.TIGER_X, S3C3V1_2.TIGER_Y),
-      new p5.Vector(S3C3V1_2.CHARACTER_SCALE, S3C3V1_2.CHARACTER_SCALE)
-    ); // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
+      createVector(this.TIGER_X, this.TIGER_Y),
+      createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
+    );
+
+    // 씬 시작 후 SCENE_SCONDS 초 경과시 다음 장면으로 이동
     if (
-      isTimeExceeded(this.startMinute, this.startSecond, S3C3V1_2.SCENE_SCONDS)
+      this.isTimeExceeded(
+        this.startMinute,
+        this.startSecond,
+        this.SCENE_SECONDS
+      )
     ) {
-      scene.ChangeScene(new S3C3V1_3());
+      sceneManager.ChangeScene(new S3C3V1_3());
     }
   }
+
   OnExit() {
-    sound.stopNowPlaying();
+    soundManager.StopNowPlaying();
   }
 }

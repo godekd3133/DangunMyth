@@ -1,95 +1,105 @@
 class S1C4 extends Scene {
-  SCENE_DURATION = 7.5;
-  openDelay = 0.33;
-  closeMin = 1;
-  closeMax = 2;
-  eyeIndex = 0;
-  nextCloseDuration = 0;
-  closeTime = 0;
-  openTime = 0;
-  isNarrOut = false;
-  constructor() {}
+  constructor() {
+    super();
+    this.SCENE_DURATION = 7.5;
+    this.openDelay = 0.33;
+    this.closeMin = 1;
+    this.closeMax = 2;
+    this.eyeIndex = 0;
+    this.nextCloseDuration = 0;
+    this.closeTime = 0;
+    this.openTime = 0;
+    this.isNarrOut = false;
+  }
+
   OnEnter() {
-    image.LoadImage("background", "Images/S1/C4/background");
-    image.LoadImage("man1", "Images/S1/C4/man1");
-    image.LoadImage("man2", "Images/S1/C4/man2");
-    image.LoadImage("eye1", "Images/S1/C4/eye1");
-    image.LoadImage("eye2", "Images/S1/C4/eye2");
-    image.LoadImage("eye3", "Images/S1/C4/eye3");
-    image.LoadImage("mouth", "Images/S1/C4/mouth");
-    image.LoadImage("text", "Images/S1/C4/text");
-    sound.LoadSound("narr", "Sounds/S1/C4/narr/narr.mp3");
-    this.closeTime = enterTime;
-    this.openTime = enterTime;
+    imageManager.LoadImage("background", "Images/S1/C4/background");
+    imageManager.LoadImage("man1", "Images/S1/C4/man1");
+    imageManager.LoadImage("man2", "Images/S1/C4/man2");
+    imageManager.LoadImage("eye1", "Images/S1/C4/eye1");
+    imageManager.LoadImage("eye2", "Images/S1/C4/eye2");
+    imageManager.LoadImage("eye3", "Images/S1/C4/eye3");
+    imageManager.LoadImage("mouth", "Images/S1/C4/mouth");
+    imageManager.LoadImage("text", "Images/S1/C4/text");
+    soundManager.LoadSound("narr", "Sounds/S1/C4/narr/narr.mp3");
+
+    this.closeTime = timeManager.time;
+    this.openTime = timeManager.time;
     this.nextCloseDuration =
       random(this.closeMin * 100, this.closeMax * 100) / 100;
     this.isNarrOut = false;
   }
+
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      sound.PlaySound("narr");
+      soundManager.PlaySound("narr");
     }
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "background",
-      new p5.Vector(width / 2, height / 2),
-      new p5.Vector(1, 1)
+      createVector(width / 2, height / 2),
+      createVector(1, 1)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "text",
-      new p5.Vector(width / 2, height / 2),
-      new p5.Vector(1, 1)
+      createVector(width / 2, height / 2),
+      createVector(1, 1)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "man1",
-      new p5.Vector(width / 2 + 130, height - 165),
-      new p5.Vector(0.35, 0.35)
+      createVector(width / 2 + 130, height - 165),
+      createVector(0.35, 0.35)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "eye3",
-      new p5.Vector(width / 2 + 130, height - 165),
-      new p5.Vector(0.35, 0.35)
+      createVector(width / 2 + 130, height - 165),
+      createVector(0.35, 0.35)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "mouth",
-      new p5.Vector(width / 2 + 130, height - 165),
-      new p5.Vector(0.35, 0.35)
+      createVector(width / 2 + 130, height - 165),
+      createVector(0.35, 0.35)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "man2",
-      new p5.Vector(width / 2 + 400, height - 165),
-      new p5.Vector(0.43, 0.43)
+      createVector(width / 2 + 400, height - 165),
+      createVector(0.43, 0.43)
     );
-    if (this.eyeIndex == 0)
-      image.DrawImageScale(
+
+    if (this.eyeIndex == 0) {
+      imageManager.DrawImageScale(
         "eye1",
-        new p5.Vector(width / 2 + 370, height - 390),
-        new p5.Vector(0.38, 0.38)
+        createVector(width / 2 + 370, height - 390),
+        createVector(0.38, 0.38)
       );
-    else
-      image.DrawImageScale(
+    } else {
+      imageManager.DrawImageScale(
         "eye2",
-        new p5.Vector(width / 2 + 370, height - 390),
-        new p5.Vector(0.38, 0.38)
+        createVector(width / 2 + 370, height - 390),
+        createVector(0.38, 0.38)
       );
+    }
+
     if (
       this.eyeIndex == 0 &&
-      time.time - this.openTime >= this.nextCloseDuration
+      timeManager.time - this.openTime >= this.nextCloseDuration
     ) {
       this.eyeIndex = 1;
       this.nextCloseDuration =
         random(this.closeMin * 100, this.closeMax * 100) / 100;
-      this.closeTime = time.time;
+      this.closeTime = timeManager.time;
     } else if (
       this.eyeIndex == 1 &&
-      time.time - this.closeTime >= this.openDelay
+      timeManager.time - this.closeTime >= this.openDelay
     ) {
       this.eyeIndex = 0;
-      this.openTime = time.time;
+      this.openTime = timeManager.time;
     }
-    if (time.time - enterTime >= this.SCENE_DURATION) {
-      scene.ChangeScene(new S1C5());
+
+    if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
+      sceneManager.ChangeScene(new S1C5());
     }
   }
+
   OnExit() {}
 }

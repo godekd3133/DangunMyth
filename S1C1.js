@@ -1,106 +1,84 @@
 class S1C1 extends Scene {
-  SCENE_DURATION = 17; // narr. 2 + 4 + 7 sec
-  SCENE_DURATION = 17; // narr. 2 + 4 + 7 sec
-
-  cloudX;
-  zoomIn;
-
-  sessionIndex;
-  sessionDuration = [4, 9.5, 15];
-  sessionSound = ["narr1", "narr2", "narr3"];
-  sessionText = ["text1", "text1", "text2"];
-  isSessionOut;
-
-  enterTime;
-
-  images = {};
-  sounds = {};
-
-  preload() {
-    images.background = loadImage("Images/S1/C1/background.png");
-    images.cloud01 = loadImage("Images/S1/C1/cloud_01.png");
-    images.cloud02 = loadImage("Images/S1/C1/cloud_02.png");
-    images.cloud03 = loadImage("Images/S1/C1/cloud_03.png");
-    images.text1 = loadImage("Images/S1/C1/text_01.png");
-    images.text2 = loadImage("Images/S1/C1/text_02.png");
-
-    sounds.intro = loadSound("Sounds/S1/C1/narr/narr1.mp3");
-    sounds.narr1 = loadSound("Sounds/S1/C1/narr/narr1.mp3");
-    sounds.narr2 = loadSound("Sounds/S1/C1/narr/narr2.mp3");
-    sounds.narr3 = loadSound("Sounds/S1/C1/narr/narr3.mp3");
-  }
-
-  setup() {
-    createCanvas(windowWidth, windowHeight);
-    OnEnter();
-  }
-
-  draw() {
-    OnDraw();
+  constructor() {
+    super();
+    this.SCENE_DURATION = 17;
+    this.cloudX = 0;
+    this.zoomIn = 1;
+    this.sessionIndex = 0;
+    this.sessionDuration = [4, 9.5, 15];
+    this.sessionSound = ["narr1", "narr2", "narr3"];
+    this.sessionText = ["text1", "text1", "text2"];
+    this.isSessionOut = [false, false, false];
   }
 
   OnEnter() {
-    cloudX = 0;
-    zoomIn = 1;
-    enterTime = millis() / 1000;
-    sessionIndex = 0;
-    isSessionOut = [false, false, false];
-
-    sounds.intro.play();
+    imageManager.LoadImage("background", "Images/S1/C1/background");
+    imageManager.LoadImage("cloud01", "Images/S1/C1/cloud_01");
+    imageManager.LoadImage("cloud02", "Images/S1/C1/cloud_02");
+    imageManager.LoadImage("cloud03", "Images/S1/C1/cloud_03");
+    soundManager.PlaySound("intro");
+    imageManager.LoadImage("text1", "Images/S1/C1/text_01");
+    imageManager.LoadImage("text2", "Images/S1/C1/text_02");
+    soundManager.LoadSound("narr1", "Sounds/S1/C1/narr/narr1.mp3");
+    soundManager.LoadSound("narr2", "Sounds/S1/C1/narr/narr2.mp3");
+    soundManager.LoadSound("narr3", "Sounds/S1/C1/narr/narr3.mp3");
+    this.cloudX = 0;
+    this.zoomIn = 1;
+    this.enterTime = timeManager.time;
+    this.sessionIndex = 0;
+    this.isSessionOut = [false, false, false];
   }
 
   OnDraw() {
-    currentTime = millis() / 1000;
-    deltaTime = deltaTime / 1000;
-
-    scale = zoomIn;
-
-    imageMode(CENTER);
-    drawImageScale(images.background, width / 2, height / 2, scale);
-    drawImageScale(images.cloud01, width / 2 - cloudX, height / 2, scale);
-    drawImageScale(images.cloud02, width / 2 - cloudX, height / 2, scale);
-    drawImageScale(images.cloud03, width / 2 + cloudX, height / 2, scale);
-
-    if (currentTime - enterTime > 0.25) {
-      cloudX += 100 * deltaTime;
-    }
-
-    if (currentTime - enterTime > 0.25 && zoomIn < 1.8) {
-      zoomIn += 0.02 * deltaTime;
-    }
-
-    drawImageScale(
-      images[sessionText[sessionIndex]],
-      width / 2,
-      height / 2,
+    let scale = createVector(this.zoomIn, this.zoomIn, 0);
+    imageManager.DrawImageScale(
+      "background",
+      createVector(width / 2, height / 2, 0),
+      scale
+    );
+    imageManager.DrawImageScale(
+      "cloud01",
+      createVector(width / 2 - this.cloudX, height / 2, 0),
+      scale
+    );
+    imageManager.DrawImageScale(
+      "cloud02",
+      createVector(width / 2 - this.cloudX, height / 2, 0),
+      scale
+    );
+    imageManager.DrawImageScale(
+      "cloud03",
+      createVector(width / 2 + this.cloudX, height / 2, 0),
       scale
     );
 
-    if (!isSessionOut[sessionIndex]) {
-      sounds[sessionSound[sessionIndex]].play();
-      isSessionOut[sessionIndex] = true;
+    if (timeManager.time - this.enterTime > 0.25) {
+      this.cloudX += 100 * timeManager.deltaTime;
     }
-
-    if (currentTime - enterTime > sessionDuration[sessionIndex]) {
-      if (sessionIndex < sessionDuration.length - 1) {
-        sessionIndex++;
-      }
+    if (timeManager.time - this.enterTime > 0.25 && this.zoomIn < 1.8) {
+      this.zoomIn += 0.02 * timeManager.deltaTime;
     }
-
-    if (currentTime - enterTime > SCENE_DURATION) {
-      // ChangeScene(new S1C3()); // Implement scene change logic
+    imageManager.DrawImage(
+      this.sessionText[this.sessionIndex],
+      createVector(width / 2, height / 2)
+    );
+    if (!this.isSessionOut[this.sessionIndex]) {
+      soundManager.PlaySound(this.sessionSound[this.sessionIndex]);
+      this.isSessionOut[this.sessionIndex] = true;
+    }
+    if (
+      timeManager.time - this.enterTime >
+      this.sessionDuration[this.sessionIndex]
+    ) {
+      if (this.sessionDuration.length - 1 > this.sessionIndex)
+        this.sessionIndex++;
+    }
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
+      sceneManager.ChangeScene(new S1C3());
     }
   }
 
-  drawImageScale(img, x, y, scale) {
-    push();
-    translate(x, y);
-    scale(scale);
-    image(img, 0, 0);
-    pop();
-  }
-
-  windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+  OnExit() {
+    soundManager.StopSound("intro");
   }
 }

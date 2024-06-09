@@ -1,63 +1,71 @@
 class S2C8 extends Scene {
-  static PREFIX = "Images/S2/C8/";
-  centerVector;
-  centerX;
-  centerY;
-  sunY = 600;
-  cloudXDistance = 0;
-  speed = 0.8;
-  playingNarr = false;
-  Chicken = false;
-  SCENE_DURATION = 3;
+  constructor() {
+    super();
+    this.PREFIX = "Images/S2/C8/";
+    this.centerVector;
+    this.centerX;
+    this.centerY;
+    this.sunY = 600;
+    this.cloudXDistance = 0;
+    this.speed = 0.8;
+    this.playingNarr = false;
+    this.Chicken = false;
+    this.SCENE_DURATION = 3;
+  }
+
   OnEnter() {
     this.centerX = width / 2;
     this.centerY = height / 2;
-    this.centerVector = new p5.Vector(this.centerX, this.centerY);
+    this.centerVector = createVector(this.centerX, this.centerY);
     this.sunY = 600;
     this.cloudXDistance = 0;
-    image.LoadImage("cloud_left", S2C8.PREFIX + "cloud_left");
-    image.LoadImage("cloud_right", S2C8.PREFIX + "cloud_right");
-    image.LoadImage("cloud_middle", S2C8.PREFIX + "cloud_middle");
-    image.LoadImage("lake", S2C8.PREFIX + "lake");
-    image.LoadImage("mountains", S2C8.PREFIX + "mountains");
-    image.LoadImage("sky", S2C8.PREFIX + "sky");
-    image.LoadImage("sun", S2C8.PREFIX + "sun");
-    image.LoadImage("text", S2C8.PREFIX + "text");
-    sound.LoadSound("narr", "Sounds/S2/C8/narr/narr.mp3");
-    sound.LoadSound("Chicken", "Sounds/Effects/Chicken_02.mp3");
+
+    imageManager.LoadImage("cloud_left", this.PREFIX + "cloud_left");
+    imageManager.LoadImage("cloud_right", this.PREFIX + "cloud_right");
+    imageManager.LoadImage("cloud_middle", this.PREFIX + "cloud_middle");
+    imageManager.LoadImage("lake", this.PREFIX + "lake");
+    imageManager.LoadImage("mountains", this.PREFIX + "mountains");
+    imageManager.LoadImage("sky", this.PREFIX + "sky");
+    imageManager.LoadImage("sun", this.PREFIX + "sun");
+    imageManager.LoadImage("text", this.PREFIX + "text");
+    soundManager.LoadSound("narr", "Sounds/S2/C8/narr/narr.mp3");
+    soundManager.LoadSound("Chicken", "Sounds/Effects/Chicken_02.mp3");
   }
+
   OnDraw() {
-    image.DrawImage("sky", this.centerVector);
-    image.DrawImage("sun", new p5.Vector(this.centerX, this.sunY));
-    image.DrawImage("mountains", this.centerVector);
-    image.DrawImage("lake", this.centerVector);
-    image.DrawImage(
+    imageManager.DrawImage("sky", this.centerVector);
+    imageManager.DrawImage("sun", createVector(this.centerX, this.sunY));
+    imageManager.DrawImage("mountains", this.centerVector);
+    imageManager.DrawImage("lake", this.centerVector);
+    imageManager.DrawImage(
       "cloud_left",
-      new p5.Vector(this.centerX - this.cloudXDistance, this.centerY)
+      createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
-    image.DrawImage(
+    imageManager.DrawImage(
       "cloud_right",
-      new p5.Vector(this.centerX + this.cloudXDistance, this.centerY)
+      createVector(this.centerX + this.cloudXDistance, this.centerY)
     );
-    image.DrawImage(
+    imageManager.DrawImage(
       "cloud_middle",
-      new p5.Vector(this.centerX - this.cloudXDistance, this.centerY)
+      createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
-    image.DrawImage("text", this.centerVector);
+    imageManager.DrawImage("text", this.centerVector);
+
     if (time.time - enterTime > 1 && !this.playingNarr) {
-      sound.PlaySound("narr");
+      soundManager.PlaySound("narr");
       this.playingNarr = true;
     }
     if (time.time - enterTime > 3 && !this.Chicken) {
-      sound.PlaySound("Chicken");
+      soundManager.PlaySound("Chicken");
       this.Chicken = true;
     }
     if (this.sunY < 400) {
-      scene.ChangeScene(new S3C1());
+      sceneManager.ChangeScene(new S3C1());
     } else {
       this.sunY -= this.speed;
       this.cloudXDistance += this.speed;
     }
   }
+
   OnExit() {}
 }

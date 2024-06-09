@@ -1,26 +1,30 @@
 class S2C1 extends Scene {
-  SCENE_DURATION = 7.5;
-  originalAnimalScale = 0.3;
-  animalScale = 0.3;
-  animalX = 300;
-  animalY = 550;
-  imageNumber = 1;
-  imageMaxNumber = 3;
-  imageNumberDelta = 1;
-  WALK_INTERVAL = 0.1;
-  walkTick = 0;
-  SOUND_INTERVAL = 0.4;
-  soundTick = 0;
-  constructor() {}
+  constructor() {
+    super();
+    this.SCENE_DURATION = 7.5;
+    this.originalAnimalScale = 0.3;
+    this.animalScale = 0.3;
+    this.animalX = 300;
+    this.animalY = 550;
+    this.imageNumber = 1;
+    this.imageMaxNumber = 3;
+    this.imageNumberDelta = 1;
+    this.WALK_INTERVAL = 0.1;
+    this.walkTick = 0;
+    this.SOUND_INTERVAL = 0.4;
+    this.soundTick = 0;
+  }
+
   OnEnter() {
-    image.LoadImage("background", "Images/S2/C1/background");
-    image.LoadImage("tiger1", "Images/S2/C1/tiger1");
-    image.LoadImage("tiger2", "Images/S2/C1/tiger2");
-    image.LoadImage("tiger3", "Images/S2/C1/tiger3");
-    image.LoadImage("bear1", "Images/S2/C1/bear1");
-    image.LoadImage("bear2", "Images/S2/C1/bear2");
-    image.LoadImage("bear3", "Images/S2/C1/bear3");
-    sound.LoadSound("step", "Sounds/S2/C1/effect/Step_Grass_01.wav");
+    imageManager.LoadImage("background", "Images/S2/C1/background");
+    imageManager.LoadImage("tiger1", "Images/S2/C1/tiger1");
+    imageManager.LoadImage("tiger2", "Images/S2/C1/tiger2");
+    imageManager.LoadImage("tiger3", "Images/S2/C1/tiger3");
+    imageManager.LoadImage("bear1", "Images/S2/C1/bear1");
+    imageManager.LoadImage("bear2", "Images/S2/C1/bear2");
+    imageManager.LoadImage("bear3", "Images/S2/C1/bear3");
+    soundManager.LoadSound("step", "Sounds/S2/C1/effect/Step_Grass_01.wav");
+
     this.walkTick = 0;
     this.soundTick = 0;
     this.imageNumber = 1;
@@ -28,50 +32,62 @@ class S2C1 extends Scene {
     this.animalX = 300;
     this.animalY = 550;
   }
+
   OnDraw() {
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "background",
-      new p5.Vector(width / 2, height / 2),
-      new p5.Vector(1, 1)
+      createVector(width / 2, height / 2),
+      createVector(1, 1)
     );
+
     if (this.animalX < 900) {
-      this.walkTick += time.deltaTime;
-      this.soundTick += time.deltaTime;
+      this.walkTick += timeManager.deltaTime;
+      this.soundTick += timeManager.deltaTime;
+
       if (this.walkTick > this.WALK_INTERVAL) {
         this.walkTick = 0;
         this.imageNumber += this.imageNumberDelta;
-        if (this.imageNumber == 1 || this.imageNumber == this.imageMaxNumber) {
+
+        if (
+          this.imageNumber === 1 ||
+          this.imageNumber === this.imageMaxNumber
+        ) {
           this.imageNumberDelta *= -1;
         }
       }
+
       if (this.soundTick > this.SOUND_INTERVAL) {
-        sound.PlaySound("step");
+        soundManager.PlaySound("step");
         this.soundTick = 0;
       }
     }
-    image.DrawImageScale(
+
+    imageManager.DrawImageScale(
       "bear" + this.imageNumber,
-      new p5.Vector(this.animalX, this.animalY),
-      new p5.Vector(this.animalScale, this.animalScale)
+      createVector(this.animalX, this.animalY),
+      createVector(this.animalScale, this.animalScale)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "tiger" + this.imageNumber,
-      new p5.Vector(
+      createVector(
         this.animalX + (200 * this.animalScale) / this.originalAnimalScale,
         this.animalY
       ),
-      new p5.Vector(this.animalScale, this.animalScale)
-    ); //6.666초
+      createVector(this.animalScale, this.animalScale)
+    );
+
     if (this.animalX < 900) {
-      this.animalX += 120 * time.deltaTime;
-      this.animalY -= 0.5 * time.deltaTime;
-      this.animalScale -= 0.03 * time.deltaTime;
+      this.animalX += 120 * timeManager.deltaTime;
+      this.animalY -= 0.5 * timeManager.deltaTime;
+      this.animalScale -= 0.03 * timeManager.deltaTime;
     }
-    if (time.time - this.enterTime > this.SCENE_DURATION) {
-      scene.ChangeScene(new S2C2());
+
+    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
+      sceneManager.ChangeScene(new S2C2());
     }
   }
+
   OnExit() {
-    // scene.ChangeScene(new S2C2());
+    // sceneManager.ChangeScene(new S2C2());
   }
 }

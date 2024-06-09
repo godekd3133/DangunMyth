@@ -1,56 +1,67 @@
 class S3C3V2_1_1 extends Scene {
-  static PREFIX = "Images/S3/C3/V2/_1/_1/";
-  static SOUND_PREFIX = "Sounds/S3/C3/V2/_1/_1/narr/";
-  centerVector;
-  centerX;
-  centerY;
-  sunY = 600;
-  cloudXDistance = 0;
-  speed = 0.8;
-  SCENE_DURATION = 3;
+  constructor() {
+    super();
+    this.PREFIX = "Images/S3/C3/V2/_1/_1/";
+    this.SOUND_PREFIX = "Sounds/S3/C3/V2/_1/_1/narr/";
+
+    this.centerVector;
+    this.centerX;
+    this.centerY;
+    this.sunY = 600;
+    this.cloudXDistance = 0;
+    this.speed = 0.8;
+
+    this.SCENE_DURATION = 3;
+  }
+
   OnEnter() {
     this.centerX = width / 2;
     this.centerY = height / 2;
-    this.centerVector = new p5.Vector(this.centerX, this.centerY);
+    this.centerVector = createVector(this.centerX, this.centerY);
     this.sunY = 600;
     this.cloudXDistance = 0;
-    image.LoadImage("text", S3C3V2_1_1.PREFIX + "text");
-    image.LoadImage("cloud_left", S3C3V2_1_1.PREFIX + "cloud_left");
-    image.LoadImage("cloud_right", S3C3V2_1_1.PREFIX + "cloud_right");
-    image.LoadImage("cloud_middle", S3C3V2_1_1.PREFIX + "cloud_middle");
-    image.LoadImage("lake", S3C3V2_1_1.PREFIX + "lake");
-    image.LoadImage("mountains", S3C3V2_1_1.PREFIX + "mountains");
-    image.LoadImage("sky", S3C3V2_1_1.PREFIX + "sky");
-    image.LoadImage("sun", S3C3V2_1_1.PREFIX + "sun");
-    sound.LoadSound("narr", S3C3V2_1_1.SOUND_PREFIX + "narr.mp3");
-    sound.PlaySound("narr");
+
+    imageManager.LoadImage("text", this.PREFIX + "text");
+    imageManager.LoadImage("cloud_left", this.PREFIX + "cloud_left");
+    imageManager.LoadImage("cloud_right", this.PREFIX + "cloud_right");
+    imageManager.LoadImage("cloud_middle", this.PREFIX + "cloud_middle");
+    imageManager.LoadImage("lake", this.PREFIX + "lake");
+    imageManager.LoadImage("mountains", this.PREFIX + "mountains");
+    imageManager.LoadImage("sky", this.PREFIX + "sky");
+    imageManager.LoadImage("sun", this.PREFIX + "sun");
+
+    soundManager.LoadSound("narr", this.SOUND_PREFIX + "narr.mp3");
+    soundManager.PlaySound("narr");
   }
+
   OnDraw() {
-    image.DrawImage("sky", this.centerVector);
-    image.DrawImage("sun", new p5.Vector(this.centerX, this.sunY));
-    image.DrawImage("mountains", this.centerVector);
-    image.DrawImage("lake", this.centerVector);
-    image.DrawImage(
+    imageManager.DrawImage("sky", this.centerVector);
+    imageManager.DrawImage("sun", createVector(this.centerX, this.sunY));
+    imageManager.DrawImage("mountains", this.centerVector);
+    imageManager.DrawImage("lake", this.centerVector);
+    imageManager.DrawImage(
       "cloud_left",
-      new p5.Vector(this.centerX - this.cloudXDistance, this.centerY)
+      createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
-    image.DrawImage(
+    imageManager.DrawImage(
       "cloud_right",
-      new p5.Vector(this.centerX + this.cloudXDistance, this.centerY)
+      createVector(this.centerX + this.cloudXDistance, this.centerY)
     );
-    image.DrawImage(
+    imageManager.DrawImage(
       "cloud_middle",
-      new p5.Vector(this.centerX - this.cloudXDistance, this.centerY)
+      createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
-    image.DrawImage("text", this.centerVector);
+    imageManager.DrawImage("text", this.centerVector);
+
     if (this.sunY < 400) {
-      scene.ChangeScene(new S3C3V2_1_2());
+      sceneManager.ChangeScene(new S3C3V2_1_2());
     } else {
       this.sunY -= this.speed;
       this.cloudXDistance += this.speed;
     }
   }
+
   OnExit() {
-    sound.stopNowPlaying();
+    soundManager.stopNowPlaying();
   }
 }

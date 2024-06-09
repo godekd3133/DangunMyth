@@ -1,90 +1,113 @@
 class S1C3 extends Scene {
-  SCENE_DURATION = 8; // narr. 7sec
-  GOD_IMAGE = "Images/S1/C3/god";
-  BACKGROUND_IMAGE = "Images/S1/C3/background";
-  CLOUD_IMAGE = "Images/S1/C3/cloud";
-  DEFAULT_FACE = "Images/S1/C3/god_smile";
-  TELLING_FACES = ["Images/S1/C3/god_telling1", "Images/S1/C3/god_telling2"];
-  GOD_WIDTH = width / 2.1;
-  GOD_HEIGHT = GOD_WIDTH * 1.18;
-  isNarrOut = false;
-  cloudY;
-  godY;
-  currentImageIndex = 0;
-  changeInterval = 30;
-  constructor() {}
+  constructor() {
+    super();
+    this.SCENE_DURATION = 8; // narr. 7sec
+
+    this.GOD_IMAGE = "Images/S1/C3/god";
+    this.BACKGROUND_IMAGE = "Images/S1/C3/background";
+    this.CLOUD_IMAGE = "Images/S1/C3/cloud";
+    this.DEFAULT_FACE = "Images/S1/C3/god_smile";
+    this.TELLING_FACES = [
+      "Images/S1/C3/god_telling1",
+      "Images/S1/C3/god_telling2",
+    ];
+
+    this.GOD_WIDTH = width / 2.1;
+    this.GOD_HEIGHT = this.GOD_WIDTH * 1.18;
+    this.isNarrOut = false;
+
+    this.cloudY = 0;
+    this.godY = 0;
+    this.currentImageIndex = 0;
+    this.changeInterval = 30;
+  }
+
   OnEnter() {
     this.isNarrOut = false;
-    image.LoadImage("background", this.BACKGROUND_IMAGE);
-    image.LoadImage("cloud01", this.CLOUD_IMAGE);
-    image.LoadImage("god", this.GOD_IMAGE);
-    image.LoadImage("face", this.DEFAULT_FACE);
-    image.LoadImage("text", "Images/S1/C3/text");
-    sound.LoadSound("narr", "Sounds/S1/C3/narr/narr.mp3");
+
+    imageManager.LoadImage("background", this.BACKGROUND_IMAGE);
+    imageManager.LoadImage("cloud01", this.CLOUD_IMAGE);
+
+    imageManager.LoadImage("god", this.GOD_IMAGE);
+    imageManager.LoadImage("face", this.DEFAULT_FACE);
+    imageManager.LoadImage("text", "Images/S1/C3/text");
+    soundManager.LoadSound("narr", "Sounds/S1/C3/narr/narr.mp3");
+
     let imageCount = this.TELLING_FACES.length;
     this.currentImageIndex = 0;
     this.godY = 0;
     this.cloudY = 0;
+
     for (let i = 0; i < imageCount; i++) {
-      image.LoadImage("telling" + i, this.TELLING_FACES[i]);
+      imageManager.LoadImage("telling" + i, this.TELLING_FACES[i]);
     }
-    image.DrawImageScale(
+
+    imageManager.DrawImageScale(
       "background",
-      new p5.Vector(width / 2, height / 2, 0),
-      new p5.Vector(0.67, 0.67, 0)
+      createVector(width / 2, height / 2, 0),
+      createVector(0.67, 0.67, 0)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "god",
-      new p5.Vector(width / 2, height / 2 + this.godY, 0),
-      new p5.Vector(0.25, 0.25, 0)
+      createVector(width / 2, height / 2 + this.godY, 0),
+      createVector(0.25, 0.25, 0)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "face",
-      new p5.Vector(width / 2, height / 2 + this.godY, 0),
-      new p5.Vector(0.25, 0.25, 0)
+      createVector(width / 2, height / 2 + this.godY, 0),
+      createVector(0.25, 0.25, 0)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "cloud01",
-      new p5.Vector(width / 2, height / 2 + this.cloudY, 0),
-      new p5.Vector(0.67, 0.67, 0)
+      createVector(width / 2, height / 2 + this.cloudY, 0),
+      createVector(0.67, 0.67, 0)
     );
-    image.DrawImage("text", new p5.Vector(width / 2, height / 2));
+    imageManager.DrawImage("text", createVector(width / 2, height / 2));
   }
+
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      sound.PlaySound("narr");
+      soundManager.PlaySound("narr");
     }
-    image.DrawImageScale(
+
+    imageManager.DrawImageScale(
       "background",
-      new p5.Vector(width / 2, height / 2, 0),
-      new p5.Vector(0.67, 0.67, 0)
+      createVector(width / 2, height / 2, 0),
+      createVector(0.67, 0.67, 0)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "god",
-      new p5.Vector(width / 2, height / 2 + this.godY, 0),
-      new p5.Vector(0.25, 0.25, 0)
+      createVector(width / 2, height / 2 + this.godY, 0),
+      createVector(0.25, 0.25, 0)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "telling" + this.currentImageIndex,
-      new p5.Vector(width / 2, height / 2 + this.godY, 0),
-      new p5.Vector(0.25, 0.25, 0)
+      createVector(width / 2, height / 2 + this.godY, 0),
+      createVector(0.25, 0.25, 0)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "cloud01",
-      new p5.Vector(width / 2, height / 2 + this.cloudY, 0),
-      new p5.Vector(0.67, 0.67, 0)
+      createVector(width / 2, height / 2 + this.cloudY, 0),
+      createVector(0.67, 0.67, 0)
     );
-    image.DrawImage("text", new p5.Vector(width / 2, height / 2));
-    this.godY += (100 * time.deltaTime) / this.SCENE_DURATION;
-    this.cloudY += (100 * time.deltaTime) / this.SCENE_DURATION;
-    if (frameCount % this.changeInterval == 0) {
+    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+
+    this.godY += (100 * timeManager.deltaTime) / this.SCENE_DURATION;
+    this.cloudY += (100 * timeManager.deltaTime) / this.SCENE_DURATION;
+
+    if (frameCount % this.changeInterval === 0) {
       this.currentImageIndex =
         (this.currentImageIndex + 1) % this.TELLING_FACES.length;
     }
-    if (this.cloudY >= 100 || time.time - enterTime >= this.SCENE_DURATION) {
-      scene.ChangeScene(new S1C4());
+
+    if (
+      this.cloudY >= 100 ||
+      timeManager.time - this.enterTime >= this.SCENE_DURATION
+    ) {
+      sceneManager.ChangeScene(new S1C4());
     }
   }
+
   OnExit() {}
 }

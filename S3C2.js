@@ -1,113 +1,123 @@
 class S3C2 extends Scene {
-  // private float thinkScale = 0.3f;
-  thinkScale = 0.3;
-  thinkY = 200;
-  thinkLeftX = 200;
-  thinkRightX = width - 200;
-  selectOption = 0; // 0 : None / 1 : Left / 2 : Right
-  isEffectOut;
-  constructor() {}
-  OnEnter() {
-    image.LoadImage("background", "Images/S3/C2/background");
-    image.LoadImage("body", "Images/S3/C2/body");
-    image.LoadImage("eye_black", "Images/S3/C2/eye_black");
-    image.LoadImage("eye_white", "Images/S3/C2/eye_white");
-    image.LoadImage("left", "Images/S3/C2/left");
-    image.LoadImage("right", "Images/S3/C2/right");
-    sound.LoadSound("effect", "Sounds/S3/C2/effect/effect.wav");
-    image.LoadImage("Button1", "Images/S3/C2/Button1");
-    image.LoadImage("Button2", "Images/S3/C2/Button2");
+  constructor() {
+    super();
+    this.thinkScale = 0.3;
+    this.thinkY = 200;
+    this.thinkLeftX = 200;
+    this.thinkRightX = width - 200;
+    this.selectOption = 0; // 0 : None / 1 : Left / 2 : Right
     this.isEffectOut = false;
   }
+
+  OnEnter() {
+    imageManager.LoadImage("background", "Images/S3/C2/background");
+    imageManager.LoadImage("body", "Images/S3/C2/body");
+    imageManager.LoadImage("eye_black", "Images/S3/C2/eye_black");
+    imageManager.LoadImage("eye_white", "Images/S3/C2/eye_white");
+    imageManager.LoadImage("left", "Images/S3/C2/left");
+    imageManager.LoadImage("right", "Images/S3/C2/right");
+    soundManager.LoadSound("effect", "Sounds/S3/C2/effect/effect.wav");
+    imageManager.LoadImage("Button1", "Images/S3/C2/Button1");
+    imageManager.LoadImage("Button2", "Images/S3/C2/Button2");
+    this.isEffectOut = false;
+  }
+
   OnDraw() {
     // init select option
     this.selectOption = 0;
-    image.DrawImageScale(
+
+    imageManager.DrawImageScale(
       "background",
-      new p5.Vector(width / 2, height / 2),
-      new p5.Vector(1, 1)
+      createVector(width / 2, height / 2),
+      createVector(1, 1)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "eye_white",
-      new p5.Vector(width / 2 - 10, height - 240),
-      new p5.Vector(0.2, 0.2)
+      createVector(width / 2 - 10, height - 240),
+      createVector(0.2, 0.2)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "body",
-      new p5.Vector(width / 2, height - 200),
-      new p5.Vector(0.23, 0.23)
-    ); // Mouse animation
+      createVector(width / 2, height - 200),
+      createVector(0.23, 0.23)
+    );
+
+    // Mouse animation
     if (mouseX <= width / 2 - 200 && mouseY <= height / 2) {
       this.selectOption = 1;
-      image.DrawImageScale(
+      imageManager.DrawImageScale(
         "left",
-        new p5.Vector(this.thinkLeftX + 60, this.thinkY + 50),
-        new p5.Vector(this.thinkScale + 0.04, this.thinkScale + 0.04)
+        createVector(this.thinkLeftX + 60, this.thinkY + 50),
+        createVector(this.thinkScale + 0.04, this.thinkScale + 0.04)
       );
-      image.DrawImageScale(
+      imageManager.DrawImageScale(
         "eye_black",
-        new p5.Vector(width / 2 - 15, height - 255),
-        new p5.Vector(0.23, 0.23)
+        createVector(width / 2 - 15, height - 255),
+        createVector(0.23, 0.23)
       );
-      if (mousePressed) {
-        scene.ChangeScene(new S3C3V1_1());
+
+      if (mouseIsPressed) {
+        sceneManager.ChangeScene(new S3C3V1_1());
         if (!this.isEffectOut) {
-          sound.PlaySound("effect");
+          soundManager.PlaySound("effect");
           this.isEffectOut = !this.isEffectOut;
         }
       }
     } else {
-      image.DrawImageScale(
+      imageManager.DrawImageScale(
         "left",
-        new p5.Vector(this.thinkLeftX, this.thinkY),
-        new p5.Vector(this.thinkScale, this.thinkScale)
+        createVector(this.thinkLeftX, this.thinkY),
+        createVector(this.thinkScale, this.thinkScale)
       );
     }
     if (mouseX >= width / 2 + 200 && mouseY <= height / 2) {
       this.selectOption = 2;
-      image.DrawImageScale(
+      imageManager.DrawImageScale(
         "right",
-        new p5.Vector(this.thinkRightX - 60, this.thinkY + 50),
-        new p5.Vector(this.thinkScale + 0.04, this.thinkScale + 0.04)
+        createVector(this.thinkRightX - 60, this.thinkY + 50),
+        createVector(this.thinkScale + 0.04, this.thinkScale + 0.04)
       );
-      image.DrawImageScale(
+      imageManager.DrawImageScale(
         "eye_black",
-        new p5.Vector(width / 2 - 9, height - 255),
-        new p5.Vector(0.23, 0.23)
+        createVector(width / 2 - 9, height - 255),
+        createVector(0.23, 0.23)
       );
-      if (mousePressed) {
-        scene.ChangeScene(new S3C3V2());
+
+      if (mouseIsPressed) {
+        sceneManager.ChangeScene(new S3C3V2());
         if (!this.isEffectOut) {
-          sound.PlaySound("effect");
+          soundManager.PlaySound("effect");
           this.isEffectOut = !this.isEffectOut;
         }
       }
     } else {
-      image.DrawImageScale(
+      imageManager.DrawImageScale(
         "right",
-        new p5.Vector(this.thinkRightX, this.thinkY),
-        new p5.Vector(this.thinkScale, this.thinkScale)
+        createVector(this.thinkRightX, this.thinkY),
+        createVector(this.thinkScale, this.thinkScale)
       );
-    } //Button
+    }
+    //Button
     if (mouseX <= width / 2 - 200 && mouseY <= height / 2) {
-      image.DrawImageScale(
+      imageManager.DrawImageScale(
         "Button1",
-        new p5.Vector(width / 2, height / 2),
-        new p5.Vector(0.7, 0.7)
+        createVector(width / 2, height / 2),
+        createVector(0.7, 0.7)
       );
     } else if (mouseX >= width / 2 + 200 && mouseY <= height / 2) {
-      image.DrawImageScale(
+      imageManager.DrawImageScale(
         "Button2",
-        new p5.Vector(width / 2, height / 2),
-        new p5.Vector(0.7, 0.7)
+        createVector(width / 2, height / 2),
+        createVector(0.7, 0.7)
       );
     }
     if (this.selectOption == 0)
-      image.DrawImageScale(
+      imageManager.DrawImageScale(
         "eye_black",
-        new p5.Vector(width / 2 - 12, height - 245),
-        new p5.Vector(0.23, 0.23)
+        createVector(width / 2 - 12, height - 245),
+        createVector(0.23, 0.23)
       );
   }
+
   OnExit() {}
 }

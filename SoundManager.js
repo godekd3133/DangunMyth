@@ -1,12 +1,28 @@
+/* SoundManager.js */
 class SoundManager {
   constructor() {
     this.sounds = new Map();
     this.nowPlaying = null;
   }
 
-  LoadSound(name, filename) {
-    let sound = loadSound(filename);
-    this.sounds.set(name, sound);
+  // 이 부분에서 preload() 함수를 사용하여 사운드를 미리 로드합니다.
+  preloadSound(filename) {
+    return new Promise((resolve, reject) => {
+      let sound = loadSound(
+        filename,
+        () => resolve(sound),
+        () => reject()
+      );
+    });
+  }
+
+  async LoadSound(name, filename) {
+    try {
+      let sound = await this.preloadSound(filename);
+      this.sounds.set(name, sound);
+    } catch (error) {
+      console.error(`Failed to load sound ${filename}`);
+    }
   }
 
   PlaySound(name) {

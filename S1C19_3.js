@@ -1,76 +1,88 @@
 class S1C19_3 extends Scene {
-  SCENE_DURATION = 9;
-  handX;
-  animalX;
-  animalY;
-  basketX;
-  basketY;
-  firstDuration = 4.5;
-  secondDuration = 4.0;
-  thridDuration = 5.5;
-  firstFlag = false;
-  secondFlag = false;
-  thridFlag = false;
-  constructor() {}
+  constructor() {
+    super();
+    this.SCENE_DURATION = 9;
+    this.handX = 0;
+    this.animalX = 0;
+    this.animalY = 0;
+    this.basketX = 0;
+    this.basketY = 0;
+    this.firstDuration = 4.5;
+    this.secondDuration = 4.0;
+    this.thridDuration = 5.5;
+    this.firstFlag = false;
+    this.secondFlag = false;
+    this.thridFlag = false;
+  }
+
   OnEnter() {
     this.handX = 150;
     this.animalX = width - 250;
     this.animalY = height - 200;
     this.basketX = this.handX + 450;
     this.basketY = 250;
+
     this.firstDuration = 5.5;
     this.secondDuration = 2.5;
     this.thridDuration = 5.5;
+
     this.firstFlag = false;
     this.secondFlag = false;
     this.thridFlag = false;
-    image.LoadImage("background", "Images/S1/C19/background2");
-    image.LoadImage("hands", "Images/S1/C19/hands");
-    image.LoadImage("hwangwoong", "Images/S1/C19/hwanwoong_hand");
-    image.LoadImage("basket", "Images/S1/C19/basket");
-    image.LoadImage("C19-3-Text", "Images/S1/C19/C19-3-Text");
-    sound.LoadSound("hwanwoong1", "Sounds/S1/C19-3/hwanwoong1.mp3");
-    sound.LoadSound("hwanwoong2", "Sounds/S1/C19-3/hwanwoong2.mp3");
-    sound.LoadSound("Bear", "Sounds/S1/C19-3/Bear.mp3");
+
+    imageManager.LoadImage("background", "Images/S1/C19/background2");
+    imageManager.LoadImage("hands", "Images/S1/C19/hands");
+    imageManager.LoadImage("hwangwoong", "Images/S1/C19/hwanwoong_hand");
+    imageManager.LoadImage("basket", "Images/S1/C19/basket");
+    imageManager.LoadImage("C19-3-Text", "Images/S1/C19/C19-3-Text");
+
+    soundManager.LoadSound("hwanwoong1", "Sounds/S1/C19-3/hwanwoong1.mp3");
+    soundManager.LoadSound("hwanwoong2", "Sounds/S1/C19-3/hwanwoong2.mp3");
+    soundManager.LoadSound("Bear", "Sounds/S1/C19-3/Bear.mp3");
   }
+
   OnDraw() {
-    image.DrawImage("background", new p5.Vector(width / 2, height / 2, 0));
-    image.DrawImageScale(
+    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+
+    imageManager.DrawImageScale(
       "hands",
-      new p5.Vector(this.animalX, this.animalY, 0),
-      new p5.Vector(0.3, 0.3, 0)
+      createVector(this.animalX, this.animalY),
+      createVector(0.3, 0.3, 0)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "hwangwoong",
-      new p5.Vector(this.handX, 150, 0),
-      new p5.Vector(0.7, 0.7, 0),
+      createVector(this.handX, 150),
+      createVector(0.7, 0.7, 0),
       90
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "basket",
-      new p5.Vector(this.basketX, this.basketY, 0),
-      new p5.Vector(0.45, 0.45, 0)
+      createVector(this.basketX, this.basketY),
+      createVector(0.45, 0.45, 0)
     );
-    image.DrawImage("C19-3-Text", new p5.Vector(width / 2, height / 2, 0)); //단, 동굴에서 마늘과 쑥을 먹으며..자, 여기 가져가거라.
+
+    imageManager.DrawImage("C19-3-Text", createVector(width / 2, height / 2));
+
     if (!this.firstFlag) {
       this.firstFlag = true;
-      sound.PlaySound("hwanwoong1");
-    } //감사합니다
-    if (time.time - enterTime >= 7) {
+      soundManager.PlaySound("hwanwoong1");
+    }
+    if (timeManager.time - timeManager.enterTime >= 7) {
       if (!this.thridFlag) {
         this.thridFlag = true;
-        sound.PlaySound("Bear");
+        soundManager.PlaySound("Bear");
       }
     }
     if (this.handX <= 230) {
-      this.handX += 30 * time.deltaTime;
-      this.basketX += 30 * time.deltaTime;
-      this.animalX -= 15 * time.deltaTime;
-      this.animalY -= 15 * time.deltaTime;
+      this.handX += 30 * timeManager.deltaTime;
+      this.basketX += 30 * timeManager.deltaTime;
+      this.animalX -= 15 * timeManager.deltaTime;
+      this.animalY -= 15 * timeManager.deltaTime;
     }
-    if (time.time - this.enterTime >= this.SCENE_DURATION) {
-      scene.ChangeScene(new S2C1());
+    if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
+      sceneManager.ChangeScene(new S2C1());
     }
   }
+
   OnExit() {}
 }

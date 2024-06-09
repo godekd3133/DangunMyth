@@ -1,149 +1,151 @@
 class S2C4 extends Scene {
-  SCENE_DURATION = 11;
-  SCENE_TIME;
-  animalScale = 0.25;
-  utilScale = 0.035;
-  tearScale = 0.025;
-  bearY = height - 280;
-  tigerY = height - 305;
-  handX = 530;
-  handY = 470;
-  handRotate = 0.0;
-  handAngle = 0.01;
-  handDir = -0.4;
-  tearLeftY = height - 280;
-  tearRightY = height - 290;
-  tearSpeed = 0;
-  sessionIndex;
-  sessionDuration = [4, 8, 12];
-  sessionSound = ["narr1", "narr2", "narr3"];
-  sessionText = ["text1", "text2", "text3"];
-  isSessionOut;
-
-  constructor() {}
+  constructor() {
+    super();
+    this.SCENE_DURATION = 11;
+    this.SCENE_TIME;
+    this.animalScale = 0.25;
+    this.utilScale = 0.035;
+    this.tearScale = 0.025;
+    this.bearY = height - 280;
+    this.tigerY = height - 305;
+    this.handX = 530;
+    this.handY = 470;
+    this.handRotate = 0.0;
+    this.handAngle = 0.6;
+    this.handDir = -24;
+    this.tearLeftY = height - 280;
+    this.tearRightY = height - 290;
+    this.tearSpeed = 0;
+    this.sessionIndex;
+    this.sessionDuration = [4, 8];
+    this.sessionSound = ["narr1", "narr2", "narr3"];
+    this.sessionText = ["text1", "text2", "text3"];
+    this.isSessionOut = [];
+  }
 
   OnEnter() {
-    image.LoadImage("background", "Images/S2/C4/background");
-    image.LoadImage("bear1", "Images/S2/C4/bear1");
-    image.LoadImage("bear2", "Images/S2/C4/bear2");
-    image.LoadImage("tiger", "Images/S2/C4/tiger");
-    image.LoadImage("garlic", "Images/S2/C4/garlic");
-    image.LoadImage("ssug", "Images/S2/C4/ssug");
-    image.LoadImage("basket", "Images/S2/C4/basket");
-    image.LoadImage("tear", "Images/S2/C4/tear");
-    image.LoadImage("text1", "Images/S2/C4/text1");
-    image.LoadImage("text2", "Images/S2/C4/text2");
-    image.LoadImage("text3", "Images/S2/C4/text3");
-    sound.LoadSound("narr1", "Sounds/S2/C4/narr/narr1.mp3");
-    sound.LoadSound("narr2", "Sounds/S2/C4/narr/narr2.mp3");
-    sound.LoadSound("narr3", "Sounds/S2/C4/narr/narr3.mp3");
-    isSessionOut = [false, false, false];
-
-    animalScale = 0.25;
-    utilScale = 0.035;
-    tearScale = 0.025;
-    bearY = height - 280;
-    tigerY = height - 305;
-    handX = 530;
-    handY = 470;
-    handRotate = 0.0;
-    handAngle = 0.6;
-    handDir = -24;
-    tearLeftY = height - 280;
-    tearRightY = height - 290;
-    tearSpeed = 0;
-    sessionIndex = 0;
-    SCENE_TIME = 0;
+    imageManager.LoadImage("background", "Images/S2/C4/background");
+    imageManager.LoadImage("bear1", "Images/S2/C4/bear1");
+    imageManager.LoadImage("bear2", "Images/S2/C4/bear2");
+    imageManager.LoadImage("tiger", "Images/S2/C4/tiger");
+    imageManager.LoadImage("garlic", "Images/S2/C4/garlic");
+    imageManager.LoadImage("ssug", "Images/S2/C4/ssug");
+    imageManager.LoadImage("basket", "Images/S2/C4/basket");
+    imageManager.LoadImage("tear", "Images/S2/C4/tear");
+    imageManager.LoadImage("text1", "Images/S2/C4/text1");
+    imageManager.LoadImage("text2", "Images/S2/C4/text2");
+    imageManager.LoadImage("text3", "Images/S2/C4/text3");
+    soundManager.LoadSound("narr1", "Sounds/S2/C4/narr/narr1.mp3");
+    soundManager.LoadSound("narr2", "Sounds/S2/C4/narr/narr2.mp3");
+    soundManager.LoadSound("narr3", "Sounds/S2/C4/narr/narr3.mp3");
+    this.isSessionOut = [false, false];
+    this.animalScale = 0.25;
+    this.utilScale = 0.035;
+    this.tearScale = 0.025;
+    this.bearY = height - 280;
+    this.tigerY = height - 305;
+    this.handX = 530;
+    this.handY = 470;
+    this.handRotate = 0.0;
+    this.handAngle = 0.6;
+    this.handDir = -24;
+    this.tearLeftY = height - 280;
+    this.tearRightY = height - 290;
+    this.tearSpeed = 0;
+    this.sessionIndex = 0;
+    this.SCENE_TIME = 0;
   }
 
   OnDraw() {
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "background",
-      new p5.Vector(width / 2, height / 2),
-      new p5.Vector(1, 1)
+      createVector(width / 2, height / 2),
+      createVector(1, 1)
     );
     if (this.sessionIndex == 1) {
-      image.DrawImageScale(
-        "bear" + (((millis() / 300) % 2) + 1),
-        new p5.Vector(width / 2 - 200, height - 280),
-        new p5.Vector(this.animalScale, this.animalScale)
+      imageManager.DrawImageScale(
+        "bear" + ((floor(millis() / 300) % 2) + 1),
+        createVector(width / 2 - 200, height - 280),
+        createVector(this.animalScale, this.animalScale)
       );
     } else {
-      image.DrawImageScale(
+      imageManager.DrawImageScale(
         "bear2",
-        new p5.Vector(width / 2 - 200, height - 280),
-        new p5.Vector(this.animalScale, this.animalScale)
+        createVector(width / 2 - 200, height - 280),
+        createVector(this.animalScale, this.animalScale)
       );
     }
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "tiger",
-      new p5.Vector(width / 2 + 50, height - 305),
-      new p5.Vector(this.animalScale, this.animalScale)
+      createVector(width / 2 + 50, height - 305),
+      createVector(this.animalScale, this.animalScale)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "basket",
-      new p5.Vector(width / 2 + 360, height - 105),
-      new p5.Vector(0.2, 0.2),
+      createVector(width / 2 + 360, height - 105),
+      createVector(0.2, 0.2),
       -0.27
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "garlic",
-      new p5.Vector(width - 130, height - 210),
-      new p5.Vector(this.utilScale, this.utilScale),
+      createVector(width - 130, height - 210),
+      createVector(this.utilScale, this.utilScale),
       -0.3
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "garlic",
-      new p5.Vector(width - 180, height - 100),
-      new p5.Vector(this.utilScale, this.utilScale),
+      createVector(width - 180, height - 100),
+      createVector(this.utilScale, this.utilScale),
       0.5
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "ssug",
-      new p5.Vector(width - 50, height - 170),
-      new p5.Vector(this.utilScale, this.utilScale),
+      createVector(width - 50, height - 170),
+      createVector(this.utilScale, this.utilScale),
       0.3
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "ssug",
-      new p5.Vector(width - 240, height - 10),
-      new p5.Vector(this.utilScale, this.utilScale),
+      createVector(width - 240, height - 10),
+      createVector(this.utilScale, this.utilScale),
       -0.5
-    ); // tear animation
+    );
+
+    // tear animation
     if (this.tearLeftY + this.tearSpeed > height - 250) this.tearSpeed = 0;
     this.tearSpeed += 0.5;
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "tear",
-      new p5.Vector(width - 510, this.tearLeftY + this.tearSpeed),
-      new p5.Vector(this.tearScale, this.tearScale)
+      createVector(width - 510, this.tearLeftY + this.tearSpeed),
+      createVector(this.tearScale, this.tearScale)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "tear",
-      new p5.Vector(width - 440, this.tearRightY + this.tearSpeed),
-      new p5.Vector(this.tearScale, this.tearScale)
+      createVector(width - 440, this.tearRightY + this.tearSpeed),
+      createVector(this.tearScale, this.tearScale)
     );
+
     this.SCENE_TIME = time.time - enterTime;
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       this.sessionText[this.sessionIndex],
-      new p5.Vector(width / 2, height / 2),
-      new p5.Vector(1, 1)
+      createVector(width / 2, height / 2),
+      createVector(1, 1)
     );
     if (!this.isSessionOut[this.sessionIndex]) {
-      sound.PlaySound(this.sessionSound[this.sessionIndex]);
+      soundManager.PlaySound(this.sessionSound[this.sessionIndex]);
       this.isSessionOut[this.sessionIndex] =
         !this.isSessionOut[this.sessionIndex];
     }
     if (this.SCENE_TIME > this.sessionDuration[this.sessionIndex]) {
       if (this.sessionDuration.length - 1 > this.sessionIndex)
         this.sessionIndex++;
-    } /* textSize(128);
-    text(SCENE_TIME, 12, 40);
-    */
+    }
     if (this.SCENE_TIME > this.SCENE_DURATION) {
-      scene.ChangeScene(new S2C5());
+      sceneManager.ChangeScene(new S2C5());
     }
   }
+
   OnExit() {
-    sound.stopNowPlaying();
+    soundManager.stopNowPlaying();
   }
 }

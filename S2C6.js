@@ -1,169 +1,180 @@
 class S2C6 extends Scene {
-  static DISPLAY_TIME = 99;
-  static TYPE_SOOK = 0x1;
-  static TYPE_MANUL = 0x2;
-  static TYPE_CLICKED = 0x4;
-  m_Items = null;
-  m_ItemsLoc = null;
-  m_SookCnt = 0;
-  m_ManulCnt = 0;
-  static TOTAL_SOOK_CNT = 5;
-  static TOTAL_MANUL_CNT = 20;
-  m_IsTigerHand = true;
-  constructor() {}
+  constructor() {
+    super();
+    this.DISPLAY_TIME = 99;
+    this.TYPE_SOOK = 0x1;
+    this.TYPE_MANUL = 0x2;
+    this.TYPE_CLICKED = 0x4;
+    this.m_Items = null;
+    this.m_ItemsLoc = null;
+    this.m_SookCnt = 0;
+    this.m_ManulCnt = 0;
+    this.TOTAL_SOOK_CNT = 5;
+    this.TOTAL_MANUL_CNT = 20;
+    this.m_IsTigerHand = true;
+  }
+
   OnEnter() {
-    image.LoadImage("background", "Images/S2/C6/background");
-    image.LoadImage("clock", "Images/S2/C6/clock");
-    image.LoadImage("manul", "Images/S2/C6/manul");
-    image.LoadImage("sook", "Images/S2/C6/sook");
-    image.LoadImage("bear_hand", "Images/S2/C6/bear_hand");
-    image.LoadImage("bear_click", "Images/S2/C6/bear_click");
-    image.LoadImage("tiger_hand", "Images/S2/C6/tiger_hand");
-    image.LoadImage("tiger_click", "Images/S2/C6/tiger_click");
-    image.LoadImage("transparent", "Images/S2/C6/transparent");
-    sound.LoadSound("item_click", "Sounds/S2/C6/item_click.wav");
-    sound.LoadSound("bgm", "Sounds/S2/C6/bgm.mp3"); //sound.LoadSound("item_mouseOver", "Sounds/S1/C8/narr/narr.mp3");
-    // set random item location
+    imageManager.LoadImage("background", "Images/S2/C6/background");
+    imageManager.LoadImage("clock", "Images/S2/C6/clock");
+    imageManager.LoadImage("manul", "Images/S2/C6/manul");
+    imageManager.LoadImage("sook", "Images/S2/C6/sook");
+    imageManager.LoadImage("bear_hand", "Images/S2/C6/bear_hand");
+    imageManager.LoadImage("bear_click", "Images/S2/C6/bear_click");
+    imageManager.LoadImage("tiger_hand", "Images/S2/C6/tiger_hand");
+    imageManager.LoadImage("tiger_click", "Images/S2/C6/tiger_click");
+    imageManager.LoadImage("transparent", "Images/S2/C6/transparent");
+    soundManager.LoadSound("item_click", "Sounds/S2/C6/item_click.wav");
+    soundManager.LoadSound("bgm", "Sounds/S2/C6/bgm.mp3");
+
     this.m_Items = new Array(25);
     this.m_ItemsLoc = new Array(25);
+
     for (let i = 0; i < this.m_ItemsLoc.length; i++) {
       if (i < 20) {
-        this.m_Items[i] = S2C6.TYPE_MANUL;
+        this.m_Items[i] = this.TYPE_MANUL;
       } else {
-        this.m_Items[i] = S2C6.TYPE_SOOK;
+        this.m_Items[i] = this.TYPE_SOOK;
       }
-      this.m_ItemsLoc[i] = new p5.Vector(
+      this.m_ItemsLoc[i] = createVector(
         random(22) * 50 + 5,
         random(11) * 50 + 150,
         0
-      ); // dead zone
+      );
     }
     this.m_SookCnt = 0;
     this.m_ManulCnt = 0;
-    sound.PlaySound("bgm");
-    font.LoadFont("lee", "LeeSeoyun.otf");
+
+    soundManager.PlaySound("bgm");
+    fontManager.LoadFont("lee", "LeeSeoyun.otf");
   }
+
   OnDraw() {
-    let displayTime = S2C6.DISPLAY_TIME - (time.time - this.enterTime);
+    let displayTime = this.DISPLAY_TIME - (time.time - enterTime);
+
     if (
-      this.m_ManulCnt >= S2C6.TOTAL_MANUL_CNT &&
-      this.m_SookCnt >= S2C6.TOTAL_SOOK_CNT
+      this.m_ManulCnt >= this.TOTAL_MANUL_CNT &&
+      this.m_SookCnt >= this.TOTAL_SOOK_CNT
     ) {
-      //success(성공 씬으로 이동)
-      scene.ChangeScene(new S2C6V2()); //return;
+      sceneManager.ChangeScene(new S2C6V2());
     }
     if (displayTime <= 0) {
-      // failed(timeout)(실패 씬으로 이동)
-      scene.ChangeScene(new S2C6V1()); //return;
+      sceneManager.ChangeScene(new S2C6V1());
     }
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "background",
-      new p5.Vector(width / 2, height / 2, 0),
-      new p5.Vector(1, 1, 0)
-    ); // draw item
+      createVector(width / 2, height / 2, 0),
+      createVector(1, 1, 0)
+    );
+
     for (let i = 0; i < this.m_ItemsLoc.length; i++) {
       let item = this.m_Items[i];
-      if ((item & S2C6.TYPE_CLICKED) == S2C6.TYPE_CLICKED) {
+
+      if ((item & this.TYPE_CLICKED) === this.TYPE_CLICKED) {
         continue;
       }
-      if ((item & S2C6.TYPE_SOOK) == S2C6.TYPE_SOOK) {
-        image.DrawImageScale(
+      if ((item & this.TYPE_SOOK) === this.TYPE_SOOK) {
+        imageManager.DrawImageScale(
           "sook",
           this.m_ItemsLoc[i],
-          new p5.Vector(0.025, 0.025, 0)
+          createVector(0.025, 0.025, 0)
         );
       }
-      if ((item & S2C6.TYPE_MANUL) == S2C6.TYPE_MANUL) {
-        image.DrawImageScale(
+      if ((item & this.TYPE_MANUL) === this.TYPE_MANUL) {
+        imageManager.DrawImageScale(
           "manul",
           this.m_ItemsLoc[i],
-          new p5.Vector(0.025, 0.025, 0)
+          createVector(0.025, 0.025, 0)
         );
       }
-    } // 마우스 커서 근처에만 화면이 보이도록 구현
+    }
+
     fill(0);
     let viewX = mouseX / 20;
     let viewY = mouseY / 20;
     let areaSize = 10;
-    let visibleArea = 0.7; /*if (displayTime <= 20) {
-      visibleArea = 0.8;
-    }
-    */
+    let visibleArea = 0.7;
+
     for (let i = 0; i < 64; i++) {
       for (let j = 0; j < 36; j++) {
         if (viewX - areaSize < i && i < viewX + areaSize) {
           if (viewY - areaSize < j && j < viewY + areaSize) {
             continue;
           }
-        } // 마우스 근처가 아니면 검은 도형을 배치하여 안보이도록 구현
+        }
         rect(i * 20, j * 20, 20, 20);
       }
-    } // 보이는 영역이 원형으로 보이도록 구현
-    image.DrawImageScale(
+    }
+    imageManager.DrawImageScale(
       "transparent",
-      new p5.Vector(mouseX, mouseY),
-      new p5.Vector(visibleArea, visibleArea, 0)
-    ); // draw hand
+      createVector(mouseX, mouseY),
+      createVector(visibleArea, visibleArea, 0)
+    );
+
     if (!this.m_IsTigerHand) {
-      if (mousePressed) {
-        image.DrawImageScale(
+      if (mouseIsPressed) {
+        imageManager.DrawImageScale(
           "bear_click",
-          new p5.Vector(mouseX, mouseY),
-          new p5.Vector(0.12, 0.12, 0)
+          createVector(mouseX, mouseY),
+          createVector(0.12, 0.12, 0)
         );
       } else {
-        image.DrawImageScale(
+        imageManager.DrawImageScale(
           "bear_hand",
-          new p5.Vector(mouseX, mouseY),
-          new p5.Vector(0.12, 0.12, 0)
+          createVector(mouseX, mouseY),
+          createVector(0.12, 0.12, 0)
         );
       }
     } else {
-      if (mousePressed) {
-        image.DrawImageScale(
+      if (mouseIsPressed) {
+        imageManager.DrawImageScale(
           "tiger_click",
-          new p5.Vector(mouseX, mouseY),
-          new p5.Vector(0.12, 0.12, 0)
+          createVector(mouseX, mouseY),
+          createVector(0.12, 0.12, 0)
         );
       } else {
-        image.DrawImageScale(
+        imageManager.DrawImageScale(
           "tiger_hand",
-          new p5.Vector(mouseX, mouseY),
-          new p5.Vector(0.12, 0.12, 0)
+          createVector(mouseX, mouseY),
+          createVector(0.12, 0.12, 0)
         );
       }
-    } // draw score
-    image.DrawImageScale(
+    }
+
+    imageManager.DrawImageScale(
       "sook",
-      new p5.Vector(70, 70),
-      new p5.Vector(0.05, 0.05, 0)
+      createVector(70, 70),
+      createVector(0.05, 0.05, 0)
     );
-    font.DrawFont(
+    fontManager.DrawFont(
       "lee",
-      "" + (S2C6.TOTAL_SOOK_CNT - this.m_SookCnt),
+      "" + (this.TOTAL_SOOK_CNT - this.m_SookCnt),
       255,
       50,
       110,
       90
     );
-    image.DrawImageScale(
+
+    imageManager.DrawImageScale(
       "manul",
-      new p5.Vector(180, 70),
-      new p5.Vector(0.05, 0.05, 0)
+      createVector(180, 70),
+      createVector(0.05, 0.05, 0)
     );
-    font.DrawFont(
+    fontManager.DrawFont(
       "lee",
-      "" + (S2C6.TOTAL_MANUL_CNT - this.m_ManulCnt),
+      "" + (this.TOTAL_MANUL_CNT - this.m_ManulCnt),
       255,
       50,
       220,
       90
-    ); // clock base
-    image.DrawImageScale(
+    );
+
+    imageManager.DrawImageScale(
       "clock",
-      new p5.Vector(1205, 75),
-      new p5.Vector(0.055, 0.055, 0)
-    ); // draw time
+      createVector(1205, 75),
+      createVector(0.055, 0.055, 0)
+    );
+
     textSize(25);
     fill(0);
     let timeStr = "";
@@ -175,9 +186,11 @@ class S2C6 extends Scene {
     }
     text(timeStr, 1176, 90);
   }
+
   OnExit() {
-    sound.StopSound("bgm");
+    soundManager.StopSound("bgm");
   }
+
   OnMousePressed() {
     for (let i = 0; i < this.m_ItemsLoc.length; i++) {
       if (
@@ -188,15 +201,15 @@ class S2C6 extends Scene {
           this.m_ItemsLoc[i].y - 25 <= mouseY &&
           this.m_ItemsLoc[i].y + 25 >= mouseY
         ) {
-          // 이미 클릭한 아이템은 갯수로 포함하지 않도록 구현
-          if ((this.m_Items[i] & S2C6.TYPE_CLICKED) == S2C6.TYPE_CLICKED) {
+          if ((this.m_Items[i] & this.TYPE_CLICKED) === this.TYPE_CLICKED) {
             continue;
           }
-          sound.PlaySound("item_click");
-          this.m_Items[i] |= S2C6.TYPE_CLICKED;
-          if ((this.m_Items[i] & S2C6.TYPE_MANUL) == S2C6.TYPE_MANUL) {
+          soundManager.PlaySound("item_click");
+          this.m_Items[i] |= this.TYPE_CLICKED;
+
+          if ((this.m_Items[i] & this.TYPE_MANUL) === this.TYPE_MANUL) {
             this.m_ManulCnt++;
-          } else if ((this.m_Items[i] & S2C6.TYPE_SOOK) == S2C6.TYPE_SOOK) {
+          } else if ((this.m_Items[i] & this.TYPE_SOOK) === this.TYPE_SOOK) {
             this.m_SookCnt++;
           }
           break;
@@ -204,6 +217,7 @@ class S2C6 extends Scene {
       }
     }
   }
+
   SetTigerHand(options) {
     this.m_IsTigerHand = options;
   }

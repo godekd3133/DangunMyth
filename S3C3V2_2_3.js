@@ -1,29 +1,38 @@
 class S3C3V2_2_3 extends Scene {
-  static PREFIX = "Images/S3/C3/V2/_2/_3/";
-  static SOUND_PREFIX = "Sounds/S3/C3/V2/_2/_3/narr/";
-  SCENE_DURATION = 5;
-  constructor() {}
-  OnEnter() {
-    image.LoadImage("background", S3C3V2_2_3.PREFIX + "background");
-    image.LoadImage("text", S3C3V2_2_3.PREFIX + "text");
-    image.LoadImage("dangun", S3C3V2_2_3.PREFIX + "dangun");
-    sound.LoadSound("narr", S3C3V2_2_3.SOUND_PREFIX + "narr.mp3");
-    sound.PlaySound("narr");
-    this.enterTime = time.time;
+  constructor() {
+    super();
+    this.PREFIX = "Images/S3/C3/V2/_2/_3/";
+    this.SOUND_PREFIX = "Sounds/S3/C3/V2/_2/_3/narr/";
+    this.SCENE_DURATION = 5;
   }
+
+  OnEnter() {
+    imageManager.LoadImage("background", this.PREFIX + "background");
+    imageManager.LoadImage("text", this.PREFIX + "text");
+    imageManager.LoadImage("dangun", this.PREFIX + "dangun");
+    soundManager.LoadSound("narr", this.SOUND_PREFIX + "narr.mp3");
+    soundManager.PlaySound("narr");
+    this.enterTime = timeManager.time;
+  }
+
   OnDraw() {
-    image.DrawImage("background", new p5.Vector(width / 2, height / 2, 0));
-    image.DrawImageScale(
-      "dangun",
-      new p5.Vector(width / 2, height / 2 + 60, 0),
-      new p5.Vector(0.22, 0.22, 0)
+    imageManager.DrawImage(
+      "background",
+      createVector(width / 2, height / 2, 0)
     );
-    image.DrawImage("text", new p5.Vector(width / 2, height / 2, 0));
-    if (time.time - this.enterTime > this.SCENE_DURATION) {
-      scene.CreditScene();
+    imageManager.DrawImageScale(
+      "dangun",
+      createVector(width / 2, height / 2 + 60, 0),
+      createVector(0.22, 0.22, 0)
+    );
+    imageManager.DrawImage("text", createVector(width / 2, height / 2, 0));
+
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
+      sceneManager.CreditScene();
     }
   }
+
   OnExit() {
-    sound.stopNowPlaying();
+    soundManager.stopNowPlaying();
   }
 }

@@ -1,18 +1,21 @@
-/** * 웅녀 선택했을 때의 하트 출력 */
 class S3C3V1_3_1 extends Scene {
-  static PREFIX = "Images/S3/C3/V1/_3/_1/";
-  웅녀_X = 588;
-  웅녀_Y = 350;
-  환웅_X = 1150;
-  환웅_Y = 500;
-  SCENE_SECONDS;
-  startMinute;
-  startSecond;
-  startMillis;
-  heartSize = 0;
-  diameter;
-  minimumSize;
-  angle = 0;
+  constructor() {
+    super();
+    this.PREFIX = "Images/S3/C3/V1/_3/_1/";
+    this.웅녀_X = 588;
+    this.웅녀_Y = 350;
+    this.환웅_X = 1150;
+    this.환웅_Y = 500;
+    this.SCENE_SECONDS = 6;
+    this.startMinute = 0;
+    this.startSecond = 0;
+    this.startMillis = 0;
+    this.heartSize = 0;
+    this.diameter = height - 400; // 최대크기
+    this.minimumSize = this.diameter - 350;
+    this.angle = 0;
+  }
+
   OnEnter() {
     this.웅녀_X = 588;
     this.웅녀_Y = 350;
@@ -20,50 +23,60 @@ class S3C3V1_3_1 extends Scene {
     this.환웅_Y = 500;
     this.heartSize = 0;
     this.SCENE_SECONDS = 6;
-    this.diameter = height - 400; //최대크기
+    this.diameter = height - 400; // 최대크기
     this.minimumSize = this.diameter - 350;
-    this.angle = 0; // 이미지 로드
-    image.LoadImage("background", S3C3V1_3_1.PREFIX + "background");
-    image.LoadImage("웅녀", S3C3V1_3_1.PREFIX + "웅녀");
-    image.LoadImage("환웅", S3C3V1_3_1.PREFIX + "환웅");
-    image.LoadImage("heart", S3C3V1_3_1.PREFIX + "heart");
-    sound.LoadSound("Choice", "Sounds/Effects/Choice.mp3");
-    sound.PlaySound("Choice");
+    this.angle = 0;
+
+    // 이미지 로드
+    imageManager.LoadImage("background", this.PREFIX + "background");
+    imageManager.LoadImage("웅녀", this.PREFIX + "웅녀");
+    imageManager.LoadImage("환웅", this.PREFIX + "환웅");
+    imageManager.LoadImage("heart", this.PREFIX + "heart");
+    soundManager.LoadSound("Choice", "Sounds/Effects/Choice.mp3");
+    soundManager.PlaySound("Choice");
+
     this.startMinute = minute();
     this.startSecond = second();
     this.startMillis = millis();
   }
+
   OnDraw() {
-    //           최소크기                    최대크기
     let d1 =
       this.minimumSize +
-      (Math.sin(this.angle) * this.diameter) / 2 +
-      this.diameter / 2; // heartSize += 0.005;
-    // println("d1 : " + d1);
-    image.DrawImage("background", new p5.Vector(width / 2, height / 2)); //웅녀 선택 씬
-    image.DrawImageScale(
+      sin(this.angle) * (this.diameter / 2) +
+      this.diameter / 2;
+
+    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImageScale(
       "웅녀",
-      new p5.Vector(this.웅녀_X, this.웅녀_Y),
-      new p5.Vector(0.2, 0.2)
+      createVector(this.웅녀_X, this.웅녀_Y),
+      createVector(0.2, 0.2)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "환웅",
-      new p5.Vector(this.환웅_X, this.환웅_Y),
-      new p5.Vector(0.3, 0.3)
+      createVector(this.환웅_X, this.환웅_Y),
+      createVector(0.3, 0.3)
     );
-    image.DrawImageScale(
+    imageManager.DrawImageScale(
       "heart",
-      new p5.Vector(width / 2, height / 2),
-      new p5.Vector(d1 / 2000, d1 / 2000)
-    ); // 씬 시작 후 SCENE_SECONDS초 경과시 다음 장면으로 이동
+      createVector(width / 2, height / 2),
+      createVector(d1 / 2000, d1 / 2000)
+    );
+
     if (
-      isTimeExceeded(this.startMinute, this.startSecond, this.SCENE_SECONDS)
+      this.isTimeExceeded(
+        this.startMinute,
+        this.startSecond,
+        this.SCENE_SECONDS
+      )
     ) {
-      scene.ChangeScene(new S3C3V1_3_2());
+      sceneManager.ChangeScene(new S3C3V1_3_2());
     }
-    this.angle += 0.1; //크기 증가 속도
-    this.diameter += 7.0; //최대크기 증가
-    this.minimumSize += 15; //최소크기 증가
+
+    this.angle += 0.1;
+    this.diameter += 7.0;
+    this.minimumSize += 15;
   }
+
   OnExit() {}
 }
