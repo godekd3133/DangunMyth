@@ -17,7 +17,7 @@ void preload() {
 void setup() {
   //씬들 순서대로 추가
   //미리 50개 공간할당
-  font.LoadFont("font", "NanumGothic.ttf");
+  font.LoadFont("font", "LeeSeoyun.otf");
 
   // S1(0 ~ 19)
   sceneList.add(new Opening());
