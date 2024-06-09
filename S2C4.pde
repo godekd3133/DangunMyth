@@ -15,9 +15,16 @@ public class S2C4 extends Scene {
   private float tearRightY = height - 290f;
   private float tearSpeed = 0f;
   private int sessionIndex;
-  private float[] sessionDuration = {4f, 8f, 12f};
-  private String[] sessionSound = {"narr1", "narr2", "narr3"};
-  private String[] sessionText = {"text1", "text2", "text3"};
+  private float[] sessionDuration = {
+    4f, 8f, ;
+  }
+  ;
+  private String[] sessionSound = {
+    "narr1", "narr2", "narr3"}
+  ;
+  private String[] sessionText = {
+    "text1", "text2", "text3"}
+  ;
   private boolean[] isSessionOut;
 
   public S2C4() {
@@ -38,8 +45,10 @@ public class S2C4 extends Scene {
     sound.LoadSound("narr1", "Sounds/S2/C4/narr/narr1.mp3");
     sound.LoadSound("narr2", "Sounds/S2/C4/narr/narr2.mp3");
     sound.LoadSound("narr3", "Sounds/S2/C4/narr/narr3.mp3");
-        isSessionOut = new boolean[] {false, false, false};
-
+    isSessionOut = new boolean[] {
+      false, false, ;
+    }
+    ;
 
     animalScale = 0.25f;
     utilScale = 0.035f;

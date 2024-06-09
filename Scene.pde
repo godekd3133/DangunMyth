@@ -1,9 +1,21 @@
-public abstract class Scene {
-  public float enterTime;
+class Scene {
 
-  public Scene() {
+  constructor() {
+    if (new.target === Scene) {
+      throw new TypeError("Cannot construct Scene instances directly");
+    }
+    this.enterTime = 0;
   }
-  public abstract void OnEnter();
-  public abstract void OnDraw();
-  public abstract void OnExit();
+
+  OnEnter() {
+    throw new Error("OnEnter method must be implemented");
+  }
+
+  OnDraw() {
+    throw new Error("OnDraw method must be implemented");
+  }
+
+  OnExit() {
+    throw new Error("OnExit method must be implemented");
+  }
 }

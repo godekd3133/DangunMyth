@@ -17,9 +17,16 @@ public class S2C6V2 extends Scene {
   private float basketY = height / 2 + 190;
 
   private int sessionIndex;
-  private float[] sessionDuration = {3f, 6f, 10f};
-  private String[] sessionSound = {"narr1", "narr2", "narr3"};
-  private String[] sessionText = {"text1", "text2", "text3"};
+  private float[] sessionDuration = {
+    3f, 6f, ;
+  }
+  ;
+  private String[] sessionSound = {
+    "narr1", "narr2", "narr3"}
+  ;
+  private String[] sessionText = {
+    "text1", "text2", "text3"}
+  ;
   private boolean[] isSessionOut;
 
   public S2C6V2() {
@@ -37,7 +44,10 @@ public class S2C6V2 extends Scene {
     sound.LoadSound("narr1", "Sounds/S2/C6/V2/narr/narr1.mp3");
     sound.LoadSound("narr2", "Sounds/S2/C6/V2/narr/narr2.mp3");
     sound.LoadSound("narr3", "Sounds/S2/C6/V2/narr/narr3.mp3");
-    isSessionOut = new boolean[] {false, false, false};
+    isSessionOut = new boolean[] {
+      false, false, ;
+    }
+    ;
     SCENE_TIME = 0f;
 
   }
@@ -66,7 +76,6 @@ public class S2C6V2 extends Scene {
     if (SCENE_TIME > sessionDuration[sessionIndex]) {
       if (sessionDuration.length - 1 > sessionIndex) sessionIndex++;
     }
-
     if (SCENE_TIME > SCENE_DURATION) {
       scene.ChangeScene(new S2C7());
     }

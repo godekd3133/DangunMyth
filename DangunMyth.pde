@@ -1,5 +1,5 @@
 import processing.sound.*;
-//import processing.javafx.*;
+//import proce`ssing.javafx.*;
 SceneManager scene = new SceneManager();
 ImageManager image = new ImageManager();
 FontManager font = new FontManager();
@@ -87,7 +87,7 @@ void setup() {
   noStroke();
   //size(1280, 720,FX2D);
   size(1280, 720,P2D);
-  scene.Setup(sceneList.get(0));
+  scene.Setup(new S3C3V1_2());
 
 }
 
