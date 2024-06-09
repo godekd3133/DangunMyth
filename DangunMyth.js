@@ -17,6 +17,7 @@ function setup() {
   imageManager = new ImageManager();
   timeManager = new TimeManager();
   sceneManager = new SceneManager();
+  soundManager = new SoundManager();
 
   // S1(0 ~ 21)
   sceneList.push(new Opening());
@@ -82,7 +83,7 @@ function setup() {
   sceneList.push(new S3C3V2_2_3());
 
   sceneManager.SetCreditScene(new EndingCredit());
-  sceneManager.Setup(new S3C3V1_2());
+  sceneManager.Setup(sceneList[0]);
 }
 
 function draw() {

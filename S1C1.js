@@ -16,6 +16,7 @@ class S1C1 extends Scene {
     imageManager.LoadImage("cloud01", "Images/S1/C1/cloud_01");
     imageManager.LoadImage("cloud02", "Images/S1/C1/cloud_02");
     imageManager.LoadImage("cloud03", "Images/S1/C1/cloud_03");
+    soundManager.LoadSound("intro", "Sounds/intro.wav");
     soundManager.PlaySound("intro");
     imageManager.LoadImage("text1", "Images/S1/C1/text_01");
     imageManager.LoadImage("text2", "Images/S1/C1/text_02");

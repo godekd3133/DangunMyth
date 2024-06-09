@@ -16,8 +16,8 @@ class S3C3V1_3_3 extends Scene {
     soundManager.LoadSound("narr", "Sounds/S3/C3/V1/_3/_3/narr.mp3");
     this.firstFlag = false;
     this.alpha = 255;
-    this.preparationTime = 5;
-    this.fadeoutTime = 6;
+    this.preparationTime = 8;
+    this.fadeoutTime = 7;
   }
 
   OnDraw() {

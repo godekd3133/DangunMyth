@@ -1,8 +1,11 @@
-/* SoundManager.js */
 class SoundManager {
   constructor() {
     this.sounds = new Map();
     this.nowPlaying = null;
+  }
+
+  ResetSounds() {
+    this.sounds.clear();
   }
 
   // 이 부분에서 preload() 함수를 사용하여 사운드를 미리 로드합니다.

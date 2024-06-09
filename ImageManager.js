@@ -1,4 +1,4 @@
-export class ImageManager {
+class ImageManager {
   constructor() {
     this.images = new Map();
     this.pivot = createVector(0.5, 0.5);
@@ -81,7 +81,7 @@ export class ImageManager {
     pop();
   }
 
-  DrawImageScale(key, position, scale, angle = 0, alpha = 255) {
+  DrawImageScale(key, position, size, angle = 0, alpha = 255) {
     if (!this.ValidateImage(key)) {
       return;
     }
@@ -90,7 +90,7 @@ export class ImageManager {
     push();
     translate(position.x, position.y);
     rotate(angle);
-    scale(scale.x, scale.y);
+    scale(size.x, size.y);
     imageMode(CENTER);
     tint(255, alpha);
     image(img, 0, 0);

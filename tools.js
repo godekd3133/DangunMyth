@@ -20,10 +20,24 @@ const getFileContent = (filePath) => {
     );
   });
 
-  const jsFileContent = ["Scene.js", ...jsFileList, "DangunMyth.js"]
+  let jsFileContent = ["Scene.js", ...jsFileList, "DangunMyth.js"]
     .map((jsFile) => getFileContent(jsFile))
     .join("\n");
-  const mainJsFileContent = getFileContent("DangunMyth.js");
 
-  fs.writeFileSync(path.join(__dirname, "web", "index.js"), jsFileContent);
+  /// NanumGothic.ttf -> ../../../../Fonts/NanumGothic.ttf
+  jsFileContent = jsFileContent.replace(
+    /"NanumGothic\.ttf/g,
+    '"../../../../Fonts/NanumGothic.ttf'
+  );
+
+  /// Sounds -> "../../../Sounds
+  jsFileContent = jsFileContent.replace(/"Sounds/g, '"../../../Sounds');
+
+  /// "Images -> "../../../Images
+  jsFileContent = jsFileContent.replace(/"Images/g, '"../../../Images');
+
+  fs.writeFileSync(
+    path.join(__dirname, "p5", "p5", "src", "sketch.js"),
+    jsFileContent
+  );
 })();

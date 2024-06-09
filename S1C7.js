@@ -1,5 +1,3 @@
-import { Scene } from "./Scene.js"; // Assuming Scene.js contains the base Scene class
-
 class S1C7 extends Scene {
   constructor() {
     super();

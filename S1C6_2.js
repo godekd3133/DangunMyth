@@ -1,6 +1,4 @@
-import { Scene } from "./Scene.js"; // Assuming Scene.js contains the base Scene class
-
-export class S1C6_2 extends Scene {
+class S1C6_2 extends Scene {
   constructor() {
     super();
     this.centerX = windowWidth / 2;
