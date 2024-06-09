@@ -15,8 +15,9 @@ void preload() {
 }
 
 void setup() {
-  
-  font.LoadFont("font", "NanumGothic.ttf");
+  //씬들 순서대로 추가
+  //미리 50개 공간할당
+  font.LoadFont("font", "LeeSeoyun.otf");
 
   // S1(0 ~ 21)
   sceneList.add(new Opening());
@@ -127,5 +128,11 @@ void keyPressed() {
         scene.ChangeSceneManually(sceneList.get(index - 1));
       }
     }
+  }
+}
+// 미니게임2 클릭 처리
+
+void mousePressed() {
+  if (scene.currentScene instanceof S2C6) {((S2C6)scene.currentScene).OnMousePressed();
   }
 }

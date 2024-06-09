@@ -59,15 +59,8 @@ public class Opening extends Scene {
       if (mousePos.x > 540 && mousePos.x < 736&& mousePos.y > 381 && mousePos.y < 456) {
         image.DrawImage("btn_start", new PVector(width / 2, height / 2), 0f,255,220,220,220);
         if (mousePressed == true && pressedMouse == false && mouseButton == LEFT) {
-          if (selectedSequence == 0) {
-            scene.ChangeScene(new S1C1());
-          }
-          else if (selectedSequence == 1) {
-            scene.ChangeScene(new S2C1());
-          }
-          else if (selectedSequence == 2) {
-            scene.ChangeScene(new S3C1());
-          }
+          scene.ChangeScene(new S1C1());
+
         }
       }
       else image.DrawImage("btn_start", new PVector(width / 2, height / 2), 0f,logoAlpha);
@@ -81,27 +74,30 @@ public class Opening extends Scene {
 
       if (dropdown) {
         image.DrawImage("dropdown_list", new PVector(width / 2, height / 2), 0f,logoAlpha);
-        if (mousePos.x > 540 && mousePos.x < 736&& mousePos.y > 527 && mousePos.y < 569|| selectedSequence ==0) {
+        if (mousePos.x > 540 && mousePos.x < 736&& mousePos.y > 527 && mousePos.y < 569) {
           image.DrawImage("btn_sequence01", new PVector(width / 2, height / 2), 0f,logoAlpha);
           if (mousePressed == true && pressedMouse == false) {
             selectedSequence = 0;
             dropdown = false;
+            scene.ChangeScene(new S1C1());
           }
         }
         else image.DrawImage("btn_sequence01", new PVector(width / 2, height / 2), 0f,logoAlpha - 90f);
-        if (mousePos.x > 540 && mousePos.x < 736&& mousePos.y > 569 && mousePos.y < 609|| selectedSequence ==1) {
+        if (mousePos.x > 540 && mousePos.x < 736&& mousePos.y > 569 && mousePos.y < 609) {
           image.DrawImage("btn_sequence02", new PVector(width / 2, height / 2), 0f,logoAlpha);
           if (mousePressed == true && pressedMouse == false) {
             selectedSequence = 1;
             dropdown = false;
+            scene.ChangeScene(new S2C1());
           }
         }
         else image.DrawImage("btn_sequence02", new PVector(width / 2, height / 2), 0f,logoAlpha - 90f);
-        if (mousePos.x > 540 && mousePos.x < 736&& mousePos.y > 609 && mousePos.y < 649 || selectedSequence ==2) {
+        if (mousePos.x > 540 && mousePos.x < 736&& mousePos.y > 609 && mousePos.y < 649) {
           image.DrawImage("btn_sequence03", new PVector(width / 2, height / 2), 0f,logoAlpha);
           if (mousePressed == true && pressedMouse == false) {
             selectedSequence = 2;
             dropdown = false;
+            scene.ChangeScene(new S3C1());
           }
         }
         else image.DrawImage("btn_sequence03", new PVector(width / 2, height / 2), 0f,logoAlpha - 90f);

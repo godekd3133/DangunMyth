@@ -7,6 +7,10 @@ public class SoundManager {
   HashMap<String, SoundFile> sounds = new HashMap<String, SoundFile>();
   SoundFile nowPlaying;
 
+  public void ResetSounds() {
+    sounds.clear();
+  }
+
   public void LoadSound(String name, String filename) {
     SoundFile sound = LoadSound2(filename);
     sounds.put(name, sound);
@@ -45,6 +49,8 @@ public class SoundManager {
   }
 
   public void stopNowPlaying() {
-    nowPlaying.stop();
+    if (nowPlaying != null) {
+      nowPlaying.stop();
+    }
   }
 }
