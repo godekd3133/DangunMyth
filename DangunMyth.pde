@@ -12,12 +12,12 @@ boolean QAMode = false; //이 변수를 true로 바꾸면 시간에따른 신전
 
 void preload() {
   sound.LoadSound("intro", "Sounds/intro.wav");
-  font.LoadFont("font", "LeeSeoyun.otf");
 }
 
 void setup() {
   //씬들 순서대로 추가
   //미리 50개 공간할당
+  font.LoadFont("font", "LeeSeoyun.otf");
 
   // S1(0 ~ 21)
   sceneList.add(new Opening());
@@ -128,5 +128,11 @@ void keyPressed() {
         scene.ChangeSceneManually(sceneList.get(index - 1));
       }
     }
+  }
+}
+// 미니게임2 클릭 처리
+
+void mousePressed() {
+  if (scene.currentScene instanceof S2C6) {((S2C6)scene.currentScene).OnMousePressed();
   }
 }
