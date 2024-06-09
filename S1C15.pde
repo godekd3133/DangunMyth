@@ -77,24 +77,15 @@ public class S1C15 extends Scene {
     obstacles = new String[] {
       "bird", "gust", "plane", "UFO", "cloud", "lightning"}
     ;
-    obstaclesImageScale = new float[] {
-      0.2, 0.3, 0.7, 0.3, 0.3, 0.;
-    }
-    ;
-    obstaclesProbability = new int[] {
-      0, 0, 0, 1, 1, 1, 2, 3, 3, 3, 4, 4, 4, 5, 5, ;
-    }
-    ; // 비행기 등장 확률을 낮춤
+    obstaclesImageScale = new float[] {0.2, 0.3, 0.7, 0.3, 0.3, 0.25};
+    obstaclesProbability = new int[] {0, 0, 0, 1, 1, 1, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5}; // 비행기 등장 확률을 낮춤
 
     obstacleCreatedTime = time.time;
     obstacleIntervalTime = 2.0f;
 
     collisionTime = 0f;
     collisionActionSpeed = 0f;
-    collisionLightning = new int[] {
-      6, 10, 6, 10, 6, 15, ;
-    }
-    ;
+    collisionLightning = new int[] {6, 10, 6, 10, 6, 15, 15};
     collisionLightningIndex = 0;
     collisionSoundPlayFlag = false;
   }
@@ -251,10 +242,7 @@ public class S1C15 extends Scene {
         collisionSoundPlayFlag = false;
       }
       else if (collisionObstacle.equals("lightning") && collisionLightningIndex == 6 && collisionLightning[collisionLightningIndex] == 0) {
-        collisionLightning = new int[] {
-          6, 10, 6, 10, 6, 15, ;
-        }
-        ;
+        collisionLightning = new int[] {6, 10, 6, 10, 6, 15, 15};
         collisionLightningIndex = 0;
         collisionTime = 0f;
         collisionActionSpeed = 0f;

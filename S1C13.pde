@@ -5,7 +5,7 @@ public class S1C13 extends Scene {
     "background1", "background2", "background3", "background4", "background5", "background6", "background7" }
   ;
   private float[] intervals = {
-    0.0, 0.5, 1.0, 1.3, 1.6, 1.9, 2.;
+    0.0, 0.5, 1.0, 1.3, 1.6, 1.9, 2.1
   }
   ;
 
