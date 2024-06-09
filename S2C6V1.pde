@@ -1,6 +1,6 @@
 public class S2C6V1 extends Scene {
   TimelineManager timelineManager = new TimelineManager();
-  private float backgroundAlpha = 188f;
+  private float backgroundAlpha = 0f;
   private float animalScale = 0.25f;
   private float tearScale = 0.025f;
   private float tigerTearSpeedL = 0f;
@@ -13,6 +13,7 @@ public class S2C6V1 extends Scene {
   private float bearTearRightY = height - 280f;
 
   private boolean showButton = false;
+  private int startTime = millis();
 
   public S2C6V1() {
   }
@@ -30,17 +31,10 @@ public class S2C6V1 extends Scene {
     timelineManager.pushTimeline(new TimelineCallback() {
 
       @Override public void OnDraw(float time) {
-        backgroundAlpha = lerp(0f, 128f, time / 3f);
-        println("backgroundAlpha",backgroundAlpha);
-      }
-    }, 3f);
-
-    timelineManager.pushTimeline(new TimelineCallback() {
-
-      @Override public void OnDraw(float time) {
         showButton = true;
       }
-    }, 1);
+    }, 2f);
+    backgroundAlpha = 0f;
     showButton = true;
     animalScale = 0.25f;
     tearScale = 0.025f;
@@ -52,6 +46,7 @@ public class S2C6V1 extends Scene {
     bearTearSpeedR = 0f;
     bearTearLeftY = height - 270f;
     bearTearRightY = height - 280f;
+    startTime = millis();
 
   }
 
@@ -77,26 +72,26 @@ public class S2C6V1 extends Scene {
     // image.DrawImageScale("bear_tear", new PVector(width - 510, bearTearLeftY + bearTearSpeedL), new PVector(tearScale, tearScale));
     // image.DrawImageScale("bear_tear", new PVector(width - 440, bearTearRightY + bearTearSpeedR), new PVector(tearScale, tearScale));
 
+    if (millis() - startTime < 2000) return;
+
     timelineManager.OnDraw();
-    fill(0, 128f);
+    if (showButton && backgroundAlpha<=180) backgroundAlpha += 1.2;
+    fill(0, backgroundAlpha);
     rect(0, 0, width, height);
 
     if (showButton) {
-      image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1));
-      image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1));
-
       //240605 QA
       //Mouse Hover
       if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
         image.DrawImage("button_top", new PVector(width / 2, height / 2), 0f,255,220,220,220);
       } else {
-        image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1));
+        image.DrawImageScale("button_top", new PVector(width / 2, height / 2), new PVector(1, 1), 0, backgroundAlpha + 80);
       }
       //Mouse Hover
       if (mouseX > 480 && mouseX < 800 && mouseY >237 && mouseY < 324) {
         image.DrawImage("button_bottom", new PVector(width / 2, height / 2), 0f,255,220,220,220);
       } else {
-        image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1));
+        image.DrawImageScale("button_bottom", new PVector(width / 2, height / 2), new PVector(1, 1), 0, backgroundAlpha + 80);
       }
       if (mousePressed && mouseButton == LEFT) {
         /// x 480 ~ 800 y237 ~ 324
@@ -107,7 +102,6 @@ public class S2C6V1 extends Scene {
         }
         /// x 480 ~ 800 y 375 ~ 459
         else if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
-          print('2');
           scene.Setup(sceneList.get(0));
           showButton = false;
 

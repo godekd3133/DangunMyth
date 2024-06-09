@@ -5,8 +5,8 @@ public class S3C3V1_2 extends Scene {
 
   private final static float BEAR_X = 470;
   private final static float BEAR_Y = 460;
-  private final static float BEAR_EYE_X = BEAR_X-8;
-  private final static float BEAR_EYE_Y = BEAR_Y-60;
+  private final static float BEAR_EYE_X = BEAR_X-5;
+  private final static float BEAR_EYE_Y = BEAR_Y-50;
 
   private final static float TIGER_X = BEAR_X+350;
   private final static float TIGER_Y = BEAR_Y;
@@ -19,7 +19,6 @@ public class S3C3V1_2 extends Scene {
   private boolean narrFlag = false;
 
   @Override public void OnEnter() {
-    println("S3C3V1_2");
 
     // 이미지 로드
     image.LoadImage("background", PREFIX+"background");

@@ -12,14 +12,14 @@ boolean QAMode = false; //이 변수를 true로 바꾸면 시간에따른 신전
 
 void preload() {
   sound.LoadSound("intro", "Sounds/intro.wav");
+  font.LoadFont("font", "LeeSeoyun.otf");
 }
 
 void setup() {
   //씬들 순서대로 추가
   //미리 50개 공간할당
-  font.LoadFont("font", "LeeSeoyun.otf");
 
-  // S1(0 ~ 19)
+  // S1(0 ~ 21)
   sceneList.add(new Opening());
   sceneList.add(new S1C1());
   sceneList.add(new S1C3());
@@ -43,7 +43,7 @@ void setup() {
   sceneList.add(new S1C19_2());
   sceneList.add(new S1C19_3());
 
-  // S2(20 ~ 29)
+  // S2(22 ~ 31)
   sceneList.add(new S2C1());
   sceneList.add(new S2C2());
   sceneList.add(new S2C3());
@@ -55,11 +55,11 @@ void setup() {
   sceneList.add(new S2C7());
   sceneList.add(new S2C8());
 
-  // S3(30 ~50)
+  // S3(32 ~ 53)
   sceneList.add(new S3C1());
   sceneList.add(new S3C2());
 
-  // S3 - V1(32 ~ 43)
+  // S3 - V1(34 ~ 46)
   sceneList.add(new S3C3V1_1());
   sceneList.add(new S3C3V1_2());
   sceneList.add(new S3C3V1_3());
@@ -73,7 +73,7 @@ void setup() {
   sceneList.add(new S3C3V1_4_1());
   sceneList.add(new S3C3V1_4_2());
   sceneList.add(new S3C3V1_4_3());
-  // S3 - V2(44 ~ 50)
+  // S3 - V2(47 ~ 53)
   sceneList.add(new S3C3V2());
   sceneList.add(new S3C3V2_1_1());
   sceneList.add(new S3C3V2_1_2());
@@ -128,12 +128,5 @@ void keyPressed() {
         scene.ChangeSceneManually(sceneList.get(index - 1));
       }
     }
-  }
-}
-// 미니게임2 클릭 처리
-
-void mousePressed() {
-  if (scene.currentScene instanceof S2C6) {((S2C6)scene.currentScene).OnMousePressed();
-    print("mouse clicked");
   }
 }

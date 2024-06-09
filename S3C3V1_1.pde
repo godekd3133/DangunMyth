@@ -8,7 +8,6 @@ public class S3C3V1_1 extends Scene {
   }
 
   @Override public void OnEnter() {
-    println("S3C3V1_1");
     image.LoadImage("background", PREFIX + "background");
     image.LoadImage("bear1", PREFIX + "bear1");
     image.LoadImage("bear2", PREFIX + "bear2");

@@ -20,7 +20,6 @@ public class S3C3V1_3_1 extends Scene {
   private float angle = 0;
 
   @Override public void OnEnter() {
-    println("[S3_C3-V1-3(1)]");
 
     웅녀_X = 588;
     웅녀_Y = 350;

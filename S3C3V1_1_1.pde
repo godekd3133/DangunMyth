@@ -7,17 +7,19 @@ public class S3C3V1_1_1 extends Scene {
   private float bear_x = 500;
   private float bear_y = 440;
   private PVector character_scale = new PVector(0.22, 0.22, 0);
+  private float effectTime = 0f;
+  private boolean effectPlaying = false;
   
   public S3C3V1_1_1() {
   }
 
   @Override public void OnEnter() {
-    println("Enter S3C3V1_1_1");
     image.LoadImage("background", "Images/S3/C3/V1/_1/_1/background");
     image.LoadImage("bear_before", "Images/S3/C3/V1/_1/_1/bear_before");
     image.LoadImage("bear_after", "Images/S3/C3/V1/_1/_1/bear_after");
     image.LoadImage("tiger_before", "Images/S3/C3/V1/_1/_1/tiger_before");
     image.LoadImage("tiger_after", "Images/S3/C3/V1/_1/_1/tiger_after");
+    sound.LoadSound("evolution","Sounds/Effects/Evolution.mp3");
     _time = 0;
   }
 
@@ -37,7 +39,12 @@ public class S3C3V1_1_1 extends Scene {
 
       image.DrawImageScale("tiger_before", new PVector(tiger_x, tiger_y, 0), character_scale, 0, 255);
       image.DrawImageScale("tiger_after", new PVector(tiger_x, tiger_y, 0), character_scale, 0, _time);
-
+    }
+    if(!effectPlaying && effectTime > 1.0f){
+      sound.PlaySound("evolution");
+      effectPlaying = true;
+    }else if(!effectPlaying){
+      effectTime += time.deltaTime;
     }
   }
 
