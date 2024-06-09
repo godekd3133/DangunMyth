@@ -35,7 +35,7 @@ public class S3C3V1_3_3 extends Scene {
       //   alpha -= 255/fadeoutTime * time.deltaTime;
       // }
     if (time.time - enterTime >= preparationTime) {
-      scene.CreditScene();
+      scene.ChangeScene(new S3C3V1_2_2());
     }
     if (!firstFlag) {
       firstFlag = true;

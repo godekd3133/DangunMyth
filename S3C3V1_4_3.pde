@@ -55,7 +55,7 @@ public class S3C3V1_4_3 extends Scene {
     image.DrawImage("text", new PVector(width / 2, height / 2, 0));
 
     if (time.time - enterTime >= SCENE_DURATION) {
-      scene.CreditScene();
+      scene.ChangeScene(new S3C2());
     }
     if (!firstFlag) {
       firstFlag = true;
