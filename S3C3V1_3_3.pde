@@ -21,8 +21,8 @@ public class S3C3V1_3_3 extends Scene {
     sound.LoadSound("narr", "Sounds/S3/C3/V1/_3/_3/narr.mp3");
     firstFlag=false;
     alpha=255f;
-    fadeoutTime= 6f;
-    preparationTime= 5f;
+    fadeoutTime= 8f;
+    preparationTime= 7f;
   }
 
   @Override public void OnDraw() {
