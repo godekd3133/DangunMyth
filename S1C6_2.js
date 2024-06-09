@@ -66,29 +66,20 @@ class S1C6_2 extends Scene {
     }
     imageManager.DrawImageScale(
       "Background2",
-      this.centerX,
-      this.centerY,
-      1,
-      0,
-      255
+      createVector(this.centerX, this.centerY),
+      createVector(1, 1)
     );
 
     //환인 Draw
     imageManager.DrawImageScale(
       "HwaninBody",
-      this.hwaninX,
-      this.hwaninY,
-      0.47,
-      0,
-      255
+      createVector(this.hwaninX, this.hwaninY),
+      createVector(0.47, 0.47)
     );
     imageManager.DrawImageScale(
       "HwaninFace",
-      this.hwaninX,
-      this.hwaninY + this.hwaninfaceOffset,
-      0.47,
-      0,
-      255
+      createVector(this.hwaninX, this.hwaninY + this.hwaninfaceOffset),
+      createVector(0.47, 0.47)
     );
     imageManager.DrawImage("text", createVector(this.centerX, this.centerY, 0));
   }

@@ -28,7 +28,7 @@ class S3C3V2 extends Scene {
     for (let i = 0; i < this.tigerList.length; i++) {
       imageManager.LoadImage(
         `tiger${i + 1}`,
-        `Images/S3/C3/V2/_0/tiger${i + 1}`
+        "Images/S3/C3/V2/_0/tiger" + `${i + 1}`
       );
     }
 

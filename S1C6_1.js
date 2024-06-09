@@ -4,41 +4,29 @@ class S1C6_1 extends Scene {
     this.centerX = width / 2;
     this.centerY = height / 2;
     this.SCENE_DURATION = 14;
-
     this.hwaninDuration = 4;
     this.hwanwoongDuration = 3;
-
     this.soundStartTime = 0;
     this.hwaninStartTime = 4;
     this.hwanwoongStartTime = 9;
-
     this.narrFlag = false;
     this.hwaninVoiceFlag = false;
     this.hwanwoongVoiceFlag = false;
-
     this.hwaninCoor = createVector(this.centerX - 300, this.centerY);
-
     this.mouseTickInterval = 10 / 60;
     this.mouseTick = 0;
 
-    //환인 위치
     this.hwaninfaceOffset = -40;
     this.hwaninX = this.centerX - 250;
     this.hwaninY = this.centerY - 50;
-
-    //환인 얼굴 움직이는 변수
     this.hwaninFaceFlag = false;
-    this.hwaninFaceCnt = 0;
     this.hwaninMouse = true;
 
-    //환웅 위치
     this.hwanwoongfaceOffsetY = -80;
     this.hwanwoongfaceOffsetX = -25;
     this.hwanwoongX = this.centerX + 300;
     this.hwanwoongY = this.centerY + 180;
-    //환웅 얼굴 움직이는 변수
     this.hwanwoongFaceFlag = false;
-    this.hwanwoongFaceCnt = 0;
     this.hwanwoongMouse = true;
   }
 
@@ -46,41 +34,29 @@ class S1C6_1 extends Scene {
     this.centerX = width / 2;
     this.centerY = height / 2;
     this.SCENE_DURATION = 14;
-
     this.hwaninDuration = 4;
     this.hwanwoongDuration = 3;
-
     this.soundStartTime = 0;
     this.hwaninStartTime = 4;
     this.hwanwoongStartTime = 9;
-
     this.narrFlag = false;
     this.hwaninVoiceFlag = false;
     this.hwanwoongVoiceFlag = false;
-
     this.hwaninCoor = createVector(this.centerX - 300, this.centerY);
-
     this.mouseTickInterval = 10 / 60;
     this.mouseTick = 0;
 
-    //환인 위치
     this.hwaninfaceOffset = -40;
     this.hwaninX = this.centerX - 250;
     this.hwaninY = this.centerY - 50;
-
-    //환인 얼굴 움직이는 변수
     this.hwaninFaceFlag = false;
-    this.hwaninFaceCnt = 0;
     this.hwaninMouse = true;
 
-    //환웅 위치
     this.hwanwoongfaceOffsetY = -80;
     this.hwanwoongfaceOffsetX = -25;
     this.hwanwoongX = this.centerX + 300;
     this.hwanwoongY = this.centerY + 180;
-    //환웅 얼굴 움직이는 변수
     this.hwanwoongFaceFlag = false;
-    this.hwanwoongFaceCnt = 0;
     this.hwanwoongMouse = true;
 
     this.hwaninFaceCnt = 0;
@@ -92,17 +68,9 @@ class S1C6_1 extends Scene {
     this.hwaninStartTime = 4;
     this.hwanwoongStartTime = 9;
 
-    // hwaninDuration = SCENE_DURATION/2f;
-    // hwanwoongDuration = SCENE_DURATION/2f;
-
-    // int hwaninX = centerX-200;
-    // int hwaninY = centerY;
-
-    //나레이션
     imageManager.LoadImage("text", "Images/S1/C6-1/text");
     soundManager.LoadSound("narr", "Sounds/S1/C6-1/narr/narr.mp3");
 
-    //환인
     imageManager.LoadImage("Background", "Images/S1/C6-1/Background");
     imageManager.LoadImage("HwaninBody", "Images/S1/C6-1/HwaninBody");
     imageManager.LoadImage(
@@ -119,7 +87,6 @@ class S1C6_1 extends Scene {
     );
     soundManager.LoadSound("hwanin", "Sounds/S1/C6-1/narr/hwanin.mp3");
 
-    //환웅
     imageManager.LoadImage("HwanwoongBody1", "Images/S1/C6-1/HwanwoongBody1");
     imageManager.LoadImage("HwanwoongBody2", "Images/S1/C6-1/HwanwoongBody2");
     imageManager.LoadImage("HwanwoongFace1", "Images/S1/C6-1/HwanwoongFace1");
@@ -133,7 +100,8 @@ class S1C6_1 extends Scene {
     );
     soundManager.LoadSound("hwanwoong", "Sounds/S1/C6-1/narr/hwanwung.mp3");
 
-    this.enterTime = timeManager.time;
+    background(255);
+    timeManager.enterTime = timeManager.time;
   }
 
   OnDraw() {
@@ -150,7 +118,6 @@ class S1C6_1 extends Scene {
       } else {
         this.hwaninMouse = false;
       }
-      //환웅
 
       if (this.hwanwoongFaceFlag) {
         this.hwanwoongMouse = !this.hwanwoongMouse;
@@ -158,7 +125,7 @@ class S1C6_1 extends Scene {
         this.hwanwoongMouse = false;
       }
     }
-    if (timeManager.time - this.enterTime >= this.hwaninStartTime) {
+    if (timeManager.time - timeManager.enterTime >= this.hwaninStartTime) {
       this.hwaninFaceFlag = true;
       if (!this.hwaninVoiceFlag) {
         this.soundStartTime = timeManager.time;
@@ -172,8 +139,7 @@ class S1C6_1 extends Scene {
         this.hwaninFaceFlag = false;
       }
     }
-    //환웅 대사 시작지점
-    if (timeManager.time - this.enterTime >= this.hwanwoongStartTime) {
+    if (timeManager.time - timeManager.enterTime >= this.hwanwoongStartTime) {
       this.hwanwoongFaceFlag = true;
       this.hwaninFaceFlag = false;
       if (!this.hwanwoongVoiceFlag) {
@@ -182,35 +148,36 @@ class S1C6_1 extends Scene {
         soundManager.PlaySound("hwanwoong");
       }
     }
-    //EndPoint
-    if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
+    if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S1C6_2());
     }
     imageManager.DrawImageScale(
       "Background",
-      this.centerX,
-      this.centerY,
-      1,
+      createVector(this.centerX, this.centerY),
+      createVector(1, 1),
       0,
       255
     );
-    imageManager.DrawImageScale("text", this.centerX, this.centerY, 1, 0, 255);
+    imageManager.DrawImageScale(
+      "text",
+      createVector(this.centerX, this.centerY),
+      createVector(1, 1),
+      0,
+      255
+    );
 
-    //환인 Draw
     imageManager.DrawImageScale(
       "HwaninBody",
-      this.hwaninX,
-      this.hwaninY,
-      0.15,
+      createVector(this.hwaninX, this.hwaninY),
+      createVector(0.15, 0.15),
       0,
       255
     );
-    if (this.hwaninFaceFlag == false) {
+    if (!this.hwaninFaceFlag) {
       imageManager.DrawImageScale(
         "HwaninFace_MouseClose",
-        this.hwaninX,
-        this.hwaninY + this.hwaninfaceOffset,
-        0.15,
+        createVector(this.hwaninX, this.hwaninY + this.hwaninfaceOffset),
+        createVector(0.15, 0.15),
         0,
         255
       );
@@ -218,66 +185,67 @@ class S1C6_1 extends Scene {
       if (this.hwaninMouse) {
         imageManager.DrawImageScale(
           "HwaninFace_MouseClose",
-          this.hwaninX,
-          this.hwaninY + this.hwaninfaceOffset,
-          0.15,
+          createVector(this.hwaninX, this.hwaninY + this.hwaninfaceOffset),
+          createVector(0.15, 0.15),
           0,
           255
         );
       } else {
         imageManager.DrawImageScale(
           "HwaninFace_MouseOpen",
-          this.hwaninX,
-          this.hwaninY + this.hwaninfaceOffset,
-          0.15,
+          createVector(this.hwaninX, this.hwaninY + this.hwaninfaceOffset),
+          createVector(0.15, 0.15),
           0,
           255
         );
       }
     }
-    //환웅 Draw
-    if (this.hwanwoongFaceFlag == false) {
+
+    if (!this.hwanwoongFaceFlag) {
       imageManager.DrawImageScale(
         "HwanwoongBody1",
-        this.hwanwoongX,
-        this.hwanwoongY,
-        0.15,
+        createVector(this.hwanwoongX, this.hwanwoongY),
+        createVector(0.15, 0.15),
         0,
         255
       );
       imageManager.DrawImageScale(
         "HwanwoongFace1",
-        this.hwanwoongX + -10,
-        this.hwanwoongY + this.hwanwoongfaceOffsetY,
-        0.15,
+        createVector(
+          this.hwanwoongX - 10,
+          this.hwanwoongY + this.hwanwoongfaceOffsetY
+        ),
+        createVector(0.15, 0.15),
         0,
         255
       );
     } else {
       imageManager.DrawImageScale(
         "HwanwoongBody2",
-        this.hwanwoongX,
-        this.hwanwoongY,
-        0.15,
+        createVector(this.hwanwoongX, this.hwanwoongY),
+        createVector(0.15, 0.15),
         0,
         255
       );
-
       if (this.hwanwoongMouse) {
         imageManager.DrawImageScale(
           "HwanwoongFace2-1",
-          this.hwanwoongX + this.hwanwoongfaceOffsetX,
-          this.hwanwoongY + this.hwanwoongfaceOffsetY,
-          0.15,
+          createVector(
+            this.hwanwoongX + this.hwanwoongfaceOffsetX,
+            this.hwanwoongY + this.hwanwoongfaceOffsetY
+          ),
+          createVector(0.15, 0.15),
           0,
           255
         );
       } else {
         imageManager.DrawImageScale(
           "HwanwoongFace2-2",
-          this.hwanwoongX + this.hwanwoongfaceOffsetX,
-          this.hwanwoongY + this.hwanwoongfaceOffsetY,
-          0.15,
+          createVector(
+            this.hwanwoongX + this.hwanwoongfaceOffsetX,
+            this.hwanwoongY + this.hwanwoongfaceOffsetY
+          ),
+          createVector(0.15, 0.15),
           0,
           255
         );

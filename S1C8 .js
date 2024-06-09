@@ -67,38 +67,31 @@ class S1C8 extends Scene {
 
     imageManager.DrawImageScale(
       "BackgroundS1C8",
-      this.centerX,
-      this.centerY,
-      1.0,
-      0.0,
-      255
+      createVector(this.centerX, this.centerY),
+      createVector(1, 1)
     );
 
     // 환인 Draw
     imageManager.DrawImageScale(
       "HwaninBody",
-      this.hwaninX,
-      this.hwaninY,
-      0.49,
-      0.0,
-      255
+      createVector(this.hwaninX, this.hwaninY),
+      createVector(0.49, 0.49)
     );
     // if (mouseMove < 10) imageManager.DrawImageScale("HwaninFace_MouseClose", this.hwaninX + 15, this.hwaninY + this.hwaninfaceOffset + this.tick1Cnt, 0.4, 0.0, 255);
     // else imageManager.DrawImageScale("HwaninFace_MouseOpen", this.hwaninX + 15, this.hwaninY + this.hwaninfaceOffset + this.tick1Cnt, 0.4, 0.0, 255);
 
     imageManager.DrawImageScale(
       "HwaninFace",
-      this.hwaninX + 15,
-      this.hwaninY + this.hwaninfaceOffset + this.tick1Cnt - 80,
-      0.49,
-      0.0,
-      255
+      createVector(
+        this.hwaninX + 15,
+        this.hwaninY + this.hwaninfaceOffset + this.tick1Cnt - 80
+      ),
+      createVector(0.49, 0.49)
     );
     imageManager.DrawImageScale(
       "HwaninHand",
-      this.hwaninX - 75,
-      this.hwaninY - 160,
-      0.4,
+      createVector(this.hwaninX - 75, this.hwaninY - 160),
+      createVector(0.4, 0.4),
       0.7,
       255
     );
