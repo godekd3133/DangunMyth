@@ -98,7 +98,7 @@ export class S1C6_2 extends Scene {
       this.images.hwaninFace,
       this.hwaninX,
       this.hwaninY + this.hwaninfaceOffset,
-      
+
       this.hwaninFaceScale
     );
     this.drawImage(this.images.text, this.centerX, this.centerY);

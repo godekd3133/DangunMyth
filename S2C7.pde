@@ -64,11 +64,10 @@ public class S2C7 extends Scene {
       image.DrawImageScale("bear2", new PVector(520, 440), new PVector(animalScale, animalScale));
       image.DrawImageScale("tiger2", new PVector(660, 405), new PVector(animalScale, animalScale));
     }
-    if(time.time - enterTime > 1.f && !playingYum){
+    if (time.time - enterTime > 1.f && !playingYum) {
       sound.PlaySound("yum");
       playingYum = true;
     }
-    
     if (time.time - enterTime > SCENE_DURATION) {
       scene.ChangeScene(new S2C8());
     }

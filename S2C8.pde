@@ -38,16 +38,15 @@ public class S2C8 extends Scene {
     image.DrawImage("cloud_right", new PVector(centerX + cloudXDistance, centerY));
     image.DrawImage("cloud_middle", new PVector(centerX - cloudXDistance, centerY));
     image.DrawImage("text", centerVector);
-    
-    if(time.time - enterTime > 1.f && !playingNarr){
+
+    if (time.time - enterTime > 1.f && !playingNarr) {
       sound.PlaySound("narr");
       playingNarr = true;
     }
-    if(time.time - enterTime > 3.f && !Chicken){
+    if (time.time - enterTime > 3.f && !Chicken) {
       sound.PlaySound("Chicken");
       Chicken = true;
     }
-    
     if (sunY<400) {
       scene.ChangeScene(new S3C1());
     } else {

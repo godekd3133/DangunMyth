@@ -5,7 +5,7 @@ public class S1C13 extends Scene {
     "background1", "background2", "background3", "background4", "background5", "background6", "background7" }
   ;
   private float[] intervals = {
-    0.0, 0.5, 1.0, 1.3, 1.6, 1.9, 2.1
+    0.0, 0.5, 1.0, 1.3, 1.6, 1.9, 2.;
   }
   ;
 
@@ -30,7 +30,7 @@ public class S1C13 extends Scene {
         image.DrawImage("background" + i, new PVector(width / 2, height / 2));
         break;
       } else {
-image.DrawImage("background7", new PVector(width / 2, height / 2));
+        image.DrawImage("background7", new PVector(width / 2, height / 2));
 
       }
     }
