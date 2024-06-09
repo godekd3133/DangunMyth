@@ -86,7 +86,7 @@ void setup() {
   noStroke();
   //size(1280, 720,FX2D);
   size(1280, 720,P2D);
-  scene.Setup(sceneList.get(0));
+  scene.Setup(new S3C3V1_2());
 
 }
 

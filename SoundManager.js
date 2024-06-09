@@ -1,40 +1,61 @@
-// [processing-p5-convert] import processing.sound.*;
-function LoadSound2(filename2) {
-  return loadSound(filename2);
-}
 class SoundManager {
-  nowPlaying;
-  sounds = {};
+  constructor() {
+    this.sounds = new Map();
+    this.nowPlaying = null;
+  }
+
   LoadSound(name, filename) {
-    let sound = LoadSound2(filename);
-    this.sounds[name] = sound;
+    let sound = loadSound(filename);
+    this.sounds.set(name, sound);
   }
+
   PlaySound(name) {
-    let sound = this.sounds[name];
-    sound.play();
-    this.nowPlaying = sound;
+    let sound = this.sounds.get(name);
+    if (sound) {
+      sound.play();
+      this.nowPlaying = sound;
+    }
   }
+
   StopSound(name) {
-    let sound = this.sounds[name];
-    sound.stop();
+    let sound = this.sounds.get(name);
+    if (sound) {
+      sound.stop();
+    }
   }
+
   soundDuration(name) {
-    return this.sounds[name].duration();
+    let sound = this.sounds.get(name);
+    if (sound) {
+      return sound.duration();
+    }
+    return 0;
   }
+
   playSoundOnce(name) {
     this.PlaySound(name);
     this.removeSound(name);
   }
+
   removeSound(name) {
-    this.sounds[name] = undefined;
+    this.sounds.delete(name);
   }
+
   hasSound(name) {
-    return Object.prototype.hasOwnProperty.call(this.sounds, name);
+    return this.sounds.has(name);
   }
+
   isPlaying(name) {
-    return this.sounds[name].isPlaying();
+    let sound = this.sounds.get(name);
+    if (sound) {
+      return sound.isPlaying();
+    }
+    return false;
   }
+
   stopNowPlaying() {
-    this.nowPlaying.stop();
+    if (this.nowPlaying) {
+      this.nowPlaying.stop();
+    }
   }
 }
