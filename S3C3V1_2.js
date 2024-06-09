@@ -3,10 +3,10 @@ class S3C3V1_2 extends Scene {
   static CHARACTER_SCALE = 0.25;
   static BEAR_X = 470;
   static BEAR_Y = 460;
-  static BEAR_EYE_X = BEAR_X - 5;
-  static BEAR_EYE_Y = BEAR_Y - 50;
-  static TIGER_X = BEAR_X + 350;
-  static TIGER_Y = BEAR_Y;
+  static BEAR_EYE_X = S3C3V1_2.BEAR_X - 5;
+  static BEAR_EYE_Y = S3C3V1_2.BEAR_Y - 50;
+  static TIGER_X = S3C3V1_2.BEAR_X + 350;
+  static TIGER_Y = S3C3V1_2.BEAR_Y;
   static SCENE_SCONDS = 4; // 4초 동안 씬 진행
   startMinute;
   startSecond;
