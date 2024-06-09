@@ -41,6 +41,11 @@ public class EndingCredit extends Scene {
     AddText(enName,32f,0f,400f);
   }
 
+  public void AddTwoText(String team,String name) {
+    AddText(team,32f,50f,-300f);
+    AddText(name,32f,0f,300f);
+  }
+
   public void OnReturnButtonDown() {
     //forcePosition 초기화
     for(int i = 0;
@@ -100,8 +105,20 @@ public class EndingCredit extends Scene {
     AddSmallText("디자인 / 시퀀스 3","강민지","Kang Minji");
     AddSmallText("기획 / 시퀀스 3","장지선","Jang Jiseon");
     AddSmallText("기획 / 시퀀스 3","박예희","Park Yehui");
+    AddText("사용 기능, 함수",36f,150f);
+    AddTwoText("Processing::Image ","https://processing.org/reference/#image");
+    AddTwoText("Processing::Math ","https://processing.org/reference/#math");
+    AddTwoText("Processing::Typography ","https://processing.org/reference/#Typography");
+    AddTwoText("Processing::Constants ","https://processing.org/reference/#Constants");
+    AddTwoText("Processing::Input ","https://processing.org/reference/#Input");
+    AddTwoText("Processing::Environment","https://processing.org/reference/#Environment");
+    AddTwoText("Design Patttern","Singleton");
+    AddTwoText("Design Patttern","Abstract Factory");
+    AddTwoText("Design Patttern","Component");
+    AddTwoText("Renderer for Processing","P2D / FX2D");
+    AddTwoText("Easing Functions","https://easings.net/");
 
-    AddText("ex)사용자 지정 함수, if 사용 기능 / 함수",36f,150f);
+    AddText("담당 작업",36f,150f);
     AddText("1조",36f,50f);
     AddSmallText("S1C1,S1C2,S1C3,S1C15","박소영","Park Soyoung");
     AddSmallText("S1C7,S1C8,S3C3V2_2_2","박소원","Park Sowon");
@@ -168,8 +185,8 @@ public class EndingCredit extends Scene {
       CreditText creditText = creditTextList.get(i);
       //if overlap the specific text, it will be push
       textSize(creditText.size);
-      float textRectX = creditText.position.x - textWidth(creditText.text)/2f;
-      float textRectY = creditText.position.y - textAscent();
+      float textRectX = creditText.position.x+ creditText.forcePosition.x - textWidth(creditText.text)/2f;
+      float textRectY = creditText.position.y+ creditText.forcePosition.y - textAscent();
       float textRectWidth = textWidth(creditText.text);
       float textRectHeight = textAscent() + textDescent();
 
@@ -177,7 +194,8 @@ public class EndingCredit extends Scene {
       if (creditText.flying) {
         creditText.forcePosition.x += creditText.dirX * creditText.speed * time.deltaTime;
         creditText.forcePosition.y += creditText.dirY * creditText.speed * time.deltaTime;
-        creditText.speed = lerp(creditText.speed, 0f, time.deltaTime);
+        creditText.dirX *= 0.9;
+        creditText.dirY *= 0.9;
       }
       if (creditText.speed < 0f) {
         creditText.flying = false;
@@ -202,9 +220,10 @@ public class EndingCredit extends Scene {
         dir.normalize();
 
         creditText.flying = true;
-        creditText.dirX = -dir.x;
-        creditText.dirY = -dir.y;
-        creditText.speed = 500f;
+        creditText.dirX -= dir.x * creditText.speed;
+        creditText.dirY -= dir.y * creditText.speed;
+        creditText.speed = 30f;
+
       }
       font.DrawFont("font",creditText.text, color(255,255,255,255),creditText.size,creditText.position.x + creditText.forcePosition.x,creditText.position.y + creditText.forcePosition.y);
     }
@@ -246,6 +265,10 @@ public class EndingCredit extends Scene {
 
     }
     lastMousePressed = mousePressed;
+    //last element가 화면 밖으로 나가면 종료
+    if (creditTextList.get(creditTextList.size()-1).position.y < -100f) {
+      scene.ChangeScene(new Opening());
+    }
   }
 
   @Override public void OnExit() {
