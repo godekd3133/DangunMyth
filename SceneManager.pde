@@ -65,7 +65,7 @@ public class SceneManager {
           sound.stopNowPlaying();
           currentScene = nextScene;
           image.ResetImages();
-          sound.ResetSounds();
+          // sound.ResetSounds();
           currentScene.enterTime = time.time;
           currentScene.OnEnter();
 
