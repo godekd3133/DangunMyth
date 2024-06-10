@@ -11,9 +11,10 @@
   "[properties]": {
     "editor.defaultFormatter": "foxundermoon.shell-format"
   },
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "editor.formatOnType": true,
-  "prettier.singleAttributePerLine": true
-  // "processing.processingPath": "D:\\01.Work\\05.ssu\\processing-4.3-windows-x64\\processing-4.3\\processing-java"
+  "editor.formatOnSave": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "prettier.singleAttributePerLine": false,
+  // "processing.processingPath": "D:\\01.Work\\05.ssu\\processing-4.3-windows-x64\\processing-4.3\\processing-java",
+  "liveServer.settings.port": 5501
 }

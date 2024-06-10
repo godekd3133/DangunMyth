@@ -23,7 +23,11 @@ public class ImageManager {
     if (images.containsKey(name)) {
       return;
     }
-    PImage img = loadImage(path + ".png");
+    /// if not conatin ext add it
+    if (path.indexOf(".png") == -1) {
+      path += ".png";
+    }
+    PImage img = loadImage(path);
     images.put(name, img);
 
   }
@@ -97,7 +101,7 @@ public class ImageManager {
     DrawImageScale(key, new PVector((float)x,(float)y), new PVector(scale,scale,0), angle, alpha);
   }
 
-  void DrawImageScale(String key, PVector position, PVector scale, float angle, float alpha) {
+  void DrawImageScale(String key, PVector position, PVector size, float angle, float alpha) {
     PImage img = images.get(key);
 
     if (ValidateImage(key) == false) {
@@ -106,7 +110,7 @@ public class ImageManager {
     pushMatrix();
     translate(position.x, position.y);
     rotate(angle);
-    scale(scale.x, scale.y);
+    scale(size.x, size .y);
     imageMode(CENTER);
     tint(255, alpha);
     image(img, 0, 0);

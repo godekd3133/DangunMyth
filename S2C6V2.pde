@@ -18,8 +18,12 @@ public class S2C6V2 extends Scene {
 
   private int sessionIndex;
   private float[] sessionDuration = {3f, 6f, 10f};
-  private String[] sessionSound = {"narr1", "narr2", "narr3"};
-  private String[] sessionText = {"text1", "text2", "text3"};
+  private String[] sessionSound = {
+    "narr1", "narr2", "narr3"}
+  ;
+  private String[] sessionText = {
+    "text1", "text2", "text3"}
+  ;
   private boolean[] isSessionOut;
 
   public S2C6V2() {
@@ -66,7 +70,6 @@ public class S2C6V2 extends Scene {
     if (SCENE_TIME > sessionDuration[sessionIndex]) {
       if (sessionDuration.length - 1 > sessionIndex) sessionIndex++;
     }
-
     if (SCENE_TIME > SCENE_DURATION) {
       scene.ChangeScene(new S2C7());
     }

@@ -9,7 +9,7 @@ public class S3C3V1_1_1 extends Scene {
   private PVector character_scale = new PVector(0.22, 0.22, 0);
   private float effectTime = 0f;
   private boolean effectPlaying = false;
-  
+
   public S3C3V1_1_1() {
   }
 
@@ -40,10 +40,11 @@ public class S3C3V1_1_1 extends Scene {
       image.DrawImageScale("tiger_before", new PVector(tiger_x, tiger_y, 0), character_scale, 0, 255);
       image.DrawImageScale("tiger_after", new PVector(tiger_x, tiger_y, 0), character_scale, 0, _time);
     }
-    if(!effectPlaying && effectTime > 1.0f){
+    if (!effectPlaying && effectTime > 1.0f) {
       sound.PlaySound("evolution");
       effectPlaying = true;
-    }else if(!effectPlaying){
+    }
+    else if (!effectPlaying) {
       effectTime += time.deltaTime;
     }
   }

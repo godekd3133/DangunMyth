@@ -30,7 +30,7 @@ public class S1C13 extends Scene {
         image.DrawImage("background" + i, new PVector(width / 2, height / 2));
         break;
       } else {
-image.DrawImage("background7", new PVector(width / 2, height / 2));
+        image.DrawImage("background7", new PVector(width / 2, height / 2));
 
       }
     }

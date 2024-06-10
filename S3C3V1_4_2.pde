@@ -12,7 +12,7 @@ public class S3C3V1_4_2 extends Scene {
 
     alpha=255f;
     fadeoutTime= 4f;
-    preparationTime= 3f;
+    preparationTime= 1f;
   }
 
   @Override public void OnDraw() {

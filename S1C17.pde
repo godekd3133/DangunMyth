@@ -61,9 +61,9 @@ public class S1C17 extends Scene {
     VASSAL1_JUMP = max((abs(sin(float(millis()) / 135 + 0.146))) * 1.4 - 0.4, 0) * 10;
     VASSAL2_JUMP = max((abs(sin(float(millis()) / 170 + 0.5))) * 2 - 1, 0) * 10;
     VASSAL3_JUMP = max((abs(sin(float(millis()) / 120 + 0.674))) * 1.6 - 0.6, 0) * 10;
-    
-    if (time.time - enterTime > 1.5f && playingBushRustle == false){
-      sound.PlaySound("Bush");  
+
+    if (time.time - enterTime > 1.5f && playingBushRustle == false) {
+      sound.PlaySound("Bush");
       playingBushRustle = true;
     }
     if (BEAR_POP <= 450) {

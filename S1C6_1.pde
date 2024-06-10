@@ -99,23 +99,23 @@ public class S1C6_1 extends Scene {
     // int hwaninY = centerY;
 
     //나레이션
-    image.LoadImage("text", "./Images/S1/C6-1/text");
+    image.LoadImage("text", "Images/S1/C6-1/text");
     sound.LoadSound("narr", "Sounds/S1/C6-1/narr/narr.mp3");
 
     //환인
-    image.LoadImage("Background", "./Images/S1/C6-1/Background");
-    image.LoadImage("HwaninBody", "./Images/S1/C6-1/HwaninBody");
-    image.LoadImage("HwaninFace_MouseClose", "./Images/S1/C6-1/HwaninFace_MouseClose");
-    image.LoadImage("HwaninFace_MouseOpen", "./Images/S1/C6-1/HwaninFace_MouseOpen");
-    image.LoadImage("HwaninFace_MouseClose", "./Images/S1/C6-1/HwaninFace_MouseClose");
+    image.LoadImage("Background", "Images/S1/C6-1/Background");
+    image.LoadImage("HwaninBody", "Images/S1/C6-1/HwaninBody");
+    image.LoadImage("HwaninFace_MouseClose", "Images/S1/C6-1/HwaninFace_MouseClose");
+    image.LoadImage("HwaninFace_MouseOpen", "Images/S1/C6-1/HwaninFace_MouseOpen");
+    image.LoadImage("HwaninFace_MouseClose", "Images/S1/C6-1/HwaninFace_MouseClose");
     sound.LoadSound("hwanin", "Sounds/S1/C6-1/narr/hwanin.mp3");
 
     //환웅
-    image.LoadImage("HwanwoongBody1", "./Images/S1/C6-1/HwanwoongBody1");
-    image.LoadImage("HwanwoongBody2", "./Images/S1/C6-1/HwanwoongBody2");
-    image.LoadImage("HwanwoongFace1", "./Images/S1/C6-1/HwanwoongFace1");
-    image.LoadImage("HwanwoongFace2-1", "./Images/S1/C6-1/HwanwoongFace2-1");
-    image.LoadImage("HwanwoongFace2-2", "./Images/S1/C6-1/HwanwoongFace2-2");
+    image.LoadImage("HwanwoongBody1", "Images/S1/C6-1/HwanwoongBody1");
+    image.LoadImage("HwanwoongBody2", "Images/S1/C6-1/HwanwoongBody2");
+    image.LoadImage("HwanwoongFace1", "Images/S1/C6-1/HwanwoongFace1");
+    image.LoadImage("HwanwoongFace2-1", "Images/S1/C6-1/HwanwoongFace2-1");
+    image.LoadImage("HwanwoongFace2-2", "Images/S1/C6-1/HwanwoongFace2-2");
     sound.LoadSound("hwanwoong", "Sounds/S1/C6-1/narr/hwanwung.mp3");
 
     background(#ffffff);
