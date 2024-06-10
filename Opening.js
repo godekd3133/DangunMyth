@@ -16,7 +16,6 @@ class Opening extends Scene {
     imageManager.LoadImage("cloud01", this.prefix + "background/2");
     imageManager.LoadImage("cloud02", this.prefix + "background/3");
     imageManager.LoadImage("cloud03", this.prefix + "background/4");
-    soundManager.LoadSound("intro", "Sounds/intro.wav");
     soundManager.PlaySound("intro");
     imageManager.LoadImage("btn_sequence01", this.prefix + "ui/btn_sequence_1");
     imageManager.LoadImage("btn_sequence02", this.prefix + "ui/btn_sequence_2");

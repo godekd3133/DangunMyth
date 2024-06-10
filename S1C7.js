@@ -27,7 +27,6 @@ class S1C7 extends Scene {
       "hwan_expression2",
       this.IMG_PREFIX + "hwan_expression2"
     );
-    soundManager.LoadSound("hwan", this.SOUND_PREFIX + "hwan.mp3");
 
     this.startMillis = millis(); // 씬 시작 millis
   }
@@ -57,16 +56,16 @@ class S1C7 extends Scene {
     }
     // 씬 시작 후 1.5초 뒤 대사1 시작
     if (
-      soundManager.hasSound("hwan") &&
+      soundManager.hasSound("S1/C7/hwan") &&
       isTimeExceededMillis(this.startMillis, 1.0)
     ) {
-      this.narrDuration = soundManager.soundDuration("hwan");
-      soundManager.playSoundOnce("hwan");
+      this.narrDuration = soundManager.soundDuration("S1/C7/hwan");
+      soundManager.playSoundOnce("S1/C7/hwan");
       this.startMillis = millis();
     }
 
     /* // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
-    if (!soundManager.hasSound("narr") && !soundManager.hasSound("hwan") && isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)) {
+    if (!soundManager.hasSound("narr") && !soundManager.hasSound("S1/C7/hwan") && isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)) {
       scene.ChangeScene(new S1C8());
     }
     */

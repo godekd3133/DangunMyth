@@ -60,7 +60,6 @@ class EndingCredit extends Scene {
   }
 
   OnEnter() {
-    soundManager.LoadSound("Credit", "Sounds/BGM/EndingCredit.mp3");
     soundManager.PlaySound("Credit");
     imageManager.LoadImage("HomeButton", "Images/Ending/HomeButton");
     imageManager.LoadImage("ReturnButton", "Images/Ending/ReturnButton");

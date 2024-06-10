@@ -69,7 +69,6 @@ class S1C6_1 extends Scene {
     this.hwanwoongStartTime = 9;
 
     imageManager.LoadImage("text", "Images/S1/C6-1/text");
-    soundManager.LoadSound("narr", "Sounds/S1/C6-1/narr/narr.mp3");
 
     imageManager.LoadImage("Background", "Images/S1/C6-1/Background");
     imageManager.LoadImage("HwaninBody", "Images/S1/C6-1/HwaninBody");
@@ -85,7 +84,6 @@ class S1C6_1 extends Scene {
       "HwaninFace_MouseClose",
       "Images/S1/C6-1/HwaninFace_MouseClose"
     );
-    soundManager.LoadSound("hwanin", "Sounds/S1/C6-1/narr/hwanin.mp3");
 
     imageManager.LoadImage("HwanwoongBody1", "Images/S1/C6-1/HwanwoongBody1");
     imageManager.LoadImage("HwanwoongBody2", "Images/S1/C6-1/HwanwoongBody2");
@@ -98,7 +96,6 @@ class S1C6_1 extends Scene {
       "HwanwoongFace2-2",
       "Images/S1/C6-1/HwanwoongFace2-2"
     );
-    soundManager.LoadSound("hwanwoong", "Sounds/S1/C6-1/narr/hwanwung.mp3");
 
     background(255);
     timeManager.enterTime = timeManager.time;
@@ -107,7 +104,7 @@ class S1C6_1 extends Scene {
   OnDraw() {
     if (!this.narrFlag) {
       this.narrFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C6-1/narr");
     }
     this.mouseTick += timeManager.deltaTime;
     if (this.mouseTick >= this.mouseTickInterval) {
@@ -130,7 +127,7 @@ class S1C6_1 extends Scene {
       if (!this.hwaninVoiceFlag) {
         this.soundStartTime = timeManager.time;
         this.hwaninVoiceFlag = true;
-        soundManager.PlaySound("hwanin");
+        soundManager.PlaySound("S1/C6-1/hwanin");
       }
       if (
         this.hwaninVoiceFlag &&
@@ -145,7 +142,7 @@ class S1C6_1 extends Scene {
       if (!this.hwanwoongVoiceFlag) {
         this.soundStartTime = timeManager.time;
         this.hwanwoongVoiceFlag = true;
-        soundManager.PlaySound("hwanwoong");
+        soundManager.PlaySound("S1/C6-1/hwanwoong");
       }
     }
     if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {

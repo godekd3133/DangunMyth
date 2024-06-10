@@ -7,7 +7,6 @@ class S2C5 extends Scene {
   OnEnter() {
     imageManager.LoadImage("background", "Images/S2/C5/background");
     imageManager.LoadImage("button", "Images/S2/C5/button");
-    soundManager.LoadSound("effect", "Sounds/S2/C5/effect/effect.wav");
     this.isEffectOut = false;
   }
 

@@ -32,14 +32,13 @@ class S3C1 extends Scene {
     imageManager.LoadImage("garlic", "Images/S3/C1/garlic");
     imageManager.LoadImage("ssug", "Images/S3/C1/ssug");
     imageManager.LoadImage("text", "Images/S3/C1/text");
-    soundManager.LoadSound("narr", "Sounds/S3/C1/narr/narr.mp3");
     this.isNarrOut = false;
   }
 
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S3/C1/narr");
     }
     imageManager.DrawImageScale(
       "background",

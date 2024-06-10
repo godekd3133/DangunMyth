@@ -33,8 +33,6 @@ class S1C15V1 extends Scene {
     imageManager.LoadImage("button_top", "Images/S1/C15-1/button_top");
     imageManager.LoadImage("button_bottom", "Images/S1/C15-1/button_bottom");
 
-    soundManager.LoadSound("HWANUNG_NARR1", "Sounds/S1/C15-1/narr/narr1.mp3");
-    // soundManager.LoadSound("HWANUNG_NARR2", "Sounds/S1/C15-1/narr/narr2.mp3");
     this.playedSoundMap = new Map();
     this.playedSoundMap.set("HWANUNG_NARR1", 0);
     // this.playedSoundMap.set("HWANUNG_NARR2", 0);

@@ -44,7 +44,6 @@ class S1C17 extends Scene {
     imageManager.LoadImage("VASSAL3", this.PREFIX + "VASSAL3");
     imageManager.LoadImage("BEAR", this.PREFIX + "BEAR");
     imageManager.LoadImage("TIGER", this.PREFIX + "TIGER");
-    soundManager.LoadSound("Bush", "Sounds/Effects/BushRustle.mp3");
     this.BEAR_POP = 0;
     this.TIGER_POP = 0;
     this.BUSH_OFFSET = 0;

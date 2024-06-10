@@ -33,27 +33,25 @@ class S1C6_2 extends Scene {
     // int hwaninY = centerY;
 
     //나레이션
-    soundManager.LoadSound("narr", "Sounds/S1/C6-2/narr/narr.mp3");
 
     //환인
     imageManager.LoadImage("Background2", "Images/S1/C6-2/Background");
     imageManager.LoadImage("HwaninBody", "Images/S1/C6-2/HwaninBody");
     imageManager.LoadImage("HwaninFace", "Images/S1/C6-2/HwaninFace");
     imageManager.LoadImage("text", "Images/S1/C6-2/text");
-    soundManager.LoadSound("hwanin", "Sounds/S1/C6-2/narr/hwanin.mp3");
   }
 
   OnDraw() {
     if (!this.narrFlag) {
       this.narrFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C6-2/hwanwoong");
     }
     if (
       timeManager.time - this.enterTime > this.hwaninStartTime &&
       !this.hwaninVoiceFlag
     ) {
       this.hwaninVoiceFlag = true;
-      soundManager.PlaySound("hwanin");
+      soundManager.PlaySound("S1/C6-2/hwanin");
     }
     if (this.hwaninFace) this.hwaninFaceScale += timeManager.deltaTime * 0.2;
     else this.hwaninFaceScale -= timeManager.deltaTime * 0.2;

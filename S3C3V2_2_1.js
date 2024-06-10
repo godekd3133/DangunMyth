@@ -17,7 +17,6 @@ class S3C3V2_2_1 extends Scene {
     imageManager.LoadImage("couple", this.PREFIX + "couple");
     imageManager.LoadImage("extra_left", this.PREFIX + "extra_left");
     imageManager.LoadImage("extra_right", this.PREFIX + "extra_right");
-    soundManager.LoadSound("haha", this.SOUND_PREFIX + "haha.mp3");
 
     this.startMillis = millis(); // 씬 시작 millis
   }

@@ -35,10 +35,6 @@ class S1C19_3 extends Scene {
     imageManager.LoadImage("hwangwoong", "Images/S1/C19/hwanwoong_hand");
     imageManager.LoadImage("basket", "Images/S1/C19/basket");
     imageManager.LoadImage("C19-3-Text", "Images/S1/C19/C19-3-Text");
-
-    soundManager.LoadSound("hwanwoong1", "Sounds/S1/C19-3/hwanwoong1.mp3");
-    soundManager.LoadSound("hwanwoong2", "Sounds/S1/C19-3/hwanwoong2.mp3");
-    soundManager.LoadSound("Bear", "Sounds/S1/C19-3/Bear.mp3");
   }
 
   OnDraw() {
@@ -65,12 +61,12 @@ class S1C19_3 extends Scene {
 
     if (!this.firstFlag) {
       this.firstFlag = true;
-      soundManager.PlaySound("hwanwoong1");
+      soundManager.PlaySound("S1/C19-3/hwanwoong1");
     }
     if (timeManager.time - timeManager.enterTime >= 7) {
       if (!this.thridFlag) {
         this.thridFlag = true;
-        soundManager.PlaySound("Bear");
+        soundManager.PlaySound("S1/C19-3/Bear");
       }
     }
     if (this.handX <= 230) {

@@ -28,8 +28,6 @@ class S2C8 extends Scene {
     imageManager.LoadImage("sky", this.PREFIX + "sky");
     imageManager.LoadImage("sun", this.PREFIX + "sun");
     imageManager.LoadImage("text", this.PREFIX + "text");
-    soundManager.LoadSound("narr", "Sounds/S2/C8/narr/narr.mp3");
-    soundManager.LoadSound("Chicken", "Sounds/Effects/Chicken_02.mp3");
   }
 
   OnDraw() {
@@ -52,7 +50,7 @@ class S2C8 extends Scene {
     imageManager.DrawImage("text", this.centerVector);
 
     if (timeManager.time - timeManager.enterTime > 1 && !this.playingNarr) {
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S2/C8/narr");
       this.playingNarr = true;
     }
     if (timeManager.time - timeManager.enterTime > 3 && !this.Chicken) {

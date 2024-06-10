@@ -38,9 +38,6 @@ class S1C8 extends Scene {
 
     imageManager.LoadImage("HwaninHand", "Images/S1/C8/HwaninHand");
     imageManager.LoadImage("NarrS1C8", "Images/S1/C8/narr");
-
-    soundManager.LoadSound("NarrS1C8", "Sounds/S1/C8/narr/narr.mp3");
-    soundManager.LoadSound("HawninS1C8", "Sounds/S1/C8/narr/hwanin.mp3");
     this.playedSoundMap.set("NarrS1C8", 0);
     this.playedSoundMap.set("HawninS1C8", 0);
 

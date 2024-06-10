@@ -10,8 +10,7 @@ class S3C3V2_2_3 extends Scene {
     imageManager.LoadImage("background", this.PREFIX + "background");
     imageManager.LoadImage("text", this.PREFIX + "text");
     imageManager.LoadImage("dangun", this.PREFIX + "dangun");
-    soundManager.LoadSound("narr", this.SOUND_PREFIX + "narr.mp3");
-    soundManager.PlaySound("narr");
+    soundManager.PlaySound("S3/C3/V2/_2/_3/narr");
     timeManager.enterTime = timeManager.time;
   }
 

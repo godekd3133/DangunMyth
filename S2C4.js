@@ -18,7 +18,7 @@ class S2C4 extends Scene {
     this.tearSpeed = 0;
     this.sessionIndex;
     this.sessionDuration = [4, 8];
-    this.sessionSound = ["narr1", "narr2", "narr3"];
+    this.sessionSound = ["S2/C4/narr1", "S2/C4/narr2", "S2/C4/narr3"];
     this.sessionText = ["text1", "text2", "text3"];
     this.isSessionOut = [];
   }
@@ -35,9 +35,6 @@ class S2C4 extends Scene {
     imageManager.LoadImage("text1", "Images/S2/C4/text1");
     imageManager.LoadImage("text2", "Images/S2/C4/text2");
     imageManager.LoadImage("text3", "Images/S2/C4/text3");
-    soundManager.LoadSound("narr1", "Sounds/S2/C4/narr/narr1.mp3");
-    soundManager.LoadSound("narr2", "Sounds/S2/C4/narr/narr2.mp3");
-    soundManager.LoadSound("narr3", "Sounds/S2/C4/narr/narr3.mp3");
     this.isSessionOut = [false, false];
     this.animalScale = 0.25;
     this.utilScale = 0.035;

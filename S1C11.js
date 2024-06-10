@@ -50,9 +50,6 @@ class S1C11 extends Scene {
     );
 
     this.startMillis = millis();
-
-    soundManager.LoadSound("hwanin", this.SOUND_PREFIX + "hwanin.mp3");
-    soundManager.LoadSound("hwanwoong", this.SOUND_PREFIX + "hwanwoong.mp3");
   }
 
   OnDraw() {
@@ -97,29 +94,29 @@ class S1C11 extends Scene {
 
     // 씬 시작 후 1.5초 뒤 대사1 시작
     if (
-      soundManager.hasSound("hwanin") &&
+      soundManager.hasSound("S1/C11/hwanin") &&
       isTimeExceededMillis(this.startMillis, 1.5)
     ) {
-      this.narrDuration = soundManager.soundDuration("hwanin");
-      soundManager.playSoundOnce("hwanin");
+      this.narrDuration = soundManager.soundDuration("S1/C11/hwanin");
+      soundManager.playSoundOnce("S1/C11/hwanin");
       this.startMillis = millis(); // 대사 1 시작 millis
     }
 
     // 대사 1 종료 후 1초 뒤 대사2 시작
     if (
-      !soundManager.hasSound("hwanin") &&
-      soundManager.hasSound("hwanwoong") &&
+      !soundManager.hasSound("S1/C11/hwanin") &&
+      soundManager.hasSound("S1/C11/hwanwoong") &&
       isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
     ) {
-      this.narrDuration = soundManager.soundDuration("hwanwoong");
-      soundManager.playSoundOnce("hwanwoong");
+      this.narrDuration = soundManager.soundDuration("S1/C11/hwanwoong");
+      soundManager.playSoundOnce("S1/C11/hwanwoong");
       this.startMillis = millis();
     }
 
     // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
     if (
-      !soundManager.hasSound("hwanin") &&
-      !soundManager.hasSound("hwanwoong") &&
+      !soundManager.hasSound("S1/C11/hwanin") &&
+      !soundManager.hasSound("S1/C11/hwanwoong") &&
       isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
     ) {
       sceneManager.ChangeScene(new S1C13());

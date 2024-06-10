@@ -36,9 +36,6 @@ class S3C3V1_2_1 extends Scene {
     imageManager.LoadImage("범녀3", this.PREFIX + "범녀3");
     imageManager.LoadImage("웅녀", this.PREFIX + "웅녀");
     imageManager.LoadImage("환웅", this.PREFIX + "환웅");
-    soundManager.LoadSound("step1", "Sounds/Effects/Step_Grass_01.wav");
-    soundManager.LoadSound("step2", "Sounds/Effects/Step_Grass_02.wav");
-    soundManager.LoadSound("step3", "Sounds/Effects/Step_Grass_02.wav");
 
     this.startMinute = minute();
     this.startSecond = second();
@@ -107,11 +104,11 @@ class S3C3V1_2_1 extends Scene {
     if (this.stepSeconds >= this.stepSoundInterval && this.stepDuration < 5) {
       this.stepID = int(random(2));
       if (this.stepID === 0) {
-        soundManager.PlaySound("step1");
+        soundManager.PlaySound("Sounds/Effects/step1");
       } else if (this.stepID === 1) {
-        soundManager.PlaySound("step2");
+        soundManager.PlaySound("Sounds/Effects/step2");
       } else if (this.stepID === 2) {
-        soundManager.PlaySound("step3");
+        soundManager.PlaySound("Sounds/Effects/step3");
       }
       this.stepSeconds = 0;
     } else {

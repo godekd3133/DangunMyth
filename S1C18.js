@@ -26,9 +26,6 @@ class S1C18 extends Scene {
     imageManager.LoadImage("bear1", "Images/S1/C18/bear1");
 
     this.playedSoundMap = new Map();
-    soundManager.LoadSound("S1C18_NARR", "Sounds/S1/C18/narr/narr.mp3");
-    soundManager.LoadSound("S1C18_TIGER", "Sounds/S1/C18/narr/tiger.mp3");
-    soundManager.LoadSound("S1C18_BEAR", "Sounds/S1/C18/narr/bear.mp3");
     this.playedSoundMap.set("S1C18_NARR", 0);
     this.playedSoundMap.set("S1C18_TIGER", 0);
     this.playedSoundMap.set("S1C18_BEAR", 0);

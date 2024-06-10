@@ -6,7 +6,7 @@ class S1C1 extends Scene {
     this.zoomIn = 1;
     this.sessionIndex = 0;
     this.sessionDuration = [4, 9.5, 15];
-    this.sessionSound = ["narr1", "narr2", "narr3"];
+    this.sessionSound = ["S1/C1/narr", "S1/C1/narr2", "S1/C1/narr3"];
     this.sessionText = ["text1", "text1", "text2"];
     this.isSessionOut = [false, false, false];
   }
@@ -16,13 +16,9 @@ class S1C1 extends Scene {
     imageManager.LoadImage("cloud01", "Images/S1/C1/cloud_01");
     imageManager.LoadImage("cloud02", "Images/S1/C1/cloud_02");
     imageManager.LoadImage("cloud03", "Images/S1/C1/cloud_03");
-    soundManager.LoadSound("intro", "Sounds/intro.wav");
     soundManager.PlaySound("intro");
     imageManager.LoadImage("text1", "Images/S1/C1/text_01");
     imageManager.LoadImage("text2", "Images/S1/C1/text_02");
-    soundManager.LoadSound("narr1", "Sounds/S1/C1/narr/narr1.mp3");
-    soundManager.LoadSound("narr2", "Sounds/S1/C1/narr/narr2.mp3");
-    soundManager.LoadSound("narr3", "Sounds/S1/C1/narr/narr3.mp3");
     this.cloudX = 0;
     this.zoomIn = 1;
     this.enterTime = timeManager.time;

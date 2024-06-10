@@ -38,7 +38,6 @@ class S2C3 extends Scene {
     imageManager.LoadImage(this.ssuk, "Images/S2/C3/ssuk");
     imageManager.LoadImage(this.text, "Images/S2/C3/text");
 
-    soundManager.LoadSound(this.narr1, "Sounds/S2/C3/narr/narr1.mp3");
     this.playedSoundMap[this.narr1] = 0;
 
     this.basketPosition = createVector(800, 570);

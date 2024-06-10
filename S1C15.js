@@ -65,8 +65,6 @@ class S1C15 extends Scene {
     imageManager.LoadImage("altimeterHwanung", "Images/S1/C15/altimeter_2");
     imageManager.LoadImage("arrow", "Images/S1/C15/arrow");
 
-    soundManager.LoadSound("Interaction1", "Sounds/S1/C15/Interaction1.wav");
-    soundManager.LoadSound("crash", "Sounds/S1/C15/crash.mp3");
 
     soundManager.PlaySound("Interaction1");
 

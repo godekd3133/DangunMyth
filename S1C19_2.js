@@ -44,7 +44,6 @@ class S1C19_2 extends Scene {
     imageManager.LoadImage("skin", "Images/S1/C19/hwanwoong_skin");
     imageManager.LoadImage("C19-2-Text", "Images/S1/C19/C19-2-Text");
 
-    soundManager.LoadSound("hwanwoong1", "Sounds/S1/C19-2/hwanwoong1.mp3");
     this.enterTime = timeManager.time;
   }
 
@@ -83,7 +82,7 @@ class S1C19_2 extends Scene {
     // "그렇구나 너희의 소원을 들어주마"
     if (timeManager.time - this.enterTime > 1.5 && !this.firstFlag) {
       this.firstFlag = true;
-      soundManager.PlaySound("hwanwoong1");
+      soundManager.PlaySound("S1/C19-2/hwanwoong1");
     }
 
     // Toggle mouth index

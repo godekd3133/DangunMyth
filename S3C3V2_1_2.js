@@ -21,10 +21,6 @@ class S3C3V2_1_2 extends Scene {
     imageManager.LoadImage("girlface2", "Images/S3/C3/V2/_1/_2/girlface2");
     imageManager.LoadImage("girlhand", "Images/S3/C3/V2/_1/_2/girlhand");
 
-    soundManager.LoadSound(
-      "woonggirl",
-      "Sounds/S3/C3/V2/_1/_2/narr/woonggirl.mp3"
-    );
     this.startMillis = millis();
 
     this.GIRL_X = 600;
@@ -71,10 +67,10 @@ class S3C3V2_1_2 extends Scene {
       );
     }
     if (
-      soundManager.hasSound("woonggirl") &&
+      soundManager.hasSound("S3/C3/V2/_1/_2/woonggirl") &&
       isTimeExceededMillis(this.startMillis, 1)
     ) {
-      soundManager.playSoundOnce("woonggirl");
+      soundManager.playSoundOnce("S3/C3/V2/_1/_2/woonggirl");
     }
     // 씬 시작 후 SCENE_DURATION 초 경과시 다음 장면으로 이동
     if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {

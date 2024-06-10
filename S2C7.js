@@ -26,7 +26,6 @@ class S2C7 extends Scene {
     imageManager.LoadImage("tiger2", "Images/S2/C7/tiger2");
     imageManager.LoadImage("bear1", "Images/S2/C7/bear1");
     imageManager.LoadImage("bear2", "Images/S2/C7/bear2");
-    soundManager.LoadSound("yum", "Sounds/Effects/YumYum.mp3");
     this.startTime = millis();
   }
 

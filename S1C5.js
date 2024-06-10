@@ -15,7 +15,6 @@ class S1C5 extends Scene {
     imageManager.LoadImage("hwanin", "Images/S1/C5/hawnin");
     imageManager.LoadImage("hwanwoong", "Images/S1/C5/hwanwoong");
     imageManager.LoadImage("text", "Images/S1/C5/text");
-    soundManager.LoadSound("narr", "Sounds/S1/C5/narr/narr.mp3");
 
     this.timeline = new TimelineManager();
 
@@ -82,7 +81,7 @@ class S1C5 extends Scene {
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C5/narr");
     }
     this.timeline.OnDraw();
     imageManager.DrawImageScale(

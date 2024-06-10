@@ -21,7 +21,6 @@ class S1C4 extends Scene {
     imageManager.LoadImage("eye3", "Images/S1/C4/eye3");
     imageManager.LoadImage("mouth", "Images/S1/C4/mouth");
     imageManager.LoadImage("text", "Images/S1/C4/text");
-    soundManager.LoadSound("narr", "Sounds/S1/C4/narr/narr.mp3");
 
     this.closeTime = timeManager.time;
     this.openTime = timeManager.time;
@@ -33,7 +32,7 @@ class S1C4 extends Scene {
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C4/narr");
     }
     imageManager.DrawImageScale(
       "background",

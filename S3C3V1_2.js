@@ -24,7 +24,6 @@ class S3C3V1_2 extends Scene {
     imageManager.LoadImage("bear_eye", this.PREFIX + "bear_eye");
     imageManager.LoadImage("tiger1", this.PREFIX + "tiger1");
     imageManager.LoadImage("tiger2", this.PREFIX + "tiger2");
-    soundManager.LoadSound("Tiger", "Sounds/S3/C3/V1/_2/Tiger.mp3");
 
     this.narrFlag = false;
     this.startMinute = minute();
@@ -34,7 +33,7 @@ class S3C3V1_2 extends Scene {
   OnDraw() {
     if (!this.narrFlag) {
       this.narrFlag = true;
-      soundManager.PlaySound("Tiger");
+      soundManager.PlaySound("S3/C3/V1/_2/Tiger");
     }
     imageManager.DrawImage("background", createVector(width / 2, height / 2));
     imageManager.DrawImage("text", createVector(width / 2, height / 2));

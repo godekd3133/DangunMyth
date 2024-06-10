@@ -16,7 +16,6 @@ class S3C2 extends Scene {
     imageManager.LoadImage("eye_white", "Images/S3/C2/eye_white");
     imageManager.LoadImage("left", "Images/S3/C2/left");
     imageManager.LoadImage("right", "Images/S3/C2/right");
-    soundManager.LoadSound("effect", "Sounds/S3/C2/effect/effect.wav");
     imageManager.LoadImage("Button1", "Images/S3/C2/Button1");
     imageManager.LoadImage("Button2", "Images/S3/C2/Button2");
     this.isEffectOut = false;
@@ -59,7 +58,7 @@ class S3C2 extends Scene {
       if (mouseIsPressed) {
         sceneManager.ChangeScene(new S3C3V1_1());
         if (!this.isEffectOut) {
-          soundManager.PlaySound("effect");
+          soundManager.PlaySound("S3/C2/effect");
           this.isEffectOut = !this.isEffectOut;
         }
       }
@@ -86,7 +85,7 @@ class S3C2 extends Scene {
       if (mouseIsPressed) {
         sceneManager.ChangeScene(new S3C3V2());
         if (!this.isEffectOut) {
-          soundManager.PlaySound("effect");
+          soundManager.PlaySound("S3/C2/effect");
           this.isEffectOut = !this.isEffectOut;
         }
       }

@@ -24,14 +24,6 @@ class S3C3V2_1_3 extends Scene {
     );
     imageManager.LoadImage("girl_text", "Images/S3/C3/V2/_1/_3/girl_text");
 
-    soundManager.LoadSound(
-      "woonggirl",
-      "Sounds/S3/C3/V2/_1/_3/narr/woonggirl.mp3"
-    );
-    soundManager.LoadSound(
-      "hwanwoong",
-      "Sounds/S3/C3/V2/_1/_3/narr/hwanwoong.mp3"
-    );
 
     // girl
     imageManager.LoadImage("girl_body", "Images/S3/C3/V2/_1/_3/girl");
@@ -44,7 +36,6 @@ class S3C3V2_1_3 extends Scene {
     imageManager.LoadImage("hwan_mouse_2", "Images/S3/C3/V2/_1/_3/hwanmouse2");
     imageManager.LoadImage("hwan_shoe_1", "Images/S3/C3/V2/_1/_3/hwanshoe");
     imageManager.LoadImage("hwan_shoe_2", "Images/S3/C3/V2/_1/_3/hwanshoe2");
-    soundManager.LoadSound("Step", "Sounds/Effects/Step_Rock_02.mp3");
 
     this.startMillis = millis();
   }
@@ -126,7 +117,7 @@ class S3C3V2_1_3 extends Scene {
       );
     }
     if (this.stepTime > 0.5 && this.curTime < 4.8) {
-      soundManager.PlaySound("Step");
+      soundManager.PlaySound("Sounds/Effects/Step_Rock_02");
       this.stepTime = 0;
     } else {
       this.stepTime += timeManager.deltaTime;
@@ -141,27 +132,27 @@ class S3C3V2_1_3 extends Scene {
   sound() {
     // 씬 시작 후 1초 뒤 대사1 시작
     if (
-      soundManager.hasSound("hwanwoong") &&
+      soundManager.hasSound("S3/C3/V2/_1/_3/hwanwoong") &&
       isTimeExceededMillis(this.startMillis, 1)
     ) {
-      this.narrDuration = soundManager.soundDuration("hwanwoong");
-      soundManager.playSoundOnce("hwanwoong");
+      this.narrDuration = soundManager.soundDuration("S3/C3/V2/_1/_3/hwanwoong");
+      soundManager.playSoundOnce("S3/C3/V2/_1/_3/hwanwoong");
       this.startMillis = millis(); // 대사 1 시작 millis
     }
     // 대사 1 종료 후 1.2초 뒤 대사2 시작
     if (
-      !soundManager.hasSound("hwanwoong") &&
-      soundManager.hasSound("woonggirl") &&
+      !soundManager.hasSound("S3/C3/V2/_1/_3/hwanwoong") &&
+      soundManager.hasSound("S3/C3/V2/_1/_3/woonggirl") &&
       isTimeExceededMillis(this.startMillis, this.narrDuration + 1.2)
     ) {
-      this.narrDuration = soundManager.soundDuration("woonggirl");
-      soundManager.playSoundOnce("woonggirl");
+      this.narrDuration = soundManager.soundDuration("S3/C3/V2/_1/_3/woonggirl");
+      soundManager.playSoundOnce("S3/C3/V2/_1/_3/woonggirl");
       this.startMillis = millis();
     }
     // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
     if (
-      !soundManager.hasSound("hwanwoong") &&
-      !soundManager.hasSound("woonggirl") &&
+      !soundManager.hasSound("S3/C3/V2/_1/_3/hwanwoong") &&
+      !soundManager.hasSound("S3/C3/V2/_1/_3/woonggirl") &&
       isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
     ) {
       sceneManager.ChangeScene(new S3C3V2_2_1());

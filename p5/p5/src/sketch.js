@@ -1,13 +1,12 @@
-/* Scene.js */
+/* Scene.js */ 
 class Scene {
   enterTime;
-  constructor() {}
-  OnEnter() {}
-  OnDraw() {}
-  OnExit() {}
+  OnEnter() { }
+  OnDraw() { }
+  OnExit() { }
 }
 
-/* Animation.js */
+/* Animation.js */ 
 class Animation {
   constructor(key, count) {
     this.frameCount = count;
@@ -38,7 +37,7 @@ class Animation {
   }
 }
 
-/* Ease.js */
+/* Ease.js */ 
 class Ease {
   static EaseIn(t) {
     return t * t;
@@ -218,11 +217,11 @@ class Ease {
   }
 }
 
-/* EndingCredit.js */
+/* EndingCredit.js */ 
 class CreditText {
   constructor(text, size, offsetX, offsetY) {
     this.position = createVector(width / 2 + offsetX, height + 100 + offsetY);
-    this.forcePosition = createVector(0, 0);
+    this.forcePosition = createVector(300, 0);
     this.text = text;
     this.size = size;
     this.dirX = 0;
@@ -281,13 +280,9 @@ class EndingCredit extends Scene {
   }
 
   OnEnter() {
-    soundManager.LoadSound("Credit", "../../../Sounds/BGM/EndingCredit.mp3");
     soundManager.PlaySound("Credit");
     imageManager.LoadImage("HomeButton", "../../../Images/Ending/HomeButton");
-    imageManager.LoadImage(
-      "ReturnButton",
-      "../../../Images/Ending/ReturnButton"
-    );
+    imageManager.LoadImage("ReturnButton", "../../../Images/Ending/ReturnButton");
     this.creditTextList = [];
     this.offSetY = 0;
     this.scrollAmount = 0;
@@ -588,7 +583,7 @@ class EndingCredit extends Scene {
   }
 }
 
-/* FontManager.js */
+/* FontManager.js */ 
 class FontManager {
   constructor() {
     this.fonts = {};
@@ -607,7 +602,7 @@ class FontManager {
   }
 }
 
-/* ImageManager.js */
+/* ImageManager.js */ 
 class ImageManager {
   constructor() {
     this.images = new Map();
@@ -738,7 +733,7 @@ class ImageManager {
   }
 }
 
-/* Opening.js */
+/* Opening.js */ 
 class Opening extends Scene {
   constructor() {
     super();
@@ -757,7 +752,6 @@ class Opening extends Scene {
     imageManager.LoadImage("cloud01", this.prefix + "background/2");
     imageManager.LoadImage("cloud02", this.prefix + "background/3");
     imageManager.LoadImage("cloud03", this.prefix + "background/4");
-    soundManager.LoadSound("intro", "../../../Sounds/intro.wav");
     soundManager.PlaySound("intro");
     imageManager.LoadImage("btn_sequence01", this.prefix + "ui/btn_sequence_1");
     imageManager.LoadImage("btn_sequence02", this.prefix + "ui/btn_sequence_2");
@@ -965,7 +959,7 @@ class Opening extends Scene {
   }
 }
 
-/* S1C1.js */
+/* S1C1.js */ 
 class S1C1 extends Scene {
   constructor() {
     super();
@@ -974,7 +968,7 @@ class S1C1 extends Scene {
     this.zoomIn = 1;
     this.sessionIndex = 0;
     this.sessionDuration = [4, 9.5, 15];
-    this.sessionSound = ["narr1", "narr2", "narr3"];
+    this.sessionSound = ["S1/C1/narr", "S1/C1/narr2", "S1/C1/narr3"];
     this.sessionText = ["text1", "text1", "text2"];
     this.isSessionOut = [false, false, false];
   }
@@ -984,13 +978,9 @@ class S1C1 extends Scene {
     imageManager.LoadImage("cloud01", "../../../Images/S1/C1/cloud_01");
     imageManager.LoadImage("cloud02", "../../../Images/S1/C1/cloud_02");
     imageManager.LoadImage("cloud03", "../../../Images/S1/C1/cloud_03");
-    soundManager.LoadSound("intro", "../../../Sounds/intro.wav");
     soundManager.PlaySound("intro");
     imageManager.LoadImage("text1", "../../../Images/S1/C1/text_01");
     imageManager.LoadImage("text2", "../../../Images/S1/C1/text_02");
-    soundManager.LoadSound("narr1", "../../../Sounds/S1/C1/narr/narr1.mp3");
-    soundManager.LoadSound("narr2", "../../../Sounds/S1/C1/narr/narr2.mp3");
-    soundManager.LoadSound("narr3", "../../../Sounds/S1/C1/narr/narr3.mp3");
     this.cloudX = 0;
     this.zoomIn = 1;
     this.enterTime = timeManager.time;
@@ -1052,7 +1042,7 @@ class S1C1 extends Scene {
   }
 }
 
-/* S1C11.js */
+/* S1C11.js */ 
 class S1C11 extends Scene {
   constructor() {
     super();
@@ -1105,9 +1095,6 @@ class S1C11 extends Scene {
     );
 
     this.startMillis = millis();
-
-    soundManager.LoadSound("hwanin", this.SOUND_PREFIX + "hwanin.mp3");
-    soundManager.LoadSound("hwanwoong", this.SOUND_PREFIX + "hwanwoong.mp3");
   }
 
   OnDraw() {
@@ -1152,29 +1139,29 @@ class S1C11 extends Scene {
 
     // 씬 시작 후 1.5초 뒤 대사1 시작
     if (
-      soundManager.hasSound("hwanin") &&
+      soundManager.hasSound("S1/C11/hwanin") &&
       isTimeExceededMillis(this.startMillis, 1.5)
     ) {
-      this.narrDuration = soundManager.soundDuration("hwanin");
-      soundManager.playSoundOnce("hwanin");
+      this.narrDuration = soundManager.soundDuration("S1/C11/hwanin");
+      soundManager.playSoundOnce("S1/C11/hwanin");
       this.startMillis = millis(); // 대사 1 시작 millis
     }
 
     // 대사 1 종료 후 1초 뒤 대사2 시작
     if (
-      !soundManager.hasSound("hwanin") &&
-      soundManager.hasSound("hwanwoong") &&
+      !soundManager.hasSound("S1/C11/hwanin") &&
+      soundManager.hasSound("S1/C11/hwanwoong") &&
       isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
     ) {
-      this.narrDuration = soundManager.soundDuration("hwanwoong");
-      soundManager.playSoundOnce("hwanwoong");
+      this.narrDuration = soundManager.soundDuration("S1/C11/hwanwoong");
+      soundManager.playSoundOnce("S1/C11/hwanwoong");
       this.startMillis = millis();
     }
 
     // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
     if (
-      !soundManager.hasSound("hwanin") &&
-      !soundManager.hasSound("hwanwoong") &&
+      !soundManager.hasSound("S1/C11/hwanin") &&
+      !soundManager.hasSound("S1/C11/hwanwoong") &&
       isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
     ) {
       sceneManager.ChangeScene(new S1C13());
@@ -1192,7 +1179,7 @@ class S1C11 extends Scene {
   }
 }
 
-/* S1C13.js */
+/* S1C13.js */ 
 class S1C13 extends Scene {
   constructor() {
     super();
@@ -1221,10 +1208,6 @@ class S1C13 extends Scene {
       );
     }
     this.startMillis = millis();
-    soundManager.LoadSound(
-      "Door",
-      "../../../Sounds/Effects/WoodenDoorOpen.mp3"
-    );
     soundManager.PlaySound("Door");
   }
 
@@ -1260,7 +1243,7 @@ class S1C13 extends Scene {
   }
 }
 
-/* S1C14.js */
+/* S1C14.js */ 
 class S1C14 extends Scene {
   constructor() {
     super();
@@ -1271,10 +1254,6 @@ class S1C14 extends Scene {
   OnEnter() {
     imageManager.LoadImage("background", "../../../Images/S1/C14/background");
     imageManager.LoadImage("button", "../../../Images/S1/C14/button");
-    soundManager.LoadSound(
-      "effect",
-      "../../../Sounds/S1/C14/effect/effect.wav"
-    );
     this.enterTime = timeManager.time;
     this.isEffectOut = false;
   }
@@ -1325,7 +1304,7 @@ class S1C14 extends Scene {
   OnExit() {}
 }
 
-/* S1C15.js */
+/* S1C15.js */ 
 class Obstacle {
   constructor(image, imageScale, x, y) {
     this.image = image;
@@ -1376,40 +1355,23 @@ class S1C15 extends Scene {
     imageManager.LoadImage("ground", "../../../Images/S1/C15/ground");
 
     imageManager.LoadImage("hwanung", "../../../Images/S1/C15/hwanung");
-    imageManager.LoadImage(
-      "hwanungFace1",
-      "../../../Images/S1/C15/hwanung_face_1"
-    );
-    imageManager.LoadImage(
-      "hwanungFace2",
-      "../../../Images/S1/C15/hwanung_face_2"
-    );
+    imageManager.LoadImage("hwanungFace1", "../../../Images/S1/C15/hwanung_face_1");
+    imageManager.LoadImage("hwanungFace2", "../../../Images/S1/C15/hwanung_face_2");
 
     imageManager.LoadImage("bird", "../../../Images/S1/C15/obstacles/bird");
     imageManager.LoadImage("gust", "../../../Images/S1/C15/obstacles/gust");
     imageManager.LoadImage("plane", "../../../Images/S1/C15/obstacles/plane");
     imageManager.LoadImage("UFO", "../../../Images/S1/C15/obstacles/UFO");
     imageManager.LoadImage("cloud", "../../../Images/S1/C15/obstacles/cloud");
-    imageManager.LoadImage(
-      "lightning",
-      "../../../Images/S1/C15/obstacles/lightning"
-    );
+    imageManager.LoadImage("lightning", "../../../Images/S1/C15/obstacles/lightning");
 
     imageManager.LoadImage("wind", "../../../Images/S1/C15/obstacles/wind");
     imageManager.LoadImage("fog", "../../../Images/S1/C15/obstacles/fog");
 
     imageManager.LoadImage("altimeter", "../../../Images/S1/C15/altimeter_1");
-    imageManager.LoadImage(
-      "altimeterHwanung",
-      "../../../Images/S1/C15/altimeter_2"
-    );
+    imageManager.LoadImage("altimeterHwanung", "../../../Images/S1/C15/altimeter_2");
     imageManager.LoadImage("arrow", "../../../Images/S1/C15/arrow");
 
-    soundManager.LoadSound(
-      "Interaction1",
-      "../../../Sounds/S1/C15/Interaction1.wav"
-    );
-    soundManager.LoadSound("crash", "../../../Sounds/S1/C15/crash.mp3");
 
     soundManager.PlaySound("Interaction1");
 
@@ -1724,7 +1686,7 @@ class S1C15 extends Scene {
   }
 }
 
-/* S1C15V1.js */
+/* S1C15V1.js */ 
 class S1C15V1 extends Scene {
   constructor() {
     super();
@@ -1758,16 +1720,8 @@ class S1C15V1 extends Scene {
     imageManager.LoadImage("HWANUNG_TEXT", this.PREFIX + "TEXT");
 
     imageManager.LoadImage("button_top", "../../../Images/S1/C15-1/button_top");
-    imageManager.LoadImage(
-      "button_bottom",
-      "../../../Images/S1/C15-1/button_bottom"
-    );
+    imageManager.LoadImage("button_bottom", "../../../Images/S1/C15-1/button_bottom");
 
-    soundManager.LoadSound(
-      "HWANUNG_NARR1",
-      "../../../Sounds/S1/C15-1/narr/narr1.mp3"
-    );
-    // soundManager.LoadSound("HWANUNG_NARR2", "../../../Sounds/S1/C15-1/narr/narr2.mp3");
     this.playedSoundMap = new Map();
     this.playedSoundMap.set("HWANUNG_NARR1", 0);
     // this.playedSoundMap.set("HWANUNG_NARR2", 0);
@@ -1912,7 +1866,7 @@ class S1C15V1 extends Scene {
   OnExit() {}
 }
 
-/* S1C15V2.js */
+/* S1C15V2.js */ 
 class S1C15V2 extends Scene {
   constructor() {
     super();
@@ -1963,7 +1917,7 @@ class S1C15V2 extends Scene {
   }
 }
 
-/* S1C16.js */
+/* S1C16.js */ 
 class S1C16 extends Scene {
   constructor() {
     super();
@@ -1982,30 +1936,20 @@ class S1C16 extends Scene {
     imageManager.LoadImage("extra_3", "../../../Images/S1/C16/extra_3");
     imageManager.LoadImage("extra_4", "../../../Images/S1/C16/extra_4");
     imageManager.LoadImage("hwanung_arm", "../../../Images/S1/C16/hwanung_arm");
-    imageManager.LoadImage(
-      "hwanung_face",
-      "../../../Images/S1/C16/hwanung_face"
-    );
-    imageManager.LoadImage(
-      "hwanung_face1",
-      "../../../Images/S1/C16/hwanung_face1"
-    );
-    imageManager.LoadImage(
-      "hwanung_face2",
-      "../../../Images/S1/C16/hwanung_face2"
-    );
+    imageManager.LoadImage("hwanung_face", "../../../Images/S1/C16/hwanung_face");
+    imageManager.LoadImage("hwanung_face1", "../../../Images/S1/C16/hwanung_face1");
+    imageManager.LoadImage("hwanung_face2", "../../../Images/S1/C16/hwanung_face2");
     imageManager.LoadImage("hwanung", "../../../Images/S1/C16/hwanung");
     imageManager.LoadImage("hwanung1", "../../../Images/S1/C16/hwanung1");
     imageManager.LoadImage("hwanung2", "../../../Images/S1/C16/hwanung2");
     imageManager.LoadImage("text", "../../../Images/S1/C16/text");
-    soundManager.LoadSound("narr", "../../../Sounds/S1/C16/narr/narr.mp3");
     this.isNarrOut = false;
     this.enterTime = timeManager.time;
   }
 
   OnDraw() {
     if (!this.isNarrOut) {
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C16/narr");
       this.isNarrOut = true;
     }
 
@@ -2088,7 +2032,7 @@ class S1C16 extends Scene {
   }
 }
 
-/* S1C17.js */
+/* S1C17.js */ 
 class S1C17 extends Scene {
   constructor() {
     super();
@@ -2135,7 +2079,6 @@ class S1C17 extends Scene {
     imageManager.LoadImage("VASSAL3", this.PREFIX + "VASSAL3");
     imageManager.LoadImage("BEAR", this.PREFIX + "BEAR");
     imageManager.LoadImage("TIGER", this.PREFIX + "TIGER");
-    soundManager.LoadSound("Bush", "../../../Sounds/Effects/BushRustle.mp3");
     this.BEAR_POP = 0;
     this.TIGER_POP = 0;
     this.BUSH_OFFSET = 0;
@@ -2219,7 +2162,7 @@ class S1C17 extends Scene {
   }
 }
 
-/* S1C18.js */
+/* S1C18.js */ 
 class S1C18 extends Scene {
   constructor() {
     super();
@@ -2248,18 +2191,6 @@ class S1C18 extends Scene {
     imageManager.LoadImage("bear1", "../../../Images/S1/C18/bear1");
 
     this.playedSoundMap = new Map();
-    soundManager.LoadSound(
-      "S1C18_NARR",
-      "../../../Sounds/S1/C18/narr/narr.mp3"
-    );
-    soundManager.LoadSound(
-      "S1C18_TIGER",
-      "../../../Sounds/S1/C18/narr/tiger.mp3"
-    );
-    soundManager.LoadSound(
-      "S1C18_BEAR",
-      "../../../Sounds/S1/C18/narr/bear.mp3"
-    );
     this.playedSoundMap.set("S1C18_NARR", 0);
     this.playedSoundMap.set("S1C18_TIGER", 0);
     this.playedSoundMap.set("S1C18_BEAR", 0);
@@ -2318,7 +2249,7 @@ class S1C18 extends Scene {
   }
 }
 
-/* S1C19_1.js */
+/* S1C19_1.js */ 
 class S1C19_1 extends Scene {
   constructor() {
     super();
@@ -2356,8 +2287,6 @@ class S1C19_1 extends Scene {
 
     imageManager.LoadImage("C19-1-Text", "../../../Images/S1/C19/C19-1-Text");
 
-    soundManager.LoadSound("narr", "../../../Sounds/S1/C19-1/narr.mp3");
-    soundManager.LoadSound("Bear", "../../../Sounds/S1/C19-1/Bear.mp3");
   }
 
   OnDraw() {
@@ -2397,12 +2326,12 @@ class S1C19_1 extends Scene {
 
     if (!this.narrFlag) {
       this.narrFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C19-1/narr");
     }
     if (timeManager.time - this.enterTime >= this.narrDuration) {
       if (!this.animalVoiceFlag) {
         this.animalVoiceFlag = true;
-        soundManager.PlaySound("Bear");
+        soundManager.PlaySound("S1/C19-1/Bear");
       }
     }
     if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
@@ -2415,7 +2344,7 @@ class S1C19_1 extends Scene {
   }
 }
 
-/* S1C19_2.js */
+/* S1C19_2.js */ 
 class S1C19_2 extends Scene {
   constructor() {
     super();
@@ -2462,10 +2391,6 @@ class S1C19_2 extends Scene {
     imageManager.LoadImage("skin", "../../../Images/S1/C19/hwanwoong_skin");
     imageManager.LoadImage("C19-2-Text", "../../../Images/S1/C19/C19-2-Text");
 
-    soundManager.LoadSound(
-      "hwanwoong1",
-      "../../../Sounds/S1/C19-2/hwanwoong1.mp3"
-    );
     this.enterTime = timeManager.time;
   }
 
@@ -2504,7 +2429,7 @@ class S1C19_2 extends Scene {
     // "그렇구나 너희의 소원을 들어주마"
     if (timeManager.time - this.enterTime > 1.5 && !this.firstFlag) {
       this.firstFlag = true;
-      soundManager.PlaySound("hwanwoong1");
+      soundManager.PlaySound("S1/C19-2/hwanwoong1");
     }
 
     // Toggle mouth index
@@ -2528,7 +2453,7 @@ class S1C19_2 extends Scene {
   OnExit() {}
 }
 
-/* S1C19_3.js */
+/* S1C19_3.js */ 
 class S1C19_3 extends Scene {
   constructor() {
     super();
@@ -2563,22 +2488,9 @@ class S1C19_3 extends Scene {
 
     imageManager.LoadImage("background", "../../../Images/S1/C19/background2");
     imageManager.LoadImage("hands", "../../../Images/S1/C19/hands");
-    imageManager.LoadImage(
-      "hwangwoong",
-      "../../../Images/S1/C19/hwanwoong_hand"
-    );
+    imageManager.LoadImage("hwangwoong", "../../../Images/S1/C19/hwanwoong_hand");
     imageManager.LoadImage("basket", "../../../Images/S1/C19/basket");
     imageManager.LoadImage("C19-3-Text", "../../../Images/S1/C19/C19-3-Text");
-
-    soundManager.LoadSound(
-      "hwanwoong1",
-      "../../../Sounds/S1/C19-3/hwanwoong1.mp3"
-    );
-    soundManager.LoadSound(
-      "hwanwoong2",
-      "../../../Sounds/S1/C19-3/hwanwoong2.mp3"
-    );
-    soundManager.LoadSound("Bear", "../../../Sounds/S1/C19-3/Bear.mp3");
   }
 
   OnDraw() {
@@ -2605,12 +2517,12 @@ class S1C19_3 extends Scene {
 
     if (!this.firstFlag) {
       this.firstFlag = true;
-      soundManager.PlaySound("hwanwoong1");
+      soundManager.PlaySound("S1/C19-3/hwanwoong1");
     }
     if (timeManager.time - timeManager.enterTime >= 7) {
       if (!this.thridFlag) {
         this.thridFlag = true;
-        soundManager.PlaySound("Bear");
+        soundManager.PlaySound("S1/C19-3/Bear");
       }
     }
     if (this.handX <= 230) {
@@ -2627,7 +2539,7 @@ class S1C19_3 extends Scene {
   OnExit() {}
 }
 
-/* S1C2.js */
+/* S1C2.js */ 
 class S1C2 extends Scene {
   constructor() {
     super();
@@ -2671,7 +2583,7 @@ class S1C2 extends Scene {
   OnExit() {}
 }
 
-/* S1C3.js */
+/* S1C3.js */ 
 class S1C3 extends Scene {
   constructor() {
     super();
@@ -2705,7 +2617,6 @@ class S1C3 extends Scene {
     imageManager.LoadImage("god", this.GOD_IMAGE);
     imageManager.LoadImage("face", this.DEFAULT_FACE);
     imageManager.LoadImage("text", "../../../Images/S1/C3/text");
-    soundManager.LoadSound("narr", "../../../Sounds/S1/C3/narr/narr.mp3");
 
     let imageCount = this.TELLING_FACES.length;
     this.currentImageIndex = 0;
@@ -2742,7 +2653,7 @@ class S1C3 extends Scene {
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C3/narr");
     }
 
     imageManager.DrawImageScale(
@@ -2786,7 +2697,7 @@ class S1C3 extends Scene {
   OnExit() {}
 }
 
-/* S1C4.js */
+/* S1C4.js */ 
 class S1C4 extends Scene {
   constructor() {
     super();
@@ -2810,7 +2721,6 @@ class S1C4 extends Scene {
     imageManager.LoadImage("eye3", "../../../Images/S1/C4/eye3");
     imageManager.LoadImage("mouth", "../../../Images/S1/C4/mouth");
     imageManager.LoadImage("text", "../../../Images/S1/C4/text");
-    soundManager.LoadSound("narr", "../../../Sounds/S1/C4/narr/narr.mp3");
 
     this.closeTime = timeManager.time;
     this.openTime = timeManager.time;
@@ -2822,7 +2732,7 @@ class S1C4 extends Scene {
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C4/narr");
     }
     imageManager.DrawImageScale(
       "background",
@@ -2893,7 +2803,7 @@ class S1C4 extends Scene {
   OnExit() {}
 }
 
-/* S1C5.js */
+/* S1C5.js */ 
 class S1C5 extends Scene {
   constructor() {
     super();
@@ -2911,7 +2821,6 @@ class S1C5 extends Scene {
     imageManager.LoadImage("hwanin", "../../../Images/S1/C5/hawnin");
     imageManager.LoadImage("hwanwoong", "../../../Images/S1/C5/hwanwoong");
     imageManager.LoadImage("text", "../../../Images/S1/C5/text");
-    soundManager.LoadSound("narr", "../../../Sounds/S1/C5/narr/narr.mp3");
 
     this.timeline = new TimelineManager();
 
@@ -2978,7 +2887,7 @@ class S1C5 extends Scene {
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C5/narr");
     }
     this.timeline.OnDraw();
     imageManager.DrawImageScale(
@@ -3002,7 +2911,7 @@ class S1C5 extends Scene {
   OnExit() {}
 }
 
-/* S1C6_1.js */
+/* S1C6_1.js */ 
 class S1C6_1 extends Scene {
   constructor() {
     super();
@@ -3074,7 +2983,6 @@ class S1C6_1 extends Scene {
     this.hwanwoongStartTime = 9;
 
     imageManager.LoadImage("text", "../../../Images/S1/C6-1/text");
-    soundManager.LoadSound("narr", "../../../Sounds/S1/C6-1/narr/narr.mp3");
 
     imageManager.LoadImage("Background", "../../../Images/S1/C6-1/Background");
     imageManager.LoadImage("HwaninBody", "../../../Images/S1/C6-1/HwaninBody");
@@ -3090,20 +2998,10 @@ class S1C6_1 extends Scene {
       "HwaninFace_MouseClose",
       "../../../Images/S1/C6-1/HwaninFace_MouseClose"
     );
-    soundManager.LoadSound("hwanin", "../../../Sounds/S1/C6-1/narr/hwanin.mp3");
 
-    imageManager.LoadImage(
-      "HwanwoongBody1",
-      "../../../Images/S1/C6-1/HwanwoongBody1"
-    );
-    imageManager.LoadImage(
-      "HwanwoongBody2",
-      "../../../Images/S1/C6-1/HwanwoongBody2"
-    );
-    imageManager.LoadImage(
-      "HwanwoongFace1",
-      "../../../Images/S1/C6-1/HwanwoongFace1"
-    );
+    imageManager.LoadImage("HwanwoongBody1", "../../../Images/S1/C6-1/HwanwoongBody1");
+    imageManager.LoadImage("HwanwoongBody2", "../../../Images/S1/C6-1/HwanwoongBody2");
+    imageManager.LoadImage("HwanwoongFace1", "../../../Images/S1/C6-1/HwanwoongFace1");
     imageManager.LoadImage(
       "HwanwoongFace2-1",
       "../../../Images/S1/C6-1/HwanwoongFace2-1"
@@ -3111,10 +3009,6 @@ class S1C6_1 extends Scene {
     imageManager.LoadImage(
       "HwanwoongFace2-2",
       "../../../Images/S1/C6-1/HwanwoongFace2-2"
-    );
-    soundManager.LoadSound(
-      "hwanwoong",
-      "../../../Sounds/S1/C6-1/narr/hwanwung.mp3"
     );
 
     background(255);
@@ -3124,7 +3018,7 @@ class S1C6_1 extends Scene {
   OnDraw() {
     if (!this.narrFlag) {
       this.narrFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C6-1/narr");
     }
     this.mouseTick += timeManager.deltaTime;
     if (this.mouseTick >= this.mouseTickInterval) {
@@ -3147,7 +3041,7 @@ class S1C6_1 extends Scene {
       if (!this.hwaninVoiceFlag) {
         this.soundStartTime = timeManager.time;
         this.hwaninVoiceFlag = true;
-        soundManager.PlaySound("hwanin");
+        soundManager.PlaySound("S1/C6-1/hwanin");
       }
       if (
         this.hwaninVoiceFlag &&
@@ -3162,7 +3056,7 @@ class S1C6_1 extends Scene {
       if (!this.hwanwoongVoiceFlag) {
         this.soundStartTime = timeManager.time;
         this.hwanwoongVoiceFlag = true;
-        soundManager.PlaySound("hwanwoong");
+        soundManager.PlaySound("S1/C6-1/hwanwoong");
       }
     }
     if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
@@ -3273,7 +3167,7 @@ class S1C6_1 extends Scene {
   OnExit() {}
 }
 
-/* S1C6_2.js */
+/* S1C6_2.js */ 
 class S1C6_2 extends Scene {
   constructor() {
     super();
@@ -3309,27 +3203,25 @@ class S1C6_2 extends Scene {
     // int hwaninY = centerY;
 
     //나레이션
-    soundManager.LoadSound("narr", "../../../Sounds/S1/C6-2/narr/narr.mp3");
 
     //환인
     imageManager.LoadImage("Background2", "../../../Images/S1/C6-2/Background");
     imageManager.LoadImage("HwaninBody", "../../../Images/S1/C6-2/HwaninBody");
     imageManager.LoadImage("HwaninFace", "../../../Images/S1/C6-2/HwaninFace");
     imageManager.LoadImage("text", "../../../Images/S1/C6-2/text");
-    soundManager.LoadSound("hwanin", "../../../Sounds/S1/C6-2/narr/hwanin.mp3");
   }
 
   OnDraw() {
     if (!this.narrFlag) {
       this.narrFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C6-2/hwanwoong");
     }
     if (
       timeManager.time - this.enterTime > this.hwaninStartTime &&
       !this.hwaninVoiceFlag
     ) {
       this.hwaninVoiceFlag = true;
-      soundManager.PlaySound("hwanin");
+      soundManager.PlaySound("S1/C6-2/hwanin");
     }
     if (this.hwaninFace) this.hwaninFaceScale += timeManager.deltaTime * 0.2;
     else this.hwaninFaceScale -= timeManager.deltaTime * 0.2;
@@ -3363,7 +3255,7 @@ class S1C6_2 extends Scene {
   OnExit() {}
 }
 
-/* S1C7.js */
+/* S1C7.js */ 
 class S1C7 extends Scene {
   constructor() {
     super();
@@ -3393,7 +3285,6 @@ class S1C7 extends Scene {
       "hwan_expression2",
       this.IMG_PREFIX + "hwan_expression2"
     );
-    soundManager.LoadSound("hwan", this.SOUND_PREFIX + "hwan.mp3");
 
     this.startMillis = millis(); // 씬 시작 millis
   }
@@ -3423,16 +3314,16 @@ class S1C7 extends Scene {
     }
     // 씬 시작 후 1.5초 뒤 대사1 시작
     if (
-      soundManager.hasSound("hwan") &&
+      soundManager.hasSound("S1/C7/hwan") &&
       isTimeExceededMillis(this.startMillis, 1.0)
     ) {
-      this.narrDuration = soundManager.soundDuration("hwan");
-      soundManager.playSoundOnce("hwan");
+      this.narrDuration = soundManager.soundDuration("S1/C7/hwan");
+      soundManager.playSoundOnce("S1/C7/hwan");
       this.startMillis = millis();
     }
 
     /* // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
-    if (!soundManager.hasSound("narr") && !soundManager.hasSound("hwan") && isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)) {
+    if (!soundManager.hasSound("narr") && !soundManager.hasSound("S1/C7/hwan") && isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)) {
       scene.ChangeScene(new S1C8());
     }
     */
@@ -3448,7 +3339,7 @@ class S1C7 extends Scene {
   }
 }
 
-/* S1C8 .js */
+/* S1C8 .js */ 
 class S1C8 extends Scene {
   constructor() {
     super();
@@ -3481,10 +3372,7 @@ class S1C8 extends Scene {
     this.hwaninY = this.centerY + 350;
 
     // 환인
-    imageManager.LoadImage(
-      "BackgroundS1C8",
-      "../../../Images/S1/C8/Background"
-    );
+    imageManager.LoadImage("BackgroundS1C8", "../../../Images/S1/C8/Background");
     imageManager.LoadImage("HwaninBody", "../../../Images/S1/C8/HwaninBody");
     // imageManager.LoadImage("HwaninFace_MouseClose", "../../../Images/S1/C8/HwaninFace_MouseClose");
     // imageManager.LoadImage("HwaninFace_MouseOpen", "../../../Images/S1/C8/HwaninFace_MouseOpen");
@@ -3492,12 +3380,6 @@ class S1C8 extends Scene {
 
     imageManager.LoadImage("HwaninHand", "../../../Images/S1/C8/HwaninHand");
     imageManager.LoadImage("NarrS1C8", "../../../Images/S1/C8/narr");
-
-    soundManager.LoadSound("NarrS1C8", "../../../Sounds/S1/C8/narr/narr.mp3");
-    soundManager.LoadSound(
-      "HawninS1C8",
-      "../../../Sounds/S1/C8/narr/hwanin.mp3"
-    );
     this.playedSoundMap.set("NarrS1C8", 0);
     this.playedSoundMap.set("HawninS1C8", 0);
 
@@ -3583,7 +3465,7 @@ class S1C8 extends Scene {
   OnExit() {}
 }
 
-/* S1C9.js */
+/* S1C9.js */ 
 class S1C9 extends Scene {
   constructor() {
     super();
@@ -3602,10 +3484,6 @@ class S1C9 extends Scene {
     imageManager.LoadImage("cloud02", "../../../Images/S1/C9/cloud_02");
     imageManager.LoadImage("cloud03", "../../../Images/S1/C9/cloud_03");
     imageManager.LoadImage("hand", "../../../Images/S1/C9/hand");
-    soundManager.LoadSound(
-      "hwanwoog",
-      "../../../Sounds/S1/C9/narr/hwanwoong.mp3"
-    );
 
     this.cloudX = 0;
     this.handY = 0;
@@ -3656,10 +3534,10 @@ class S1C9 extends Scene {
 
     // 씬 시작 후 1초 뒤 대사1 시작
     if (
-      soundManager.hasSound("hwanwoog") &&
+      soundManager.hasSound("S1/C9/hwanwoog") &&
       isTimeExceededMillis(this.startMillis, 1)
     ) {
-      soundManager.playSoundOnce("hwanwoog");
+      soundManager.playSoundOnce("S1/C9/hwanwoog");
     }
   }
 
@@ -3674,7 +3552,7 @@ class S1C9 extends Scene {
   }
 }
 
-/* S2C1.js */
+/* S2C1.js */ 
 class S2C1 extends Scene {
   constructor() {
     super();
@@ -3700,10 +3578,6 @@ class S2C1 extends Scene {
     imageManager.LoadImage("bear1", "../../../Images/S2/C1/bear1");
     imageManager.LoadImage("bear2", "../../../Images/S2/C1/bear2");
     imageManager.LoadImage("bear3", "../../../Images/S2/C1/bear3");
-    soundManager.LoadSound(
-      "step",
-      "../../../Sounds/S2/C1/effect/Step_Grass_01.wav"
-    );
 
     this.walkTick = 0;
     this.soundTick = 0;
@@ -3737,7 +3611,7 @@ class S2C1 extends Scene {
       }
 
       if (this.soundTick > this.SOUND_INTERVAL) {
-        soundManager.PlaySound("step");
+        soundManager.PlaySound("S2/C1/step");
         this.soundTick = 0;
       }
     }
@@ -3772,7 +3646,7 @@ class S2C1 extends Scene {
   }
 }
 
-/* S2C2.js */
+/* S2C2.js */ 
 class S2C2 extends Scene {
   constructor() {
     super();
@@ -3807,31 +3681,12 @@ class S2C2 extends Scene {
     imageManager.LoadImage("rock", "../../../Images/S2/C2/rock");
     imageManager.LoadImage("tiger_body", "../../../Images/S2/C2/tiger_body");
     imageManager.LoadImage("tiger_face", "../../../Images/S2/C2/tiger_face");
-    imageManager.LoadImage(
-      "tiger_left",
-      "../../../Images/S2/C2/tiger_foot_right"
-    );
-    imageManager.LoadImage(
-      "tiger_right",
-      "../../../Images/S2/C2/tiger_foot_left"
-    );
+    imageManager.LoadImage("tiger_left", "../../../Images/S2/C2/tiger_foot_right");
+    imageManager.LoadImage("tiger_right", "../../../Images/S2/C2/tiger_foot_left");
     imageManager.LoadImage("bear_body", "../../../Images/S2/C2/bear_body");
     imageManager.LoadImage("bear_face", "../../../Images/S2/C2/bear_face");
-    imageManager.LoadImage(
-      "bear_left",
-      "../../../Images/S2/C2/bear_foot_right"
-    );
-    imageManager.LoadImage(
-      "bear_right",
-      "../../../Images/S2/C2/bear_foot_left"
-    );
-    soundManager.LoadSound(
-      "S2_S3_FootStuckRock",
-      "../../../Sounds/Effects/FootStuckRock2.mp3"
-    );
-    soundManager.LoadSound("step1", "../../../Sounds/Effects/Step_Cave2.mp3");
-    soundManager.LoadSound("step2", "../../../Sounds/Effects/Step_Cave3.mp3");
-    soundManager.LoadSound("step3", "../../../Sounds/Effects/Step_Cave4.mp3");
+    imageManager.LoadImage("bear_left", "../../../Images/S2/C2/bear_foot_right");
+    imageManager.LoadImage("bear_right", "../../../Images/S2/C2/bear_foot_left");
     imageManager.LoadImage("tiger1", "../../../Images/S2/C2/tiger1");
     imageManager.LoadImage("tiger2", "../../../Images/S2/C2/tiger2");
     imageManager.LoadImage("tiger3", "../../../Images/S2/C2/tiger3");
@@ -3897,11 +3752,11 @@ class S2C2 extends Scene {
       ) {
         this.stepID = floor(random(2));
         if (this.stepID === 0) {
-          soundManager.PlaySound("step1");
+          soundManager.PlaySound("../../../Sounds/Effects/step1");
         } else if (this.stepID === 1) {
-          soundManager.PlaySound("step2");
+          soundManager.PlaySound("../../../Sounds/Effects/step2");
         } else if (this.stepID === 2) {
-          soundManager.PlaySound("step3");
+          soundManager.PlaySound("../../../Sounds/Effects/step3");
         }
         this.stepSeconds = 0;
       } else {
@@ -3935,7 +3790,7 @@ class S2C2 extends Scene {
   OnExit() {}
 }
 
-/* S2C3.js */
+/* S2C3.js */ 
 class S2C3 extends Scene {
   constructor() {
     super();
@@ -3976,7 +3831,6 @@ class S2C3 extends Scene {
     imageManager.LoadImage(this.ssuk, "../../../Images/S2/C3/ssuk");
     imageManager.LoadImage(this.text, "../../../Images/S2/C3/text");
 
-    soundManager.LoadSound(this.narr1, "../../../Sounds/S2/C3/narr/narr1.mp3");
     this.playedSoundMap[this.narr1] = 0;
 
     this.basketPosition = createVector(800, 570);
@@ -4137,7 +3991,7 @@ class S2C3 extends Scene {
   OnExit() {}
 }
 
-/* S2C4.js */
+/* S2C4.js */ 
 class S2C4 extends Scene {
   constructor() {
     super();
@@ -4158,7 +4012,7 @@ class S2C4 extends Scene {
     this.tearSpeed = 0;
     this.sessionIndex;
     this.sessionDuration = [4, 8];
-    this.sessionSound = ["narr1", "narr2", "narr3"];
+    this.sessionSound = ["S2/C4/narr1", "S2/C4/narr2", "S2/C4/narr3"];
     this.sessionText = ["text1", "text2", "text3"];
     this.isSessionOut = [];
   }
@@ -4175,9 +4029,6 @@ class S2C4 extends Scene {
     imageManager.LoadImage("text1", "../../../Images/S2/C4/text1");
     imageManager.LoadImage("text2", "../../../Images/S2/C4/text2");
     imageManager.LoadImage("text3", "../../../Images/S2/C4/text3");
-    soundManager.LoadSound("narr1", "../../../Sounds/S2/C4/narr/narr1.mp3");
-    soundManager.LoadSound("narr2", "../../../Sounds/S2/C4/narr/narr2.mp3");
-    soundManager.LoadSound("narr3", "../../../Sounds/S2/C4/narr/narr3.mp3");
     this.isSessionOut = [false, false];
     this.animalScale = 0.25;
     this.utilScale = 0.035;
@@ -4290,7 +4141,7 @@ class S2C4 extends Scene {
   }
 }
 
-/* S2C5.js */
+/* S2C5.js */ 
 class S2C5 extends Scene {
   constructor() {
     super();
@@ -4300,7 +4151,6 @@ class S2C5 extends Scene {
   OnEnter() {
     imageManager.LoadImage("background", "../../../Images/S2/C5/background");
     imageManager.LoadImage("button", "../../../Images/S2/C5/button");
-    soundManager.LoadSound("effect", "../../../Sounds/S2/C5/effect/effect.wav");
     this.isEffectOut = false;
   }
 
@@ -4347,7 +4197,7 @@ class S2C5 extends Scene {
   OnExit() {}
 }
 
-/* S2C6.js */
+/* S2C6.js */ 
 class S2C6 extends Scene {
   constructor() {
     super();
@@ -4374,11 +4224,6 @@ class S2C6 extends Scene {
     imageManager.LoadImage("tiger_hand", "../../../Images/S2/C6/tiger_hand");
     imageManager.LoadImage("tiger_click", "../../../Images/S2/C6/tiger_click");
     imageManager.LoadImage("transparent", "../../../Images/S2/C6/transparent");
-    soundManager.LoadSound(
-      "item_click",
-      "../../../Sounds/S2/C6/item_click.wav"
-    );
-    soundManager.LoadSound("bgm", "../../../Sounds/S2/C6/bgm.mp3");
 
     this.m_Items = new Array(25);
     this.m_ItemsLoc = new Array(25);
@@ -4398,7 +4243,7 @@ class S2C6 extends Scene {
     this.m_SookCnt = 0;
     this.m_ManulCnt = 0;
 
-    soundManager.PlaySound("bgm");
+    soundManager.PlaySound("S2/C6/bgm");
     fontManager.LoadFont("lee", "../../../../Fonts/LeeSeoyun.otf");
   }
 
@@ -4542,7 +4387,7 @@ class S2C6 extends Scene {
   }
 
   OnExit() {
-    soundManager.StopSound("bgm");
+    soundManager.StopSound("S2/C6/bgm");
   }
 
   OnMousePressed() {
@@ -4577,7 +4422,7 @@ class S2C6 extends Scene {
   }
 }
 
-/* S2C6V1.js */
+/* S2C6V1.js */ 
 class S2C6V1 extends Scene {
   constructor() {
     super();
@@ -4604,10 +4449,7 @@ class S2C6V1 extends Scene {
     imageManager.LoadImage("tiger", "../../../Images/S2/C6/V1/tiger");
     imageManager.LoadImage("tiger_tear", "../../../Images/S2/C6/V1/tiger_tear");
     imageManager.LoadImage("button_top", "../../../Images/S2/C6/V1/button_top");
-    imageManager.LoadImage(
-      "button_bottom",
-      "../../../Images/S2/C6/V1/button_bottom"
-    );
+    imageManager.LoadImage("button_bottom", "../../../Images/S2/C6/V1/button_bottom");
 
     this.timelineManager.pushTimeline(() => {
       this.showButton = true;
@@ -4746,7 +4588,7 @@ class S2C6V1 extends Scene {
   OnExit() {}
 }
 
-/* S2C6V2.js */
+/* S2C6V2.js */ 
 class S2C6V2 extends Scene {
   constructor() {
     super();
@@ -4769,7 +4611,7 @@ class S2C6V2 extends Scene {
 
     this.sessionIndex = 0;
     this.sessionDuration = [3, 6];
-    this.sessionSound = ["narr1", "narr2", "narr3"];
+    this.sessionSound = ["S2/C6/V2/narr1", "S2/C6/V2/narr2", "S2/C6/V2/narr3"];
     this.sessionText = ["text1", "text2", "text3"];
     this.isSessionOut = [false, false];
   }
@@ -4783,9 +4625,6 @@ class S2C6V2 extends Scene {
     imageManager.LoadImage("text1", "../../../Images/S2/C6/V2/text1");
     imageManager.LoadImage("text2", "../../../Images/S2/C6/V2/text2");
     imageManager.LoadImage("text3", "../../../Images/S2/C6/V2/text3");
-    soundManager.LoadSound("narr1", "../../../Sounds/S2/C6/V2/narr/narr1.mp3");
-    soundManager.LoadSound("narr2", "../../../Sounds/S2/C6/V2/narr/narr2.mp3");
-    soundManager.LoadSound("narr3", "../../../Sounds/S2/C6/V2/narr/narr3.mp3");
     this.isSessionOut = [false, false];
     this.SCENE_TIME = 0;
   }
@@ -4853,7 +4692,7 @@ class S2C6V2 extends Scene {
   OnExit() {}
 }
 
-/* S2C7.js */
+/* S2C7.js */ 
 class S2C7 extends Scene {
   constructor() {
     super();
@@ -4882,7 +4721,6 @@ class S2C7 extends Scene {
     imageManager.LoadImage("tiger2", "../../../Images/S2/C7/tiger2");
     imageManager.LoadImage("bear1", "../../../Images/S2/C7/bear1");
     imageManager.LoadImage("bear2", "../../../Images/S2/C7/bear2");
-    soundManager.LoadSound("yum", "../../../Sounds/Effects/YumYum.mp3");
     this.startTime = millis();
   }
 
@@ -4933,7 +4771,7 @@ class S2C7 extends Scene {
   OnExit() {}
 }
 
-/* S2C8.js */
+/* S2C8.js */ 
 class S2C8 extends Scene {
   constructor() {
     super();
@@ -4964,8 +4802,6 @@ class S2C8 extends Scene {
     imageManager.LoadImage("sky", this.PREFIX + "sky");
     imageManager.LoadImage("sun", this.PREFIX + "sun");
     imageManager.LoadImage("text", this.PREFIX + "text");
-    soundManager.LoadSound("narr", "../../../Sounds/S2/C8/narr/narr.mp3");
-    soundManager.LoadSound("Chicken", "../../../Sounds/Effects/Chicken_02.mp3");
   }
 
   OnDraw() {
@@ -4988,7 +4824,7 @@ class S2C8 extends Scene {
     imageManager.DrawImage("text", this.centerVector);
 
     if (timeManager.time - timeManager.enterTime > 1 && !this.playingNarr) {
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S2/C8/narr");
       this.playingNarr = true;
     }
     if (timeManager.time - timeManager.enterTime > 3 && !this.Chicken) {
@@ -5006,7 +4842,7 @@ class S2C8 extends Scene {
   OnExit() {}
 }
 
-/* S3C1.js */
+/* S3C1.js */ 
 class S3C1 extends Scene {
   constructor() {
     super();
@@ -5041,14 +4877,13 @@ class S3C1 extends Scene {
     imageManager.LoadImage("garlic", "../../../Images/S3/C1/garlic");
     imageManager.LoadImage("ssug", "../../../Images/S3/C1/ssug");
     imageManager.LoadImage("text", "../../../Images/S3/C1/text");
-    soundManager.LoadSound("narr", "../../../Sounds/S3/C1/narr/narr.mp3");
     this.isNarrOut = false;
   }
 
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S3/C1/narr");
     }
     imageManager.DrawImageScale(
       "background",
@@ -5114,7 +4949,7 @@ class S3C1 extends Scene {
   OnExit() {}
 }
 
-/* S3C2.js */
+/* S3C2.js */ 
 class S3C2 extends Scene {
   constructor() {
     super();
@@ -5133,7 +4968,6 @@ class S3C2 extends Scene {
     imageManager.LoadImage("eye_white", "../../../Images/S3/C2/eye_white");
     imageManager.LoadImage("left", "../../../Images/S3/C2/left");
     imageManager.LoadImage("right", "../../../Images/S3/C2/right");
-    soundManager.LoadSound("effect", "../../../Sounds/S3/C2/effect/effect.wav");
     imageManager.LoadImage("Button1", "../../../Images/S3/C2/Button1");
     imageManager.LoadImage("Button2", "../../../Images/S3/C2/Button2");
     this.isEffectOut = false;
@@ -5176,7 +5010,7 @@ class S3C2 extends Scene {
       if (mouseIsPressed) {
         sceneManager.ChangeScene(new S3C3V1_1());
         if (!this.isEffectOut) {
-          soundManager.PlaySound("effect");
+          soundManager.PlaySound("S3/C2/effect");
           this.isEffectOut = !this.isEffectOut;
         }
       }
@@ -5203,7 +5037,7 @@ class S3C2 extends Scene {
       if (mouseIsPressed) {
         sceneManager.ChangeScene(new S3C3V2());
         if (!this.isEffectOut) {
-          soundManager.PlaySound("effect");
+          soundManager.PlaySound("S3/C2/effect");
           this.isEffectOut = !this.isEffectOut;
         }
       }
@@ -5239,7 +5073,7 @@ class S3C2 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_1.js */
+/* S3C3V1_1.js */ 
 class S3C3V1_1 extends Scene {
   constructor() {
     super();
@@ -5255,7 +5089,6 @@ class S3C3V1_1 extends Scene {
     imageManager.LoadImage("tiger", this.PREFIX + "tiger");
     imageManager.LoadImage("text", this.PREFIX + "text");
 
-    soundManager.LoadSound("Bear", "../../../Sounds/S3/C3/V1/_1/Bear.mp3");
 
     this.narrFlag = false;
 
@@ -5282,7 +5115,7 @@ class S3C3V1_1 extends Scene {
 
     if (!this.narrFlag) {
       this.narrFlag = true;
-      soundManager.PlaySound("Bear");
+      soundManager.PlaySound("S3/C3/V1/_1/Bear");
     }
     if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C3V1_2());
@@ -5292,7 +5125,7 @@ class S3C3V1_1 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_1_1.js */
+/* S3C3V1_1_1.js */ 
 class S3C3V1_1_1 extends Scene {
   constructor() {
     super();
@@ -5308,30 +5141,14 @@ class S3C3V1_1_1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage(
-      "background",
-      "../../../Images/S3/C3/V1/_1/_1/background"
-    );
-    imageManager.LoadImage(
-      "bear_before",
-      "../../../Images/S3/C3/V1/_1/_1/bear_before"
-    );
-    imageManager.LoadImage(
-      "bear_after",
-      "../../../Images/S3/C3/V1/_1/_1/bear_after"
-    );
+    imageManager.LoadImage("background", "../../../Images/S3/C3/V1/_1/_1/background");
+    imageManager.LoadImage("bear_before", "../../../Images/S3/C3/V1/_1/_1/bear_before");
+    imageManager.LoadImage("bear_after", "../../../Images/S3/C3/V1/_1/_1/bear_after");
     imageManager.LoadImage(
       "tiger_before",
       "../../../Images/S3/C3/V1/_1/_1/tiger_before"
     );
-    imageManager.LoadImage(
-      "tiger_after",
-      "../../../Images/S3/C3/V1/_1/_1/tiger_after"
-    );
-    soundManager.LoadSound(
-      "evolution",
-      "../../../Sounds/Effects/Evolution.mp3"
-    );
+    imageManager.LoadImage("tiger_after", "../../../Images/S3/C3/V1/_1/_1/tiger_after");
     this._time = 0;
   }
 
@@ -5401,7 +5218,7 @@ class S3C3V1_1_1 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_1_2.js */
+/* S3C3V1_1_2.js */ 
 class S3C3V1_1_2 extends Scene {
   constructor() {
     super();
@@ -5418,21 +5235,11 @@ class S3C3V1_1_2 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage(
-      "background",
-      "../../../Images/S3/C3/V1/_1/_2/background"
-    );
+    imageManager.LoadImage("background", "../../../Images/S3/C3/V1/_1/_2/background");
     imageManager.LoadImage("bear", "../../../Images/S3/C3/V1/_1/_2/bear");
-    imageManager.LoadImage(
-      "bear_star",
-      "../../../Images/S3/C3/V1/_1/_2/bear_star"
-    );
+    imageManager.LoadImage("bear_star", "../../../Images/S3/C3/V1/_1/_2/bear_star");
     imageManager.LoadImage("tiger", "../../../Images/S3/C3/V1/_1/_2/tiger");
-    imageManager.LoadImage(
-      "tiger_star",
-      "../../../Images/S3/C3/V1/_1/_2/tiger_star"
-    );
-    soundManager.LoadSound("harp", "../../../Sounds/Effects/HarpSound.mp3");
+    imageManager.LoadImage("tiger_star", "../../../Images/S3/C3/V1/_1/_2/tiger_star");
     soundManager.PlaySound("harp");
 
     this._time = 0;
@@ -5494,7 +5301,7 @@ class S3C3V1_1_2 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_2.js */
+/* S3C3V1_2.js */ 
 class S3C3V1_2 extends Scene {
   constructor() {
     super();
@@ -5521,7 +5328,6 @@ class S3C3V1_2 extends Scene {
     imageManager.LoadImage("bear_eye", this.PREFIX + "bear_eye");
     imageManager.LoadImage("tiger1", this.PREFIX + "tiger1");
     imageManager.LoadImage("tiger2", this.PREFIX + "tiger2");
-    soundManager.LoadSound("Tiger", "../../../Sounds/S3/C3/V1/_2/Tiger.mp3");
 
     this.narrFlag = false;
     this.startMinute = minute();
@@ -5531,7 +5337,7 @@ class S3C3V1_2 extends Scene {
   OnDraw() {
     if (!this.narrFlag) {
       this.narrFlag = true;
-      soundManager.PlaySound("Tiger");
+      soundManager.PlaySound("S3/C3/V1/_2/Tiger");
     }
     imageManager.DrawImage("background", createVector(width / 2, height / 2));
     imageManager.DrawImage("text", createVector(width / 2, height / 2));
@@ -5564,7 +5370,7 @@ class S3C3V1_2 extends Scene {
   }
 }
 
-/* S3C3V1_2_1.js */
+/* S3C3V1_2_1.js */ 
 class S3C3V1_2_1 extends Scene {
   constructor() {
     super();
@@ -5603,18 +5409,6 @@ class S3C3V1_2_1 extends Scene {
     imageManager.LoadImage("범녀3", this.PREFIX + "범녀3");
     imageManager.LoadImage("웅녀", this.PREFIX + "웅녀");
     imageManager.LoadImage("환웅", this.PREFIX + "환웅");
-    soundManager.LoadSound(
-      "step1",
-      "../../../Sounds/Effects/Step_Grass_01.wav"
-    );
-    soundManager.LoadSound(
-      "step2",
-      "../../../Sounds/Effects/Step_Grass_02.wav"
-    );
-    soundManager.LoadSound(
-      "step3",
-      "../../../Sounds/Effects/Step_Grass_02.wav"
-    );
 
     this.startMinute = minute();
     this.startSecond = second();
@@ -5683,11 +5477,11 @@ class S3C3V1_2_1 extends Scene {
     if (this.stepSeconds >= this.stepSoundInterval && this.stepDuration < 5) {
       this.stepID = int(random(2));
       if (this.stepID === 0) {
-        soundManager.PlaySound("step1");
+        soundManager.PlaySound("../../../Sounds/Effects/step1");
       } else if (this.stepID === 1) {
-        soundManager.PlaySound("step2");
+        soundManager.PlaySound("../../../Sounds/Effects/step2");
       } else if (this.stepID === 2) {
-        soundManager.PlaySound("step3");
+        soundManager.PlaySound("../../../Sounds/Effects/step3");
       }
       this.stepSeconds = 0;
     } else {
@@ -5699,7 +5493,7 @@ class S3C3V1_2_1 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_2_2.js */
+/* S3C3V1_2_2.js */ 
 class S3C3V1_2_2 extends Scene {
   constructor() {
     super();
@@ -5820,7 +5614,7 @@ class S3C3V1_2_2 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_3.js */
+/* S3C3V1_3.js */ 
 class S3C3V1_3 extends Scene {
   constructor() {
     super();
@@ -5851,9 +5645,7 @@ class S3C3V1_3 extends Scene {
     imageManager.LoadImage("sky", this.PREFIX + "sky");
     imageManager.LoadImage("sun", this.PREFIX + "sun");
     imageManager.LoadImage("text", this.PREFIX + "text");
-    soundManager.LoadSound("bird", "../../../Sounds/Effects/NatureSound.wav");
-    soundManager.LoadSound("chicken", "../../../Sounds/Effects/Chicken_02.mp3");
-    soundManager.PlaySound("bird");
+    soundManager.PlaySound("../../../Sounds/Effects/bird");
   }
 
   OnDraw() {
@@ -5876,7 +5668,7 @@ class S3C3V1_3 extends Scene {
     imageManager.DrawImage("text", this.centerVector);
 
     if (!this.playingChicken && this.chickenTime > 1) {
-      soundManager.PlaySound("chicken");
+      soundManager.PlaySound("../../../Sounds/Effects/chicken");
       this.playingChicken = true;
     } else {
       this.chickenTime += deltaTime / 1000; // Convert milliseconds to seconds
@@ -5893,7 +5685,7 @@ class S3C3V1_3 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_3_1.js */
+/* S3C3V1_3_1.js */ 
 class S3C3V1_3_1 extends Scene {
   constructor() {
     super();
@@ -5928,7 +5720,6 @@ class S3C3V1_3_1 extends Scene {
     imageManager.LoadImage("웅녀", this.PREFIX + "웅녀");
     imageManager.LoadImage("환웅", this.PREFIX + "환웅");
     imageManager.LoadImage("heart", this.PREFIX + "heart");
-    soundManager.LoadSound("Choice", "../../../Sounds/Effects/Choice.mp3");
     soundManager.PlaySound("Choice");
 
     this.startMinute = minute();
@@ -5973,7 +5764,7 @@ class S3C3V1_3_1 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_3_2.js */
+/* S3C3V1_3_2.js */ 
 class S3C3V1_3_2 extends Scene {
   constructor() {
     super();
@@ -6017,7 +5808,7 @@ class S3C3V1_3_2 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_3_3.js */
+/* S3C3V1_3_3.js */ 
 class S3C3V1_3_3 extends Scene {
   constructor() {
     super();
@@ -6033,7 +5824,6 @@ class S3C3V1_3_3 extends Scene {
     imageManager.LoadImage("background", this.BACKGROUND_IMAGE);
     imageManager.LoadImage("dangun", this.DANGUN_IMAGE);
     imageManager.LoadImage("text", "../../../Images/S3/C3/V1/_3/_3/text");
-    soundManager.LoadSound("narr", "../../../Sounds/S3/C3/V1/_3/_3/narr.mp3");
     this.firstFlag = false;
     this.alpha = 255;
     this.preparationTime = 8;
@@ -6061,14 +5851,14 @@ class S3C3V1_3_3 extends Scene {
 
     if (!this.firstFlag) {
       this.firstFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S3/C3/V1/_3/_3/narr");
     }
   }
 
   OnExit() {}
 }
 
-/* S3C3V1_4_1.js */
+/* S3C3V1_4_1.js */ 
 class S3C3V1_4_1 extends Scene {
   constructor() {
     super();
@@ -6103,7 +5893,6 @@ class S3C3V1_4_1 extends Scene {
     imageManager.LoadImage("범녀1", this.PREFIX + "범녀1");
     imageManager.LoadImage("환웅", this.PREFIX + "환웅");
     imageManager.LoadImage("heart", this.PREFIX + "heart");
-    soundManager.LoadSound("Choice", "../../../Sounds/Effects/Choice.mp3");
     soundManager.PlaySound("Choice");
     this.startMinute = minute();
     this.startSecond = second();
@@ -6150,7 +5939,7 @@ class S3C3V1_4_1 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_4_2.js */
+/* S3C3V1_4_2.js */ 
 class S3C3V1_4_2 extends Scene {
   constructor() {
     super();
@@ -6194,7 +5983,7 @@ class S3C3V1_4_2 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V1_4_3.js */
+/* S3C3V1_4_3.js */ 
 class S3C3V1_4_3 extends Scene {
   constructor() {
     super();
@@ -6231,7 +6020,6 @@ class S3C3V1_4_3 extends Scene {
     );
 
     imageManager.LoadImage("text", "../../../Images/S3/C3/V1/_4/_3/text");
-    soundManager.LoadSound("narr", "../../../Sounds/S3/C3/V1/_4/_3/narr.mp3");
 
     this.animationTick = 0;
     this.firstFlag = false;
@@ -6330,7 +6118,7 @@ class S3C3V1_4_3 extends Scene {
     }
     if (!this.firstFlag) {
       this.firstFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S3/C3/V1/_4/_3/narr");
     }
   }
 
@@ -6339,7 +6127,7 @@ class S3C3V1_4_3 extends Scene {
   }
 }
 
-/* S3C3V2.js */
+/* S3C3V2.js */ 
 class S3C3V2 extends Scene {
   constructor() {
     super();
@@ -6363,10 +6151,7 @@ class S3C3V2 extends Scene {
 
   OnEnter() {
     imageManager.LoadImage("text", "../../../Images/S3/C3/V2/_0/text");
-    imageManager.LoadImage(
-      "background",
-      "../../../Images/S3/C3/V2/_0/background"
-    );
+    imageManager.LoadImage("background", "../../../Images/S3/C3/V2/_0/background");
     imageManager.LoadImage("bear1", "../../../Images/S3/C3/V2/_0/bear1");
     imageManager.LoadImage("bear2", "../../../Images/S3/C3/V2/_0/bear2");
 
@@ -6447,7 +6232,7 @@ class S3C3V2 extends Scene {
   }
 }
 
-/* S3C3V2_1_1.js */
+/* S3C3V2_1_1.js */ 
 class S3C3V2_1_1 extends Scene {
   constructor() {
     super();
@@ -6480,8 +6265,7 @@ class S3C3V2_1_1 extends Scene {
     imageManager.LoadImage("sky", this.PREFIX + "sky");
     imageManager.LoadImage("sun", this.PREFIX + "sun");
 
-    soundManager.LoadSound("narr", this.SOUND_PREFIX + "narr.mp3");
-    soundManager.PlaySound("narr");
+    soundManager.PlaySound("S3/C3/V2/_1/_1/narr");
   }
 
   OnDraw() {
@@ -6516,7 +6300,7 @@ class S3C3V2_1_1 extends Scene {
   }
 }
 
-/* S3C3V2_1_2.js */
+/* S3C3V2_1_2.js */ 
 class S3C3V2_1_2 extends Scene {
   constructor() {
     super();
@@ -6532,33 +6316,14 @@ class S3C3V2_1_2 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage(
-      "background",
-      "../../../Images/S3/C3/V2/_1/_2/background"
-    );
+    imageManager.LoadImage("background", "../../../Images/S3/C3/V2/_1/_2/background");
     imageManager.LoadImage("text", "../../../Images/S3/C3/V2/_1/_2/text");
 
-    imageManager.LoadImage(
-      "girlbody",
-      "../../../Images/S3/C3/V2/_1/_2/girlbody"
-    );
-    imageManager.LoadImage(
-      "girlface",
-      "../../../Images/S3/C3/V2/_1/_2/girlface"
-    );
-    imageManager.LoadImage(
-      "girlface2",
-      "../../../Images/S3/C3/V2/_1/_2/girlface2"
-    );
-    imageManager.LoadImage(
-      "girlhand",
-      "../../../Images/S3/C3/V2/_1/_2/girlhand"
-    );
+    imageManager.LoadImage("girlbody", "../../../Images/S3/C3/V2/_1/_2/girlbody");
+    imageManager.LoadImage("girlface", "../../../Images/S3/C3/V2/_1/_2/girlface");
+    imageManager.LoadImage("girlface2", "../../../Images/S3/C3/V2/_1/_2/girlface2");
+    imageManager.LoadImage("girlhand", "../../../Images/S3/C3/V2/_1/_2/girlhand");
 
-    soundManager.LoadSound(
-      "woonggirl",
-      "../../../Sounds/S3/C3/V2/_1/_2/narr/woonggirl.mp3"
-    );
     this.startMillis = millis();
 
     this.GIRL_X = 600;
@@ -6605,10 +6370,10 @@ class S3C3V2_1_2 extends Scene {
       );
     }
     if (
-      soundManager.hasSound("woonggirl") &&
+      soundManager.hasSound("S3/C3/V2/_1/_2/woonggirl") &&
       isTimeExceededMillis(this.startMillis, 1)
     ) {
-      soundManager.playSoundOnce("woonggirl");
+      soundManager.playSoundOnce("S3/C3/V2/_1/_2/woonggirl");
     }
     // 씬 시작 후 SCENE_DURATION 초 경과시 다음 장면으로 이동
     if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
@@ -6621,7 +6386,7 @@ class S3C3V2_1_2 extends Scene {
   }
 }
 
-/* S3C3V2_1_3.js */
+/* S3C3V2_1_3.js */ 
 class S3C3V2_1_3 extends Scene {
   constructor() {
     super();
@@ -6641,58 +6406,25 @@ class S3C3V2_1_3 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage(
-      "background",
-      "../../../Images/S3/C3/V2/_1/_3/background"
-    );
+    imageManager.LoadImage("background", "../../../Images/S3/C3/V2/_1/_3/background");
     imageManager.LoadImage(
       "hwanwoong_text",
       "../../../Images/S3/C3/V2/_1/_3/hwanwoong_text"
     );
-    imageManager.LoadImage(
-      "girl_text",
-      "../../../Images/S3/C3/V2/_1/_3/girl_text"
-    );
+    imageManager.LoadImage("girl_text", "../../../Images/S3/C3/V2/_1/_3/girl_text");
 
-    soundManager.LoadSound(
-      "woonggirl",
-      "../../../Sounds/S3/C3/V2/_1/_3/narr/woonggirl.mp3"
-    );
-    soundManager.LoadSound(
-      "hwanwoong",
-      "../../../Sounds/S3/C3/V2/_1/_3/narr/hwanwoong.mp3"
-    );
 
     // girl
     imageManager.LoadImage("girl_body", "../../../Images/S3/C3/V2/_1/_3/girl");
-    imageManager.LoadImage(
-      "girl_eye_1",
-      "../../../Images/S3/C3/V2/_1/_3/girleye1"
-    );
-    imageManager.LoadImage(
-      "girl_eye_2",
-      "../../../Images/S3/C3/V2/_1/_3/girleye2"
-    );
+    imageManager.LoadImage("girl_eye_1", "../../../Images/S3/C3/V2/_1/_3/girleye1");
+    imageManager.LoadImage("girl_eye_2", "../../../Images/S3/C3/V2/_1/_3/girleye2");
 
     // hwan
     imageManager.LoadImage("hwan_body", "../../../Images/S3/C3/V2/_1/_3/hwan");
-    imageManager.LoadImage(
-      "hwan_mouse_1",
-      "../../../Images/S3/C3/V2/_1/_3/hwanmouse1"
-    );
-    imageManager.LoadImage(
-      "hwan_mouse_2",
-      "../../../Images/S3/C3/V2/_1/_3/hwanmouse2"
-    );
-    imageManager.LoadImage(
-      "hwan_shoe_1",
-      "../../../Images/S3/C3/V2/_1/_3/hwanshoe"
-    );
-    imageManager.LoadImage(
-      "hwan_shoe_2",
-      "../../../Images/S3/C3/V2/_1/_3/hwanshoe2"
-    );
-    soundManager.LoadSound("Step", "../../../Sounds/Effects/Step_Rock_02.mp3");
+    imageManager.LoadImage("hwan_mouse_1", "../../../Images/S3/C3/V2/_1/_3/hwanmouse1");
+    imageManager.LoadImage("hwan_mouse_2", "../../../Images/S3/C3/V2/_1/_3/hwanmouse2");
+    imageManager.LoadImage("hwan_shoe_1", "../../../Images/S3/C3/V2/_1/_3/hwanshoe");
+    imageManager.LoadImage("hwan_shoe_2", "../../../Images/S3/C3/V2/_1/_3/hwanshoe2");
 
     this.startMillis = millis();
   }
@@ -6774,7 +6506,7 @@ class S3C3V2_1_3 extends Scene {
       );
     }
     if (this.stepTime > 0.5 && this.curTime < 4.8) {
-      soundManager.PlaySound("Step");
+      soundManager.PlaySound("../../../Sounds/Effects/Step_Rock_02");
       this.stepTime = 0;
     } else {
       this.stepTime += timeManager.deltaTime;
@@ -6789,27 +6521,27 @@ class S3C3V2_1_3 extends Scene {
   sound() {
     // 씬 시작 후 1초 뒤 대사1 시작
     if (
-      soundManager.hasSound("hwanwoong") &&
+      soundManager.hasSound("S3/C3/V2/_1/_3/hwanwoong") &&
       isTimeExceededMillis(this.startMillis, 1)
     ) {
-      this.narrDuration = soundManager.soundDuration("hwanwoong");
-      soundManager.playSoundOnce("hwanwoong");
+      this.narrDuration = soundManager.soundDuration("S3/C3/V2/_1/_3/hwanwoong");
+      soundManager.playSoundOnce("S3/C3/V2/_1/_3/hwanwoong");
       this.startMillis = millis(); // 대사 1 시작 millis
     }
     // 대사 1 종료 후 1.2초 뒤 대사2 시작
     if (
-      !soundManager.hasSound("hwanwoong") &&
-      soundManager.hasSound("woonggirl") &&
+      !soundManager.hasSound("S3/C3/V2/_1/_3/hwanwoong") &&
+      soundManager.hasSound("S3/C3/V2/_1/_3/woonggirl") &&
       isTimeExceededMillis(this.startMillis, this.narrDuration + 1.2)
     ) {
-      this.narrDuration = soundManager.soundDuration("woonggirl");
-      soundManager.playSoundOnce("woonggirl");
+      this.narrDuration = soundManager.soundDuration("S3/C3/V2/_1/_3/woonggirl");
+      soundManager.playSoundOnce("S3/C3/V2/_1/_3/woonggirl");
       this.startMillis = millis();
     }
     // 대사 2 종료 후 1초 뒤 다음 장면으로 이동
     if (
-      !soundManager.hasSound("hwanwoong") &&
-      !soundManager.hasSound("woonggirl") &&
+      !soundManager.hasSound("S3/C3/V2/_1/_3/hwanwoong") &&
+      !soundManager.hasSound("S3/C3/V2/_1/_3/woonggirl") &&
       isTimeExceededMillis(this.startMillis, this.narrDuration + 1.0)
     ) {
       sceneManager.ChangeScene(new S3C3V2_2_1());
@@ -6817,7 +6549,7 @@ class S3C3V2_1_3 extends Scene {
   }
 }
 
-/* S3C3V2_2_1.js */
+/* S3C3V2_2_1.js */ 
 class S3C3V2_2_1 extends Scene {
   constructor() {
     super();
@@ -6837,7 +6569,6 @@ class S3C3V2_2_1 extends Scene {
     imageManager.LoadImage("couple", this.PREFIX + "couple");
     imageManager.LoadImage("extra_left", this.PREFIX + "extra_left");
     imageManager.LoadImage("extra_right", this.PREFIX + "extra_right");
-    soundManager.LoadSound("haha", this.SOUND_PREFIX + "haha.mp3");
 
     this.startMillis = millis(); // 씬 시작 millis
   }
@@ -6886,7 +6617,7 @@ class S3C3V2_2_1 extends Scene {
   }
 }
 
-/* S3C3V2_2_2.js */
+/* S3C3V2_2_2.js */ 
 class S3C3V2_2_2 extends Scene {
   constructor() {
     super();
@@ -6930,7 +6661,7 @@ class S3C3V2_2_2 extends Scene {
   OnExit() {}
 }
 
-/* S3C3V2_2_3.js */
+/* S3C3V2_2_3.js */ 
 class S3C3V2_2_3 extends Scene {
   constructor() {
     super();
@@ -6943,8 +6674,7 @@ class S3C3V2_2_3 extends Scene {
     imageManager.LoadImage("background", this.PREFIX + "background");
     imageManager.LoadImage("text", this.PREFIX + "text");
     imageManager.LoadImage("dangun", this.PREFIX + "dangun");
-    soundManager.LoadSound("narr", this.SOUND_PREFIX + "narr.mp3");
-    soundManager.PlaySound("narr");
+    soundManager.PlaySound("S3/C3/V2/_2/_3/narr");
     timeManager.enterTime = timeManager.time;
   }
 
@@ -6970,7 +6700,7 @@ class S3C3V2_2_3 extends Scene {
   }
 }
 
-/* SceneManager.js */
+/* SceneManager.js */ 
 class SceneManager {
   constructor() {
     this.currentScene = null;
@@ -7086,7 +6816,7 @@ class SceneManager {
   }
 }
 
-/* SoundManager.js */
+/* SoundManager.js */ 
 class SoundManager {
   constructor() {
     this.sounds = new Map();
@@ -7097,24 +6827,9 @@ class SoundManager {
     this.sounds.clear();
   }
 
-  // 이 부분에서 preload() 함수를 사용하여 사운드를 미리 로드합니다.
-  preloadSound(filename) {
-    return new Promise((resolve, reject) => {
-      let sound = loadSound(
-        filename,
-        () => resolve(sound),
-        () => reject()
-      );
-    });
-  }
-
-  async LoadSound(name, filename) {
-    try {
-      let sound = await this.preloadSound(filename);
-      this.sounds.set(name, sound);
-    } catch (error) {
-      console.error(`Failed to load sound ${filename}`);
-    }
+  LoadSound(name, filename) {
+    let sound = loadSound(filename);
+    this.sounds.set(name, sound);
   }
 
   PlaySound(name) {
@@ -7168,7 +6883,7 @@ class SoundManager {
   }
 }
 
-/* TimelineManager.js */
+/* TimelineManager.js */ 
 class Timeline {
   constructor(callback, endTime) {
     this.callback = callback;
@@ -7244,7 +6959,7 @@ class TimelineManager {
   }
 }
 
-/* TimeManager.js */
+/* TimeManager.js */ 
 class TimeManager {
   constructor() {
     this.deltaTime = 0;
@@ -7261,7 +6976,7 @@ class TimeManager {
   }
 }
 
-/* Utilities.js */
+/* Utilities.js */ 
 function DrawFont(fontName, textContent, col, size, x, y) {
   loadFont(`../fonts/${fontName}`, (font) => {
     background(col);
@@ -7285,7 +7000,7 @@ function isTimeExceededMillis(startMillis, endSeconds) {
   return nowTotalMilliseconds - startMillis >= endMilliseconds;
 }
 
-/* DangunMyth.js */
+/* DangunMyth.js */ 
 let sceneManager;
 let imageManager;
 let fontManager;
@@ -7293,6 +7008,97 @@ let timeManager;
 let soundManager;
 let sceneList = [];
 let QAMode = false; // 이 변수를 true로 바꾸면 시간에 따른 씬 전환 안됩니다
+
+function preload(){
+  soundManager = new SoundManager();
+  
+  soundManager.LoadSound("Credit", "../../../Sounds/BGM/EndingCredit.mp3");
+  soundManager.LoadSound("intro", "../../../Sounds/intro.wav");
+  soundManager.LoadSound("S1/C1/narr", "../../../Sounds/S1/C1/narr/narr1.mp3");
+  soundManager.LoadSound("S1/C1/narr2", "../../../Sounds/S1/C1/narr/narr2.mp3");
+  soundManager.LoadSound("S1/C1/narr3", "../../../Sounds/S1/C1/narr/narr3.mp3");
+  soundManager.LoadSound("S1/C3/narr", "../../../Sounds/S1/C3/narr/narr.mp3");
+  soundManager.LoadSound("S1/C4/narr", "../../../Sounds/S1/C4/narr/narr.mp3");
+  soundManager.LoadSound("S1/C5/narr", "../../../Sounds/S1/C5/narr/narr.mp3");
+  soundManager.LoadSound("S1/C6-1/narr", "../../../Sounds/S1/C6-1/narr/narr.mp3");
+  soundManager.LoadSound("S1/C6-1/hwanin", "../../../Sounds/S1/C6-1/narr/hwanin.mp3");
+  soundManager.LoadSound("S1/C6-1/hwanwoong", "../../../Sounds/S1/C6-1/narr/hwanwung.mp3");
+  soundManager.LoadSound("S1/C6-2/hwanwoong", "../../../Sounds/S1/C6-2/narr/narr.mp3");
+  soundManager.LoadSound("S1/C6-2/hwanin", "../../../Sounds/S1/C6-2/narr/hwanin.mp3");
+  soundManager.LoadSound("S1/C7/hwan", "../../../Sounds/S1/C7/narr/hwan.mp3");
+  soundManager.LoadSound("NarrS1C8", "../../../Sounds/S1/C8/narr/narr.mp3");
+  soundManager.LoadSound("HawninS1C8", "../../../Sounds/S1/C8/narr/hwanin.mp3");
+  soundManager.LoadSound("S1/C9/hwanwoog", "../../../Sounds/S1/C9/narr/hwanwoong.mp3");
+  soundManager.LoadSound("S1/C11/hwanin", "../../../Sounds/S1/C11/narr/hwanin.mp3");
+  soundManager.LoadSound("S1/C11/hwanwoong", "../../../Sounds/S1/C11/narr/hwanwoong.mp3");
+  soundManager.LoadSound("Door", "../../../Sounds/Effects/WoodenDoorOpen.mp3");
+  soundManager.LoadSound("effect", "../../../Sounds/S1/C14/effect/effect.wav");
+  soundManager.LoadSound("Interaction1", "../../../Sounds/S1/C15/Interaction1.wav");
+  soundManager.LoadSound("crash", "../../../Sounds/S1/C15/crash.mp3");
+  soundManager.LoadSound("HWANUNG_NARR1", "../../../Sounds/S1/C15-1/narr/narr1.mp3");
+  soundManager.LoadSound("S1/C16/narr", "../../../Sounds/S1/C16/narr/narr.mp3");
+  soundManager.LoadSound("Bush", "../../../Sounds/Effects/BushRustle.mp3");
+  soundManager.LoadSound("S1C18_NARR", "../../../Sounds/S1/C18/narr/narr.mp3");
+  soundManager.LoadSound("S1C18_TIGER", "../../../Sounds/S1/C18/narr/tiger.mp3");
+  soundManager.LoadSound("S1C18_BEAR", "../../../Sounds/S1/C18/narr/bear.mp3");
+  soundManager.LoadSound("S1/C19-1/narr", "../../../Sounds/S1/C19-1/narr.mp3");
+  soundManager.LoadSound("S1/C19-1/Bear", "../../../Sounds/S1/C19-1/Bear.mp3");
+  soundManager.LoadSound("S1/C19-2/hwanwoong1", "../../../Sounds/S1/C19-2/hwanwoong1.mp3");
+  soundManager.LoadSound("S1/C19-3/hwanwoong1", "../../../Sounds/S1/C19-3/hwanwoong1.mp3");
+  soundManager.LoadSound("S1/C19-3/hwanwoong2", "../../../Sounds/S1/C19-3/hwanwoong2.mp3");
+  soundManager.LoadSound("S1/C19-3/Bear", "../../../Sounds/S1/C19-3/Bear.mp3");
+  soundManager.LoadSound("S2/C1/step", "../../../Sounds/S2/C1/effect/Step_Grass_01.wav");
+  soundManager.LoadSound(
+    "S2_S3_FootStuckRock",
+    "../../../Sounds/Effects/FootStuckRock2.mp3"
+  );
+  soundManager.LoadSound("../../../Sounds/Effects/step1", "../../../Sounds/Effects/Step_Cave2.mp3");
+  soundManager.LoadSound("../../../Sounds/Effects/step2", "../../../Sounds/Effects/Step_Cave3.mp3");
+  soundManager.LoadSound("../../../Sounds/Effects/step3", "../../../Sounds/Effects/Step_Cave4.mp3");
+  soundManager.LoadSound("S2C3_narr1", "../../../Sounds/S2/C3/narr/narr1.mp3");
+  soundManager.LoadSound("S2/C4/narr1", "../../../Sounds/S2/C4/narr/narr1.mp3");
+  soundManager.LoadSound("S2/C4/narr2", "../../../Sounds/S2/C4/narr/narr2.mp3");
+  soundManager.LoadSound("S2/C4/narr3", "../../../Sounds/S2/C4/narr/narr3.mp3");
+  soundManager.LoadSound("effect", "../../../Sounds/S2/C5/effect/effect.wav");
+  soundManager.LoadSound("S2/C6/V2/narr1", "../../../Sounds/S2/C6/V2/narr/narr1.mp3");
+  soundManager.LoadSound("S2/C6/V2/narr2", "../../../Sounds/S2/C6/V2/narr/narr2.mp3");
+  soundManager.LoadSound("S2/C6/V2/narr3", "../../../Sounds/S2/C6/V2/narr/narr3.mp3");
+  soundManager.LoadSound("item_click", "../../../Sounds/S2/C6/item_click.wav");
+  soundManager.LoadSound("S2/C6/bgm", "../../../Sounds/S2/C6/bgm.mp3");
+  soundManager.LoadSound("yum", "../../../Sounds/Effects/YumYum.mp3");
+  soundManager.LoadSound("S2/C8/narr", "../../../Sounds/S2/C8/narr/narr.mp3");
+  soundManager.LoadSound("Chicken", "../../../Sounds/Effects/Chicken_02.mp3");
+  soundManager.LoadSound("S3/C1/narr", "../../../Sounds/S3/C1/narr/narr.mp3");
+  soundManager.LoadSound("S3/C2/effect", "../../../Sounds/S3/C2/effect/effect.wav");
+  soundManager.LoadSound("evolution", "../../../Sounds/Effects/Evolution.mp3");
+  soundManager.LoadSound("harp", "../../../Sounds/Effects/HarpSound.mp3");
+  soundManager.LoadSound("S3/C3/V1/_1/Bear", "../../../Sounds/S3/C3/V1/_1/Bear.mp3");
+  soundManager.LoadSound("../../../Sounds/Effects/step1", "../../../Sounds/Effects/Step_Grass_01.wav");
+  soundManager.LoadSound("../../../Sounds/Effects/step2", "../../../Sounds/Effects/Step_Grass_02.wav");
+  soundManager.LoadSound("../../../Sounds/Effects/step3", "../../../Sounds/Effects/Step_Grass_02.wav");
+  soundManager.LoadSound("S3/C3/V1/_2/Tiger", "../../../Sounds/S3/C3/V1/_2/Tiger.mp3");
+  soundManager.LoadSound("Choice", "../../../Sounds/Effects/Choice.mp3");
+  soundManager.LoadSound("S3/C3/V1/_3/_3/narr", "../../../Sounds/S3/C3/V1/_3/_3/narr.mp3");
+  soundManager.LoadSound("../../../Sounds/Effects/bird", "../../../Sounds/Effects/NatureSound.wav");
+  soundManager.LoadSound("../../../Sounds/Effects/chicken", "../../../Sounds/Effects/Chicken_02.mp3");
+  soundManager.LoadSound("S3/C3/V1/_4/_3/narr", "../../../Sounds/S3/C3/V1/_4/_3/narr.mp3");
+  soundManager.LoadSound("S3/C3/V2/_1/_1/narr", "../../../Sounds/S3/C3/V2/_1/_1/narr/narr.mp3");
+  soundManager.LoadSound(
+    "S3/C3/V2/_1/_2/woonggirl",
+    "../../../Sounds/S3/C3/V2/_1/_2/narr/woonggirl.mp3"
+  );
+  soundManager.LoadSound(
+    "S3/C3/V2/_1/_3/woonggirl",
+    "../../../Sounds/S3/C3/V2/_1/_3/narr/woonggirl.mp3"
+  );
+  soundManager.LoadSound(
+    "S3/C3/V2/_1/_3/hwanwoong",
+    "../../../Sounds/S3/C3/V2/_1/_3/narr/hwanwoong.mp3"
+  );
+  soundManager.LoadSound("../../../Sounds/Effects/Step_Rock_02", "../../../Sounds/Effects/Step_Rock_02.mp3");
+  soundManager.LoadSound("haha", "../../../Sounds/S3/C3/V2/_2/_1/narr/haha.mp3");
+  soundManager.LoadSound("S3/C3/V2/_2/_3/narr", "../../../Sounds/S3/C3/V2/_2/_3/narr/narr.mp3");
+}
 
 function setup() {
   createCanvas(1280, 720, P2D);
@@ -7305,7 +7111,6 @@ function setup() {
   imageManager = new ImageManager();
   timeManager = new TimeManager();
   sceneManager = new SceneManager();
-  soundManager = new SoundManager();
 
   // S1(0 ~ 21)
   sceneList.push(new Opening());

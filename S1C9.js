@@ -16,7 +16,6 @@ class S1C9 extends Scene {
     imageManager.LoadImage("cloud02", "Images/S1/C9/cloud_02");
     imageManager.LoadImage("cloud03", "Images/S1/C9/cloud_03");
     imageManager.LoadImage("hand", "Images/S1/C9/hand");
-    soundManager.LoadSound("hwanwoog", "Sounds/S1/C9/narr/hwanwoong.mp3");
 
     this.cloudX = 0;
     this.handY = 0;
@@ -67,10 +66,10 @@ class S1C9 extends Scene {
 
     // 씬 시작 후 1초 뒤 대사1 시작
     if (
-      soundManager.hasSound("hwanwoog") &&
+      soundManager.hasSound("S1/C9/hwanwoog") &&
       isTimeExceededMillis(this.startMillis, 1)
     ) {
-      soundManager.playSoundOnce("hwanwoog");
+      soundManager.playSoundOnce("S1/C9/hwanwoog");
     }
   }
 

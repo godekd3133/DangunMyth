@@ -34,7 +34,6 @@ class S3C3V1_4_3 extends Scene {
     );
 
     imageManager.LoadImage("text", "Images/S3/C3/V1/_4/_3/text");
-    soundManager.LoadSound("narr", "Sounds/S3/C3/V1/_4/_3/narr.mp3");
 
     this.animationTick = 0;
     this.firstFlag = false;
@@ -133,7 +132,7 @@ class S3C3V1_4_3 extends Scene {
     }
     if (!this.firstFlag) {
       this.firstFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S3/C3/V1/_4/_3/narr");
     }
   }
 

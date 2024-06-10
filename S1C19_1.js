@@ -35,8 +35,6 @@ class S1C19_1 extends Scene {
 
     imageManager.LoadImage("C19-1-Text", "Images/S1/C19/C19-1-Text");
 
-    soundManager.LoadSound("narr", "Sounds/S1/C19-1/narr.mp3");
-    soundManager.LoadSound("Bear", "Sounds/S1/C19-1/Bear.mp3");
   }
 
   OnDraw() {
@@ -76,12 +74,12 @@ class S1C19_1 extends Scene {
 
     if (!this.narrFlag) {
       this.narrFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C19-1/narr");
     }
     if (timeManager.time - this.enterTime >= this.narrDuration) {
       if (!this.animalVoiceFlag) {
         this.animalVoiceFlag = true;
-        soundManager.PlaySound("Bear");
+        soundManager.PlaySound("S1/C19-1/Bear");
       }
     }
     if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {

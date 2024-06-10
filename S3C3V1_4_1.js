@@ -32,7 +32,6 @@ class S3C3V1_4_1 extends Scene {
     imageManager.LoadImage("범녀1", this.PREFIX + "범녀1");
     imageManager.LoadImage("환웅", this.PREFIX + "환웅");
     imageManager.LoadImage("heart", this.PREFIX + "heart");
-    soundManager.LoadSound("Choice", "Sounds/Effects/Choice.mp3");
     soundManager.PlaySound("Choice");
     this.startMinute = minute();
     this.startSecond = second();

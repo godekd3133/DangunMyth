@@ -24,8 +24,6 @@ class S2C6 extends Scene {
     imageManager.LoadImage("tiger_hand", "Images/S2/C6/tiger_hand");
     imageManager.LoadImage("tiger_click", "Images/S2/C6/tiger_click");
     imageManager.LoadImage("transparent", "Images/S2/C6/transparent");
-    soundManager.LoadSound("item_click", "Sounds/S2/C6/item_click.wav");
-    soundManager.LoadSound("bgm", "Sounds/S2/C6/bgm.mp3");
 
     this.m_Items = new Array(25);
     this.m_ItemsLoc = new Array(25);
@@ -45,7 +43,7 @@ class S2C6 extends Scene {
     this.m_SookCnt = 0;
     this.m_ManulCnt = 0;
 
-    soundManager.PlaySound("bgm");
+    soundManager.PlaySound("S2/C6/bgm");
     fontManager.LoadFont("lee", "LeeSeoyun.otf");
   }
 
@@ -189,7 +187,7 @@ class S2C6 extends Scene {
   }
 
   OnExit() {
-    soundManager.StopSound("bgm");
+    soundManager.StopSound("S2/C6/bgm");
   }
 
   OnMousePressed() {

@@ -13,7 +13,6 @@ class S3C3V1_3_3 extends Scene {
     imageManager.LoadImage("background", this.BACKGROUND_IMAGE);
     imageManager.LoadImage("dangun", this.DANGUN_IMAGE);
     imageManager.LoadImage("text", "Images/S3/C3/V1/_3/_3/text");
-    soundManager.LoadSound("narr", "Sounds/S3/C3/V1/_3/_3/narr.mp3");
     this.firstFlag = false;
     this.alpha = 255;
     this.preparationTime = 8;
@@ -41,7 +40,7 @@ class S3C3V1_3_3 extends Scene {
 
     if (!this.firstFlag) {
       this.firstFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S3/C3/V1/_3/_3/narr");
     }
   }
 

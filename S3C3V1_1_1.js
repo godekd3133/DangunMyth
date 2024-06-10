@@ -21,7 +21,6 @@ class S3C3V1_1_1 extends Scene {
       "Images/S3/C3/V1/_1/_1/tiger_before"
     );
     imageManager.LoadImage("tiger_after", "Images/S3/C3/V1/_1/_1/tiger_after");
-    soundManager.LoadSound("evolution", "Sounds/Effects/Evolution.mp3");
     this._time = 0;
   }
 

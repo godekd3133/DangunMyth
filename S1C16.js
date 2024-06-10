@@ -23,14 +23,13 @@ class S1C16 extends Scene {
     imageManager.LoadImage("hwanung1", "Images/S1/C16/hwanung1");
     imageManager.LoadImage("hwanung2", "Images/S1/C16/hwanung2");
     imageManager.LoadImage("text", "Images/S1/C16/text");
-    soundManager.LoadSound("narr", "Sounds/S1/C16/narr/narr.mp3");
     this.isNarrOut = false;
     this.enterTime = timeManager.time;
   }
 
   OnDraw() {
     if (!this.isNarrOut) {
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C16/narr");
       this.isNarrOut = true;
     }
 

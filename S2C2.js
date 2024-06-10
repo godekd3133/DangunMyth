@@ -38,13 +38,6 @@ class S2C2 extends Scene {
     imageManager.LoadImage("bear_face", "Images/S2/C2/bear_face");
     imageManager.LoadImage("bear_left", "Images/S2/C2/bear_foot_right");
     imageManager.LoadImage("bear_right", "Images/S2/C2/bear_foot_left");
-    soundManager.LoadSound(
-      "S2_S3_FootStuckRock",
-      "Sounds/Effects/FootStuckRock2.mp3"
-    );
-    soundManager.LoadSound("step1", "Sounds/Effects/Step_Cave2.mp3");
-    soundManager.LoadSound("step2", "Sounds/Effects/Step_Cave3.mp3");
-    soundManager.LoadSound("step3", "Sounds/Effects/Step_Cave4.mp3");
     imageManager.LoadImage("tiger1", "Images/S2/C2/tiger1");
     imageManager.LoadImage("tiger2", "Images/S2/C2/tiger2");
     imageManager.LoadImage("tiger3", "Images/S2/C2/tiger3");
@@ -110,11 +103,11 @@ class S2C2 extends Scene {
       ) {
         this.stepID = floor(random(2));
         if (this.stepID === 0) {
-          soundManager.PlaySound("step1");
+          soundManager.PlaySound("Sounds/Effects/step1");
         } else if (this.stepID === 1) {
-          soundManager.PlaySound("step2");
+          soundManager.PlaySound("Sounds/Effects/step2");
         } else if (this.stepID === 2) {
-          soundManager.PlaySound("step3");
+          soundManager.PlaySound("Sounds/Effects/step3");
         }
         this.stepSeconds = 0;
       } else {

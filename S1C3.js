@@ -31,7 +31,6 @@ class S1C3 extends Scene {
     imageManager.LoadImage("god", this.GOD_IMAGE);
     imageManager.LoadImage("face", this.DEFAULT_FACE);
     imageManager.LoadImage("text", "Images/S1/C3/text");
-    soundManager.LoadSound("narr", "Sounds/S1/C3/narr/narr.mp3");
 
     let imageCount = this.TELLING_FACES.length;
     this.currentImageIndex = 0;
@@ -68,7 +67,7 @@ class S1C3 extends Scene {
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C3/narr");
     }
 
     imageManager.DrawImageScale(

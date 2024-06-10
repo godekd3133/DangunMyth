@@ -23,7 +23,6 @@ class S2C1 extends Scene {
     imageManager.LoadImage("bear1", "Images/S2/C1/bear1");
     imageManager.LoadImage("bear2", "Images/S2/C1/bear2");
     imageManager.LoadImage("bear3", "Images/S2/C1/bear3");
-    soundManager.LoadSound("step", "Sounds/S2/C1/effect/Step_Grass_01.wav");
 
     this.walkTick = 0;
     this.soundTick = 0;
@@ -57,7 +56,7 @@ class S2C1 extends Scene {
       }
 
       if (this.soundTick > this.SOUND_INTERVAL) {
-        soundManager.PlaySound("step");
+        soundManager.PlaySound("S2/C1/step");
         this.soundTick = 0;
       }
     }

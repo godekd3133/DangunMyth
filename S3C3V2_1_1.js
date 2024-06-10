@@ -30,8 +30,7 @@ class S3C3V2_1_1 extends Scene {
     imageManager.LoadImage("sky", this.PREFIX + "sky");
     imageManager.LoadImage("sun", this.PREFIX + "sun");
 
-    soundManager.LoadSound("narr", this.SOUND_PREFIX + "narr.mp3");
-    soundManager.PlaySound("narr");
+    soundManager.PlaySound("S3/C3/V2/_1/_1/narr");
   }
 
   OnDraw() {
