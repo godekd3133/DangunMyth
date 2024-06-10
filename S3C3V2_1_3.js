@@ -117,7 +117,7 @@ class S3C3V2_1_3 extends Scene {
       );
     }
     if (this.stepTime > 0.5 && this.curTime < 4.8) {
-      soundManager.PlaySound("Sounds/Effects/Step_Rock_02");
+      soundManager.PlaySound("Effects/Step_Rock_02");
       this.stepTime = 0;
     } else {
       this.stepTime += timeManager.deltaTime;

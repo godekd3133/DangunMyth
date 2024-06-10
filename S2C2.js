@@ -103,11 +103,11 @@ class S2C2 extends Scene {
       ) {
         this.stepID = floor(random(2));
         if (this.stepID === 0) {
-          soundManager.PlaySound("Sounds/Effects/step1");
+          soundManager.PlaySound("Effects/Step_Cave2");
         } else if (this.stepID === 1) {
-          soundManager.PlaySound("Sounds/Effects/step2");
+          soundManager.PlaySound("Effects/Step_Cave3");
         } else if (this.stepID === 2) {
-          soundManager.PlaySound("Sounds/Effects/step3");
+          soundManager.PlaySound("Effects/Step_Cave4");
         }
         this.stepSeconds = 0;
       } else {

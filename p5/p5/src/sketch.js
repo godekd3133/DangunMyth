@@ -1208,7 +1208,7 @@ class S1C13 extends Scene {
       );
     }
     this.startMillis = millis();
-    soundManager.PlaySound("Door");
+    soundManager.PlaySound("Effects/WoodenDoorOpen");
   }
 
   OnDraw() {
@@ -1282,7 +1282,7 @@ class S1C14 extends Scene {
 
       if (mouseIsPressed) {
         if (!this.isEffectOut) {
-          soundManager.PlaySound("effect");
+          soundManager.PlaySound("S1/C14/effect");
           this.isEffectOut = !this.isEffectOut;
         }
         // 미니 게임 씬 이동
@@ -2098,7 +2098,7 @@ class S1C17 extends Scene {
       max(abs(sin(millis() / 120 + 0.674)) * 1.6 - 0.6, 0) * 10;
 
     if (timeManager.time - this.enterTime > 1.5 && !this.playingBushRustle) {
-      soundManager.PlaySound("Bush");
+      soundManager.PlaySound("Effects/BushRustle");
       this.playingBushRustle = true;
     }
     if (this.BEAR_POP <= 450) {
@@ -3752,11 +3752,11 @@ class S2C2 extends Scene {
       ) {
         this.stepID = floor(random(2));
         if (this.stepID === 0) {
-          soundManager.PlaySound("../../../Sounds/Effects/step1");
+          soundManager.PlaySound("Effects/Step_Cave2");
         } else if (this.stepID === 1) {
-          soundManager.PlaySound("../../../Sounds/Effects/step2");
+          soundManager.PlaySound("Effects/Step_Cave3");
         } else if (this.stepID === 2) {
-          soundManager.PlaySound("../../../Sounds/Effects/step3");
+          soundManager.PlaySound("Effects/Step_Cave4");
         }
         this.stepSeconds = 0;
       } else {
@@ -4179,7 +4179,7 @@ class S2C5 extends Scene {
 
       if (mouseIsPressed) {
         if (!this.isEffectOut) {
-          soundManager.PlaySound("effect");
+          soundManager.PlaySound("S2/C5/effect");
           this.isEffectOut = !this.isEffectOut;
         }
         // Navigate to the mini-game scene
@@ -5477,11 +5477,11 @@ class S3C3V1_2_1 extends Scene {
     if (this.stepSeconds >= this.stepSoundInterval && this.stepDuration < 5) {
       this.stepID = int(random(2));
       if (this.stepID === 0) {
-        soundManager.PlaySound("../../../Sounds/Effects/step1");
+        soundManager.PlaySound("Effects/Step_Grass_01");
       } else if (this.stepID === 1) {
-        soundManager.PlaySound("../../../Sounds/Effects/step2");
+        soundManager.PlaySound("Effects/Step_Grass_02");
       } else if (this.stepID === 2) {
-        soundManager.PlaySound("../../../Sounds/Effects/step3");
+        soundManager.PlaySound("Effects/Step_Grass_02");
       }
       this.stepSeconds = 0;
     } else {
@@ -5645,7 +5645,7 @@ class S3C3V1_3 extends Scene {
     imageManager.LoadImage("sky", this.PREFIX + "sky");
     imageManager.LoadImage("sun", this.PREFIX + "sun");
     imageManager.LoadImage("text", this.PREFIX + "text");
-    soundManager.PlaySound("../../../Sounds/Effects/bird");
+    soundManager.PlaySound("Effects/NatureSound");
   }
 
   OnDraw() {
@@ -5668,7 +5668,7 @@ class S3C3V1_3 extends Scene {
     imageManager.DrawImage("text", this.centerVector);
 
     if (!this.playingChicken && this.chickenTime > 1) {
-      soundManager.PlaySound("../../../Sounds/Effects/chicken");
+      soundManager.PlaySound("Effects/Chicken_02");
       this.playingChicken = true;
     } else {
       this.chickenTime += deltaTime / 1000; // Convert milliseconds to seconds
@@ -6506,7 +6506,7 @@ class S3C3V2_1_3 extends Scene {
       );
     }
     if (this.stepTime > 0.5 && this.curTime < 4.8) {
-      soundManager.PlaySound("../../../Sounds/Effects/Step_Rock_02");
+      soundManager.PlaySound("Effects/Step_Rock_02");
       this.stepTime = 0;
     } else {
       this.stepTime += timeManager.deltaTime;
@@ -7011,7 +7011,7 @@ let QAMode = false; // 이 변수를 true로 바꾸면 시간에 따른 씬 전�
 
 function preload(){
   soundManager = new SoundManager();
-  
+
   soundManager.LoadSound("Credit", "../../../Sounds/BGM/EndingCredit.mp3");
   soundManager.LoadSound("intro", "../../../Sounds/intro.wav");
   soundManager.LoadSound("S1/C1/narr", "../../../Sounds/S1/C1/narr/narr1.mp3");
@@ -7031,13 +7031,13 @@ function preload(){
   soundManager.LoadSound("S1/C9/hwanwoog", "../../../Sounds/S1/C9/narr/hwanwoong.mp3");
   soundManager.LoadSound("S1/C11/hwanin", "../../../Sounds/S1/C11/narr/hwanin.mp3");
   soundManager.LoadSound("S1/C11/hwanwoong", "../../../Sounds/S1/C11/narr/hwanwoong.mp3");
-  soundManager.LoadSound("Door", "../../../Sounds/Effects/WoodenDoorOpen.mp3");
-  soundManager.LoadSound("effect", "../../../Sounds/S1/C14/effect/effect.wav");
+  soundManager.LoadSound("Effects/WoodenDoorOpen", "../../../Sounds/Effects/WoodenDoorOpen.mp3");
+  soundManager.LoadSound("S1/C14/effect", "../../../Sounds/S1/C14/effect/effect.wav");
   soundManager.LoadSound("Interaction1", "../../../Sounds/S1/C15/Interaction1.wav");
   soundManager.LoadSound("crash", "../../../Sounds/S1/C15/crash.mp3");
   soundManager.LoadSound("HWANUNG_NARR1", "../../../Sounds/S1/C15-1/narr/narr1.mp3");
   soundManager.LoadSound("S1/C16/narr", "../../../Sounds/S1/C16/narr/narr.mp3");
-  soundManager.LoadSound("Bush", "../../../Sounds/Effects/BushRustle.mp3");
+  soundManager.LoadSound("Effects/BushRustle", "../../../Sounds/Effects/BushRustle.mp3");
   soundManager.LoadSound("S1C18_NARR", "../../../Sounds/S1/C18/narr/narr.mp3");
   soundManager.LoadSound("S1C18_TIGER", "../../../Sounds/S1/C18/narr/tiger.mp3");
   soundManager.LoadSound("S1C18_BEAR", "../../../Sounds/S1/C18/narr/bear.mp3");
@@ -7052,14 +7052,14 @@ function preload(){
     "S2_S3_FootStuckRock",
     "../../../Sounds/Effects/FootStuckRock2.mp3"
   );
-  soundManager.LoadSound("../../../Sounds/Effects/step1", "../../../Sounds/Effects/Step_Cave2.mp3");
-  soundManager.LoadSound("../../../Sounds/Effects/step2", "../../../Sounds/Effects/Step_Cave3.mp3");
-  soundManager.LoadSound("../../../Sounds/Effects/step3", "../../../Sounds/Effects/Step_Cave4.mp3");
+  soundManager.LoadSound("Effects/Step_Cave2", "../../../Sounds/Effects/Step_Cave2.mp3");
+  soundManager.LoadSound("Effects/Step_Cave3", "../../../Sounds/Effects/Step_Cave3.mp3");
+  soundManager.LoadSound("Effects/Step_Cave4", "../../../Sounds/Effects/Step_Cave4.mp3");
   soundManager.LoadSound("S2C3_narr1", "../../../Sounds/S2/C3/narr/narr1.mp3");
   soundManager.LoadSound("S2/C4/narr1", "../../../Sounds/S2/C4/narr/narr1.mp3");
   soundManager.LoadSound("S2/C4/narr2", "../../../Sounds/S2/C4/narr/narr2.mp3");
   soundManager.LoadSound("S2/C4/narr3", "../../../Sounds/S2/C4/narr/narr3.mp3");
-  soundManager.LoadSound("effect", "../../../Sounds/S2/C5/effect/effect.wav");
+  soundManager.LoadSound("S2/C5/effect", "../../../Sounds/S2/C5/effect/effect.wav");
   soundManager.LoadSound("S2/C6/V2/narr1", "../../../Sounds/S2/C6/V2/narr/narr1.mp3");
   soundManager.LoadSound("S2/C6/V2/narr2", "../../../Sounds/S2/C6/V2/narr/narr2.mp3");
   soundManager.LoadSound("S2/C6/V2/narr3", "../../../Sounds/S2/C6/V2/narr/narr3.mp3");
@@ -7073,14 +7073,14 @@ function preload(){
   soundManager.LoadSound("evolution", "../../../Sounds/Effects/Evolution.mp3");
   soundManager.LoadSound("harp", "../../../Sounds/Effects/HarpSound.mp3");
   soundManager.LoadSound("S3/C3/V1/_1/Bear", "../../../Sounds/S3/C3/V1/_1/Bear.mp3");
-  soundManager.LoadSound("../../../Sounds/Effects/step1", "../../../Sounds/Effects/Step_Grass_01.wav");
-  soundManager.LoadSound("../../../Sounds/Effects/step2", "../../../Sounds/Effects/Step_Grass_02.wav");
-  soundManager.LoadSound("../../../Sounds/Effects/step3", "../../../Sounds/Effects/Step_Grass_02.wav");
+  soundManager.LoadSound("Effects/Step_Grass_01", "../../../Sounds/Effects/Step_Grass_01.wav");
+  soundManager.LoadSound("Effects/Step_Grass_02", "../../../Sounds/Effects/Step_Grass_02.wav");
+  soundManager.LoadSound("Effects/Step_Grass_02", "../../../Sounds/Effects/Step_Grass_02.wav");
   soundManager.LoadSound("S3/C3/V1/_2/Tiger", "../../../Sounds/S3/C3/V1/_2/Tiger.mp3");
   soundManager.LoadSound("Choice", "../../../Sounds/Effects/Choice.mp3");
   soundManager.LoadSound("S3/C3/V1/_3/_3/narr", "../../../Sounds/S3/C3/V1/_3/_3/narr.mp3");
-  soundManager.LoadSound("../../../Sounds/Effects/bird", "../../../Sounds/Effects/NatureSound.wav");
-  soundManager.LoadSound("../../../Sounds/Effects/chicken", "../../../Sounds/Effects/Chicken_02.mp3");
+  soundManager.LoadSound("Effects/NatureSound", "../../../Sounds/Effects/NatureSound.wav");
+  soundManager.LoadSound("Effects/Chicken_02", "../../../Sounds/Effects/Chicken_02.mp3");
   soundManager.LoadSound("S3/C3/V1/_4/_3/narr", "../../../Sounds/S3/C3/V1/_4/_3/narr.mp3");
   soundManager.LoadSound("S3/C3/V2/_1/_1/narr", "../../../Sounds/S3/C3/V2/_1/_1/narr/narr.mp3");
   soundManager.LoadSound(
@@ -7095,7 +7095,7 @@ function preload(){
     "S3/C3/V2/_1/_3/hwanwoong",
     "../../../Sounds/S3/C3/V2/_1/_3/narr/hwanwoong.mp3"
   );
-  soundManager.LoadSound("../../../Sounds/Effects/Step_Rock_02", "../../../Sounds/Effects/Step_Rock_02.mp3");
+  soundManager.LoadSound("Effects/Step_Rock_02", "../../../Sounds/Effects/Step_Rock_02.mp3");
   soundManager.LoadSound("haha", "../../../Sounds/S3/C3/V2/_2/_1/narr/haha.mp3");
   soundManager.LoadSound("S3/C3/V2/_2/_3/narr", "../../../Sounds/S3/C3/V2/_2/_3/narr/narr.mp3");
 }

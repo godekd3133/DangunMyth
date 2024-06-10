@@ -63,7 +63,7 @@ class S1C17 extends Scene {
       max(abs(sin(millis() / 120 + 0.674)) * 1.6 - 0.6, 0) * 10;
 
     if (timeManager.time - this.enterTime > 1.5 && !this.playingBushRustle) {
-      soundManager.PlaySound("Bush");
+      soundManager.PlaySound("Effects/BushRustle");
       this.playingBushRustle = true;
     }
     if (this.BEAR_POP <= 450) {

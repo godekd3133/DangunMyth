@@ -26,7 +26,7 @@ class S1C13 extends Scene {
       );
     }
     this.startMillis = millis();
-    soundManager.PlaySound("Door");
+    soundManager.PlaySound("Effects/WoodenDoorOpen");
   }
 
   OnDraw() {

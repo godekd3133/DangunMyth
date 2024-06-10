@@ -35,7 +35,7 @@ class S2C5 extends Scene {
 
       if (mouseIsPressed) {
         if (!this.isEffectOut) {
-          soundManager.PlaySound("effect");
+          soundManager.PlaySound("S2/C5/effect");
           this.isEffectOut = !this.isEffectOut;
         }
         // Navigate to the mini-game scene

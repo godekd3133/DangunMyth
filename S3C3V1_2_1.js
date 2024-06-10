@@ -104,11 +104,11 @@ class S3C3V1_2_1 extends Scene {
     if (this.stepSeconds >= this.stepSoundInterval && this.stepDuration < 5) {
       this.stepID = int(random(2));
       if (this.stepID === 0) {
-        soundManager.PlaySound("Sounds/Effects/step1");
+        soundManager.PlaySound("Effects/Step_Grass_01");
       } else if (this.stepID === 1) {
-        soundManager.PlaySound("Sounds/Effects/step2");
+        soundManager.PlaySound("Effects/Step_Grass_02");
       } else if (this.stepID === 2) {
-        soundManager.PlaySound("Sounds/Effects/step3");
+        soundManager.PlaySound("Effects/Step_Grass_02");
       }
       this.stepSeconds = 0;
     } else {

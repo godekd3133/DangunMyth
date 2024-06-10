@@ -28,7 +28,7 @@ class S3C3V1_3 extends Scene {
     imageManager.LoadImage("sky", this.PREFIX + "sky");
     imageManager.LoadImage("sun", this.PREFIX + "sun");
     imageManager.LoadImage("text", this.PREFIX + "text");
-    soundManager.PlaySound("Sounds/Effects/bird");
+    soundManager.PlaySound("Effects/NatureSound");
   }
 
   OnDraw() {
@@ -51,7 +51,7 @@ class S3C3V1_3 extends Scene {
     imageManager.DrawImage("text", this.centerVector);
 
     if (!this.playingChicken && this.chickenTime > 1) {
-      soundManager.PlaySound("Sounds/Effects/chicken");
+      soundManager.PlaySound("Effects/Chicken_02");
       this.playingChicken = true;
     } else {
       this.chickenTime += deltaTime / 1000; // Convert milliseconds to seconds
