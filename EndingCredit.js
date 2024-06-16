@@ -1,7 +1,7 @@
 class CreditText {
   constructor(text, size, offsetX, offsetY) {
     this.position = createVector(width / 2 + offsetX, height + 100 + offsetY);
-    this.forcePosition = createVector(300, 0);
+    this.forcePosition = createVector(0, 0);
     this.text = text;
     this.size = size;
     this.dirX = 0;
@@ -29,7 +29,7 @@ class EndingCredit extends Scene {
     this.lastMousePressed = false;
   }
 
-  AddText(text, size, offset, offsetX) {
+  AddText(text, size, offset, offsetX = 0) {
     this.offSetY += offset;
     let creditText = new CreditText(text, size, offsetX, this.offSetY);
     this.creditTextList.push(creditText);
@@ -285,7 +285,7 @@ class EndingCredit extends Scene {
 
     if (isReturnButtonOverlaped) {
       if (mouseIsPressed && !this.lastMousePressed) {
-        OnReturnButtonDown(); // ?? this없어도 되나?
+        this.OnReturnButtonDown();
         // 이미지 그리기
         imageManager.DrawImage(
           "ReturnButton",
@@ -324,7 +324,7 @@ class EndingCredit extends Scene {
 
     if (isHomeButtonOverlaped) {
       if (mouseIsPressed && !this.lastMousePressed) {
-        OnHomeButtonDown();
+        this.OnHomeButtonDown();
         // 이미지 그리기
         imageManager.DrawImage(
           "HomeButton",

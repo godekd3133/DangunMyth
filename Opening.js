@@ -82,14 +82,9 @@ class Opening extends Scene {
         mousePos.y > 381 &&
         mousePos.y < 456
       ) {
-        imageManager.DrawImage(
+        imageManager.DrawImageWithTint(
           "btn_start",
-          createVector(width / 2, height / 2),
-          0,
-          255,
-          220,
-          220,
-          220
+          createVector(width / 2, height / 2),0,255,220,220,220
         );
         if (mouseIsPressed && !this.pressedMouse) {
           if (this.selectedSequence == 0) {
@@ -212,6 +207,31 @@ class Opening extends Scene {
           this.logoAlpha
         );
       }
+
+			if (mouseIsPressed) {
+				if (
+          (mousePos.x > 540 &&
+            mousePos.x < 736 &&
+            mousePos.y > 527 &&
+            mousePos.y < 569)
+        ) {
+					sceneManager.ChangeScene(new S1C1());
+				} else if (
+          (mousePos.x > 540 &&
+            mousePos.x < 736 &&
+            mousePos.y > 569 &&
+            mousePos.y < 609)
+        ) {
+					sceneManager.ChangeScene(new S2C1());
+				} else if (
+          (mousePos.x > 540 &&
+            mousePos.x < 736 &&
+            mousePos.y > 609 &&
+            mousePos.y < 649)
+        ) {
+					sceneManager.ChangeScene(new S3C1());
+				}
+			}
 
       if (this.logoAlpha < 255) this.logoAlpha += 255 * timeManager.deltaTime;
       this.pressedMouse = mouseIsPressed;

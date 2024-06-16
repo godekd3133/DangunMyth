@@ -221,7 +221,7 @@ class Ease {
 class CreditText {
   constructor(text, size, offsetX, offsetY) {
     this.position = createVector(width / 2 + offsetX, height + 100 + offsetY);
-    this.forcePosition = createVector(300, 0);
+    this.forcePosition = createVector(0, 0);
     this.text = text;
     this.size = size;
     this.dirX = 0;
@@ -249,7 +249,7 @@ class EndingCredit extends Scene {
     this.lastMousePressed = false;
   }
 
-  AddText(text, size, offset, offsetX) {
+  AddText(text, size, offset, offsetX = 0) {
     this.offSetY += offset;
     let creditText = new CreditText(text, size, offsetX, this.offSetY);
     this.creditTextList.push(creditText);
@@ -505,7 +505,7 @@ class EndingCredit extends Scene {
 
     if (isReturnButtonOverlaped) {
       if (mouseIsPressed && !this.lastMousePressed) {
-        OnReturnButtonDown(); // ?? this없어도 되나?
+        this.OnReturnButtonDown();
         // 이미지 그리기
         imageManager.DrawImage(
           "ReturnButton",
@@ -544,7 +544,7 @@ class EndingCredit extends Scene {
 
     if (isHomeButtonOverlaped) {
       if (mouseIsPressed && !this.lastMousePressed) {
-        OnHomeButtonDown();
+        this.OnHomeButtonDown();
         // 이미지 그리기
         imageManager.DrawImage(
           "HomeButton",
@@ -818,14 +818,9 @@ class Opening extends Scene {
         mousePos.y > 381 &&
         mousePos.y < 456
       ) {
-        imageManager.DrawImage(
+        imageManager.DrawImageWithTint(
           "btn_start",
-          createVector(width / 2, height / 2),
-          0,
-          255,
-          220,
-          220,
-          220
+          createVector(width / 2, height / 2),0,255,220,220,220
         );
         if (mouseIsPressed && !this.pressedMouse) {
           if (this.selectedSequence == 0) {
@@ -948,6 +943,31 @@ class Opening extends Scene {
           this.logoAlpha
         );
       }
+
+			if (mouseIsPressed) {
+				if (
+          (mousePos.x > 540 &&
+            mousePos.x < 736 &&
+            mousePos.y > 527 &&
+            mousePos.y < 569)
+        ) {
+					sceneManager.ChangeScene(new S1C1());
+				} else if (
+          (mousePos.x > 540 &&
+            mousePos.x < 736 &&
+            mousePos.y > 569 &&
+            mousePos.y < 609)
+        ) {
+					sceneManager.ChangeScene(new S2C1());
+				} else if (
+          (mousePos.x > 540 &&
+            mousePos.x < 736 &&
+            mousePos.y > 609 &&
+            mousePos.y < 649)
+        ) {
+					sceneManager.ChangeScene(new S3C1());
+				}
+			}
 
       if (this.logoAlpha < 255) this.logoAlpha += 255 * timeManager.deltaTime;
       this.pressedMouse = mouseIsPressed;
@@ -1269,7 +1289,7 @@ class S1C14 extends Scene {
       mouseY >= 585 &&
       mouseY <= height - 85
     ) {
-      imageManager.DrawImage(
+      imageManager.DrawImageWithTint(
         "button",
         createVector(width / 2, height / 2),
         0,
@@ -4165,7 +4185,7 @@ class S2C5 extends Scene {
       mouseY >= 585 &&
       mouseY <= height - 85
     ) {
-      imageManager.DrawImage(
+      imageManager.DrawImageWithTint(
         "button",
         createVector(width / 2, height / 2),
         0,
@@ -4381,7 +4401,7 @@ class S2C6 extends Scene {
     } else {
       timeStr = "D-" + Math.ceil(displayTime);
     }
-    text(timeStr, 1176, 90);
+    fontManager.DrawFont("lee", timeStr, 0, 25, 1176, 90);
   }
 
   OnExit() {
@@ -4529,7 +4549,7 @@ class S2C6V1 extends Scene {
 
     if (this.showButton) {
       if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
-        imageManager.DrawImage(
+        imageManager.DrawImageWithTint(
           "button_top",
           createVector(width / 2, height / 2),
           0,
@@ -4548,7 +4568,7 @@ class S2C6V1 extends Scene {
         );
       }
       if (mouseX > 480 && mouseX < 800 && mouseY > 237 && mouseY < 324) {
-        imageManager.DrawImage(
+        imageManager.DrawImageWithTint(
           "button_bottom",
           createVector(width / 2, height / 2),
           0,
@@ -4576,7 +4596,7 @@ class S2C6V1 extends Scene {
           mouseY > 375 &&
           mouseY < 459
         ) {
-          sceneManager.Setup(sceneList.get(0));
+          sceneManager.Setup(sceneList[0]);
           this.showButton = false;
         }
       }
@@ -4625,6 +4645,7 @@ class S2C6V2 extends Scene {
     imageManager.LoadImage("text3", "../../../Images/S2/C6/V2/text3");
     this.isSessionOut = [false, false];
     this.SCENE_TIME = 0;
+		this.sessionIndex = 0;
   }
 
   OnDraw() {
@@ -4679,7 +4700,7 @@ class S2C6V2 extends Scene {
       this.isSessionOut[this.sessionIndex] = true;
     }
     if (this.SCENE_TIME > this.sessionDuration[this.sessionIndex]) {
-      if (this.sessionDuration.length - 1 > this.sessionIndex)
+      if (this.sessionDuration.length - 1 >= this.sessionIndex)
         this.sessionIndex++;
     }
     if (this.SCENE_TIME > this.SCENE_DURATION) {
@@ -6790,6 +6811,7 @@ class SceneManager {
     if (this.nextScene != null || this.firstScene != null) {
       return;
     }
+		soundManager.StopAllSound();
     this.backgroundAlpha = 0;
     this.fadeIn = false;
     this.fadeOut = true;
@@ -6832,11 +6854,19 @@ class SoundManager {
   }
 
   StopSound(name) {
-    let sound = this.sounds.get(name);
+		console.log('StopSound', name)
+		let sound = this.sounds.get(name);
     if (sound) {
       sound.stop();
     }
   }
+
+	StopAllSound() {
+		console.log('StopAllSound')
+		for (const soundName of this.sounds.keys()) {
+			this.StopSound(soundName);
+		}
+	}
 
   soundDuration(name) {
     let sound = this.sounds.get(name);
@@ -6871,23 +6901,6 @@ class SoundManager {
     if (this.nowPlaying) {
       this.nowPlaying.stop();
     }
-  }
-}
-
-/* TimeManager.js */ 
-class TimeManager {
-  constructor() {
-    this.deltaTime = 0;
-    this.time = 0;
-    this.currentTime = millis();
-    this.lastTime = millis();
-  }
-
-  OnDraw() {
-    this.lastTime = this.currentTime;
-    this.currentTime = millis();
-    this.deltaTime = (this.currentTime - this.lastTime) / 1000;
-    this.time += this.deltaTime;
   }
 }
 
@@ -6964,6 +6977,23 @@ class TimelineManager {
     this.currentTimeline = null;
     this.timelines = [];
     this.endCallback = null;
+  }
+}
+
+/* TimeManager.js */ 
+class TimeManager {
+  constructor() {
+    this.deltaTime = 0;
+    this.time = 0;
+    this.currentTime = millis();
+    this.lastTime = millis();
+  }
+
+  OnDraw() {
+    this.lastTime = this.currentTime;
+    this.currentTime = millis();
+    this.deltaTime = (this.currentTime - this.lastTime) / 1000;
+    this.time += this.deltaTime;
   }
 }
 

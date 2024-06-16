@@ -23,7 +23,7 @@ class S1C14 extends Scene {
       mouseY >= 585 &&
       mouseY <= height - 85
     ) {
-      imageManager.DrawImage(
+      imageManager.DrawImageWithTint(
         "button",
         createVector(width / 2, height / 2),
         0,

@@ -96,6 +96,7 @@ class SceneManager {
     if (this.nextScene != null || this.firstScene != null) {
       return;
     }
+		soundManager.StopAllSound();
     this.backgroundAlpha = 0;
     this.fadeIn = false;
     this.fadeOut = true;

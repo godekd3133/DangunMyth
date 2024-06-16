@@ -183,7 +183,7 @@ class S2C6 extends Scene {
     } else {
       timeStr = "D-" + Math.ceil(displayTime);
     }
-    text(timeStr, 1176, 90);
+    fontManager.DrawFont("lee", timeStr, 0, 25, 1176, 90);
   }
 
   OnExit() {

@@ -22,11 +22,19 @@ class SoundManager {
   }
 
   StopSound(name) {
-    let sound = this.sounds.get(name);
+		console.log('StopSound', name)
+		let sound = this.sounds.get(name);
     if (sound) {
       sound.stop();
     }
   }
+
+	StopAllSound() {
+		console.log('StopAllSound')
+		for (const soundName of this.sounds.keys()) {
+			this.StopSound(soundName);
+		}
+	}
 
   soundDuration(name) {
     let sound = this.sounds.get(name);

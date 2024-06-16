@@ -36,6 +36,7 @@ class S2C6V2 extends Scene {
     imageManager.LoadImage("text3", "Images/S2/C6/V2/text3");
     this.isSessionOut = [false, false];
     this.SCENE_TIME = 0;
+		this.sessionIndex = 0;
   }
 
   OnDraw() {
@@ -90,7 +91,7 @@ class S2C6V2 extends Scene {
       this.isSessionOut[this.sessionIndex] = true;
     }
     if (this.SCENE_TIME > this.sessionDuration[this.sessionIndex]) {
-      if (this.sessionDuration.length - 1 > this.sessionIndex)
+      if (this.sessionDuration.length - 1 >= this.sessionIndex)
         this.sessionIndex++;
     }
     if (this.SCENE_TIME > this.SCENE_DURATION) {

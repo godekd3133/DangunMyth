@@ -106,7 +106,7 @@ class S2C6V1 extends Scene {
 
     if (this.showButton) {
       if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
-        imageManager.DrawImage(
+        imageManager.DrawImageWithTint(
           "button_top",
           createVector(width / 2, height / 2),
           0,
@@ -125,7 +125,7 @@ class S2C6V1 extends Scene {
         );
       }
       if (mouseX > 480 && mouseX < 800 && mouseY > 237 && mouseY < 324) {
-        imageManager.DrawImage(
+        imageManager.DrawImageWithTint(
           "button_bottom",
           createVector(width / 2, height / 2),
           0,
@@ -153,7 +153,7 @@ class S2C6V1 extends Scene {
           mouseY > 375 &&
           mouseY < 459
         ) {
-          sceneManager.Setup(sceneList.get(0));
+          sceneManager.Setup(sceneList[0]);
           this.showButton = false;
         }
       }
