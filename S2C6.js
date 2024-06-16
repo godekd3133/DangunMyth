@@ -179,9 +179,9 @@ class S2C6 extends Scene {
     let timeStr = "";
     if (displayTime < 10) {
       fill(255, 0, 0);
-      timeStr = " D-" + displayTime;
+      timeStr = " D-" + Math.ceil(displayTime);
     } else {
-      timeStr = "D-" + displayTime;
+      timeStr = "D-" + Math.ceil(displayTime);
     }
     text(timeStr, 1176, 90);
   }
