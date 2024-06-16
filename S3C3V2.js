@@ -14,23 +14,12 @@ class S3C3V2 extends Scene {
     this.bear_MOU_Y = 460;
     this.startTime = 0;
     this.imageIndex = 0;
-    this.tigerList = ["tiger1", "tiger2", "tiger3"];
+    this.tigerList = ["s3c3v2_tiger1", "s3c3v2_tiger2", "s3c3v2_tiger3"];
     this.WALK_INTERVAL = 0.075;
     this.walkTick = 0;
   }
 
   OnEnter() {
-    imageManager.LoadImage("text", "Images/S3/C3/V2/_0/text");
-    imageManager.LoadImage("background", "Images/S3/C3/V2/_0/background");
-    imageManager.LoadImage("bear1", "Images/S3/C3/V2/_0/bear1");
-    imageManager.LoadImage("bear2", "Images/S3/C3/V2/_0/bear2");
-
-    for (let i = 0; i < this.tigerList.length; i++) {
-      imageManager.LoadImage(
-        `tiger${i + 1}`,
-        "Images/S3/C3/V2/_0/tiger" + `${i + 1}`
-      );
-    }
 
     soundManager.PlaySound("S3/C3/V2/_0/narr/woonggirl");
 
@@ -53,17 +42,17 @@ class S3C3V2 extends Scene {
     let currentProcessingTime = (millis() - this.startTime) / 1000;
     let isEating = currentProcessingTime % 2 === 1;
 
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_background", createVector(width / 2, height / 2));
 
     if (Math.floor(millis() / 300) % 2 === 0) {
       imageManager.DrawImageScale(
-        "bear1",
+        "s3c3v2_bear1",
         createVector(this.bear_EYE_X, this.bear_EYE_Y),
         createVector(this.bear_SCALE, this.bear_SCALE, 0)
       );
     } else {
       imageManager.DrawImageScale(
-        "bear2",
+        "s3c3v2_bear2",
         createVector(this.bear_EYE_X, this.bear_EYE_Y),
         createVector(this.bear_SCALE, this.bear_SCALE, 0)
       );
@@ -81,7 +70,7 @@ class S3C3V2 extends Scene {
       createVector(this.tiger_X, this.tiger_Y),
       createVector(this.tiger_SCALE, this.tiger_SCALE, 0)
     );
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_text", createVector(width / 2, height / 2));
 
     if (this.tiger_X < 900) {
       this.tiger_X += 26 * timeManager.deltaTime;

@@ -4561,12 +4561,6 @@ class S3C1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "../../../Images/S3/C1/background");
-    imageManager.LoadImage("bear", "../../../Images/S3/C1/bear");
-    imageManager.LoadImage("tiger", "../../../Images/S3/C1/tiger");
-    imageManager.LoadImage("garlic", "../../../Images/S3/C1/garlic");
-    imageManager.LoadImage("ssug", "../../../Images/S3/C1/ssug");
-    imageManager.LoadImage("text", "../../../Images/S3/C1/text");
     this.isNarrOut = false;
   }
 
@@ -4576,17 +4570,17 @@ class S3C1 extends Scene {
       soundManager.PlaySound("S3/C1/narr");
     }
     imageManager.DrawImageScale(
-      "background",
+      "s3c1_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
     imageManager.DrawImageScale(
-      "text",
+      "s3c1_text",
       createVector(width / 2, height / 2 - 50),
       createVector(1, 1)
     );
     imageManager.DrawImageScale(
-      "bear",
+      "s3c1_bear",
       createVector(width / 2 - 210, this.animalY),
       createVector(this.animalScale, this.animalScale)
     );
@@ -4597,7 +4591,7 @@ class S3C1 extends Scene {
     this.jumpY += this.jumpDir;
 
     imageManager.DrawImageScale(
-      "tiger",
+      "s3c1_tiger",
       createVector(width / 2 + 230, this.animalY - this.jumpY),
       createVector(this.animalScale, this.animalScale)
     );
@@ -4611,7 +4605,7 @@ class S3C1 extends Scene {
       this.garlicRotate += this.garlicAngle;
     }
     imageManager.DrawImageScale(
-      "garlic",
+      "s3c1_garlic",
       createVector(this.garlicX, this.garlicY),
       createVector(this.utilScale, this.utilScale),
       this.garlicRotate
@@ -4625,7 +4619,7 @@ class S3C1 extends Scene {
       this.ssugRotate += this.ssugAngle;
     }
     imageManager.DrawImageScale(
-      "ssug",
+      "s3c1_ssug",
       createVector(this.ssugX, this.ssugY),
       createVector(this.utilScale, this.utilScale),
       this.ssugRotate
@@ -4652,14 +4646,6 @@ class S3C2 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "../../../Images/S3/C2/background");
-    imageManager.LoadImage("body", "../../../Images/S3/C2/body");
-    imageManager.LoadImage("eye_black", "../../../Images/S3/C2/eye_black");
-    imageManager.LoadImage("eye_white", "../../../Images/S3/C2/eye_white");
-    imageManager.LoadImage("left", "../../../Images/S3/C2/left");
-    imageManager.LoadImage("right", "../../../Images/S3/C2/right");
-    imageManager.LoadImage("Button1", "../../../Images/S3/C2/Button1");
-    imageManager.LoadImage("Button2", "../../../Images/S3/C2/Button2");
     this.isEffectOut = false;
   }
 
@@ -4668,17 +4654,17 @@ class S3C2 extends Scene {
     this.selectOption = 0;
 
     imageManager.DrawImageScale(
-      "background",
+      "s3c2_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
     imageManager.DrawImageScale(
-      "eye_white",
+      "s3c2_eye_white",
       createVector(width / 2 - 10, height - 240),
       createVector(0.2, 0.2)
     );
     imageManager.DrawImageScale(
-      "body",
+      "s3c2_body",
       createVector(width / 2, height - 200),
       createVector(0.23, 0.23)
     );
@@ -4687,12 +4673,12 @@ class S3C2 extends Scene {
     if (mouseX <= width / 2 - 200 && mouseY <= height / 2) {
       this.selectOption = 1;
       imageManager.DrawImageScale(
-        "left",
+        "s3c2_left",
         createVector(this.thinkLeftX + 60, this.thinkY + 50),
         createVector(this.thinkScale + 0.04, this.thinkScale + 0.04)
       );
       imageManager.DrawImageScale(
-        "eye_black",
+        "s3c2_eye_black",
         createVector(width / 2 - 15, height - 255),
         createVector(0.23, 0.23)
       );
@@ -4706,7 +4692,7 @@ class S3C2 extends Scene {
       }
     } else {
       imageManager.DrawImageScale(
-        "left",
+        "s3c2_left",
         createVector(this.thinkLeftX, this.thinkY),
         createVector(this.thinkScale, this.thinkScale)
       );
@@ -4714,12 +4700,12 @@ class S3C2 extends Scene {
     if (mouseX >= width / 2 + 200 && mouseY <= height / 2) {
       this.selectOption = 2;
       imageManager.DrawImageScale(
-        "right",
+        "s3c2_right",
         createVector(this.thinkRightX - 60, this.thinkY + 50),
         createVector(this.thinkScale + 0.04, this.thinkScale + 0.04)
       );
       imageManager.DrawImageScale(
-        "eye_black",
+        "s3c2_eye_black",
         createVector(width / 2 - 9, height - 255),
         createVector(0.23, 0.23)
       );
@@ -4733,7 +4719,7 @@ class S3C2 extends Scene {
       }
     } else {
       imageManager.DrawImageScale(
-        "right",
+        "s3c2_right",
         createVector(this.thinkRightX, this.thinkY),
         createVector(this.thinkScale, this.thinkScale)
       );
@@ -4741,20 +4727,20 @@ class S3C2 extends Scene {
     //Button
     if (mouseX <= width / 2 - 200 && mouseY <= height / 2) {
       imageManager.DrawImageScale(
-        "Button1",
+        "s3c2_Button1",
         createVector(width / 2, height / 2),
         createVector(0.7, 0.7)
       );
     } else if (mouseX >= width / 2 + 200 && mouseY <= height / 2) {
       imageManager.DrawImageScale(
-        "Button2",
+        "s3c2_Button2",
         createVector(width / 2, height / 2),
         createVector(0.7, 0.7)
       );
     }
     if (this.selectOption == 0)
       imageManager.DrawImageScale(
-        "eye_black",
+        "s3c2_eye_black",
         createVector(width / 2 - 12, height - 245),
         createVector(0.23, 0.23)
       );
@@ -4767,39 +4753,31 @@ class S3C2 extends Scene {
 class S3C3V1_1 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "../../../Images/S3/C3/V1/_1/";
     this.SCENE_DURATION = 4.5;
     this.narrFlag = false;
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("bear1", this.PREFIX + "bear1");
-    imageManager.LoadImage("bear2", this.PREFIX + "bear2");
-    imageManager.LoadImage("tiger", this.PREFIX + "tiger");
-    imageManager.LoadImage("text", this.PREFIX + "text");
-
-
     this.narrFlag = false;
   }
 
   OnDraw() {
     imageManager.DrawImage(
-      "background",
+      "s3c3v1_1_background",
       createVector(width / 2, height / 2, 0)
     );
     imageManager.DrawImageScale(
-      "bear" + Math.floor(((millis() / 500) % 2) + 1),
+      "s3c3v1_1_bear" + Math.floor(((millis() / 500) % 2) + 1),
       createVector(475, 400, 0),
       createVector(0.25, 0.25, 0)
     );
     imageManager.DrawImageScale(
-      "tiger",
+      "s3c3v1_1_tiger",
       createVector(width / 2 + 25, height / 2, 0),
       createVector(0.25, 0.25, 0)
     );
 
-    imageManager.DrawImage("text", createVector(width / 2, height / 2, 0));
+    imageManager.DrawImage("s3c3v1_1_text", createVector(width / 2, height / 2, 0));
 
     if (!this.narrFlag) {
       this.narrFlag = true;
@@ -4829,14 +4807,6 @@ class S3C3V1_1_1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "../../../Images/S3/C3/V1/_1/_1/background");
-    imageManager.LoadImage("bear_before", "../../../Images/S3/C3/V1/_1/_1/bear_before");
-    imageManager.LoadImage("bear_after", "../../../Images/S3/C3/V1/_1/_1/bear_after");
-    imageManager.LoadImage(
-      "tiger_before",
-      "../../../Images/S3/C3/V1/_1/_1/tiger_before"
-    );
-    imageManager.LoadImage("tiger_after", "../../../Images/S3/C3/V1/_1/_1/tiger_after");
     this._time = 0;
   }
 
@@ -4846,34 +4816,34 @@ class S3C3V1_1_1 extends Scene {
     }
     this._time += 2;
     imageManager.DrawImageScale(
-      "background",
+      "s3c3v1_1_1_background",
       createVector(width / 2, height / 2, 0),
       createVector(1, 1, 0)
     );
 
     if (this._time < 100) {
       imageManager.DrawImageScale(
-        "bear_before",
+        "s3c3v1_1_1_bear_before",
         createVector(this.bear_x, this.bear_y, 0),
         this.character_scale,
         0
       );
       imageManager.DrawImageScale(
-        "tiger_before",
+        "s3c3v1_1_1_tiger_before",
         createVector(this.tiger_x, this.tiger_y, 0),
         this.character_scale,
         0
       );
     } else {
       imageManager.DrawImageScale(
-        "bear_before",
+        "s3c3v1_1_1_bear_before",
         createVector(this.bear_x, this.bear_y, 0),
         this.character_scale,
         0,
         255
       );
       imageManager.DrawImageScale(
-        "bear_after",
+        "s3c3v1_1_1_bear_after",
         createVector(this.bear_x, this.bear_y, 0),
         this.character_scale,
         0,
@@ -4881,14 +4851,14 @@ class S3C3V1_1_1 extends Scene {
       );
 
       imageManager.DrawImageScale(
-        "tiger_before",
+        "s3c3v1_1_1_tiger_before",
         createVector(this.tiger_x, this.tiger_y, 0),
         this.character_scale,
         0,
         255
       );
       imageManager.DrawImageScale(
-        "tiger_after",
+        "s3c3v1_1_1_tiger_after",
         createVector(this.tiger_x, this.tiger_y, 0),
         this.character_scale,
         0,
@@ -4923,11 +4893,6 @@ class S3C3V1_1_2 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "../../../Images/S3/C3/V1/_1/_2/background");
-    imageManager.LoadImage("bear", "../../../Images/S3/C3/V1/_1/_2/bear");
-    imageManager.LoadImage("bear_star", "../../../Images/S3/C3/V1/_1/_2/bear_star");
-    imageManager.LoadImage("tiger", "../../../Images/S3/C3/V1/_1/_2/tiger");
-    imageManager.LoadImage("tiger_star", "../../../Images/S3/C3/V1/_1/_2/tiger_star");
     soundManager.PlaySound("harp");
 
     this._time = 0;
@@ -4947,18 +4912,18 @@ class S3C3V1_1_2 extends Scene {
     }
     this._time++;
     imageManager.DrawImageScale(
-      "background",
+      "s3c3v1_1_2_background",
       createVector(width / 2, height / 2, 0),
       createVector(1, 1, 0)
     );
 
     imageManager.DrawImageScale(
-      "bear",
+      "s3c3v1_1_2_bear",
       createVector(this.bear_x, this.bear_y, 0),
       createVector(0.2, 0.2, 0)
     );
     imageManager.DrawImageScale(
-      "tiger",
+      "s3c3v1_1_2_tiger",
       createVector(this.tiger_x, this.tiger_y, 0),
       createVector(0.2, 0.2, 0)
     );
@@ -4975,12 +4940,12 @@ class S3C3V1_1_2 extends Scene {
       }
     }
     imageManager.DrawImageScale(
-      "bear_star",
+      "s3c3v1_1_2_bear_star",
       createVector(300, 200, 0),
       createVector(this.bear_star_size, this.bear_star_size, 0)
     );
     imageManager.DrawImageScale(
-      "tiger_star",
+      "s3c3v1_1_2_tiger_star",
       createVector(1000, 200, 0),
       createVector(this.tiger_star_size, this.tiger_star_size, 0)
     );
@@ -4993,7 +4958,6 @@ class S3C3V1_1_2 extends Scene {
 class S3C3V1_2 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "../../../Images/S3/C3/V1/_2/";
     this.CHARACTER_SCALE = 0.25;
     this.BEAR_X = 470;
     this.BEAR_Y = 460;
@@ -5009,14 +4973,6 @@ class S3C3V1_2 extends Scene {
   }
 
   OnEnter() {
-    // 이미지 로드
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("text", this.PREFIX + "text");
-    imageManager.LoadImage("bear_body", this.PREFIX + "bear_body");
-    imageManager.LoadImage("bear_eye", this.PREFIX + "bear_eye");
-    imageManager.LoadImage("tiger1", this.PREFIX + "tiger1");
-    imageManager.LoadImage("tiger2", this.PREFIX + "tiger2");
-
     this.narrFlag = false;
     this.startMinute = minute();
     this.startSecond = second();
@@ -5027,20 +4983,20 @@ class S3C3V1_2 extends Scene {
       this.narrFlag = true;
       soundManager.PlaySound("S3/C3/V1/_2/Tiger");
     }
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_2_background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_2_text", createVector(width / 2, height / 2));
     imageManager.DrawImageScale(
-      "bear_eye",
+      "s3c3v1_2_bear_eye",
       createVector(this.BEAR_EYE_X, this.BEAR_EYE_Y),
       createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );
     imageManager.DrawImageScale(
-      "bear_body",
+      "s3c3v1_2_bear_body",
       createVector(this.BEAR_X, this.BEAR_Y),
       createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );
     imageManager.DrawImageScale(
-      "tiger" + Math.floor(((millis() / 500) % 2) + 1),
+      "s3c3v1_2_tiger" + Math.floor(((millis() / 500) % 2) + 1),
       createVector(this.TIGER_X, this.TIGER_Y),
       createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );
@@ -5062,7 +5018,6 @@ class S3C3V1_2 extends Scene {
 class S3C3V1_2_1 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "../../../Images/S3/C3/V1/_2/_1/";
     this.SCENE_SECONDS = 7;
     this.animationCompleted = false;
     this.범녀_X = 300;
@@ -5090,14 +5045,6 @@ class S3C3V1_2_1 extends Scene {
   OnEnter() {
     this.animationCompleted = false;
 
-    // 이미지 로드
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("범녀1", this.PREFIX + "범녀1");
-    imageManager.LoadImage("범녀2", this.PREFIX + "범녀2");
-    imageManager.LoadImage("범녀3", this.PREFIX + "범녀3");
-    imageManager.LoadImage("웅녀", this.PREFIX + "웅녀");
-    imageManager.LoadImage("환웅", this.PREFIX + "환웅");
-
     this.startMinute = minute();
     this.startSecond = second();
     this.startMillis = millis();
@@ -5111,14 +5058,14 @@ class S3C3V1_2_1 extends Scene {
       this.tongueY *= -1;
     }
     let elapsedMillis = millis() - this.startMillis;
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_2_1_background", createVector(width / 2, height / 2));
     let prevName = this.범녀Name;
     this.범녀Name = "범녀" + Math.floor(((elapsedMillis / 300) % 3) + 1);
     if (prevName === "범녀3" && this.범녀Name === "범녀1")
       this.animationCompleted = true;
     if (this.animationCompleted) this.범녀Name = "범녀1";
     imageManager.DrawImageScale(
-      this.범녀Name,
+      "s3c3v1_2_1_"+this.범녀Name,
       createVector(
         lerp(
           this.범녀_X,
@@ -5134,7 +5081,7 @@ class S3C3V1_2_1 extends Scene {
       createVector(0.2, 0.2)
     );
     imageManager.DrawImageScale(
-      "웅녀",
+      "s3c3v1_2_1_웅녀",
       createVector(
         lerp(
           this.웅녀_X,
@@ -5150,7 +5097,7 @@ class S3C3V1_2_1 extends Scene {
       createVector(0.2, 0.2)
     );
     imageManager.DrawImageScale(
-      "환웅",
+      "s3c3v1_2_1_환웅",
       createVector(this.환웅_X, this.환웅_Y),
       createVector(0.3, 0.3)
     );
@@ -5185,7 +5132,6 @@ class S3C3V1_2_1 extends Scene {
 class S3C3V1_2_2 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "../../../Images/S3/C3/V1/_2/_2/";
     this.moveMillis = 5000;
     this.환웅_X = 1150;
     this.환웅_Y = 500;
@@ -5201,15 +5147,6 @@ class S3C3V1_2_2 extends Scene {
   OnEnter() {
     this.lastScene = new S3C3V1_2_1();
 
-    // 이미지 로드
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("범녀", this.PREFIX + "범녀1");
-    imageManager.LoadImage("웅녀", this.PREFIX + "웅녀");
-    imageManager.LoadImage("환웅", this.PREFIX + "환웅");
-    imageManager.LoadImage("button_left", this.PREFIX + "button_left");
-    imageManager.LoadImage("button_right", this.PREFIX + "button_right");
-    imageManager.LoadImage("S3C3V1_2_2_TEXT", this.PREFIX + "text");
-
     this.startMinute = minute();
     this.startSecond = second();
     this.startMillis = millis();
@@ -5223,7 +5160,7 @@ class S3C3V1_2_2 extends Scene {
       this.tongueY *= -1;
     }
     let elapsedMills = millis() - this.startMillis;
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_2_2_background", createVector(width / 2, height / 2));
 
     // 검은색 반투명
     fill(0, min(128, lerp(255, 128, this.darkenMillis / elapsedMills)));
@@ -5238,29 +5175,29 @@ class S3C3V1_2_2 extends Scene {
     let bearScale = hoveredBear ? 0.22 : 0.2;
 
     imageManager.DrawImageScale(
-      "범녀",
+      "s3c3v1_2_2_범녀",
       createVector(this.lastScene.범녀_X_End, this.lastScene.범녀_Y_End),
       createVector(tigerScale, tigerScale)
     );
     imageManager.DrawImageScale(
-      "웅녀",
+      "s3c3v1_2_2_웅녀",
       createVector(this.lastScene.웅녀_X_End, this.lastScene.웅녀_Y_End),
       createVector(bearScale, bearScale)
     );
     imageManager.DrawImageScale(
-      "환웅",
+      "s3c3v1_2_2_환웅",
       createVector(this.환웅_X, this.환웅_Y),
       createVector(0.3, 0.3)
     );
     imageManager.DrawImageScale(
-      "S3C3V1_2_2_TEXT",
+      "s3c3v1_2_2_S3C3V1_2_2_TEXT",
       createVector(width / 2, height / 2),
       createVector(1.0, 1.0)
     );
 
     if (hoveredTiger) {
       imageManager.DrawImageScale(
-        "button_left",
+        "s3c3v1_2_2_button_left",
         createVector(width / 2 - 60, height / 2 - 80),
         createVector(0.8, 0.8)
       );
@@ -5268,7 +5205,7 @@ class S3C3V1_2_2 extends Scene {
 
     if (hoveredBear) {
       imageManager.DrawImageScale(
-        "button_right",
+        "s3c3v1_2_2_button_right",
         createVector(width / 2, height / 2 - 55),
         createVector(0.8, 0.8)
       );
@@ -5306,7 +5243,6 @@ class S3C3V1_2_2 extends Scene {
 class S3C3V1_3 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "../../../Images/S3/C3/V1/_3/_0/";
     this.centerVector = createVector();
     this.centerX = 0;
     this.centerY = 0;
@@ -5324,36 +5260,27 @@ class S3C3V1_3 extends Scene {
     this.centerVector = createVector(this.centerX, this.centerY);
     this.sunY = 600;
     this.cloudXDistance = 0;
-
-    imageManager.LoadImage("cloud_left", this.PREFIX + "cloud_left");
-    imageManager.LoadImage("cloud_right", this.PREFIX + "cloud_right");
-    imageManager.LoadImage("cloud_middle", this.PREFIX + "cloud_middle");
-    imageManager.LoadImage("lake", this.PREFIX + "lake");
-    imageManager.LoadImage("mountains", this.PREFIX + "mountains");
-    imageManager.LoadImage("sky", this.PREFIX + "sky");
-    imageManager.LoadImage("sun", this.PREFIX + "sun");
-    imageManager.LoadImage("text", this.PREFIX + "text");
     soundManager.PlaySound("Effects/NatureSound");
   }
 
   OnDraw() {
-    imageManager.DrawImage("sky", this.centerVector);
-    imageManager.DrawImage("sun", createVector(this.centerX, this.sunY));
-    imageManager.DrawImage("mountains", this.centerVector);
-    imageManager.DrawImage("lake", this.centerVector);
+    imageManager.DrawImage("s3c3v1_3_sky", this.centerVector);
+    imageManager.DrawImage("s3c3v1_3_sun", createVector(this.centerX, this.sunY));
+    imageManager.DrawImage("s3c3v1_3_mountains", this.centerVector);
+    imageManager.DrawImage("s3c3v1_3_lake", this.centerVector);
     imageManager.DrawImage(
-      "cloud_left",
+      "s3c3v1_3_cloud_left",
       createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
     imageManager.DrawImage(
-      "cloud_right",
+      "s3c3v1_3_cloud_right",
       createVector(this.centerX + this.cloudXDistance, this.centerY)
     );
     imageManager.DrawImage(
-      "cloud_middle",
+      "s3c3v1_3_cloud_middle",
       createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
-    imageManager.DrawImage("text", this.centerVector);
+    imageManager.DrawImage("s3c3v1_3_text", this.centerVector);
 
     if (!this.playingChicken && this.chickenTime > 1) {
       soundManager.PlaySound("Effects/Chicken_02");
@@ -5377,7 +5304,6 @@ class S3C3V1_3 extends Scene {
 class S3C3V1_3_1 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "../../../Images/S3/C3/V1/_3/_1/";
     this.웅녀_X = 588;
     this.웅녀_Y = 350;
     this.환웅_X = 1150;
@@ -5403,11 +5329,6 @@ class S3C3V1_3_1 extends Scene {
     this.minimumSize = this.diameter - 350;
     this.angle = 0;
 
-    // 이미지 로드
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("웅녀", this.PREFIX + "웅녀");
-    imageManager.LoadImage("환웅", this.PREFIX + "환웅");
-    imageManager.LoadImage("heart", this.PREFIX + "heart");
     soundManager.PlaySound("Choice");
 
     this.startMinute = minute();
@@ -5421,19 +5342,19 @@ class S3C3V1_3_1 extends Scene {
       sin(this.angle) * (this.diameter / 2) +
       this.diameter / 2;
 
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_3_1_background", createVector(width / 2, height / 2));
     imageManager.DrawImageScale(
-      "웅녀",
+      "s3c3v1_3_1_웅녀",
       createVector(this.웅녀_X, this.웅녀_Y),
       createVector(0.2, 0.2)
     );
     imageManager.DrawImageScale(
-      "환웅",
+      "s3c3v1_3_1_환웅",
       createVector(this.환웅_X, this.환웅_Y),
       createVector(0.3, 0.3)
     );
     imageManager.DrawImageScale(
-      "heart",
+      "s3c3v1_3_1_heart",
       createVector(width / 2, height / 2),
       createVector(d1 / 2000, d1 / 2000)
     );
@@ -5458,25 +5379,21 @@ class S3C3V1_3_2 extends Scene {
     super();
     this.preparationTime = 1;
     this.fadeoutTime = 4;
-    this.BACKGROUND_IMAGE = "../../../Images/S3/C3/V1/_3/_2/Background";
-    this.CHARACTER_IMAGE = "../../../Images/S3/C3/V1/_3/_2/Characters";
     this.alpha = 255;
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.BACKGROUND_IMAGE);
-    imageManager.LoadImage("character", this.CHARACTER_IMAGE);
     this.alpha = 255;
   }
 
   OnDraw() {
     imageManager.DrawImageScale(
-      "background",
+      "s3c3v1_3_2_background",
       createVector(width / 2, height / 2),
       createVector(1, 1, 0)
     );
     imageManager.DrawImageScale(
-      "character",
+      "s3c3v1_3_2_character",
       createVector(width / 2, height / 2),
       createVector(0.25, 0.25, 0),
       0,
@@ -5502,16 +5419,11 @@ class S3C3V1_3_3 extends Scene {
     super();
     this.preparationTime = 5;
     this.fadeoutTime = 6;
-    this.BACKGROUND_IMAGE = "../../../Images/S3/C3/V1/_3/_3/Background";
-    this.DANGUN_IMAGE = "../../../Images/S3/C3/V1/_3/_3/Dangun";
     this.alpha = 255;
     this.firstFlag = false;
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.BACKGROUND_IMAGE);
-    imageManager.LoadImage("dangun", this.DANGUN_IMAGE);
-    imageManager.LoadImage("text", "../../../Images/S3/C3/V1/_3/_3/text");
     this.firstFlag = false;
     this.alpha = 255;
     this.preparationTime = 8;
@@ -5520,18 +5432,18 @@ class S3C3V1_3_3 extends Scene {
 
   OnDraw() {
     imageManager.DrawImageScale(
-      "background",
+      "s3c3v1_3_3_background",
       createVector(width / 2, height / 2, 0),
       createVector(1, 1, 0)
     );
     imageManager.DrawImageScale(
-      "dangun",
+      "s3c3v1_3_3_dangun",
       createVector(width / 2, height / 2, 0),
       createVector(0.25, 0.25, 0),
       0,
       this.alpha
     );
-    imageManager.DrawImage("text", createVector(width / 2, height / 2, 0));
+    imageManager.DrawImage("s3c3v1_3_3_text", createVector(width / 2, height / 2, 0));
 
     if (timeManager.time - this.enterTime >= this.preparationTime) {
       sceneManager.CreditScene();
@@ -5550,7 +5462,6 @@ class S3C3V1_3_3 extends Scene {
 class S3C3V1_4_1 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "../../../Images/S3/C3/V1/_4/_1/";
     this.범녀_X = 588;
     this.범녀_Y = 350;
     this.환웅_X = 1150;
@@ -5577,10 +5488,6 @@ class S3C3V1_4_1 extends Scene {
     this.angle = 0;
 
     // 이미지 로드
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("범녀1", this.PREFIX + "범녀1");
-    imageManager.LoadImage("환웅", this.PREFIX + "환웅");
-    imageManager.LoadImage("heart", this.PREFIX + "heart");
     soundManager.PlaySound("Choice");
     this.startMinute = minute();
     this.startSecond = second();
@@ -5594,21 +5501,21 @@ class S3C3V1_4_1 extends Scene {
       (sin(this.angle) * this.diameter) / 2 +
       this.diameter / 2;
 
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_4_1_background", createVector(width / 2, height / 2));
 
     // 범녀 선택 씬
     imageManager.DrawImageScale(
-      "범녀1",
+      "s3c3v1_4_1_범녀1",
       createVector(this.범녀_X, this.범녀_Y),
       createVector(0.2, 0.2)
     );
     imageManager.DrawImageScale(
-      "환웅",
+      "s3c3v1_4_1_환웅",
       createVector(this.환웅_X, this.환웅_Y),
       createVector(0.3, 0.3)
     );
     imageManager.DrawImageScale(
-      "heart",
+      "s3c3v1_4_1_heart",
       createVector(width / 2, height / 2),
       createVector(d1 / 2000, d1 / 2000)
     );
@@ -5632,25 +5539,21 @@ class S3C3V1_4_2 extends Scene {
   constructor() {
     super();
     this.SCENE_SECONDS = 5;
-    this.PREFIX = "../../../Images/S3/C3/V1/_4/_2/";
     this.preparationTime = 1;
     this.alpha = 1;
     this.fadeoutTime = 4;
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("family", this.PREFIX + "family");
-
     this.alpha = 255;
     this.fadeoutTime = 4;
     this.preparationTime = 1;
   }
 
   OnDraw() {
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_4_2_background", createVector(width / 2, height / 2));
     imageManager.DrawImageScale(
-      "family",
+      "s3c3v1_4_2_family",
       createVector(width / 2, height / 2),
       createVector(0.25, 0.25),
       0,
@@ -5676,20 +5579,6 @@ class S3C3V1_4_3 extends Scene {
   constructor() {
     super();
     this.SCENE_DURATION = 7;
-    this.imageNames = [
-      "background",
-      "body",
-      "head",
-      "arm",
-      "mouth1",
-      "mouth2",
-      "ally",
-      "enemy1",
-      "enemy2",
-      "enemy3",
-      "flag",
-    ];
-    this.imagePath = "../../../Images/S3/C3/V1/_4/_3/";
     this.manScale = 0.3;
     this.allyScale = 0.2;
     this.enemyScale1 = 0.2;
@@ -5703,12 +5592,6 @@ class S3C3V1_4_3 extends Scene {
   }
 
   OnEnter() {
-    this.imageNames.forEach((imageName) =>
-      imageManager.LoadImage(imageName, this.imagePath + imageName)
-    );
-
-    imageManager.LoadImage("text", "../../../Images/S3/C3/V1/_4/_3/text");
-
     this.animationTick = 0;
     this.firstFlag = false;
   }
@@ -5721,38 +5604,38 @@ class S3C3V1_4_3 extends Scene {
     }
 
     imageManager.DrawImageScale(
-      "background",
+      "s3c3v1_4_3_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
 
     imageManager.DrawImageScale(
-      "enemy2",
+      "s3c3v1_4_3_enemy2",
       createVector(100, 450),
       createVector(this.enemyScale2, this.enemyScale2)
     );
     imageManager.DrawImageScale(
-      "enemy2",
+      "s3c3v1_4_3_enemy2",
       createVector(200, 450),
       createVector(this.enemyScale2, this.enemyScale2)
     );
     imageManager.DrawImageScale(
-      "enemy1",
+      "s3c3v1_4_3_enemy1",
       createVector(500, 450),
       createVector(this.enemyScale2, this.enemyScale2)
     );
     imageManager.DrawImageScale(
-      "enemy3",
+      "s3c3v1_4_3_enemy3",
       createVector(350, 450),
       createVector(this.enemyScale1, this.enemyScale1)
     );
     imageManager.DrawImageScale(
-      "ally",
+      "s3c3v1_4_3_ally",
       createVector(1180, 500),
       createVector(this.allyScale, this.allyScale)
     );
     imageManager.DrawImageScale(
-      "flag",
+      "s3c3v1_4_3_flag",
       createVector(1300, 250),
       createVector(0.25, 0.25),
       0.3
@@ -5760,25 +5643,25 @@ class S3C3V1_4_3 extends Scene {
 
     if (this.isAnimating)
       imageManager.DrawImageScale(
-        "arm",
+        "s3c3v1_4_3_arm",
         createVector(950, 280),
         createVector(this.manScale, this.manScale),
         0.3
       );
     else
       imageManager.DrawImageScale(
-        "arm",
+        "s3c3v1_4_3_arm",
         createVector(900, 300),
         createVector(this.manScale, this.manScale)
       );
 
     imageManager.DrawImageScale(
-      "body",
+      "s3c3v1_4_3_body",
       createVector(900, 500),
       createVector(this.manScale, this.manScale)
     );
     imageManager.DrawImageScale(
-      "head",
+      "s3c3v1_4_3_head",
       createVector(1050, 300),
       createVector(this.manScale, this.manScale),
       0.2
@@ -5786,20 +5669,20 @@ class S3C3V1_4_3 extends Scene {
 
     if (this.isAnimating)
       imageManager.DrawImageScale(
-        "mouth1",
+        "s3c3v1_4_3_mouth1",
         createVector(1050, 300),
         createVector(this.manScale, this.manScale),
         0.2
       );
     else
       imageManager.DrawImageScale(
-        "mouth2",
+        "s3c3v1_4_3_mouth2",
         createVector(1050, 300),
         createVector(this.manScale, this.manScale),
         0.2
       );
 
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_4_3_text", createVector(width / 2, height / 2));
 
     if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
       sceneManager.CreditScene();
@@ -5832,23 +5715,12 @@ class S3C3V2 extends Scene {
     this.bear_MOU_Y = 460;
     this.startTime = 0;
     this.imageIndex = 0;
-    this.tigerList = ["tiger1", "tiger2", "tiger3"];
+    this.tigerList = ["s3c3v2_tiger1", "s3c3v2_tiger2", "s3c3v2_tiger3"];
     this.WALK_INTERVAL = 0.075;
     this.walkTick = 0;
   }
 
   OnEnter() {
-    imageManager.LoadImage("text", "../../../Images/S3/C3/V2/_0/text");
-    imageManager.LoadImage("background", "../../../Images/S3/C3/V2/_0/background");
-    imageManager.LoadImage("bear1", "../../../Images/S3/C3/V2/_0/bear1");
-    imageManager.LoadImage("bear2", "../../../Images/S3/C3/V2/_0/bear2");
-
-    for (let i = 0; i < this.tigerList.length; i++) {
-      imageManager.LoadImage(
-        `tiger${i + 1}`,
-        "../../../Images/S3/C3/V2/_0/tiger" + `${i + 1}`
-      );
-    }
 
     soundManager.PlaySound("S3/C3/V2/_0/narr/woonggirl");
 
@@ -5871,17 +5743,17 @@ class S3C3V2 extends Scene {
     let currentProcessingTime = (millis() - this.startTime) / 1000;
     let isEating = currentProcessingTime % 2 === 1;
 
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_background", createVector(width / 2, height / 2));
 
     if (Math.floor(millis() / 300) % 2 === 0) {
       imageManager.DrawImageScale(
-        "bear1",
+        "s3c3v2_bear1",
         createVector(this.bear_EYE_X, this.bear_EYE_Y),
         createVector(this.bear_SCALE, this.bear_SCALE, 0)
       );
     } else {
       imageManager.DrawImageScale(
-        "bear2",
+        "s3c3v2_bear2",
         createVector(this.bear_EYE_X, this.bear_EYE_Y),
         createVector(this.bear_SCALE, this.bear_SCALE, 0)
       );
@@ -5899,7 +5771,7 @@ class S3C3V2 extends Scene {
       createVector(this.tiger_X, this.tiger_Y),
       createVector(this.tiger_SCALE, this.tiger_SCALE, 0)
     );
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_text", createVector(width / 2, height / 2));
 
     if (this.tiger_X < 900) {
       this.tiger_X += 26 * timeManager.deltaTime;
@@ -5920,7 +5792,6 @@ class S3C3V2 extends Scene {
 class S3C3V2_1_1 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "../../../Images/S3/C3/V2/_1/_1/";
     this.SOUND_PREFIX = "../../../Sounds/S3/C3/V2/_1/_1/narr/";
 
     this.centerVector;
@@ -5940,36 +5811,27 @@ class S3C3V2_1_1 extends Scene {
     this.sunY = 600;
     this.cloudXDistance = 0;
 
-    imageManager.LoadImage("text", this.PREFIX + "text");
-    imageManager.LoadImage("cloud_left", this.PREFIX + "cloud_left");
-    imageManager.LoadImage("cloud_right", this.PREFIX + "cloud_right");
-    imageManager.LoadImage("cloud_middle", this.PREFIX + "cloud_middle");
-    imageManager.LoadImage("lake", this.PREFIX + "lake");
-    imageManager.LoadImage("mountains", this.PREFIX + "mountains");
-    imageManager.LoadImage("sky", this.PREFIX + "sky");
-    imageManager.LoadImage("sun", this.PREFIX + "sun");
-
     soundManager.PlaySound("S3/C3/V2/_1/_1/narr");
   }
 
   OnDraw() {
-    imageManager.DrawImage("sky", this.centerVector);
-    imageManager.DrawImage("sun", createVector(this.centerX, this.sunY));
-    imageManager.DrawImage("mountains", this.centerVector);
-    imageManager.DrawImage("lake", this.centerVector);
+    imageManager.DrawImage("s3c3v2_1_1_sky", this.centerVector);
+    imageManager.DrawImage("s3c3v2_1_1_sun", createVector(this.centerX, this.sunY));
+    imageManager.DrawImage("s3c3v2_1_1_mountains", this.centerVector);
+    imageManager.DrawImage("s3c3v2_1_1_lake", this.centerVector);
     imageManager.DrawImage(
-      "cloud_left",
+      "s3c3v2_1_1_cloud_left",
       createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
     imageManager.DrawImage(
-      "cloud_right",
+      "s3c3v2_1_1_cloud_right",
       createVector(this.centerX + this.cloudXDistance, this.centerY)
     );
     imageManager.DrawImage(
-      "cloud_middle",
+      "s3c3v2_1_1_cloud_middle",
       createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
-    imageManager.DrawImage("text", this.centerVector);
+    imageManager.DrawImage("s3c3v2_1_1_text", this.centerVector);
 
     if (this.sunY < 400) {
       sceneManager.ChangeScene(new S3C3V2_1_2());
@@ -6000,13 +5862,6 @@ class S3C3V2_1_2 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "../../../Images/S3/C3/V2/_1/_2/background");
-    imageManager.LoadImage("text", "../../../Images/S3/C3/V2/_1/_2/text");
-
-    imageManager.LoadImage("girlbody", "../../../Images/S3/C3/V2/_1/_2/girlbody");
-    imageManager.LoadImage("girlface", "../../../Images/S3/C3/V2/_1/_2/girlface");
-    imageManager.LoadImage("girlface2", "../../../Images/S3/C3/V2/_1/_2/girlface2");
-    imageManager.LoadImage("girlhand", "../../../Images/S3/C3/V2/_1/_2/girlhand");
 
     this.startMillis = millis();
 
@@ -6020,8 +5875,8 @@ class S3C3V2_1_2 extends Scene {
   }
 
   OnDraw() {
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_1_2_background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_1_2_text", createVector(width / 2, height / 2));
 
     this.GIRL_HAND_Y = lerp(
       550,
@@ -6031,24 +5886,24 @@ class S3C3V2_1_2 extends Scene {
 
     //girl
     imageManager.DrawImageScale(
-      "girlbody",
+      "s3c3v2_1_2_girlbody",
       createVector(this.GIRL_X, this.GIRL_Y),
       createVector(this.GIRL_SCALE, this.GIRL_SCALE)
     );
     imageManager.DrawImageScale(
-      "girlhand",
+      "s3c3v2_1_2_girlhand",
       createVector(this.GIRL_HAND_X, abs(this.GIRL_HAND_Y)),
       createVector(this.GIRL_SCALE, this.GIRL_SCALE)
     );
     if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
-        "girlface",
+        "s3c3v2_1_2_girlface",
         createVector(this.GIRL_EYE_X, this.GIRL_EYE_Y),
         createVector(this.GIRL_SCALE, this.GIRL_SCALE)
       );
     } else {
       imageManager.DrawImageScale(
-        "girlface2",
+        "s3c3v2_1_2_girlface2",
         createVector(this.GIRL_EYE_X, this.GIRL_EYE_Y),
         createVector(this.GIRL_SCALE, this.GIRL_SCALE)
       );
@@ -6090,45 +5945,25 @@ class S3C3V2_1_3 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "../../../Images/S3/C3/V2/_1/_3/background");
-    imageManager.LoadImage(
-      "hwanwoong_text",
-      "../../../Images/S3/C3/V2/_1/_3/hwanwoong_text"
-    );
-    imageManager.LoadImage("girl_text", "../../../Images/S3/C3/V2/_1/_3/girl_text");
-
-
-    // girl
-    imageManager.LoadImage("girl_body", "../../../Images/S3/C3/V2/_1/_3/girl");
-    imageManager.LoadImage("girl_eye_1", "../../../Images/S3/C3/V2/_1/_3/girleye1");
-    imageManager.LoadImage("girl_eye_2", "../../../Images/S3/C3/V2/_1/_3/girleye2");
-
-    // hwan
-    imageManager.LoadImage("hwan_body", "../../../Images/S3/C3/V2/_1/_3/hwan");
-    imageManager.LoadImage("hwan_mouse_1", "../../../Images/S3/C3/V2/_1/_3/hwanmouse1");
-    imageManager.LoadImage("hwan_mouse_2", "../../../Images/S3/C3/V2/_1/_3/hwanmouse2");
-    imageManager.LoadImage("hwan_shoe_1", "../../../Images/S3/C3/V2/_1/_3/hwanshoe");
-    imageManager.LoadImage("hwan_shoe_2", "../../../Images/S3/C3/V2/_1/_3/hwanshoe2");
-
     this.startMillis = millis();
   }
 
   OnDraw() {
     this.sound();
     // 배경화면
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_1_3_background", createVector(width / 2, height / 2));
     imageManager.DrawImage(
-      "hwanwoong_text",
+      "s3c3v2_1_3_hwanwoong_text",
       createVector(width / 2, height / 2 + 100)
     );
     imageManager.DrawImage(
-      "girl_text",
+      "s3c3v2_1_3_girl_text",
       createVector(width / 2, height / 2 + 100)
     );
 
     // girl
     imageManager.DrawImageScale(
-      "girl_body",
+      "s3c3v2_1_3_girl_body",
       createVector(this.GIRL_X, this.GIRL_Y),
       createVector(this.GIRL_SCALE, this.GIRL_SCALE)
     );
@@ -6138,53 +5973,53 @@ class S3C3V2_1_3 extends Scene {
       this.HWAN_X += 1.5;
       if (Math.floor(millis() / 500) % 2 === 0) {
         imageManager.DrawImageScale(
-          "hwan_shoe_1",
+          "s3c3v2_1_3_hwan_shoe_1",
           createVector(this.HWAN_X + 17, this.HWAN_SHOE_Y),
           createVector(this.HWAN_SCALE, this.HWAN_SCALE)
         );
       } else {
         imageManager.DrawImageScale(
-          "hwan_shoe_2",
+          "s3c3v2_1_3_hwan_shoe_2",
           createVector(this.HWAN_X + 17, this.HWAN_SHOE_Y),
           createVector(this.HWAN_SCALE, this.HWAN_SCALE)
         );
       }
     } else {
       imageManager.DrawImageScale(
-        "hwan_shoe_2",
+        "s3c3v2_1_3_hwan_shoe_2",
         createVector(this.HWAN_X + 17, this.HWAN_SHOE_Y),
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
     }
     if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
-        "girl_eye_1",
+        "s3c3v2_1_3_girl_eye_1",
         createVector(this.GIRL_X, this.GIRL_EYE_Y),
         createVector(this.GIRL_SCALE, this.GIRL_SCALE)
       );
       imageManager.DrawImageScale(
-        "hwan_body",
+        "s3c3v2_1_3_hwan_body",
         createVector(this.HWAN_X, this.HWAN_Y),
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
       imageManager.DrawImageScale(
-        "hwan_mouse_1",
+        "s3c3v2_1_3_hwan_mouse_1",
         createVector(this.HWAN_X + 10, this.HWAN_MOUSE_Y),
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
     } else {
       imageManager.DrawImageScale(
-        "girl_eye_2",
+        "s3c3v2_1_3_girl_eye_2",
         createVector(this.GIRL_X, this.GIRL_EYE_Y),
         createVector(this.GIRL_SCALE, this.GIRL_SCALE)
       );
       imageManager.DrawImageScale(
-        "hwan_body",
+        "s3c3v2_1_3_hwan_body",
         createVector(this.HWAN_X, this.HWAN_Y),
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
       imageManager.DrawImageScale(
-        "hwan_mouse_2",
+        "s3c3v2_1_3_hwan_mouse_2",
         createVector(this.HWAN_X + 10, this.HWAN_MOUSE_Y),
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
@@ -6238,7 +6073,6 @@ class S3C3V2_2_1 extends Scene {
   constructor() {
     super();
     this.SCENE_DURATION = 5; // 5초 동안 씬 진행
-    this.PREFIX = "../../../Images/S3/C3/V2/_2/_1/";
     this.SOUND_PREFIX = "../../../Sounds/S3/C3/V2/_2/_1/narr/";
     this.EXTRA_Y = 580;
     this.COUPLE_Y = 500;
@@ -6249,30 +6083,25 @@ class S3C3V2_2_1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("couple", this.PREFIX + "couple");
-    imageManager.LoadImage("extra_left", this.PREFIX + "extra_left");
-    imageManager.LoadImage("extra_right", this.PREFIX + "extra_right");
-
     this.startMillis = millis(); // 씬 시작 millis
   }
 
   OnDraw() {
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_2_1_background", createVector(width / 2, height / 2));
 
     imageManager.DrawImageScale(
-      "extra_left",
+      "s3c3v2_2_1_extra_left",
       createVector(150, this.EXTRA_Y),
       this.extraScale
     );
     imageManager.DrawImageScale(
-      "extra_right",
+      "s3c3v2_2_1_extra_right",
       createVector(1150, this.EXTRA_Y),
       this.extraScale
     );
 
     imageManager.DrawImageScale(
-      "couple",
+      "s3c3v2_2_1_couple",
       createVector(width / 2, this.COUPLE_Y),
       this.coupleScale
     );
@@ -6306,26 +6135,22 @@ class S3C3V2_2_2 extends Scene {
   constructor() {
     super();
     this.preparationTime = 1;
-    this.BACKGROUND_IMAGE = "../../../Images/S3/C3/V1/_3/_2/Background";
-    this.CHARACTER_IMAGE = "../../../Images/S3/C3/V1/_3/_2/Characters";
     this.alpha = 255;
     this.fadeoutTime = 4;
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.BACKGROUND_IMAGE);
-    imageManager.LoadImage("character", this.CHARACTER_IMAGE);
     this.alpha = 255;
   }
 
   OnDraw() {
     imageManager.DrawImageScale(
-      "background",
+      "s3c3v2_2_2_background",
       createVector(width / 2, height / 2, 0),
       createVector(1, 1, 0)
     );
     imageManager.DrawImageScale(
-      "character",
+      "s3c3v2_2_2_character",
       createVector(width / 2, height / 2, 0),
       createVector(0.25, 0.25, 0),
       0,
@@ -6349,29 +6174,24 @@ class S3C3V2_2_2 extends Scene {
 class S3C3V2_2_3 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "../../../Images/S3/C3/V2/_2/_3/";
-    this.SOUND_PREFIX = "../../../Sounds/S3/C3/V2/_2/_3/narr/";
     this.SCENE_DURATION = 5;
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("text", this.PREFIX + "text");
-    imageManager.LoadImage("dangun", this.PREFIX + "dangun");
     soundManager.PlaySound("S3/C3/V2/_2/_3/narr");
   }
 
   OnDraw() {
     imageManager.DrawImage(
-      "background",
+      "s3c3v2_2_3_background",
       createVector(width / 2, height / 2, 0)
     );
     imageManager.DrawImageScale(
-      "dangun",
+      "s3c3v2_2_3_dangun",
       createVector(width / 2, height / 2 + 60, 0),
       createVector(0.22, 0.22, 0)
     );
-    imageManager.DrawImage("text", createVector(width / 2, height / 2, 0));
+    imageManager.DrawImage("s3c3v2_2_3_text", createVector(width / 2, height / 2, 0));
 
     if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
       sceneManager.CreditScene();
@@ -6792,126 +6612,8 @@ function preload(){
     "S3/C3/V2/_0/narr/woonggirl",
     "../../../Sounds/S3/C3/V2/_0/narr/woonggirl.mp3"
   );
-}
-
-function setup() {
-  createCanvas(1280, 720, P2D);
-  frameRate(60);
-  noStroke();
-
-  fontManager = new FontManager();
-  fontManager.LoadFont("font", "../../../../Fonts/LeeSeoyun.otf");
-
   imageManager = new ImageManager();
-  loadAllImages();
-  timeManager = new TimeManager();
-  sceneManager = new SceneManager();
 
-  // S1(0 ~ 21)
-  sceneList.push(new Opening());
-  sceneList.push(new S1C1());
-  sceneList.push(new S1C3());
-  sceneList.push(new S1C4());
-  sceneList.push(new S1C5());
-  sceneList.push(new S1C6_1());
-  sceneList.push(new S1C6_2());
-  sceneList.push(new S1C7());
-  sceneList.push(new S1C8());
-  sceneList.push(new S1C9());
-  sceneList.push(new S1C11());
-  sceneList.push(new S1C13());
-  sceneList.push(new S1C14());
-  sceneList.push(new S1C15()); // 미니게임
-  sceneList.push(new S1C15V1());
-  sceneList.push(new S1C15V2());
-  sceneList.push(new S1C16());
-  sceneList.push(new S1C17());
-  sceneList.push(new S1C18());
-  sceneList.push(new S1C19_1());
-  sceneList.push(new S1C19_2());
-  sceneList.push(new S1C19_3());
-
-  // S2(22 ~ 31)
-  sceneList.push(new S2C1());
-  sceneList.push(new S2C2());
-  sceneList.push(new S2C3());
-  sceneList.push(new S2C4());
-  sceneList.push(new S2C5());
-  sceneList.push(new S2C6()); // 미니게임
-  sceneList.push(new S2C6V1());
-  sceneList.push(new S2C6V2());
-  sceneList.push(new S2C7());
-  sceneList.push(new S2C8());
-
-  // S3(32 ~ 53)
-  sceneList.push(new S3C1());
-  sceneList.push(new S3C2());
-
-  // S3 - V1(34 ~ 46)
-  sceneList.push(new S3C3V1_1());
-  sceneList.push(new S3C3V1_2());
-  sceneList.push(new S3C3V1_3());
-  sceneList.push(new S3C3V1_1_1());
-  sceneList.push(new S3C3V1_1_2());
-  sceneList.push(new S3C3V1_2_1());
-  sceneList.push(new S3C3V1_2_2());
-  sceneList.push(new S3C3V1_3_1());
-  sceneList.push(new S3C3V1_3_2());
-  sceneList.push(new S3C3V1_3_3());
-  sceneList.push(new S3C3V1_4_1());
-  sceneList.push(new S3C3V1_4_2());
-  sceneList.push(new S3C3V1_4_3());
-  // S3 - V2(47 ~ 53)
-  sceneList.push(new S3C3V2());
-  sceneList.push(new S3C3V2_1_1());
-  sceneList.push(new S3C3V2_1_2());
-  sceneList.push(new S3C3V2_1_3());
-  sceneList.push(new S3C3V2_2_1());
-  sceneList.push(new S3C3V2_2_2());
-  sceneList.push(new S3C3V2_2_3());
-
-  sceneManager.SetCreditScene(new EndingCredit());
-  sceneManager.Setup(sceneList[0]);
-}
-
-function draw() {
-  timeManager.OnDraw();
-  if (!sceneManager.looping) return;
-
-  background(255);
-  fill(0);
-
-  sceneManager.Draw();
-}
-
-function keyPressed() {
-  if (!sceneManager.firstScene) {
-    let index = sceneList.findIndex(
-      (scene) =>
-        scene.constructor.name === sceneManager.currentScene.constructor.name
-    );
-    if (index === -1) return;
-    if (keyCode === RIGHT_ARROW) {
-      if (index < sceneList.length - 1) {
-        sceneManager.looping = true;
-        sceneManager.ChangeSceneManually(sceneList[index + 1]);
-      }
-    } else if (keyCode === LEFT_ARROW) {
-      if (index > 0) {
-        sceneManager.looping = true;
-        sceneManager.ChangeSceneManually(sceneList[index - 1]);
-      }
-    }
-  }
-}
-
-function mousePressed() {
-  if (sceneManager.currentScene instanceof S2C6) {
-		sceneManager.currentScene.OnMousePressed();
-  }
-}
-
-function loadAllImages() {
   // sequence1
 
   // s1c1
@@ -7219,4 +6921,289 @@ function loadAllImages() {
   imageManager.LoadImage("s2c8_sky", "../../../Images/S2/C8/sky");
   imageManager.LoadImage("s2c8_sun", "../../../Images/S2/C8/sun");
   imageManager.LoadImage("s2c8_text", "../../../Images/S2/C8/text");
+
+  // sequence 3
+  
+  // s3c1
+  imageManager.LoadImage("s3c1_background", "../../../Images/S3/C1/background");
+  imageManager.LoadImage("s3c1_bear", "../../../Images/S3/C1/bear");
+  imageManager.LoadImage("s3c1_tiger", "../../../Images/S3/C1/tiger");
+  imageManager.LoadImage("s3c1_garlic", "../../../Images/S3/C1/garlic");
+  imageManager.LoadImage("s3c1_ssug", "../../../Images/S3/C1/ssug");
+  imageManager.LoadImage("s3c1_text", "../../../Images/S3/C1/text");
+
+  // s3c2
+  imageManager.LoadImage("s3c2_background", "../../../Images/S3/C2/background");
+  imageManager.LoadImage("s3c2_body", "../../../Images/S3/C2/body");
+  imageManager.LoadImage("s3c2_eye_black", "../../../Images/S3/C2/eye_black");
+  imageManager.LoadImage("s3c2_eye_white", "../../../Images/S3/C2/eye_white");
+  imageManager.LoadImage("s3c2_left", "../../../Images/S3/C2/left");
+  imageManager.LoadImage("s3c2_right", "../../../Images/S3/C2/right");
+  imageManager.LoadImage("s3c2_Button1", "../../../Images/S3/C2/Button1");
+  imageManager.LoadImage("s3c2_Button2", "../../../Images/S3/C2/Button2");
+
+  // s3c3v1_1_1
+  imageManager.LoadImage("s3c3v1_1_1_background", "../../../Images/S3/C3/V1/_1/_1/background");
+  imageManager.LoadImage("s3c3v1_1_1_bear_before", "../../../Images/S3/C3/V1/_1/_1/bear_before");
+  imageManager.LoadImage("s3c3v1_1_1_bear_after", "../../../Images/S3/C3/V1/_1/_1/bear_after");
+  imageManager.LoadImage("s3c3v1_1_1_tiger_before", "../../../Images/S3/C3/V1/_1/_1/tiger_before");
+  imageManager.LoadImage("s3c3v1_1_1_tiger_after", "../../../Images/S3/C3/V1/_1/_1/tiger_after");
+
+  // s3c3v1_1_2
+  imageManager.LoadImage("s3c3v1_1_2_background", "../../../Images/S3/C3/V1/_1/_2/background");
+  imageManager.LoadImage("s3c3v1_1_2_bear", "../../../Images/S3/C3/V1/_1/_2/bear");
+  imageManager.LoadImage("s3c3v1_1_2_bear_star", "../../../Images/S3/C3/V1/_1/_2/bear_star");
+  imageManager.LoadImage("s3c3v1_1_2_tiger", "../../../Images/S3/C3/V1/_1/_2/tiger");
+  imageManager.LoadImage("s3c3v1_1_2_tiger_star", "../../../Images/S3/C3/V1/_1/_2/tiger_star");
+
+  // s3c3v1_1
+  imageManager.LoadImage("s3c3v1_1_background", "../../../Images/S3/C3/V1/_1/background");
+  imageManager.LoadImage("s3c3v1_1_bear1", "../../../Images/S3/C3/V1/_1/bear1");
+  imageManager.LoadImage("s3c3v1_1_bear2", "../../../Images/S3/C3/V1/_1/bear2");
+  imageManager.LoadImage("s3c3v1_1_tiger", "../../../Images/S3/C3/V1/_1/tiger");
+  imageManager.LoadImage("s3c3v1_1_text", "../../../Images/S3/C3/V1/_1/text");
+
+  // s3c3v1_2_1
+  imageManager.LoadImage("s3c3v1_2_1_background", "../../../Images/S3/C3/V1/_2/_1/background");
+  imageManager.LoadImage("s3c3v1_2_1_범녀1", "../../../Images/S3/C3/V1/_2/_1/범녀1");
+  imageManager.LoadImage("s3c3v1_2_1_범녀2", "../../../Images/S3/C3/V1/_2/_1/범녀2");
+  imageManager.LoadImage("s3c3v1_2_1_범녀3", "../../../Images/S3/C3/V1/_2/_1/범녀3");
+  imageManager.LoadImage("s3c3v1_2_1_웅녀", "../../../Images/S3/C3/V1/_2/_1/웅녀");
+  imageManager.LoadImage("s3c3v1_2_1_환웅", "../../../Images/S3/C3/V1/_2/_1/환웅");
+
+  // s3c3v1_2_2
+  imageManager.LoadImage("s3c3v1_2_2_background", "../../../Images/S3/C3/V1/_2/_2/background");
+  imageManager.LoadImage("s3c3v1_2_2_범녀", "../../../Images/S3/C3/V1/_2/_2/범녀1");
+  imageManager.LoadImage("s3c3v1_2_2_웅녀", "../../../Images/S3/C3/V1/_2/_2/웅녀");
+  imageManager.LoadImage("s3c3v1_2_2_환웅", "../../../Images/S3/C3/V1/_2/_2/환웅");
+  imageManager.LoadImage("s3c3v1_2_2_button_left", "../../../Images/S3/C3/V1/_2/_2/button_left");
+  imageManager.LoadImage("s3c3v1_2_2_button_right", "../../../Images/S3/C3/V1/_2/_2/button_right");
+  imageManager.LoadImage("s3c3v1_2_2_S3C3V1_2_2_TEXT", "../../../Images/S3/C3/V1/_2/_2/text");
+
+  // s3c3v1_2
+  imageManager.LoadImage("s3c3v1_2_background", "../../../Images/S3/C3/V1/_2/background");
+  imageManager.LoadImage("s3c3v1_2_text", "../../../Images/S3/C3/V1/_2/text");
+  imageManager.LoadImage("s3c3v1_2_bear_body", "../../../Images/S3/C3/V1/_2/bear_body");
+  imageManager.LoadImage("s3c3v1_2_bear_eye", "../../../Images/S3/C3/V1/_2/bear_eye");
+  imageManager.LoadImage("s3c3v1_2_tiger1", "../../../Images/S3/C3/V1/_2/tiger1");
+  imageManager.LoadImage("s3c3v1_2_tiger2", "../../../Images/S3/C3/V1/_2/tiger2");
+
+  // s3c3v1_3_1
+  imageManager.LoadImage("s3c3v1_3_1_background", "../../../Images/S3/C3/V1/_3/_1/background");
+  imageManager.LoadImage("s3c3v1_3_1_웅녀", "../../../Images/S3/C3/V1/_3/_1/웅녀");
+  imageManager.LoadImage("s3c3v1_3_1_환웅", "../../../Images/S3/C3/V1/_3/_1/환웅");
+  imageManager.LoadImage("s3c3v1_3_1_heart", "../../../Images/S3/C3/V1/_3/_1/heart");
+
+  // s3c3v1_3_2
+  imageManager.LoadImage("s3c3v1_3_2_background", "../../../Images/S3/C3/V1/_3/_2/Background");
+  imageManager.LoadImage("s3c3v1_3_2_character", "../../../Images/S3/C3/V1/_3/_2/Characters");
+
+  // s3c3v1_3_3
+  imageManager.LoadImage("s3c3v1_3_3_background", "../../../Images/S3/C3/V1/_3/_3/Background");
+  imageManager.LoadImage("s3c3v1_3_3_dangun", "../../../Images/S3/C3/V1/_3/_3/Dangun");
+  imageManager.LoadImage("s3c3v1_3_3_text", "../../../Images/S3/C3/V1/_3/_3/text");
+
+  // s3c3v1_3
+  imageManager.LoadImage("s3c3v1_3_cloud_left", "../../../Images/S3/C3/V1/_3/_0/cloud_left");
+  imageManager.LoadImage("s3c3v1_3_cloud_right", "../../../Images/S3/C3/V1/_3/_0/cloud_right");
+  imageManager.LoadImage("s3c3v1_3_cloud_middle", "../../../Images/S3/C3/V1/_3/_0/cloud_middle");
+  imageManager.LoadImage("s3c3v1_3_lake", "../../../Images/S3/C3/V1/_3/_0/lake");
+  imageManager.LoadImage("s3c3v1_3_mountains", "../../../Images/S3/C3/V1/_3/_0/mountains");
+  imageManager.LoadImage("s3c3v1_3_sky", "../../../Images/S3/C3/V1/_3/_0/sky");
+  imageManager.LoadImage("s3c3v1_3_sun", "../../../Images/S3/C3/V1/_3/_0/sun");
+  imageManager.LoadImage("s3c3v1_3_text", "../../../Images/S3/C3/V1/_3/_0/text");
+
+  // s3c3v1_4_1
+  imageManager.LoadImage("s3c3v1_4_1_background", "../../../Images/S3/C3/V1/_4/_1/background");
+  imageManager.LoadImage("s3c3v1_4_1_범녀1", "../../../Images/S3/C3/V1/_4/_1/범녀1");
+  imageManager.LoadImage("s3c3v1_4_1_환웅", "../../../Images/S3/C3/V1/_4/_1/환웅");
+  imageManager.LoadImage("s3c3v1_4_1_heart", "../../../Images/S3/C3/V1/_4/_1/heart"); 
+
+  // s3c3v1_4_2
+  imageManager.LoadImage("s3c3v1_4_2_background", "../../../Images/S3/C3/V1/_4/_2/background");
+  imageManager.LoadImage("s3c3v1_4_2_family", "../../../Images/S3/C3/V1/_4/_2/family");
+
+  // s3c3v1_4_3
+  imageManager.LoadImage("s3c3v1_4_3_background", "../../../Images/S3/C3/V1/_4/_3/background")
+  imageManager.LoadImage("s3c3v1_4_3_body", "../../../Images/S3/C3/V1/_4/_3/body")
+  imageManager.LoadImage("s3c3v1_4_3_head", "../../../Images/S3/C3/V1/_4/_3/head")
+  imageManager.LoadImage("s3c3v1_4_3_arm", "../../../Images/S3/C3/V1/_4/_3/arm")
+  imageManager.LoadImage("s3c3v1_4_3_mouth1", "../../../Images/S3/C3/V1/_4/_3/mouth1")
+  imageManager.LoadImage("s3c3v1_4_3_mouth2", "../../../Images/S3/C3/V1/_4/_3/mouth2")
+  imageManager.LoadImage("s3c3v1_4_3_ally", "../../../Images/S3/C3/V1/_4/_3/ally")
+  imageManager.LoadImage("s3c3v1_4_3_enemy1", "../../../Images/S3/C3/V1/_4/_3/enemy1")
+  imageManager.LoadImage("s3c3v1_4_3_enemy2", "../../../Images/S3/C3/V1/_4/_3/enemy2")
+  imageManager.LoadImage("s3c3v1_4_3_enemy3", "../../../Images/S3/C3/V1/_4/_3/enemy3")
+  imageManager.LoadImage("s3c3v1_4_3_flag", "../../../Images/S3/C3/V1/_4/_3/flag")
+  imageManager.LoadImage("s3c3v1_4_3_text", "../../../Images/S3/C3/V1/_4/_3/text");
+
+  // s3c3v2_1_1
+  imageManager.LoadImage("s3c3v2_1_1_text", "../../../Images/S3/C3/V2/_1/_1/text");
+  imageManager.LoadImage("s3c3v2_1_1_cloud_left", "../../../Images/S3/C3/V2/_1/_1/cloud_left");
+  imageManager.LoadImage("s3c3v2_1_1_cloud_right", "../../../Images/S3/C3/V2/_1/_1/cloud_right");
+  imageManager.LoadImage("s3c3v2_1_1_cloud_middle", "../../../Images/S3/C3/V2/_1/_1/cloud_middle");
+  imageManager.LoadImage("s3c3v2_1_1_lake", "../../../Images/S3/C3/V2/_1/_1/lake");
+  imageManager.LoadImage("s3c3v2_1_1_mountains", "../../../Images/S3/C3/V2/_1/_1/mountains");
+  imageManager.LoadImage("s3c3v2_1_1_sky", "../../../Images/S3/C3/V2/_1/_1/sky");
+  imageManager.LoadImage("s3c3v2_1_1_sun", "../../../Images/S3/C3/V2/_1/_1/sun");
+
+  // s3c3v2_1_2
+  imageManager.LoadImage("s3c3v2_1_2_background", "../../../Images/S3/C3/V2/_1/_2/background");
+  imageManager.LoadImage("s3c3v2_1_2_text", "../../../Images/S3/C3/V2/_1/_2/text");
+  imageManager.LoadImage("s3c3v2_1_2_girlbody", "../../../Images/S3/C3/V2/_1/_2/girlbody");
+  imageManager.LoadImage("s3c3v2_1_2_girlface", "../../../Images/S3/C3/V2/_1/_2/girlface");
+  imageManager.LoadImage("s3c3v2_1_2_girlface2", "../../../Images/S3/C3/V2/_1/_2/girlface2");
+  imageManager.LoadImage("s3c3v2_1_2_girlhand", "../../../Images/S3/C3/V2/_1/_2/girlhand");
+
+  // s3c3v2_1_3
+  imageManager.LoadImage("s3c3v2_1_3_background", "../../../Images/S3/C3/V2/_1/_3/background");
+  imageManager.LoadImage("s3c3v2_1_3_hwanwoong_text", "../../../Images/S3/C3/V2/_1/_3/hwanwoong_text");
+  imageManager.LoadImage("s3c3v2_1_3_girl_text", "../../../Images/S3/C3/V2/_1/_3/girl_text");
+  imageManager.LoadImage("s3c3v2_1_3_girl_body", "../../../Images/S3/C3/V2/_1/_3/girl");
+  imageManager.LoadImage("s3c3v2_1_3_girl_eye_1", "../../../Images/S3/C3/V2/_1/_3/girleye1");
+  imageManager.LoadImage("s3c3v2_1_3_girl_eye_2", "../../../Images/S3/C3/V2/_1/_3/girleye2");
+  imageManager.LoadImage("s3c3v2_1_3_hwan_body", "../../../Images/S3/C3/V2/_1/_3/hwan");
+  imageManager.LoadImage("s3c3v2_1_3_hwan_mouse_1", "../../../Images/S3/C3/V2/_1/_3/hwanmouse1");
+  imageManager.LoadImage("s3c3v2_1_3_hwan_mouse_2", "../../../Images/S3/C3/V2/_1/_3/hwanmouse2");
+  imageManager.LoadImage("s3c3v2_1_3_hwan_shoe_1", "../../../Images/S3/C3/V2/_1/_3/hwanshoe");
+  imageManager.LoadImage("s3c3v2_1_3_hwan_shoe_2", "../../../Images/S3/C3/V2/_1/_3/hwanshoe2");
+
+  // s3c3v2_2_1
+  imageManager.LoadImage("s3c3v2_2_1_background", "../../../Images/S3/C3/V2/_2/_1/background");
+  imageManager.LoadImage("s3c3v2_2_1_couple", "../../../Images/S3/C3/V2/_2/_1/couple");
+  imageManager.LoadImage("s3c3v2_2_1_extra_left", "../../../Images/S3/C3/V2/_2/_1/extra_left");
+  imageManager.LoadImage("s3c3v2_2_1_extra_right", "../../../Images/S3/C3/V2/_2/_1/extra_right");
+
+  // s3c3v2_2_2
+  imageManager.LoadImage("s3c3v2_2_2_background", "../../../Images/S3/C3/V1/_3/_2/Background");
+  imageManager.LoadImage("s3c3v2_2_2_character", "../../../Images/S3/C3/V1/_3/_2/Characters");
+
+  // s3c3v2_2_3
+  imageManager.LoadImage("s3c3v2_2_3_background", "../../../Images/S3/C3/V2/_2/_3/background");
+  imageManager.LoadImage("s3c3v2_2_3_text", "../../../Images/S3/C3/V2/_2/_3/text");
+  imageManager.LoadImage("s3c3v2_2_3_dangun", "../../../Images/S3/C3/V2/_2/_3/dangun");
+
+  // s3c3v2
+  imageManager.LoadImage("s3c3v2_text", "../../../Images/S3/C3/V2/_0/text");
+  imageManager.LoadImage("s3c3v2_background", "../../../Images/S3/C3/V2/_0/background");
+  imageManager.LoadImage("s3c3v2_bear1", "../../../Images/S3/C3/V2/_0/bear1");
+  imageManager.LoadImage("s3c3v2_bear2", "../../../Images/S3/C3/V2/_0/bear2");
+  imageManager.LoadImage("s3c3v2_tiger1", "../../../Images/S3/C3/V2/_0/tiger1");
+  imageManager.LoadImage("s3c3v2_tiger2", "../../../Images/S3/C3/V2/_0/tiger2");
+  imageManager.LoadImage("s3c3v2_tiger3", "../../../Images/S3/C3/V2/_0/tiger3");
+}
+
+function setup() {
+  createCanvas(1280, 720, P2D);
+  frameRate(60);
+  noStroke();
+
+  fontManager = new FontManager();
+  fontManager.LoadFont("font", "../../../../Fonts/LeeSeoyun.otf");
+
+  timeManager = new TimeManager();
+  sceneManager = new SceneManager();
+
+  // S1(0 ~ 21)
+  sceneList.push(new Opening());
+  sceneList.push(new S1C1());
+  sceneList.push(new S1C3());
+  sceneList.push(new S1C4());
+  sceneList.push(new S1C5());
+  sceneList.push(new S1C6_1());
+  sceneList.push(new S1C6_2());
+  sceneList.push(new S1C7());
+  sceneList.push(new S1C8());
+  sceneList.push(new S1C9());
+  sceneList.push(new S1C11());
+  sceneList.push(new S1C13());
+  sceneList.push(new S1C14());
+  sceneList.push(new S1C15()); // 미니게임
+  sceneList.push(new S1C15V1());
+  sceneList.push(new S1C15V2());
+  sceneList.push(new S1C16());
+  sceneList.push(new S1C17());
+  sceneList.push(new S1C18());
+  sceneList.push(new S1C19_1());
+  sceneList.push(new S1C19_2());
+  sceneList.push(new S1C19_3());
+
+  // S2(22 ~ 31)
+  sceneList.push(new S2C1());
+  sceneList.push(new S2C2());
+  sceneList.push(new S2C3());
+  sceneList.push(new S2C4());
+  sceneList.push(new S2C5());
+  sceneList.push(new S2C6()); // 미니게임
+  sceneList.push(new S2C6V1());
+  sceneList.push(new S2C6V2());
+  sceneList.push(new S2C7());
+  sceneList.push(new S2C8());
+
+  // S3(32 ~ 53)
+  sceneList.push(new S3C1());
+  sceneList.push(new S3C2());
+
+  // S3 - V1(34 ~ 46)
+  sceneList.push(new S3C3V1_1());
+  sceneList.push(new S3C3V1_2());
+  sceneList.push(new S3C3V1_3());
+  sceneList.push(new S3C3V1_1_1());
+  sceneList.push(new S3C3V1_1_2());
+  sceneList.push(new S3C3V1_2_1());
+  sceneList.push(new S3C3V1_2_2());
+  sceneList.push(new S3C3V1_3_1());
+  sceneList.push(new S3C3V1_3_2());
+  sceneList.push(new S3C3V1_3_3());
+  sceneList.push(new S3C3V1_4_1());
+  sceneList.push(new S3C3V1_4_2());
+  sceneList.push(new S3C3V1_4_3());
+  // S3 - V2(47 ~ 53)
+  sceneList.push(new S3C3V2());
+  sceneList.push(new S3C3V2_1_1());
+  sceneList.push(new S3C3V2_1_2());
+  sceneList.push(new S3C3V2_1_3());
+  sceneList.push(new S3C3V2_2_1());
+  sceneList.push(new S3C3V2_2_2());
+  sceneList.push(new S3C3V2_2_3());
+
+  sceneManager.SetCreditScene(new EndingCredit());
+  sceneManager.Setup(sceneList[0]);
+}
+
+function draw() {
+  timeManager.OnDraw();
+  if (!sceneManager.looping) return;
+
+  background(255);
+  fill(0);
+
+  sceneManager.Draw();
+}
+
+function keyPressed() {
+  if (!sceneManager.firstScene) {
+    let index = sceneList.findIndex(
+      (scene) =>
+        scene.constructor.name === sceneManager.currentScene.constructor.name
+    );
+    if (index === -1) return;
+    if (keyCode === RIGHT_ARROW) {
+      if (index < sceneList.length - 1) {
+        sceneManager.looping = true;
+        sceneManager.ChangeSceneManually(sceneList[index + 1]);
+      }
+    } else if (keyCode === LEFT_ARROW) {
+      if (index > 0) {
+        sceneManager.looping = true;
+        sceneManager.ChangeSceneManually(sceneList[index - 1]);
+      }
+    }
+  }
+}
+
+function mousePressed() {
+  if (sceneManager.currentScene instanceof S2C6) {
+		sceneManager.currentScene.OnMousePressed();
+  }
 }

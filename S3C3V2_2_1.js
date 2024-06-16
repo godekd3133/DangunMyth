@@ -2,7 +2,6 @@ class S3C3V2_2_1 extends Scene {
   constructor() {
     super();
     this.SCENE_DURATION = 5; // 5초 동안 씬 진행
-    this.PREFIX = "Images/S3/C3/V2/_2/_1/";
     this.SOUND_PREFIX = "Sounds/S3/C3/V2/_2/_1/narr/";
     this.EXTRA_Y = 580;
     this.COUPLE_Y = 500;
@@ -13,30 +12,25 @@ class S3C3V2_2_1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("couple", this.PREFIX + "couple");
-    imageManager.LoadImage("extra_left", this.PREFIX + "extra_left");
-    imageManager.LoadImage("extra_right", this.PREFIX + "extra_right");
-
     this.startMillis = millis(); // 씬 시작 millis
   }
 
   OnDraw() {
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_2_1_background", createVector(width / 2, height / 2));
 
     imageManager.DrawImageScale(
-      "extra_left",
+      "s3c3v2_2_1_extra_left",
       createVector(150, this.EXTRA_Y),
       this.extraScale
     );
     imageManager.DrawImageScale(
-      "extra_right",
+      "s3c3v2_2_1_extra_right",
       createVector(1150, this.EXTRA_Y),
       this.extraScale
     );
 
     imageManager.DrawImageScale(
-      "couple",
+      "s3c3v2_2_1_couple",
       createVector(width / 2, this.COUPLE_Y),
       this.coupleScale
     );

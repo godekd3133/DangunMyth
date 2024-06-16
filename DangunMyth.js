@@ -99,126 +99,8 @@ function preload(){
     "S3/C3/V2/_0/narr/woonggirl",
     "Sounds/S3/C3/V2/_0/narr/woonggirl.mp3"
   );
-}
-
-function setup() {
-  createCanvas(1280, 720, P2D);
-  frameRate(60);
-  noStroke();
-
-  fontManager = new FontManager();
-  fontManager.LoadFont("font", "LeeSeoyun.otf");
-
   imageManager = new ImageManager();
-  loadAllImages();
-  timeManager = new TimeManager();
-  sceneManager = new SceneManager();
 
-  // S1(0 ~ 21)
-  sceneList.push(new Opening());
-  sceneList.push(new S1C1());
-  sceneList.push(new S1C3());
-  sceneList.push(new S1C4());
-  sceneList.push(new S1C5());
-  sceneList.push(new S1C6_1());
-  sceneList.push(new S1C6_2());
-  sceneList.push(new S1C7());
-  sceneList.push(new S1C8());
-  sceneList.push(new S1C9());
-  sceneList.push(new S1C11());
-  sceneList.push(new S1C13());
-  sceneList.push(new S1C14());
-  sceneList.push(new S1C15()); // 미니게임
-  sceneList.push(new S1C15V1());
-  sceneList.push(new S1C15V2());
-  sceneList.push(new S1C16());
-  sceneList.push(new S1C17());
-  sceneList.push(new S1C18());
-  sceneList.push(new S1C19_1());
-  sceneList.push(new S1C19_2());
-  sceneList.push(new S1C19_3());
-
-  // S2(22 ~ 31)
-  sceneList.push(new S2C1());
-  sceneList.push(new S2C2());
-  sceneList.push(new S2C3());
-  sceneList.push(new S2C4());
-  sceneList.push(new S2C5());
-  sceneList.push(new S2C6()); // 미니게임
-  sceneList.push(new S2C6V1());
-  sceneList.push(new S2C6V2());
-  sceneList.push(new S2C7());
-  sceneList.push(new S2C8());
-
-  // S3(32 ~ 53)
-  sceneList.push(new S3C1());
-  sceneList.push(new S3C2());
-
-  // S3 - V1(34 ~ 46)
-  sceneList.push(new S3C3V1_1());
-  sceneList.push(new S3C3V1_2());
-  sceneList.push(new S3C3V1_3());
-  sceneList.push(new S3C3V1_1_1());
-  sceneList.push(new S3C3V1_1_2());
-  sceneList.push(new S3C3V1_2_1());
-  sceneList.push(new S3C3V1_2_2());
-  sceneList.push(new S3C3V1_3_1());
-  sceneList.push(new S3C3V1_3_2());
-  sceneList.push(new S3C3V1_3_3());
-  sceneList.push(new S3C3V1_4_1());
-  sceneList.push(new S3C3V1_4_2());
-  sceneList.push(new S3C3V1_4_3());
-  // S3 - V2(47 ~ 53)
-  sceneList.push(new S3C3V2());
-  sceneList.push(new S3C3V2_1_1());
-  sceneList.push(new S3C3V2_1_2());
-  sceneList.push(new S3C3V2_1_3());
-  sceneList.push(new S3C3V2_2_1());
-  sceneList.push(new S3C3V2_2_2());
-  sceneList.push(new S3C3V2_2_3());
-
-  sceneManager.SetCreditScene(new EndingCredit());
-  sceneManager.Setup(sceneList[0]);
-}
-
-function draw() {
-  timeManager.OnDraw();
-  if (!sceneManager.looping) return;
-
-  background(255);
-  fill(0);
-
-  sceneManager.Draw();
-}
-
-function keyPressed() {
-  if (!sceneManager.firstScene) {
-    let index = sceneList.findIndex(
-      (scene) =>
-        scene.constructor.name === sceneManager.currentScene.constructor.name
-    );
-    if (index === -1) return;
-    if (keyCode === RIGHT_ARROW) {
-      if (index < sceneList.length - 1) {
-        sceneManager.looping = true;
-        sceneManager.ChangeSceneManually(sceneList[index + 1]);
-      }
-    } else if (keyCode === LEFT_ARROW) {
-      if (index > 0) {
-        sceneManager.looping = true;
-        sceneManager.ChangeSceneManually(sceneList[index - 1]);
-      }
-    }
-  }
-}
-
-function mousePressed() {
-  if (sceneManager.currentScene instanceof S2C6) {
-		sceneManager.currentScene.OnMousePressed();
-  }
-}
-
-function loadAllImages() {
   // sequence1
 
   // s1c1
@@ -526,4 +408,289 @@ function loadAllImages() {
   imageManager.LoadImage("s2c8_sky", "Images/S2/C8/sky");
   imageManager.LoadImage("s2c8_sun", "Images/S2/C8/sun");
   imageManager.LoadImage("s2c8_text", "Images/S2/C8/text");
+
+  // sequence 3
+  
+  // s3c1
+  imageManager.LoadImage("s3c1_background", "Images/S3/C1/background");
+  imageManager.LoadImage("s3c1_bear", "Images/S3/C1/bear");
+  imageManager.LoadImage("s3c1_tiger", "Images/S3/C1/tiger");
+  imageManager.LoadImage("s3c1_garlic", "Images/S3/C1/garlic");
+  imageManager.LoadImage("s3c1_ssug", "Images/S3/C1/ssug");
+  imageManager.LoadImage("s3c1_text", "Images/S3/C1/text");
+
+  // s3c2
+  imageManager.LoadImage("s3c2_background", "Images/S3/C2/background");
+  imageManager.LoadImage("s3c2_body", "Images/S3/C2/body");
+  imageManager.LoadImage("s3c2_eye_black", "Images/S3/C2/eye_black");
+  imageManager.LoadImage("s3c2_eye_white", "Images/S3/C2/eye_white");
+  imageManager.LoadImage("s3c2_left", "Images/S3/C2/left");
+  imageManager.LoadImage("s3c2_right", "Images/S3/C2/right");
+  imageManager.LoadImage("s3c2_Button1", "Images/S3/C2/Button1");
+  imageManager.LoadImage("s3c2_Button2", "Images/S3/C2/Button2");
+
+  // s3c3v1_1_1
+  imageManager.LoadImage("s3c3v1_1_1_background", "Images/S3/C3/V1/_1/_1/background");
+  imageManager.LoadImage("s3c3v1_1_1_bear_before", "Images/S3/C3/V1/_1/_1/bear_before");
+  imageManager.LoadImage("s3c3v1_1_1_bear_after", "Images/S3/C3/V1/_1/_1/bear_after");
+  imageManager.LoadImage("s3c3v1_1_1_tiger_before", "Images/S3/C3/V1/_1/_1/tiger_before");
+  imageManager.LoadImage("s3c3v1_1_1_tiger_after", "Images/S3/C3/V1/_1/_1/tiger_after");
+
+  // s3c3v1_1_2
+  imageManager.LoadImage("s3c3v1_1_2_background", "Images/S3/C3/V1/_1/_2/background");
+  imageManager.LoadImage("s3c3v1_1_2_bear", "Images/S3/C3/V1/_1/_2/bear");
+  imageManager.LoadImage("s3c3v1_1_2_bear_star", "Images/S3/C3/V1/_1/_2/bear_star");
+  imageManager.LoadImage("s3c3v1_1_2_tiger", "Images/S3/C3/V1/_1/_2/tiger");
+  imageManager.LoadImage("s3c3v1_1_2_tiger_star", "Images/S3/C3/V1/_1/_2/tiger_star");
+
+  // s3c3v1_1
+  imageManager.LoadImage("s3c3v1_1_background", "Images/S3/C3/V1/_1/background");
+  imageManager.LoadImage("s3c3v1_1_bear1", "Images/S3/C3/V1/_1/bear1");
+  imageManager.LoadImage("s3c3v1_1_bear2", "Images/S3/C3/V1/_1/bear2");
+  imageManager.LoadImage("s3c3v1_1_tiger", "Images/S3/C3/V1/_1/tiger");
+  imageManager.LoadImage("s3c3v1_1_text", "Images/S3/C3/V1/_1/text");
+
+  // s3c3v1_2_1
+  imageManager.LoadImage("s3c3v1_2_1_background", "Images/S3/C3/V1/_2/_1/background");
+  imageManager.LoadImage("s3c3v1_2_1_범녀1", "Images/S3/C3/V1/_2/_1/범녀1");
+  imageManager.LoadImage("s3c3v1_2_1_범녀2", "Images/S3/C3/V1/_2/_1/범녀2");
+  imageManager.LoadImage("s3c3v1_2_1_범녀3", "Images/S3/C3/V1/_2/_1/범녀3");
+  imageManager.LoadImage("s3c3v1_2_1_웅녀", "Images/S3/C3/V1/_2/_1/웅녀");
+  imageManager.LoadImage("s3c3v1_2_1_환웅", "Images/S3/C3/V1/_2/_1/환웅");
+
+  // s3c3v1_2_2
+  imageManager.LoadImage("s3c3v1_2_2_background", "Images/S3/C3/V1/_2/_2/background");
+  imageManager.LoadImage("s3c3v1_2_2_범녀", "Images/S3/C3/V1/_2/_2/범녀1");
+  imageManager.LoadImage("s3c3v1_2_2_웅녀", "Images/S3/C3/V1/_2/_2/웅녀");
+  imageManager.LoadImage("s3c3v1_2_2_환웅", "Images/S3/C3/V1/_2/_2/환웅");
+  imageManager.LoadImage("s3c3v1_2_2_button_left", "Images/S3/C3/V1/_2/_2/button_left");
+  imageManager.LoadImage("s3c3v1_2_2_button_right", "Images/S3/C3/V1/_2/_2/button_right");
+  imageManager.LoadImage("s3c3v1_2_2_S3C3V1_2_2_TEXT", "Images/S3/C3/V1/_2/_2/text");
+
+  // s3c3v1_2
+  imageManager.LoadImage("s3c3v1_2_background", "Images/S3/C3/V1/_2/background");
+  imageManager.LoadImage("s3c3v1_2_text", "Images/S3/C3/V1/_2/text");
+  imageManager.LoadImage("s3c3v1_2_bear_body", "Images/S3/C3/V1/_2/bear_body");
+  imageManager.LoadImage("s3c3v1_2_bear_eye", "Images/S3/C3/V1/_2/bear_eye");
+  imageManager.LoadImage("s3c3v1_2_tiger1", "Images/S3/C3/V1/_2/tiger1");
+  imageManager.LoadImage("s3c3v1_2_tiger2", "Images/S3/C3/V1/_2/tiger2");
+
+  // s3c3v1_3_1
+  imageManager.LoadImage("s3c3v1_3_1_background", "Images/S3/C3/V1/_3/_1/background");
+  imageManager.LoadImage("s3c3v1_3_1_웅녀", "Images/S3/C3/V1/_3/_1/웅녀");
+  imageManager.LoadImage("s3c3v1_3_1_환웅", "Images/S3/C3/V1/_3/_1/환웅");
+  imageManager.LoadImage("s3c3v1_3_1_heart", "Images/S3/C3/V1/_3/_1/heart");
+
+  // s3c3v1_3_2
+  imageManager.LoadImage("s3c3v1_3_2_background", "Images/S3/C3/V1/_3/_2/Background");
+  imageManager.LoadImage("s3c3v1_3_2_character", "Images/S3/C3/V1/_3/_2/Characters");
+
+  // s3c3v1_3_3
+  imageManager.LoadImage("s3c3v1_3_3_background", "Images/S3/C3/V1/_3/_3/Background");
+  imageManager.LoadImage("s3c3v1_3_3_dangun", "Images/S3/C3/V1/_3/_3/Dangun");
+  imageManager.LoadImage("s3c3v1_3_3_text", "Images/S3/C3/V1/_3/_3/text");
+
+  // s3c3v1_3
+  imageManager.LoadImage("s3c3v1_3_cloud_left", "Images/S3/C3/V1/_3/_0/cloud_left");
+  imageManager.LoadImage("s3c3v1_3_cloud_right", "Images/S3/C3/V1/_3/_0/cloud_right");
+  imageManager.LoadImage("s3c3v1_3_cloud_middle", "Images/S3/C3/V1/_3/_0/cloud_middle");
+  imageManager.LoadImage("s3c3v1_3_lake", "Images/S3/C3/V1/_3/_0/lake");
+  imageManager.LoadImage("s3c3v1_3_mountains", "Images/S3/C3/V1/_3/_0/mountains");
+  imageManager.LoadImage("s3c3v1_3_sky", "Images/S3/C3/V1/_3/_0/sky");
+  imageManager.LoadImage("s3c3v1_3_sun", "Images/S3/C3/V1/_3/_0/sun");
+  imageManager.LoadImage("s3c3v1_3_text", "Images/S3/C3/V1/_3/_0/text");
+
+  // s3c3v1_4_1
+  imageManager.LoadImage("s3c3v1_4_1_background", "Images/S3/C3/V1/_4/_1/background");
+  imageManager.LoadImage("s3c3v1_4_1_범녀1", "Images/S3/C3/V1/_4/_1/범녀1");
+  imageManager.LoadImage("s3c3v1_4_1_환웅", "Images/S3/C3/V1/_4/_1/환웅");
+  imageManager.LoadImage("s3c3v1_4_1_heart", "Images/S3/C3/V1/_4/_1/heart"); 
+
+  // s3c3v1_4_2
+  imageManager.LoadImage("s3c3v1_4_2_background", "Images/S3/C3/V1/_4/_2/background");
+  imageManager.LoadImage("s3c3v1_4_2_family", "Images/S3/C3/V1/_4/_2/family");
+
+  // s3c3v1_4_3
+  imageManager.LoadImage("s3c3v1_4_3_background", "Images/S3/C3/V1/_4/_3/background")
+  imageManager.LoadImage("s3c3v1_4_3_body", "Images/S3/C3/V1/_4/_3/body")
+  imageManager.LoadImage("s3c3v1_4_3_head", "Images/S3/C3/V1/_4/_3/head")
+  imageManager.LoadImage("s3c3v1_4_3_arm", "Images/S3/C3/V1/_4/_3/arm")
+  imageManager.LoadImage("s3c3v1_4_3_mouth1", "Images/S3/C3/V1/_4/_3/mouth1")
+  imageManager.LoadImage("s3c3v1_4_3_mouth2", "Images/S3/C3/V1/_4/_3/mouth2")
+  imageManager.LoadImage("s3c3v1_4_3_ally", "Images/S3/C3/V1/_4/_3/ally")
+  imageManager.LoadImage("s3c3v1_4_3_enemy1", "Images/S3/C3/V1/_4/_3/enemy1")
+  imageManager.LoadImage("s3c3v1_4_3_enemy2", "Images/S3/C3/V1/_4/_3/enemy2")
+  imageManager.LoadImage("s3c3v1_4_3_enemy3", "Images/S3/C3/V1/_4/_3/enemy3")
+  imageManager.LoadImage("s3c3v1_4_3_flag", "Images/S3/C3/V1/_4/_3/flag")
+  imageManager.LoadImage("s3c3v1_4_3_text", "Images/S3/C3/V1/_4/_3/text");
+
+  // s3c3v2_1_1
+  imageManager.LoadImage("s3c3v2_1_1_text", "Images/S3/C3/V2/_1/_1/text");
+  imageManager.LoadImage("s3c3v2_1_1_cloud_left", "Images/S3/C3/V2/_1/_1/cloud_left");
+  imageManager.LoadImage("s3c3v2_1_1_cloud_right", "Images/S3/C3/V2/_1/_1/cloud_right");
+  imageManager.LoadImage("s3c3v2_1_1_cloud_middle", "Images/S3/C3/V2/_1/_1/cloud_middle");
+  imageManager.LoadImage("s3c3v2_1_1_lake", "Images/S3/C3/V2/_1/_1/lake");
+  imageManager.LoadImage("s3c3v2_1_1_mountains", "Images/S3/C3/V2/_1/_1/mountains");
+  imageManager.LoadImage("s3c3v2_1_1_sky", "Images/S3/C3/V2/_1/_1/sky");
+  imageManager.LoadImage("s3c3v2_1_1_sun", "Images/S3/C3/V2/_1/_1/sun");
+
+  // s3c3v2_1_2
+  imageManager.LoadImage("s3c3v2_1_2_background", "Images/S3/C3/V2/_1/_2/background");
+  imageManager.LoadImage("s3c3v2_1_2_text", "Images/S3/C3/V2/_1/_2/text");
+  imageManager.LoadImage("s3c3v2_1_2_girlbody", "Images/S3/C3/V2/_1/_2/girlbody");
+  imageManager.LoadImage("s3c3v2_1_2_girlface", "Images/S3/C3/V2/_1/_2/girlface");
+  imageManager.LoadImage("s3c3v2_1_2_girlface2", "Images/S3/C3/V2/_1/_2/girlface2");
+  imageManager.LoadImage("s3c3v2_1_2_girlhand", "Images/S3/C3/V2/_1/_2/girlhand");
+
+  // s3c3v2_1_3
+  imageManager.LoadImage("s3c3v2_1_3_background", "Images/S3/C3/V2/_1/_3/background");
+  imageManager.LoadImage("s3c3v2_1_3_hwanwoong_text", "Images/S3/C3/V2/_1/_3/hwanwoong_text");
+  imageManager.LoadImage("s3c3v2_1_3_girl_text", "Images/S3/C3/V2/_1/_3/girl_text");
+  imageManager.LoadImage("s3c3v2_1_3_girl_body", "Images/S3/C3/V2/_1/_3/girl");
+  imageManager.LoadImage("s3c3v2_1_3_girl_eye_1", "Images/S3/C3/V2/_1/_3/girleye1");
+  imageManager.LoadImage("s3c3v2_1_3_girl_eye_2", "Images/S3/C3/V2/_1/_3/girleye2");
+  imageManager.LoadImage("s3c3v2_1_3_hwan_body", "Images/S3/C3/V2/_1/_3/hwan");
+  imageManager.LoadImage("s3c3v2_1_3_hwan_mouse_1", "Images/S3/C3/V2/_1/_3/hwanmouse1");
+  imageManager.LoadImage("s3c3v2_1_3_hwan_mouse_2", "Images/S3/C3/V2/_1/_3/hwanmouse2");
+  imageManager.LoadImage("s3c3v2_1_3_hwan_shoe_1", "Images/S3/C3/V2/_1/_3/hwanshoe");
+  imageManager.LoadImage("s3c3v2_1_3_hwan_shoe_2", "Images/S3/C3/V2/_1/_3/hwanshoe2");
+
+  // s3c3v2_2_1
+  imageManager.LoadImage("s3c3v2_2_1_background", "Images/S3/C3/V2/_2/_1/background");
+  imageManager.LoadImage("s3c3v2_2_1_couple", "Images/S3/C3/V2/_2/_1/couple");
+  imageManager.LoadImage("s3c3v2_2_1_extra_left", "Images/S3/C3/V2/_2/_1/extra_left");
+  imageManager.LoadImage("s3c3v2_2_1_extra_right", "Images/S3/C3/V2/_2/_1/extra_right");
+
+  // s3c3v2_2_2
+  imageManager.LoadImage("s3c3v2_2_2_background", "Images/S3/C3/V1/_3/_2/Background");
+  imageManager.LoadImage("s3c3v2_2_2_character", "Images/S3/C3/V1/_3/_2/Characters");
+
+  // s3c3v2_2_3
+  imageManager.LoadImage("s3c3v2_2_3_background", "Images/S3/C3/V2/_2/_3/background");
+  imageManager.LoadImage("s3c3v2_2_3_text", "Images/S3/C3/V2/_2/_3/text");
+  imageManager.LoadImage("s3c3v2_2_3_dangun", "Images/S3/C3/V2/_2/_3/dangun");
+
+  // s3c3v2
+  imageManager.LoadImage("s3c3v2_text", "Images/S3/C3/V2/_0/text");
+  imageManager.LoadImage("s3c3v2_background", "Images/S3/C3/V2/_0/background");
+  imageManager.LoadImage("s3c3v2_bear1", "Images/S3/C3/V2/_0/bear1");
+  imageManager.LoadImage("s3c3v2_bear2", "Images/S3/C3/V2/_0/bear2");
+  imageManager.LoadImage("s3c3v2_tiger1", "Images/S3/C3/V2/_0/tiger1");
+  imageManager.LoadImage("s3c3v2_tiger2", "Images/S3/C3/V2/_0/tiger2");
+  imageManager.LoadImage("s3c3v2_tiger3", "Images/S3/C3/V2/_0/tiger3");
+}
+
+function setup() {
+  createCanvas(1280, 720, P2D);
+  frameRate(60);
+  noStroke();
+
+  fontManager = new FontManager();
+  fontManager.LoadFont("font", "LeeSeoyun.otf");
+
+  timeManager = new TimeManager();
+  sceneManager = new SceneManager();
+
+  // S1(0 ~ 21)
+  sceneList.push(new Opening());
+  sceneList.push(new S1C1());
+  sceneList.push(new S1C3());
+  sceneList.push(new S1C4());
+  sceneList.push(new S1C5());
+  sceneList.push(new S1C6_1());
+  sceneList.push(new S1C6_2());
+  sceneList.push(new S1C7());
+  sceneList.push(new S1C8());
+  sceneList.push(new S1C9());
+  sceneList.push(new S1C11());
+  sceneList.push(new S1C13());
+  sceneList.push(new S1C14());
+  sceneList.push(new S1C15()); // 미니게임
+  sceneList.push(new S1C15V1());
+  sceneList.push(new S1C15V2());
+  sceneList.push(new S1C16());
+  sceneList.push(new S1C17());
+  sceneList.push(new S1C18());
+  sceneList.push(new S1C19_1());
+  sceneList.push(new S1C19_2());
+  sceneList.push(new S1C19_3());
+
+  // S2(22 ~ 31)
+  sceneList.push(new S2C1());
+  sceneList.push(new S2C2());
+  sceneList.push(new S2C3());
+  sceneList.push(new S2C4());
+  sceneList.push(new S2C5());
+  sceneList.push(new S2C6()); // 미니게임
+  sceneList.push(new S2C6V1());
+  sceneList.push(new S2C6V2());
+  sceneList.push(new S2C7());
+  sceneList.push(new S2C8());
+
+  // S3(32 ~ 53)
+  sceneList.push(new S3C1());
+  sceneList.push(new S3C2());
+
+  // S3 - V1(34 ~ 46)
+  sceneList.push(new S3C3V1_1());
+  sceneList.push(new S3C3V1_2());
+  sceneList.push(new S3C3V1_3());
+  sceneList.push(new S3C3V1_1_1());
+  sceneList.push(new S3C3V1_1_2());
+  sceneList.push(new S3C3V1_2_1());
+  sceneList.push(new S3C3V1_2_2());
+  sceneList.push(new S3C3V1_3_1());
+  sceneList.push(new S3C3V1_3_2());
+  sceneList.push(new S3C3V1_3_3());
+  sceneList.push(new S3C3V1_4_1());
+  sceneList.push(new S3C3V1_4_2());
+  sceneList.push(new S3C3V1_4_3());
+  // S3 - V2(47 ~ 53)
+  sceneList.push(new S3C3V2());
+  sceneList.push(new S3C3V2_1_1());
+  sceneList.push(new S3C3V2_1_2());
+  sceneList.push(new S3C3V2_1_3());
+  sceneList.push(new S3C3V2_2_1());
+  sceneList.push(new S3C3V2_2_2());
+  sceneList.push(new S3C3V2_2_3());
+
+  sceneManager.SetCreditScene(new EndingCredit());
+  sceneManager.Setup(sceneList[0]);
+}
+
+function draw() {
+  timeManager.OnDraw();
+  if (!sceneManager.looping) return;
+
+  background(255);
+  fill(0);
+
+  sceneManager.Draw();
+}
+
+function keyPressed() {
+  if (!sceneManager.firstScene) {
+    let index = sceneList.findIndex(
+      (scene) =>
+        scene.constructor.name === sceneManager.currentScene.constructor.name
+    );
+    if (index === -1) return;
+    if (keyCode === RIGHT_ARROW) {
+      if (index < sceneList.length - 1) {
+        sceneManager.looping = true;
+        sceneManager.ChangeSceneManually(sceneList[index + 1]);
+      }
+    } else if (keyCode === LEFT_ARROW) {
+      if (index > 0) {
+        sceneManager.looping = true;
+        sceneManager.ChangeSceneManually(sceneList[index - 1]);
+      }
+    }
+  }
+}
+
+function mousePressed() {
+  if (sceneManager.currentScene instanceof S2C6) {
+		sceneManager.currentScene.OnMousePressed();
+  }
 }

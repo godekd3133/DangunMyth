@@ -10,14 +10,6 @@ class S3C2 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S3/C2/background");
-    imageManager.LoadImage("body", "Images/S3/C2/body");
-    imageManager.LoadImage("eye_black", "Images/S3/C2/eye_black");
-    imageManager.LoadImage("eye_white", "Images/S3/C2/eye_white");
-    imageManager.LoadImage("left", "Images/S3/C2/left");
-    imageManager.LoadImage("right", "Images/S3/C2/right");
-    imageManager.LoadImage("Button1", "Images/S3/C2/Button1");
-    imageManager.LoadImage("Button2", "Images/S3/C2/Button2");
     this.isEffectOut = false;
   }
 
@@ -26,17 +18,17 @@ class S3C2 extends Scene {
     this.selectOption = 0;
 
     imageManager.DrawImageScale(
-      "background",
+      "s3c2_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
     imageManager.DrawImageScale(
-      "eye_white",
+      "s3c2_eye_white",
       createVector(width / 2 - 10, height - 240),
       createVector(0.2, 0.2)
     );
     imageManager.DrawImageScale(
-      "body",
+      "s3c2_body",
       createVector(width / 2, height - 200),
       createVector(0.23, 0.23)
     );
@@ -45,12 +37,12 @@ class S3C2 extends Scene {
     if (mouseX <= width / 2 - 200 && mouseY <= height / 2) {
       this.selectOption = 1;
       imageManager.DrawImageScale(
-        "left",
+        "s3c2_left",
         createVector(this.thinkLeftX + 60, this.thinkY + 50),
         createVector(this.thinkScale + 0.04, this.thinkScale + 0.04)
       );
       imageManager.DrawImageScale(
-        "eye_black",
+        "s3c2_eye_black",
         createVector(width / 2 - 15, height - 255),
         createVector(0.23, 0.23)
       );
@@ -64,7 +56,7 @@ class S3C2 extends Scene {
       }
     } else {
       imageManager.DrawImageScale(
-        "left",
+        "s3c2_left",
         createVector(this.thinkLeftX, this.thinkY),
         createVector(this.thinkScale, this.thinkScale)
       );
@@ -72,12 +64,12 @@ class S3C2 extends Scene {
     if (mouseX >= width / 2 + 200 && mouseY <= height / 2) {
       this.selectOption = 2;
       imageManager.DrawImageScale(
-        "right",
+        "s3c2_right",
         createVector(this.thinkRightX - 60, this.thinkY + 50),
         createVector(this.thinkScale + 0.04, this.thinkScale + 0.04)
       );
       imageManager.DrawImageScale(
-        "eye_black",
+        "s3c2_eye_black",
         createVector(width / 2 - 9, height - 255),
         createVector(0.23, 0.23)
       );
@@ -91,7 +83,7 @@ class S3C2 extends Scene {
       }
     } else {
       imageManager.DrawImageScale(
-        "right",
+        "s3c2_right",
         createVector(this.thinkRightX, this.thinkY),
         createVector(this.thinkScale, this.thinkScale)
       );
@@ -99,20 +91,20 @@ class S3C2 extends Scene {
     //Button
     if (mouseX <= width / 2 - 200 && mouseY <= height / 2) {
       imageManager.DrawImageScale(
-        "Button1",
+        "s3c2_Button1",
         createVector(width / 2, height / 2),
         createVector(0.7, 0.7)
       );
     } else if (mouseX >= width / 2 + 200 && mouseY <= height / 2) {
       imageManager.DrawImageScale(
-        "Button2",
+        "s3c2_Button2",
         createVector(width / 2, height / 2),
         createVector(0.7, 0.7)
       );
     }
     if (this.selectOption == 0)
       imageManager.DrawImageScale(
-        "eye_black",
+        "s3c2_eye_black",
         createVector(width / 2 - 12, height - 245),
         createVector(0.23, 0.23)
       );

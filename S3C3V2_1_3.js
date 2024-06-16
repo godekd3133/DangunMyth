@@ -17,45 +17,25 @@ class S3C3V2_1_3 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S3/C3/V2/_1/_3/background");
-    imageManager.LoadImage(
-      "hwanwoong_text",
-      "Images/S3/C3/V2/_1/_3/hwanwoong_text"
-    );
-    imageManager.LoadImage("girl_text", "Images/S3/C3/V2/_1/_3/girl_text");
-
-
-    // girl
-    imageManager.LoadImage("girl_body", "Images/S3/C3/V2/_1/_3/girl");
-    imageManager.LoadImage("girl_eye_1", "Images/S3/C3/V2/_1/_3/girleye1");
-    imageManager.LoadImage("girl_eye_2", "Images/S3/C3/V2/_1/_3/girleye2");
-
-    // hwan
-    imageManager.LoadImage("hwan_body", "Images/S3/C3/V2/_1/_3/hwan");
-    imageManager.LoadImage("hwan_mouse_1", "Images/S3/C3/V2/_1/_3/hwanmouse1");
-    imageManager.LoadImage("hwan_mouse_2", "Images/S3/C3/V2/_1/_3/hwanmouse2");
-    imageManager.LoadImage("hwan_shoe_1", "Images/S3/C3/V2/_1/_3/hwanshoe");
-    imageManager.LoadImage("hwan_shoe_2", "Images/S3/C3/V2/_1/_3/hwanshoe2");
-
     this.startMillis = millis();
   }
 
   OnDraw() {
     this.sound();
     // 배경화면
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_1_3_background", createVector(width / 2, height / 2));
     imageManager.DrawImage(
-      "hwanwoong_text",
+      "s3c3v2_1_3_hwanwoong_text",
       createVector(width / 2, height / 2 + 100)
     );
     imageManager.DrawImage(
-      "girl_text",
+      "s3c3v2_1_3_girl_text",
       createVector(width / 2, height / 2 + 100)
     );
 
     // girl
     imageManager.DrawImageScale(
-      "girl_body",
+      "s3c3v2_1_3_girl_body",
       createVector(this.GIRL_X, this.GIRL_Y),
       createVector(this.GIRL_SCALE, this.GIRL_SCALE)
     );
@@ -65,53 +45,53 @@ class S3C3V2_1_3 extends Scene {
       this.HWAN_X += 1.5;
       if (Math.floor(millis() / 500) % 2 === 0) {
         imageManager.DrawImageScale(
-          "hwan_shoe_1",
+          "s3c3v2_1_3_hwan_shoe_1",
           createVector(this.HWAN_X + 17, this.HWAN_SHOE_Y),
           createVector(this.HWAN_SCALE, this.HWAN_SCALE)
         );
       } else {
         imageManager.DrawImageScale(
-          "hwan_shoe_2",
+          "s3c3v2_1_3_hwan_shoe_2",
           createVector(this.HWAN_X + 17, this.HWAN_SHOE_Y),
           createVector(this.HWAN_SCALE, this.HWAN_SCALE)
         );
       }
     } else {
       imageManager.DrawImageScale(
-        "hwan_shoe_2",
+        "s3c3v2_1_3_hwan_shoe_2",
         createVector(this.HWAN_X + 17, this.HWAN_SHOE_Y),
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
     }
     if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
-        "girl_eye_1",
+        "s3c3v2_1_3_girl_eye_1",
         createVector(this.GIRL_X, this.GIRL_EYE_Y),
         createVector(this.GIRL_SCALE, this.GIRL_SCALE)
       );
       imageManager.DrawImageScale(
-        "hwan_body",
+        "s3c3v2_1_3_hwan_body",
         createVector(this.HWAN_X, this.HWAN_Y),
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
       imageManager.DrawImageScale(
-        "hwan_mouse_1",
+        "s3c3v2_1_3_hwan_mouse_1",
         createVector(this.HWAN_X + 10, this.HWAN_MOUSE_Y),
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
     } else {
       imageManager.DrawImageScale(
-        "girl_eye_2",
+        "s3c3v2_1_3_girl_eye_2",
         createVector(this.GIRL_X, this.GIRL_EYE_Y),
         createVector(this.GIRL_SCALE, this.GIRL_SCALE)
       );
       imageManager.DrawImageScale(
-        "hwan_body",
+        "s3c3v2_1_3_hwan_body",
         createVector(this.HWAN_X, this.HWAN_Y),
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
       imageManager.DrawImageScale(
-        "hwan_mouse_2",
+        "s3c3v2_1_3_hwan_mouse_2",
         createVector(this.HWAN_X + 10, this.HWAN_MOUSE_Y),
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );

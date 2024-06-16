@@ -1,7 +1,6 @@
 class S3C3V1_2 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "Images/S3/C3/V1/_2/";
     this.CHARACTER_SCALE = 0.25;
     this.BEAR_X = 470;
     this.BEAR_Y = 460;
@@ -17,14 +16,6 @@ class S3C3V1_2 extends Scene {
   }
 
   OnEnter() {
-    // 이미지 로드
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("text", this.PREFIX + "text");
-    imageManager.LoadImage("bear_body", this.PREFIX + "bear_body");
-    imageManager.LoadImage("bear_eye", this.PREFIX + "bear_eye");
-    imageManager.LoadImage("tiger1", this.PREFIX + "tiger1");
-    imageManager.LoadImage("tiger2", this.PREFIX + "tiger2");
-
     this.narrFlag = false;
     this.startMinute = minute();
     this.startSecond = second();
@@ -35,20 +26,20 @@ class S3C3V1_2 extends Scene {
       this.narrFlag = true;
       soundManager.PlaySound("S3/C3/V1/_2/Tiger");
     }
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_2_background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_2_text", createVector(width / 2, height / 2));
     imageManager.DrawImageScale(
-      "bear_eye",
+      "s3c3v1_2_bear_eye",
       createVector(this.BEAR_EYE_X, this.BEAR_EYE_Y),
       createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );
     imageManager.DrawImageScale(
-      "bear_body",
+      "s3c3v1_2_bear_body",
       createVector(this.BEAR_X, this.BEAR_Y),
       createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );
     imageManager.DrawImageScale(
-      "tiger" + Math.floor(((millis() / 500) % 2) + 1),
+      "s3c3v1_2_tiger" + Math.floor(((millis() / 500) % 2) + 1),
       createVector(this.TIGER_X, this.TIGER_Y),
       createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );

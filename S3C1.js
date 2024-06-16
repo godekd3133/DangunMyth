@@ -26,12 +26,6 @@ class S3C1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S3/C1/background");
-    imageManager.LoadImage("bear", "Images/S3/C1/bear");
-    imageManager.LoadImage("tiger", "Images/S3/C1/tiger");
-    imageManager.LoadImage("garlic", "Images/S3/C1/garlic");
-    imageManager.LoadImage("ssug", "Images/S3/C1/ssug");
-    imageManager.LoadImage("text", "Images/S3/C1/text");
     this.isNarrOut = false;
   }
 
@@ -41,17 +35,17 @@ class S3C1 extends Scene {
       soundManager.PlaySound("S3/C1/narr");
     }
     imageManager.DrawImageScale(
-      "background",
+      "s3c1_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
     imageManager.DrawImageScale(
-      "text",
+      "s3c1_text",
       createVector(width / 2, height / 2 - 50),
       createVector(1, 1)
     );
     imageManager.DrawImageScale(
-      "bear",
+      "s3c1_bear",
       createVector(width / 2 - 210, this.animalY),
       createVector(this.animalScale, this.animalScale)
     );
@@ -62,7 +56,7 @@ class S3C1 extends Scene {
     this.jumpY += this.jumpDir;
 
     imageManager.DrawImageScale(
-      "tiger",
+      "s3c1_tiger",
       createVector(width / 2 + 230, this.animalY - this.jumpY),
       createVector(this.animalScale, this.animalScale)
     );
@@ -76,7 +70,7 @@ class S3C1 extends Scene {
       this.garlicRotate += this.garlicAngle;
     }
     imageManager.DrawImageScale(
-      "garlic",
+      "s3c1_garlic",
       createVector(this.garlicX, this.garlicY),
       createVector(this.utilScale, this.utilScale),
       this.garlicRotate
@@ -90,7 +84,7 @@ class S3C1 extends Scene {
       this.ssugRotate += this.ssugAngle;
     }
     imageManager.DrawImageScale(
-      "ssug",
+      "s3c1_ssug",
       createVector(this.ssugX, this.ssugY),
       createVector(this.utilScale, this.utilScale),
       this.ssugRotate

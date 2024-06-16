@@ -1,7 +1,6 @@
 class S3C3V1_3 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "Images/S3/C3/V1/_3/_0/";
     this.centerVector = createVector();
     this.centerX = 0;
     this.centerY = 0;
@@ -19,36 +18,27 @@ class S3C3V1_3 extends Scene {
     this.centerVector = createVector(this.centerX, this.centerY);
     this.sunY = 600;
     this.cloudXDistance = 0;
-
-    imageManager.LoadImage("cloud_left", this.PREFIX + "cloud_left");
-    imageManager.LoadImage("cloud_right", this.PREFIX + "cloud_right");
-    imageManager.LoadImage("cloud_middle", this.PREFIX + "cloud_middle");
-    imageManager.LoadImage("lake", this.PREFIX + "lake");
-    imageManager.LoadImage("mountains", this.PREFIX + "mountains");
-    imageManager.LoadImage("sky", this.PREFIX + "sky");
-    imageManager.LoadImage("sun", this.PREFIX + "sun");
-    imageManager.LoadImage("text", this.PREFIX + "text");
     soundManager.PlaySound("Effects/NatureSound");
   }
 
   OnDraw() {
-    imageManager.DrawImage("sky", this.centerVector);
-    imageManager.DrawImage("sun", createVector(this.centerX, this.sunY));
-    imageManager.DrawImage("mountains", this.centerVector);
-    imageManager.DrawImage("lake", this.centerVector);
+    imageManager.DrawImage("s3c3v1_3_sky", this.centerVector);
+    imageManager.DrawImage("s3c3v1_3_sun", createVector(this.centerX, this.sunY));
+    imageManager.DrawImage("s3c3v1_3_mountains", this.centerVector);
+    imageManager.DrawImage("s3c3v1_3_lake", this.centerVector);
     imageManager.DrawImage(
-      "cloud_left",
+      "s3c3v1_3_cloud_left",
       createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
     imageManager.DrawImage(
-      "cloud_right",
+      "s3c3v1_3_cloud_right",
       createVector(this.centerX + this.cloudXDistance, this.centerY)
     );
     imageManager.DrawImage(
-      "cloud_middle",
+      "s3c3v1_3_cloud_middle",
       createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
-    imageManager.DrawImage("text", this.centerVector);
+    imageManager.DrawImage("s3c3v1_3_text", this.centerVector);
 
     if (!this.playingChicken && this.chickenTime > 1) {
       soundManager.PlaySound("Effects/Chicken_02");

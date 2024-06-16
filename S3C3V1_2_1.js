@@ -1,7 +1,6 @@
 class S3C3V1_2_1 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "Images/S3/C3/V1/_2/_1/";
     this.SCENE_SECONDS = 7;
     this.animationCompleted = false;
     this.범녀_X = 300;
@@ -29,14 +28,6 @@ class S3C3V1_2_1 extends Scene {
   OnEnter() {
     this.animationCompleted = false;
 
-    // 이미지 로드
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("범녀1", this.PREFIX + "범녀1");
-    imageManager.LoadImage("범녀2", this.PREFIX + "범녀2");
-    imageManager.LoadImage("범녀3", this.PREFIX + "범녀3");
-    imageManager.LoadImage("웅녀", this.PREFIX + "웅녀");
-    imageManager.LoadImage("환웅", this.PREFIX + "환웅");
-
     this.startMinute = minute();
     this.startSecond = second();
     this.startMillis = millis();
@@ -50,14 +41,14 @@ class S3C3V1_2_1 extends Scene {
       this.tongueY *= -1;
     }
     let elapsedMillis = millis() - this.startMillis;
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_2_1_background", createVector(width / 2, height / 2));
     let prevName = this.범녀Name;
     this.범녀Name = "범녀" + Math.floor(((elapsedMillis / 300) % 3) + 1);
     if (prevName === "범녀3" && this.범녀Name === "범녀1")
       this.animationCompleted = true;
     if (this.animationCompleted) this.범녀Name = "범녀1";
     imageManager.DrawImageScale(
-      this.범녀Name,
+      "s3c3v1_2_1_"+this.범녀Name,
       createVector(
         lerp(
           this.범녀_X,
@@ -73,7 +64,7 @@ class S3C3V1_2_1 extends Scene {
       createVector(0.2, 0.2)
     );
     imageManager.DrawImageScale(
-      "웅녀",
+      "s3c3v1_2_1_웅녀",
       createVector(
         lerp(
           this.웅녀_X,
@@ -89,7 +80,7 @@ class S3C3V1_2_1 extends Scene {
       createVector(0.2, 0.2)
     );
     imageManager.DrawImageScale(
-      "환웅",
+      "s3c3v1_2_1_환웅",
       createVector(this.환웅_X, this.환웅_Y),
       createVector(0.3, 0.3)
     );
