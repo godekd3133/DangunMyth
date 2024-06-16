@@ -53,7 +53,7 @@ class S3C3V2_1_2 extends Scene {
       createVector(this.GIRL_HAND_X, abs(this.GIRL_HAND_Y)),
       createVector(this.GIRL_SCALE, this.GIRL_SCALE)
     );
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
         "girlface",
         createVector(this.GIRL_EYE_X, this.GIRL_EYE_Y),

@@ -30,7 +30,7 @@ class S2C7 extends Scene {
   }
 
   OnDraw() {
-    let currentProcessingTime = (millis() - this.startTime) / 500;
+    let currentProcessingTime = Math.floor((millis() - this.startTime) / 500);
     let isEating = currentProcessingTime % 2 == 1;
     let positionToMoveHead = isEating ? 10 : 0;
     imageManager.DrawImageScale(

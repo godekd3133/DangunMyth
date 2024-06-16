@@ -41,7 +41,7 @@ class S1C7 extends Scene {
       createVector(this.HWAN_SCALE, this.HWAN_SCALE, 0)
     );
 
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
         "hwan_expression1",
         createVector(this.HWAN_BODY_X, this.HWAN_EYE_Y),

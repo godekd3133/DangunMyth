@@ -1113,7 +1113,7 @@ class S1C11 extends Scene {
     );
 
     // 입, 움직임 인터랙션 반복
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
         "hwanin_expression1",
         createVector(this.HWANIN_EYE_X, this.HWANIN_EYE_Y),
@@ -1997,7 +1997,7 @@ class S1C16 extends Scene {
 
     // imageManager.DrawImageScale("hwanung_arm", createVector(width / 2 + this.handX, height / 2 - 80), createVector(0.3, 0.3), this.handRotate);
 
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
         "hwanung1",
         createVector(width / 2 + 500, height / 2),
@@ -3295,7 +3295,7 @@ class S1C7 extends Scene {
       createVector(this.HWAN_SCALE, this.HWAN_SCALE, 0)
     );
 
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
         "hwan_expression1",
         createVector(this.HWAN_BODY_X, this.HWAN_EYE_Y),
@@ -4721,7 +4721,7 @@ class S2C7 extends Scene {
   }
 
   OnDraw() {
-    let currentProcessingTime = (millis() - this.startTime) / 500;
+    let currentProcessingTime = Math.floor((millis() - this.startTime) / 500);
     let isEating = currentProcessingTime % 2 == 1;
     let positionToMoveHead = isEating ? 10 : 0;
     imageManager.DrawImageScale(
@@ -6346,7 +6346,7 @@ class S3C3V2_1_2 extends Scene {
       createVector(this.GIRL_HAND_X, abs(this.GIRL_HAND_Y)),
       createVector(this.GIRL_SCALE, this.GIRL_SCALE)
     );
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
         "girlface",
         createVector(this.GIRL_EYE_X, this.GIRL_EYE_Y),
@@ -6442,7 +6442,7 @@ class S3C3V2_1_3 extends Scene {
     // hwan
     if (this.HWAN_X <= this.GIRL_X - 400) {
       this.HWAN_X += 1.5;
-      if ((millis() / 500) % 2 === 0) {
+      if (Math.floor(millis() / 500) % 2 === 0) {
         imageManager.DrawImageScale(
           "hwan_shoe_1",
           createVector(this.HWAN_X + 17, this.HWAN_SHOE_Y),
@@ -6462,7 +6462,7 @@ class S3C3V2_1_3 extends Scene {
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
     }
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
         "girl_eye_1",
         createVector(this.GIRL_X, this.GIRL_EYE_Y),
@@ -6872,6 +6872,23 @@ class SoundManager {
   }
 }
 
+/* TimeManager.js */ 
+class TimeManager {
+  constructor() {
+    this.deltaTime = 0;
+    this.time = 0;
+    this.currentTime = millis();
+    this.lastTime = millis();
+  }
+
+  OnDraw() {
+    this.lastTime = this.currentTime;
+    this.currentTime = millis();
+    this.deltaTime = (this.currentTime - this.lastTime) / 1000;
+    this.time += this.deltaTime;
+  }
+}
+
 /* TimelineManager.js */ 
 class Timeline {
   constructor(callback, endTime) {
@@ -6945,23 +6962,6 @@ class TimelineManager {
     this.currentTimeline = null;
     this.timelines = [];
     this.endCallback = null;
-  }
-}
-
-/* TimeManager.js */ 
-class TimeManager {
-  constructor() {
-    this.deltaTime = 0;
-    this.time = 0;
-    this.currentTime = millis();
-    this.lastTime = millis();
-  }
-
-  OnDraw() {
-    this.lastTime = this.currentTime;
-    this.currentTime = millis();
-    this.deltaTime = (this.currentTime - this.lastTime) / 1000;
-    this.time += this.deltaTime;
   }
 }
 

@@ -76,7 +76,7 @@ class S1C16 extends Scene {
 
     // imageManager.DrawImageScale("hwanung_arm", createVector(width / 2 + this.handX, height / 2 - 80), createVector(0.3, 0.3), this.handRotate);
 
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
         "hwanung1",
         createVector(width / 2 + 500, height / 2),

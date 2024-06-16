@@ -68,7 +68,7 @@ class S1C11 extends Scene {
     );
 
     // 입, 움직임 인터랙션 반복
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
         "hwanin_expression1",
         createVector(this.HWANIN_EYE_X, this.HWANIN_EYE_Y),

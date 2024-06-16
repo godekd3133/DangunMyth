@@ -63,7 +63,7 @@ class S3C3V2_1_3 extends Scene {
     // hwan
     if (this.HWAN_X <= this.GIRL_X - 400) {
       this.HWAN_X += 1.5;
-      if ((millis() / 500) % 2 === 0) {
+      if (Math.floor(millis() / 500) % 2 === 0) {
         imageManager.DrawImageScale(
           "hwan_shoe_1",
           createVector(this.HWAN_X + 17, this.HWAN_SHOE_Y),
@@ -83,7 +83,7 @@ class S3C3V2_1_3 extends Scene {
         createVector(this.HWAN_SCALE, this.HWAN_SCALE)
       );
     }
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
         "girl_eye_1",
         createVector(this.GIRL_X, this.GIRL_EYE_Y),
