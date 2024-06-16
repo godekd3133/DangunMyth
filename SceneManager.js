@@ -67,7 +67,7 @@ class SceneManager {
             this.currentScene.OnExit();
           }
           this.currentScene = this.nextScene;
-          imageManager.ResetImages();
+          // imageManager.ResetImages();
           // soundManager.ResetSounds();
           this.currentScene.enterTime = millis() / 1000;
           this.currentScene.OnEnter();

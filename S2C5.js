@@ -5,14 +5,12 @@ class S2C5 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S2/C5/background");
-    imageManager.LoadImage("button", "Images/S2/C5/button");
     this.isEffectOut = false;
   }
 
   OnDraw() {
     imageManager.DrawImageScale(
-      "background",
+      "s2c5_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
@@ -24,7 +22,7 @@ class S2C5 extends Scene {
       mouseY <= height - 85
     ) {
       imageManager.DrawImageWithTint(
-        "button",
+        "s2c5_button",
         createVector(width / 2, height / 2),
         0,
         255,
@@ -43,7 +41,7 @@ class S2C5 extends Scene {
       }
     } else {
       imageManager.DrawImageScale(
-        "button",
+        "s2c5_button",
         createVector(width / 2, height / 2),
         createVector(1, 1)
       );

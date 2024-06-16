@@ -21,19 +21,11 @@ class S2C6V2 extends Scene {
     this.sessionIndex = 0;
     this.sessionDuration = [3, 6];
     this.sessionSound = ["S2/C6/V2/narr1", "S2/C6/V2/narr2", "S2/C6/V2/narr3"];
-    this.sessionText = ["text1", "text2", "text3"];
+    this.sessionText = ["s2c6v2_text1", "s2c6v2_text2", "s2c6v2_text3"];
     this.isSessionOut = [false, false];
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S2/C6/V2/background");
-    imageManager.LoadImage("bear_arm", "Images/S2/C6/V2/bear_arm");
-    imageManager.LoadImage("tiger_arm", "Images/S2/C6/V2/tiger_arm");
-    imageManager.LoadImage("chars", "Images/S2/C6/V2/chars");
-    imageManager.LoadImage("basket", "Images/S2/C6/V2/basket");
-    imageManager.LoadImage("text1", "Images/S2/C6/V2/text1");
-    imageManager.LoadImage("text2", "Images/S2/C6/V2/text2");
-    imageManager.LoadImage("text3", "Images/S2/C6/V2/text3");
     this.isSessionOut = [false, false];
     this.SCENE_TIME = 0;
 		this.sessionIndex = 0;
@@ -45,28 +37,28 @@ class S2C6V2 extends Scene {
     this.basketY = height / 2 + 210 + sin(millis() / 1000.0) * 20;
 
     imageManager.DrawImageScale(
-      "background",
+      "s2c6v2_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
     imageManager.DrawImageScale(
-      "chars",
+      "s2c6v2_chars",
       createVector(width / 2, height / 2 + 150),
       createVector(0.4, 0.4)
     );
     imageManager.DrawImageScale(
-      "basket",
+      "s2c6v2_basket",
       createVector(width / 2, this.basketY),
       createVector(0.4, 0.4)
     );
     imageManager.DrawImageScale(
-      "bear_arm",
+      "s2c6v2_bear_arm",
       createVector(this.bearArmX, this.bearArmY),
       createVector(0.4, 0.4),
       this.bearArmRotate
     );
     imageManager.DrawImageScale(
-      "tiger_arm",
+      "s2c6v2_tiger_arm",
       createVector(this.tigerArmX, this.tigerArmY),
       createVector(0.4, 0.4),
       this.tigerArmRotate

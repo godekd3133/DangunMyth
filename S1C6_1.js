@@ -68,34 +68,6 @@ class S1C6_1 extends Scene {
     this.hwaninStartTime = 4;
     this.hwanwoongStartTime = 9;
 
-    imageManager.LoadImage("text", "Images/S1/C6-1/text");
-
-    imageManager.LoadImage("Background", "Images/S1/C6-1/Background");
-    imageManager.LoadImage("HwaninBody", "Images/S1/C6-1/HwaninBody");
-    imageManager.LoadImage(
-      "HwaninFace_MouseClose",
-      "Images/S1/C6-1/HwaninFace_MouseClose"
-    );
-    imageManager.LoadImage(
-      "HwaninFace_MouseOpen",
-      "Images/S1/C6-1/HwaninFace_MouseOpen"
-    );
-    imageManager.LoadImage(
-      "HwaninFace_MouseClose",
-      "Images/S1/C6-1/HwaninFace_MouseClose"
-    );
-
-    imageManager.LoadImage("HwanwoongBody1", "Images/S1/C6-1/HwanwoongBody1");
-    imageManager.LoadImage("HwanwoongBody2", "Images/S1/C6-1/HwanwoongBody2");
-    imageManager.LoadImage("HwanwoongFace1", "Images/S1/C6-1/HwanwoongFace1");
-    imageManager.LoadImage(
-      "HwanwoongFace2-1",
-      "Images/S1/C6-1/HwanwoongFace2-1"
-    );
-    imageManager.LoadImage(
-      "HwanwoongFace2-2",
-      "Images/S1/C6-1/HwanwoongFace2-2"
-    );
 
     background(255);
   }
@@ -148,14 +120,14 @@ class S1C6_1 extends Scene {
       sceneManager.ChangeScene(new S1C6_2());
     }
     imageManager.DrawImageScale(
-      "Background",
+      "s1c6_1_Background",
       createVector(this.centerX, this.centerY),
       createVector(1, 1),
       0,
       255
     );
     imageManager.DrawImageScale(
-      "text",
+      "s1c6_1_text",
       createVector(this.centerX, this.centerY),
       createVector(1, 1),
       0,
@@ -163,7 +135,7 @@ class S1C6_1 extends Scene {
     );
 
     imageManager.DrawImageScale(
-      "HwaninBody",
+      "s1c6_1_HwaninBody",
       createVector(this.hwaninX, this.hwaninY),
       createVector(0.15, 0.15),
       0,
@@ -171,7 +143,7 @@ class S1C6_1 extends Scene {
     );
     if (!this.hwaninFaceFlag) {
       imageManager.DrawImageScale(
-        "HwaninFace_MouseClose",
+        "s1c6_1_HwaninFace_MouseClose",
         createVector(this.hwaninX, this.hwaninY + this.hwaninfaceOffset),
         createVector(0.15, 0.15),
         0,
@@ -180,7 +152,7 @@ class S1C6_1 extends Scene {
     } else {
       if (this.hwaninMouse) {
         imageManager.DrawImageScale(
-          "HwaninFace_MouseClose",
+          "s1c6_1_HwaninFace_MouseClose",
           createVector(this.hwaninX, this.hwaninY + this.hwaninfaceOffset),
           createVector(0.15, 0.15),
           0,
@@ -188,7 +160,7 @@ class S1C6_1 extends Scene {
         );
       } else {
         imageManager.DrawImageScale(
-          "HwaninFace_MouseOpen",
+          "s1c6_1_HwaninFace_MouseOpen",
           createVector(this.hwaninX, this.hwaninY + this.hwaninfaceOffset),
           createVector(0.15, 0.15),
           0,
@@ -199,14 +171,14 @@ class S1C6_1 extends Scene {
 
     if (!this.hwanwoongFaceFlag) {
       imageManager.DrawImageScale(
-        "HwanwoongBody1",
+        "s1c6_1_HwanwoongBody1",
         createVector(this.hwanwoongX, this.hwanwoongY),
         createVector(0.15, 0.15),
         0,
         255
       );
       imageManager.DrawImageScale(
-        "HwanwoongFace1",
+        "s1c6_1_HwanwoongFace1",
         createVector(
           this.hwanwoongX - 10,
           this.hwanwoongY + this.hwanwoongfaceOffsetY
@@ -217,7 +189,7 @@ class S1C6_1 extends Scene {
       );
     } else {
       imageManager.DrawImageScale(
-        "HwanwoongBody2",
+        "s1c6_1_HwanwoongBody2",
         createVector(this.hwanwoongX, this.hwanwoongY),
         createVector(0.15, 0.15),
         0,
@@ -225,7 +197,7 @@ class S1C6_1 extends Scene {
       );
       if (this.hwanwoongMouse) {
         imageManager.DrawImageScale(
-          "HwanwoongFace2-1",
+          "s1c6_1_HwanwoongFace2-1",
           createVector(
             this.hwanwoongX + this.hwanwoongfaceOffsetX,
             this.hwanwoongY + this.hwanwoongfaceOffsetY
@@ -236,7 +208,7 @@ class S1C6_1 extends Scene {
         );
       } else {
         imageManager.DrawImageScale(
-          "HwanwoongFace2-2",
+          "s1c6_1_HwanwoongFace2-2",
           createVector(
             this.hwanwoongX + this.hwanwoongfaceOffsetX,
             this.hwanwoongY + this.hwanwoongfaceOffsetY

@@ -16,13 +16,6 @@ class S2C1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S2/C1/background");
-    imageManager.LoadImage("tiger1", "Images/S2/C1/tiger1");
-    imageManager.LoadImage("tiger2", "Images/S2/C1/tiger2");
-    imageManager.LoadImage("tiger3", "Images/S2/C1/tiger3");
-    imageManager.LoadImage("bear1", "Images/S2/C1/bear1");
-    imageManager.LoadImage("bear2", "Images/S2/C1/bear2");
-    imageManager.LoadImage("bear3", "Images/S2/C1/bear3");
 
     this.walkTick = 0;
     this.soundTick = 0;
@@ -34,7 +27,7 @@ class S2C1 extends Scene {
 
   OnDraw() {
     imageManager.DrawImageScale(
-      "background",
+      "s2c1_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
@@ -62,12 +55,12 @@ class S2C1 extends Scene {
     }
 
     imageManager.DrawImageScale(
-      "bear" + this.imageNumber,
+      "s2c1_bear" + this.imageNumber,
       createVector(this.animalX, this.animalY),
       createVector(this.animalScale, this.animalScale)
     );
     imageManager.DrawImageScale(
-      "tiger" + this.imageNumber,
+      "s2c1_tiger" + this.imageNumber,
       createVector(
         this.animalX + (200 * this.animalScale) / this.originalAnimalScale,
         this.animalY

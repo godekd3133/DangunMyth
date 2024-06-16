@@ -1,7 +1,6 @@
 class S2C8 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "Images/S2/C8/";
     this.centerVector;
     this.centerX;
     this.centerY;
@@ -19,35 +18,26 @@ class S2C8 extends Scene {
     this.centerVector = createVector(this.centerX, this.centerY);
     this.sunY = 600;
     this.cloudXDistance = 0;
-
-    imageManager.LoadImage("cloud_left", this.PREFIX + "cloud_left");
-    imageManager.LoadImage("cloud_right", this.PREFIX + "cloud_right");
-    imageManager.LoadImage("cloud_middle", this.PREFIX + "cloud_middle");
-    imageManager.LoadImage("lake", this.PREFIX + "lake");
-    imageManager.LoadImage("mountains", this.PREFIX + "mountains");
-    imageManager.LoadImage("sky", this.PREFIX + "sky");
-    imageManager.LoadImage("sun", this.PREFIX + "sun");
-    imageManager.LoadImage("text", this.PREFIX + "text");
   }
 
   OnDraw() {
-    imageManager.DrawImage("sky", this.centerVector);
-    imageManager.DrawImage("sun", createVector(this.centerX, this.sunY));
-    imageManager.DrawImage("mountains", this.centerVector);
-    imageManager.DrawImage("lake", this.centerVector);
+    imageManager.DrawImage("s2c8_sky", this.centerVector);
+    imageManager.DrawImage("s2c8_sun", createVector(this.centerX, this.sunY));
+    imageManager.DrawImage("s2c8_mountains", this.centerVector);
+    imageManager.DrawImage("s2c8_lake", this.centerVector);
     imageManager.DrawImage(
-      "cloud_left",
+      "s2c8_cloud_left",
       createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
     imageManager.DrawImage(
-      "cloud_right",
+      "s2c8_cloud_right",
       createVector(this.centerX + this.cloudXDistance, this.centerY)
     );
     imageManager.DrawImage(
-      "cloud_middle",
+      "s2c8_cloud_middle",
       createVector(this.centerX - this.cloudXDistance, this.centerY)
     );
-    imageManager.DrawImage("text", this.centerVector);
+    imageManager.DrawImage("s2c8_text", this.centerVector);
 
     if (timeManager.time - this.enterTime > 1 && !this.playingNarr) {
       soundManager.PlaySound("S2/C8/narr");

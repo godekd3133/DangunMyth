@@ -7,18 +7,12 @@ class S1C1 extends Scene {
     this.sessionIndex = 0;
     this.sessionDuration = [4, 9.5, 15];
     this.sessionSound = ["S1/C1/narr", "S1/C1/narr2", "S1/C1/narr3"];
-    this.sessionText = ["text1", "text1", "text2"];
+    this.sessionText = ["s1c1_text1", "s1c1_text1", "s1c1_text2"];
     this.isSessionOut = [false, false, false];
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S1/C1/background");
-    imageManager.LoadImage("cloud01", "Images/S1/C1/cloud_01");
-    imageManager.LoadImage("cloud02", "Images/S1/C1/cloud_02");
-    imageManager.LoadImage("cloud03", "Images/S1/C1/cloud_03");
     soundManager.PlaySound("intro");
-    imageManager.LoadImage("text1", "Images/S1/C1/text_01");
-    imageManager.LoadImage("text2", "Images/S1/C1/text_02");
     this.cloudX = 0;
     this.zoomIn = 1;
     this.enterTime = timeManager.time;
@@ -29,22 +23,22 @@ class S1C1 extends Scene {
   OnDraw() {
     let scale = createVector(this.zoomIn, this.zoomIn, 0);
     imageManager.DrawImageScale(
-      "background",
+      "s1c1_background",
       createVector(width / 2, height / 2, 0),
       scale
     );
     imageManager.DrawImageScale(
-      "cloud01",
+      "s1c1_cloud01",
       createVector(width / 2 - this.cloudX, height / 2, 0),
       scale
     );
     imageManager.DrawImageScale(
-      "cloud02",
+      "s1c1_cloud02",
       createVector(width / 2 - this.cloudX, height / 2, 0),
       scale
     );
     imageManager.DrawImageScale(
-      "cloud03",
+      "s1c1_cloud03",
       createVector(width / 2 + this.cloudX, height / 2, 0),
       scale
     );

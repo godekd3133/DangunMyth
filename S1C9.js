@@ -10,12 +10,6 @@ class S1C9 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S1/C9/background");
-    imageManager.LoadImage("text", "Images/S1/C9/text");
-    imageManager.LoadImage("cloud01", "Images/S1/C9/cloud_01");
-    imageManager.LoadImage("cloud02", "Images/S1/C9/cloud_02");
-    imageManager.LoadImage("cloud03", "Images/S1/C9/cloud_03");
-    imageManager.LoadImage("hand", "Images/S1/C9/hand");
 
     this.cloudX = 0;
     this.handY = 0;
@@ -24,25 +18,25 @@ class S1C9 extends Scene {
 
   OnDraw() {
     imageManager.DrawImage(
-      "background",
+      "s1c9_background",
       createVector(width / 2, height / 2, 0)
     );
 
     imageManager.DrawImage(
-      "cloud01",
+      "s1c9_cloud01",
       createVector(width / 2 - 400 + this.cloudX, height / 2, 0)
     );
     imageManager.DrawImage(
-      "cloud02",
+      "s1c9_cloud02",
       createVector(width / 2 - 400 + this.cloudX, height / 2, 0)
     );
     imageManager.DrawImage(
-      "cloud03",
+      "s1c9_cloud03",
       createVector(width / 2 + 400 - this.cloudX, height / 2, 0)
     );
 
     imageManager.DrawImageScale(
-      "hand",
+      "s1c9_hand",
       createVector(width / 2 + 250, height + 200 - this.handY, 0),
       createVector(0.67, 0.67, 0),
       -0.6
@@ -62,7 +56,7 @@ class S1C9 extends Scene {
     if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S1C11());
     }
-    imageManager.DrawImage("text", createVector(width / 2, height / 2, 0));
+    imageManager.DrawImage("s1c9_text", createVector(width / 2, height / 2, 0));
 
     // 씬 시작 후 1초 뒤 대사1 시작
     if (

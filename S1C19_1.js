@@ -9,8 +9,8 @@ class S1C19_1 extends Scene {
     this.narrFlag = false;
     this.narrDuration = 4.5;
     this.animalVoiceFlag = false;
-    this.tigerRoutine = ["tiger1", "tiger2", "tiger3", "tiger2", "tiger1"];
-    this.bearRoutine = ["bear1", "bear2", "bear3", "bear2", "bear1"];
+    this.tigerRoutine = ["s1c19_1_tiger1", "s1c19_1_tiger2", "s1c19_1_tiger3", "s1c19_1_tiger2", "s1c19_1_tiger1"];
+    this.bearRoutine = ["s1c19_1_bear1", "s1c19_1_bear2", "s1c19_1_bear3", "s1c19_1_bear2", "s1c19_1_bear1"];
   }
 
   OnEnter() {
@@ -22,26 +22,13 @@ class S1C19_1 extends Scene {
     this.animalVoiceFlag = false;
     this.narrFlag = false;
 
-    imageManager.LoadImage("background", "Images/S1/C19/background0");
-    imageManager.LoadImage("hwangwoong", "Images/S1/C19/V1/hwanwoong");
-
-    imageManager.LoadImage("bear1", "Images/S1/C19/V1/bear1");
-    imageManager.LoadImage("bear2", "Images/S1/C19/V1/bear2");
-    imageManager.LoadImage("bear3", "Images/S1/C19/V1/bear3");
-
-    imageManager.LoadImage("tiger1", "Images/S1/C19/V1/tiger1");
-    imageManager.LoadImage("tiger2", "Images/S1/C19/V1/tiger2");
-    imageManager.LoadImage("tiger3", "Images/S1/C19/V1/tiger3");
-
-    imageManager.LoadImage("C19-1-Text", "Images/S1/C19/C19-1-Text");
-
   }
 
   OnDraw() {
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
-    imageManager.DrawImage("C19-1-Text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c19_1_background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c19_1_C19-1-Text", createVector(width / 2, height / 2));
     imageManager.DrawImageScale(
-      "hwangwoong",
+      "s1c19_1_hwangwoong",
       createVector(320, height - 280),
       createVector(0.25, 0.25)
     );

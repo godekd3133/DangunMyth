@@ -1,7 +1,6 @@
 class S1C17 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "Images/S1/C17/";
     this.HWANUNG_X = width / 2 - 100;
     this.HWANUNG_Y = height / 2 - 50;
     this.HWANUNG_SCALE = 0.09;
@@ -35,15 +34,6 @@ class S1C17 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("BUSH", this.PREFIX + "BUSH");
-    imageManager.LoadImage("HWANUNG", this.PREFIX + "HWANUNG");
-    imageManager.LoadImage("VASSAL", this.PREFIX + "VASSAL");
-    imageManager.LoadImage("VASSAL1", this.PREFIX + "VASSAL1");
-    imageManager.LoadImage("VASSAL2", this.PREFIX + "VASSAL2");
-    imageManager.LoadImage("VASSAL3", this.PREFIX + "VASSAL3");
-    imageManager.LoadImage("BEAR", this.PREFIX + "BEAR");
-    imageManager.LoadImage("TIGER", this.PREFIX + "TIGER");
     this.BEAR_POP = 0;
     this.TIGER_POP = 0;
     this.BUSH_OFFSET = 0;
@@ -75,43 +65,43 @@ class S1C17 extends Scene {
       this.BUSH_OFFSET += 1;
     }
 
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c17_background", createVector(width / 2, height / 2));
     imageManager.DrawImageScale(
-      "VASSAL2",
+      "s1c17_VASSAL2",
       createVector(this.VASSAL2_X, this.VASSAL2_Y - this.VASSAL2_JUMP),
       createVector(this.VASSAL2_SCALE, this.VASSAL2_SCALE)
     );
     imageManager.DrawImageScale(
-      "VASSAL1",
+      "s1c17_VASSAL1",
       createVector(this.VASSAL1_X, this.VASSAL1_Y - this.VASSAL1_JUMP),
       createVector(this.VASSAL1_SCALE, this.VASSAL1_SCALE)
     );
     imageManager.DrawImageScale(
-      "VASSAL3",
+      "s1c17_VASSAL3",
       createVector(this.VASSAL3_X, this.VASSAL3_Y - this.VASSAL3_JUMP),
       createVector(this.VASSAL3_SCALE, this.VASSAL3_SCALE)
     );
     imageManager.DrawImageScale(
-      "VASSAL",
+      "s1c17_VASSAL",
       createVector(this.VASSAL_X, this.VASSAL_Y - this.VASSAL_JUMP),
       createVector(this.VASSAL_SCALE, this.VASSAL_SCALE)
     );
     imageManager.DrawImageScale(
-      "HWANUNG",
+      "s1c17_HWANUNG",
       createVector(this.HWANUNG_X, this.HWANUNG_Y),
       createVector(this.HWANUNG_SCALE, this.HWANUNG_SCALE)
     );
     imageManager.DrawImage(
-      "BUSH",
+      "s1c17_BUSH",
       createVector(width / 2, height / 2 + 200 - this.BUSH_OFFSET)
     );
     imageManager.DrawImageScale(
-      "TIGER",
+      "s1c17_TIGER",
       createVector(this.TIGER_X, this.TIGER_Y - this.TIGER_POP),
       createVector(this.TIGER_SCALE, this.TIGER_SCALE)
     );
     imageManager.DrawImageScale(
-      "BEAR",
+      "s1c17_BEAR",
       createVector(this.BEAR_X, this.BEAR_Y - this.BEAR_POP),
       createVector(this.BEAR_SCALE, this.BEAR_SCALE)
     );

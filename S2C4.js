@@ -19,22 +19,11 @@ class S2C4 extends Scene {
     this.sessionIndex;
     this.sessionDuration = [4, 8, 12];
     this.sessionSound = ["S2/C4/narr1", "S2/C4/narr2", "S2/C4/narr3"];
-    this.sessionText = ["text1", "text2", "text3"];
+    this.sessionText = ["s2c4_text1", "s2c4_text2", "s2c4_text3"];
     this.isSessionOut = [];
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S2/C4/background");
-    imageManager.LoadImage("bear1", "Images/S2/C4/bear1");
-    imageManager.LoadImage("bear2", "Images/S2/C4/bear2");
-    imageManager.LoadImage("tiger", "Images/S2/C4/tiger");
-    imageManager.LoadImage("garlic", "Images/S2/C4/garlic");
-    imageManager.LoadImage("ssug", "Images/S2/C4/ssug");
-    imageManager.LoadImage("basket", "Images/S2/C4/basket");
-    imageManager.LoadImage("tear", "Images/S2/C4/tear");
-    imageManager.LoadImage("text1", "Images/S2/C4/text1");
-    imageManager.LoadImage("text2", "Images/S2/C4/text2");
-    imageManager.LoadImage("text3", "Images/S2/C4/text3");
     this.isSessionOut = [false, false, false];
     this.animalScale = 0.25;
     this.utilScale = 0.035;
@@ -55,54 +44,54 @@ class S2C4 extends Scene {
 
   OnDraw() {
     imageManager.DrawImageScale(
-      "background",
+      "s2c4_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
     if (this.sessionIndex == 1) {
       imageManager.DrawImageScale(
-        "bear" + ((floor(millis() / 300) % 2) + 1),
+        "s2c4_bear" + ((floor(millis() / 300) % 2) + 1),
         createVector(width / 2 - 200, height - 280),
         createVector(this.animalScale, this.animalScale)
       );
     } else {
       imageManager.DrawImageScale(
-        "bear2",
+        "s2c4_bear2",
         createVector(width / 2 - 200, height - 280),
         createVector(this.animalScale, this.animalScale)
       );
     }
     imageManager.DrawImageScale(
-      "tiger",
+      "s2c4_tiger",
       createVector(width / 2 + 50, height - 305),
       createVector(this.animalScale, this.animalScale)
     );
     imageManager.DrawImageScale(
-      "basket",
+      "s2c4_basket",
       createVector(width / 2 + 360, height - 105),
       createVector(0.2, 0.2),
       -0.27
     );
     imageManager.DrawImageScale(
-      "garlic",
+      "s2c4_garlic",
       createVector(width - 130, height - 210),
       createVector(this.utilScale, this.utilScale),
       -0.3
     );
     imageManager.DrawImageScale(
-      "garlic",
+      "s2c4_garlic",
       createVector(width - 180, height - 100),
       createVector(this.utilScale, this.utilScale),
       0.5
     );
     imageManager.DrawImageScale(
-      "ssug",
+      "s2c4_ssug",
       createVector(width - 50, height - 170),
       createVector(this.utilScale, this.utilScale),
       0.3
     );
     imageManager.DrawImageScale(
-      "ssug",
+      "s2c4_ssug",
       createVector(width - 240, height - 10),
       createVector(this.utilScale, this.utilScale),
       -0.5
@@ -112,12 +101,12 @@ class S2C4 extends Scene {
     if (this.tearLeftY + this.tearSpeed > height - 250) this.tearSpeed = 0;
     this.tearSpeed += 0.5;
     imageManager.DrawImageScale(
-      "tear",
+      "s2c4_tear",
       createVector(width - 510, this.tearLeftY + this.tearSpeed),
       createVector(this.tearScale, this.tearScale)
     );
     imageManager.DrawImageScale(
-      "tear",
+      "s2c4_tear",
       createVector(width - 440, this.tearRightY + this.tearSpeed),
       createVector(this.tearScale, this.tearScale)
     );

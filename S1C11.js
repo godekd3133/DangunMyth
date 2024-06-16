@@ -1,8 +1,6 @@
 class S1C11 extends Scene {
   constructor() {
     super();
-    this.IMG_PREFIX = "Images/S1/C11/";
-    this.SOUND_PREFIX = "Sounds/S1/C11/narr/";
 
     this.HWANIN_BODY_X = 200.0;
     this.HWANIN_BODY_Y = 520.0;
@@ -23,46 +21,21 @@ class S1C11 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.IMG_PREFIX + "background");
-    imageManager.LoadImage("text", this.IMG_PREFIX + "text");
-
-    imageManager.LoadImage("hwanin_body", this.IMG_PREFIX + "hwanin_body");
-    imageManager.LoadImage(
-      "hwanin_expression1",
-      this.IMG_PREFIX + "hwanin_expression1"
-    );
-    imageManager.LoadImage(
-      "hwanin_expression2",
-      this.IMG_PREFIX + "hwanin_expression2"
-    );
-
-    imageManager.LoadImage(
-      "hwanwoong_body",
-      this.IMG_PREFIX + "hwanwoong_body"
-    );
-    imageManager.LoadImage(
-      "hwanwoong_expression1",
-      this.IMG_PREFIX + "hwanwoong_expression1"
-    );
-    imageManager.LoadImage(
-      "hwanwoong_expression2",
-      this.IMG_PREFIX + "hwanwoong_expression2"
-    );
 
     this.startMillis = millis();
   }
 
   OnDraw() {
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c11_background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c11_text", createVector(width / 2, height / 2));
 
     imageManager.DrawImageScale(
-      "hwanin_body",
+      "s1c11_hwanin_body",
       createVector(this.HWANIN_BODY_X, this.HWANIN_BODY_Y),
       createVector(this.HWANIN_SCALE, this.HWANIN_SCALE, 0)
     );
     imageManager.DrawImageScale(
-      "hwanwoong_body",
+      "s1c11_hwanwoong_body",
       createVector(this.HWANWOONG_BODY_X, this.HWANWOONG_BODY_Y),
       createVector(this.HWANWOONG_SCALE, this.HWANWOONG_SCALE, 0)
     );
@@ -70,23 +43,23 @@ class S1C11 extends Scene {
     // 입, 움직임 인터랙션 반복
     if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
-        "hwanin_expression1",
+        "s1c11_hwanin_expression1",
         createVector(this.HWANIN_EYE_X, this.HWANIN_EYE_Y),
         createVector(this.HWANIN_SCALE, this.HWANIN_SCALE, 0)
       );
       imageManager.DrawImageScale(
-        "hwanwoong_expression1",
+        "s1c11_hwanwoong_expression1",
         createVector(this.HWANWOONG_EYE_X, this.HWANWOONG_EYE_Y),
         createVector(this.HWANWOONG_SCALE, this.HWANWOONG_SCALE, 0)
       );
     } else {
       imageManager.DrawImageScale(
-        "hwanin_expression2",
+        "s1c11_hwanin_expression2",
         createVector(this.HWANIN_EYE_X, this.HWANIN_EYE_Y),
         createVector(this.HWANIN_SCALE, this.HWANIN_SCALE, 0)
       );
       imageManager.DrawImageScale(
-        "hwanwoong_expression2",
+        "s1c11_hwanwoong_expression2",
         createVector(this.HWANWOONG_EYE_X, this.HWANWOONG_EYE_Y),
         createVector(this.HWANWOONG_SCALE, this.HWANWOONG_SCALE, 0)
       );

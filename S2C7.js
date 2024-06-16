@@ -21,11 +21,6 @@ class S2C7 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S2/C7/background");
-    imageManager.LoadImage("tiger1", "Images/S2/C7/tiger1");
-    imageManager.LoadImage("tiger2", "Images/S2/C7/tiger2");
-    imageManager.LoadImage("bear1", "Images/S2/C7/bear1");
-    imageManager.LoadImage("bear2", "Images/S2/C7/bear2");
     this.startTime = millis();
   }
 
@@ -34,30 +29,30 @@ class S2C7 extends Scene {
     let isEating = currentProcessingTime % 2 == 1;
     let positionToMoveHead = isEating ? 10 : 0;
     imageManager.DrawImageScale(
-      "background",
+      "s2c7_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
 
     if (isEating) {
       imageManager.DrawImageScale(
-        "bear1",
+        "s2c7_bear1",
         createVector(520, 440),
         createVector(this.animalScale, this.animalScale)
       );
       imageManager.DrawImageScale(
-        "tiger1",
+        "s2c7_tiger1",
         createVector(660, 405),
         createVector(this.animalScale, this.animalScale)
       );
     } else {
       imageManager.DrawImageScale(
-        "bear2",
+        "s2c7_bear2",
         createVector(520, 440),
         createVector(this.animalScale, this.animalScale)
       );
       imageManager.DrawImageScale(
-        "tiger2",
+        "s2c7_tiger2",
         createVector(660, 405),
         createVector(this.animalScale, this.animalScale)
       );

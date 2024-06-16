@@ -29,35 +29,29 @@ class S1C19_3 extends Scene {
     this.firstFlag = false;
     this.secondFlag = false;
     this.thridFlag = false;
-
-    imageManager.LoadImage("background", "Images/S1/C19/background2");
-    imageManager.LoadImage("hands", "Images/S1/C19/hands");
-    imageManager.LoadImage("hwangwoong", "Images/S1/C19/hwanwoong_hand");
-    imageManager.LoadImage("basket", "Images/S1/C19/basket");
-    imageManager.LoadImage("C19-3-Text", "Images/S1/C19/C19-3-Text");
   }
 
   OnDraw() {
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c19_3_background", createVector(width / 2, height / 2));
 
     imageManager.DrawImageScale(
-      "hands",
+      "s1c19_3_hands",
       createVector(this.animalX, this.animalY),
       createVector(0.3, 0.3, 0)
     );
     imageManager.DrawImageScale(
-      "hwangwoong",
+      "s1c19_3_hwangwoong",
       createVector(this.handX, 150),
       createVector(0.7, 0.7, 0),
       90
     );
     imageManager.DrawImageScale(
-      "basket",
+      "s1c19_3_basket",
       createVector(this.basketX, this.basketY),
       createVector(0.45, 0.45, 0)
     );
 
-    imageManager.DrawImage("C19-3-Text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c19_3_C19-3-Text", createVector(width / 2, height / 2));
 
     if (!this.firstFlag) {
       this.firstFlag = true;

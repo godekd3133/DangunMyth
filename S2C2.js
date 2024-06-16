@@ -28,23 +28,6 @@ class S2C2 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S2/C2/background");
-    imageManager.LoadImage("rock", "Images/S2/C2/rock");
-    imageManager.LoadImage("tiger_body", "Images/S2/C2/tiger_body");
-    imageManager.LoadImage("tiger_face", "Images/S2/C2/tiger_face");
-    imageManager.LoadImage("tiger_left", "Images/S2/C2/tiger_foot_right");
-    imageManager.LoadImage("tiger_right", "Images/S2/C2/tiger_foot_left");
-    imageManager.LoadImage("bear_body", "Images/S2/C2/bear_body");
-    imageManager.LoadImage("bear_face", "Images/S2/C2/bear_face");
-    imageManager.LoadImage("bear_left", "Images/S2/C2/bear_foot_right");
-    imageManager.LoadImage("bear_right", "Images/S2/C2/bear_foot_left");
-    imageManager.LoadImage("tiger1", "Images/S2/C2/tiger1");
-    imageManager.LoadImage("tiger2", "Images/S2/C2/tiger2");
-    imageManager.LoadImage("tiger3", "Images/S2/C2/tiger3");
-    imageManager.LoadImage("bear1", "Images/S2/C2/bear1");
-    imageManager.LoadImage("bear2", "Images/S2/C2/bear2");
-    imageManager.LoadImage("bear3", "Images/S2/C2/bear3");
-
     this._rock_size = 0.5;
     this._rock_rotate = 0.01;
     this.tiger_x = 20;
@@ -62,18 +45,18 @@ class S2C2 extends Scene {
       sceneManager.ChangeScene(new S2C3());
     }
     imageManager.DrawImageScale(
-      "background",
+      "s2c2_background",
       createVector(width / 2, height / 2, 0),
       createVector(1, 1, 0)
     );
 
     imageManager.DrawImageScale(
-      "tiger" + this.imageNumber,
+      "s2c2_tiger" + this.imageNumber,
       createVector(this.tiger_x, this.tiger_y + 30, 0),
       createVector(0.2, 0.2, 0)
     );
     imageManager.DrawImageScale(
-      "bear" + this.imageNumber,
+      "s2c2_bear" + this.imageNumber,
       createVector(this.bear_x, this.bear_y + 30, 0),
       createVector(0.2, 0.2, 0)
     );
@@ -85,7 +68,7 @@ class S2C2 extends Scene {
         this._rock_rotate *= -1;
       }
       imageManager.DrawImageScale(
-        "rock",
+        "s2c2_rock",
         createVector(this.rock_x, this.rock_y, 0),
         createVector(this._rock_size, this._rock_size, 0),
         this._rock_rotate

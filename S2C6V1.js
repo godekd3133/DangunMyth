@@ -18,14 +18,6 @@ class S2C6V1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S2/C6/V1/background");
-    imageManager.LoadImage("bear", "Images/S2/C6/V1/bear");
-    imageManager.LoadImage("bear_tear", "Images/S2/C6/V1/bear_tear");
-    imageManager.LoadImage("tiger", "Images/S2/C6/V1/tiger");
-    imageManager.LoadImage("tiger_tear", "Images/S2/C6/V1/tiger_tear");
-    imageManager.LoadImage("button_top", "Images/S2/C6/V1/button_top");
-    imageManager.LoadImage("button_bottom", "Images/S2/C6/V1/button_bottom");
-
     this.timelineManager.pushTimeline(() => {
       this.showButton = true;
     }, 2);
@@ -47,17 +39,17 @@ class S2C6V1 extends Scene {
 
   OnDraw() {
     imageManager.DrawImageScale(
-      "background",
+      "s2c6v1_background",
       createVector(width / 2, height / 2, 0),
       createVector(1, 1, 0)
     );
     imageManager.DrawImageScale(
-      "bear",
+      "s2c6v1_bear",
       createVector(width / 2 - 220, height - 255),
       createVector(this.animalScale, this.animalScale)
     );
     imageManager.DrawImageScale(
-      "tiger",
+      "s2c6v1_tiger",
       createVector(width / 2 + 220, height - 255),
       createVector(this.animalScale, this.animalScale)
     );
@@ -69,12 +61,12 @@ class S2C6V1 extends Scene {
     this.tigerTearSpeedL += random(0.3, 0.9);
     this.tigerTearSpeedR += random(0.3, 0.9);
     imageManager.DrawImageScale(
-      "tiger_tear",
+      "s2c6v1_tiger_tear",
       createVector(width - 510, this.tigerTearLeftY + this.tigerTearSpeedL),
       createVector(this.tearScale, this.tearScale)
     );
     imageManager.DrawImageScale(
-      "tiger_tear",
+      "s2c6v1_tiger_tear",
       createVector(width - 440, this.tigerTearRightY + this.tigerTearSpeedL),
       createVector(this.tearScale, this.tearScale)
     );
@@ -86,12 +78,12 @@ class S2C6V1 extends Scene {
     this.bearTearSpeedL += random(0.3, 0.9);
     this.bearTearSpeedR += random(0.3, 0.9);
     imageManager.DrawImageScale(
-      "bear_tear",
+      "s2c6v1_bear_tear",
       createVector(width - 810, this.bearTearLeftY + this.bearTearSpeedL),
       createVector(this.tearScale, this.tearScale)
     );
     imageManager.DrawImageScale(
-      "bear_tear",
+      "s2c6v1_bear_tear",
       createVector(width - 890, this.bearTearRightY + this.bearTearSpeedL),
       createVector(this.tearScale, this.tearScale)
     );
@@ -107,7 +99,7 @@ class S2C6V1 extends Scene {
     if (this.showButton) {
       if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
         imageManager.DrawImageWithTint(
-          "button_top",
+          "s2c6v1_button_top",
           createVector(width / 2, height / 2),
           0,
           255,
@@ -117,7 +109,7 @@ class S2C6V1 extends Scene {
         );
       } else {
         imageManager.DrawImageScale(
-          "button_top",
+          "s2c6v1_button_top",
           createVector(width / 2, height / 2),
           createVector(1, 1),
           0,
@@ -126,7 +118,7 @@ class S2C6V1 extends Scene {
       }
       if (mouseX > 480 && mouseX < 800 && mouseY > 237 && mouseY < 324) {
         imageManager.DrawImageWithTint(
-          "button_bottom",
+          "s2c6v1_button_bottom",
           createVector(width / 2, height / 2),
           0,
           255,
@@ -136,7 +128,7 @@ class S2C6V1 extends Scene {
         );
       } else {
         imageManager.DrawImageScale(
-          "button_bottom",
+          "s2c6v1_button_bottom",
           createVector(width / 2, height / 2),
           createVector(1, 1),
           0,
