@@ -10,6 +10,7 @@ class Obstacle {
 class S1C15 extends Scene {
   constructor() {
     super();
+		this.ended = false;
     this.ALTIMETER_MAX = 550;
     this.altimeterSpeed = 0.4;
     this.altimeter = 150;
@@ -70,6 +71,7 @@ class S1C15 extends Scene {
     this.hwanungImage = imageManager.GetImage("hwanung");
 
     this.obstacleCreatedTime = timeManager.time;
+		this.ended = false;
   }
 
   OnDraw() {
@@ -359,7 +361,8 @@ class S1C15 extends Scene {
     }
 
     // 게임 종료
-    if (this.altimeter >= this.ALTIMETER_MAX && this.groundY <= 500) {
+    if (this.altimeter >= this.ALTIMETER_MAX && this.groundY <= 500 && !this.ended) {
+			this.ended = true;
       this.altimeterSpeed = 0;
       setTimeout(() => {
         if (Math.abs(this.indicator * 6) < 600) {
