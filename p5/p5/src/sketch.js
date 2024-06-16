@@ -6854,7 +6854,6 @@ class SoundManager {
   }
 
   StopSound(name) {
-		console.log('StopSound', name)
 		let sound = this.sounds.get(name);
     if (sound) {
       sound.stop();
@@ -6862,7 +6861,6 @@ class SoundManager {
   }
 
 	StopAllSound() {
-		console.log('StopAllSound')
 		for (const soundName of this.sounds.keys()) {
 			this.StopSound(soundName);
 		}
