@@ -259,9 +259,9 @@ class EndingCredit extends Scene {
         dir.normalize();
 
         creditText.flying = true;
+        creditText.speed = 10;
         creditText.dirX -= dir.x * creditText.speed;
         creditText.dirY -= dir.y * creditText.speed;
-        creditText.speed = 10;
       }
       fontManager.DrawFont(
         "font",
