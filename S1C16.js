@@ -24,7 +24,6 @@ class S1C16 extends Scene {
     imageManager.LoadImage("hwanung2", "Images/S1/C16/hwanung2");
     imageManager.LoadImage("text", "Images/S1/C16/text");
     this.isNarrOut = false;
-    this.enterTime = timeManager.time;
   }
 
   OnDraw() {

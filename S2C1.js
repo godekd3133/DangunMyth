@@ -81,7 +81,7 @@ class S2C1 extends Scene {
       this.animalScale -= 0.03 * timeManager.deltaTime;
     }
 
-    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S2C2());
     }
   }

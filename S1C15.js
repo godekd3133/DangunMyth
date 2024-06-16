@@ -42,7 +42,6 @@ class S1C15 extends Scene {
   }
 
   OnEnter() {
-    this.enterTime = timeManager.time;
 
     imageManager.LoadImage("background", "Images/S1/C15/background");
     imageManager.LoadImage("ground", "Images/S1/C15/ground");

@@ -15,8 +15,6 @@ class S3C3V1_1 extends Scene {
 
 
     this.narrFlag = false;
-
-    timeManager.enterTime = timeManager.time;
   }
 
   OnDraw() {
@@ -41,7 +39,7 @@ class S3C3V1_1 extends Scene {
       this.narrFlag = true;
       soundManager.PlaySound("S3/C3/V1/_1/Bear");
     }
-    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C3V1_2());
     }
   }

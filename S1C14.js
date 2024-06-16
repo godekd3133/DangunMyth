@@ -8,7 +8,6 @@ class S1C14 extends Scene {
   OnEnter() {
     imageManager.LoadImage("background", "Images/S1/C14/background");
     imageManager.LoadImage("button", "Images/S1/C14/button");
-    this.enterTime = timeManager.time;
     this.isEffectOut = false;
   }
 

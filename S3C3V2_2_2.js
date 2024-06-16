@@ -27,7 +27,7 @@ class S3C3V2_2_2 extends Scene {
       0,
       this.alpha
     );
-    if (timeManager.time - timeManager.enterTime >= 1) {
+    if (timeManager.time - this.enterTime >= 1) {
       this.alpha -= (255 / this.fadeoutTime) * timeManager.deltaTime;
     }
     if (this.alpha <= 0) {

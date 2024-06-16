@@ -127,7 +127,7 @@ class S3C3V1_4_3 extends Scene {
 
     imageManager.DrawImage("text", createVector(width / 2, height / 2));
 
-    if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
       sceneManager.CreditScene();
     }
     if (!this.firstFlag) {

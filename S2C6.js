@@ -49,7 +49,7 @@ class S2C6 extends Scene {
 
   OnDraw() {
     let displayTime =
-      this.DISPLAY_TIME - (timeManager.time - timeManager.enterTime);
+      this.DISPLAY_TIME - (timeManager.time - this.enterTime);
 
     if (
       this.m_ManulCnt >= this.TOTAL_MANUL_CNT &&

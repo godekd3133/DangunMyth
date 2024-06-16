@@ -51,7 +51,6 @@ class S1C17 extends Scene {
     this.VASSAL1_JUMP = 0;
     this.VASSAL2_JUMP = 0;
     this.VASSAL3_JUMP = 0;
-    this.enterTime = timeManager.time;
   }
 
   OnDraw() {

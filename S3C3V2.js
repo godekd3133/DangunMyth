@@ -32,11 +32,7 @@ class S3C3V2 extends Scene {
       );
     }
 
-    soundManager.LoadSound(
-      "woonggirl",
-      "Sounds/S3/C3/V2/_0/narr/woonggirl.mp3"
-    );
-    soundManager.PlaySound("woonggirl");
+    soundManager.PlaySound("S3/C3/V2/_0/narr/woonggirl");
 
     this.tiger_X = 800;
     this.tiger_Y = 250;
@@ -92,7 +88,7 @@ class S3C3V2 extends Scene {
       this.tiger_Y -= 0.5 * timeManager.deltaTime;
       this.tiger_SCALE -= 0.03 * timeManager.deltaTime;
     }
-    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C3V2_1_1());
     }
   }

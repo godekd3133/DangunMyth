@@ -39,7 +39,7 @@ class S3C3V2_1_2 extends Scene {
     this.GIRL_HAND_Y = lerp(
       550,
       515,
-      (timeManager.time - timeManager.enterTime) / this.SCENE_DURATION
+      (timeManager.time - this.enterTime) / this.SCENE_DURATION
     );
 
     //girl
@@ -73,7 +73,7 @@ class S3C3V2_1_2 extends Scene {
       soundManager.playSoundOnce("S3/C3/V2/_1/_2/woonggirl");
     }
     // 씬 시작 후 SCENE_DURATION 초 경과시 다음 장면으로 이동
-    if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C3V2_1_3());
     }
   }

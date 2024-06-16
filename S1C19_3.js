@@ -63,7 +63,7 @@ class S1C19_3 extends Scene {
       this.firstFlag = true;
       soundManager.PlaySound("S1/C19-3/hwanwoong1");
     }
-    if (timeManager.time - timeManager.enterTime >= 7) {
+    if (timeManager.time - this.enterTime >= 7) {
       if (!this.thridFlag) {
         this.thridFlag = true;
         soundManager.PlaySound("S1/C19-3/Bear");
@@ -75,7 +75,7 @@ class S1C19_3 extends Scene {
       this.animalX -= 15 * timeManager.deltaTime;
       this.animalY -= 15 * timeManager.deltaTime;
     }
-    if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S2C1());
     }
   }

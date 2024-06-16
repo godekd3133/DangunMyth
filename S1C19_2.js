@@ -43,8 +43,6 @@ class S1C19_2 extends Scene {
     imageManager.LoadImage("mouth1", "Images/S1/C19/hwanwoong_mouth0");
     imageManager.LoadImage("skin", "Images/S1/C19/hwanwoong_skin");
     imageManager.LoadImage("C19-2-Text", "Images/S1/C19/C19-2-Text");
-
-    this.enterTime = timeManager.time;
   }
 
   OnDraw() {

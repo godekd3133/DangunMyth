@@ -58,7 +58,7 @@ class S2C2 extends Scene {
   }
 
   OnDraw() {
-    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S2C3());
     }
     imageManager.DrawImageScale(
@@ -78,7 +78,7 @@ class S2C2 extends Scene {
       createVector(0.2, 0.2, 0)
     );
 
-    if (timeManager.time - timeManager.enterTime > 4.167) {
+    if (timeManager.time - this.enterTime > 4.167) {
       this.rotateTick += timeManager.deltaTime;
       if (this.rotateTick > this.ROTATE_INTERVAL) {
         this.rotateTick = 0;
@@ -130,7 +130,7 @@ class S2C2 extends Scene {
     }
 
     if (
-      timeManager.time - timeManager.enterTime > this.SCENE_DURATION &&
+      timeManager.time - this.enterTime > this.SCENE_DURATION &&
       !this.isPlayedEffect
     ) {
       soundManager.PlaySound("S2_S3_FootStuckRock");

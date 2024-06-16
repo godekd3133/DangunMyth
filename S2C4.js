@@ -122,7 +122,7 @@ class S2C4 extends Scene {
       createVector(this.tearScale, this.tearScale)
     );
 
-    this.SCENE_TIME = timeManager.time - timeManager.enterTime;
+    this.SCENE_TIME = timeManager.time - this.enterTime;
     imageManager.DrawImageScale(
       this.sessionText[this.sessionIndex],
       createVector(width / 2, height / 2),

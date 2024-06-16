@@ -96,7 +96,7 @@ class S3C1 extends Scene {
       this.ssugRotate
     );
 
-    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C2());
     }
   }

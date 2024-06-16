@@ -71,7 +71,7 @@ class S2C6V2 extends Scene {
       this.tigerArmRotate
     );
 
-    this.SCENE_TIME = timeManager.time - timeManager.enterTime;
+    this.SCENE_TIME = timeManager.time - this.enterTime;
     if (this.sessionIndex == 0) {
       imageManager.DrawImageScale(
         this.sessionText[this.sessionIndex],

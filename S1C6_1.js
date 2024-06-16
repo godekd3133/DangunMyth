@@ -98,7 +98,6 @@ class S1C6_1 extends Scene {
     );
 
     background(255);
-    timeManager.enterTime = timeManager.time;
   }
 
   OnDraw() {
@@ -122,7 +121,7 @@ class S1C6_1 extends Scene {
         this.hwanwoongMouse = false;
       }
     }
-    if (timeManager.time - timeManager.enterTime >= this.hwaninStartTime) {
+    if (timeManager.time - this.enterTime >= this.hwaninStartTime) {
       this.hwaninFaceFlag = true;
       if (!this.hwaninVoiceFlag) {
         this.soundStartTime = timeManager.time;
@@ -136,7 +135,7 @@ class S1C6_1 extends Scene {
         this.hwaninFaceFlag = false;
       }
     }
-    if (timeManager.time - timeManager.enterTime >= this.hwanwoongStartTime) {
+    if (timeManager.time - this.enterTime >= this.hwanwoongStartTime) {
       this.hwanwoongFaceFlag = true;
       this.hwaninFaceFlag = false;
       if (!this.hwanwoongVoiceFlag) {
@@ -145,7 +144,7 @@ class S1C6_1 extends Scene {
         soundManager.PlaySound("S1/C6-1/hwanwoong");
       }
     }
-    if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S1C6_2());
     }
     imageManager.DrawImageScale(
