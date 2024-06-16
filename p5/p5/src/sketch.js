@@ -6778,6 +6778,7 @@ class SceneManager {
           this.backgroundAlpha = 255;
           this.fadeOut = false;
           if (this.currentScene != null) {
+						soundManager.StopAllSound();
             this.currentScene.OnExit();
           }
           this.currentScene = this.nextScene;
@@ -6811,7 +6812,6 @@ class SceneManager {
     if (this.nextScene != null || this.firstScene != null) {
       return;
     }
-		soundManager.StopAllSound();
     this.backgroundAlpha = 0;
     this.fadeIn = false;
     this.fadeOut = true;
