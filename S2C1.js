@@ -1,7 +1,7 @@
 class S2C1 extends Scene {
   constructor() {
     super();
-    this.SCENE_DURATION = 7.5;
+    this.SCENE_DURATION = 6.5;
     this.originalAnimalScale = 0.3;
     this.animalScale = 0.3;
     this.animalX = 300;
@@ -77,7 +77,7 @@ class S2C1 extends Scene {
 
     if (this.animalX < 900) {
       this.animalX += 120 * timeManager.deltaTime;
-      this.animalY -= 0.5 * timeManager.deltaTime;
+      this.animalY -= 60 * timeManager.deltaTime;
       this.animalScale -= 0.03 * timeManager.deltaTime;
     }
 
