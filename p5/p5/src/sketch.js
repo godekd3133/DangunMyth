@@ -4387,7 +4387,6 @@ class S2C6 extends Scene {
   }
 
   OnMousePressed() {
-		console.log('OnMousePressed')
     for (let i = 0; i < this.m_ItemsLoc.length; i++) {
       if (
         this.m_ItemsLoc[i].x - 25 <= mouseX &&
@@ -5096,7 +5095,7 @@ class S3C3V1_1 extends Scene {
       createVector(width / 2, height / 2, 0)
     );
     imageManager.DrawImageScale(
-      "bear" + (((millis() / 500) % 2) + 1),
+      "bear" + Math.floor(((millis() / 500) % 2) + 1),
       createVector(475, 400, 0),
       createVector(0.25, 0.25, 0)
     );
@@ -5347,7 +5346,7 @@ class S3C3V1_2 extends Scene {
       createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );
     imageManager.DrawImageScale(
-      "tiger" + (((millis() / 500) % 2) + 1),
+      "tiger" + Math.floor(((millis() / 500) % 2) + 1),
       createVector(this.TIGER_X, this.TIGER_Y),
       createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );
@@ -5420,7 +5419,7 @@ class S3C3V1_2_1 extends Scene {
     let elapsedMillis = millis() - this.startMillis;
     imageManager.DrawImage("background", createVector(width / 2, height / 2));
     let prevName = this.범녀Name;
-    this.범녀Name = "범녀" + (((elapsedMillis / 300) % 3) + 1);
+    this.범녀Name = "범녀" + Math.floor(((elapsedMillis / 300) % 3) + 1);
     if (prevName === "범녀3" && this.범녀Name === "범녀1")
       this.animationCompleted = true;
     if (this.animationCompleted) this.범녀Name = "범녀1";
@@ -7171,7 +7170,6 @@ function setup() {
 
   sceneManager.SetCreditScene(new EndingCredit());
   sceneManager.Setup(sceneList[0]);
-  // sceneManager.Setup(sceneList[26]);
 }
 
 function draw() {

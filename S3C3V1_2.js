@@ -48,7 +48,7 @@ class S3C3V1_2 extends Scene {
       createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );
     imageManager.DrawImageScale(
-      "tiger" + (((millis() / 500) % 2) + 1),
+      "tiger" + Math.floor(((millis() / 500) % 2) + 1),
       createVector(this.TIGER_X, this.TIGER_Y),
       createVector(this.CHARACTER_SCALE, this.CHARACTER_SCALE)
     );

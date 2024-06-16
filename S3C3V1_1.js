@@ -23,7 +23,7 @@ class S3C3V1_1 extends Scene {
       createVector(width / 2, height / 2, 0)
     );
     imageManager.DrawImageScale(
-      "bear" + (((millis() / 500) % 2) + 1),
+      "bear" + Math.floor(((millis() / 500) % 2) + 1),
       createVector(475, 400, 0),
       createVector(0.25, 0.25, 0)
     );

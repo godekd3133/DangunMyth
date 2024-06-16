@@ -52,7 +52,7 @@ class S3C3V1_2_1 extends Scene {
     let elapsedMillis = millis() - this.startMillis;
     imageManager.DrawImage("background", createVector(width / 2, height / 2));
     let prevName = this.범녀Name;
-    this.범녀Name = "범녀" + (((elapsedMillis / 300) % 3) + 1);
+    this.범녀Name = "범녀" + Math.floor(((elapsedMillis / 300) % 3) + 1);
     if (prevName === "범녀3" && this.범녀Name === "범녀1")
       this.animationCompleted = true;
     if (this.animationCompleted) this.범녀Name = "범녀1";
