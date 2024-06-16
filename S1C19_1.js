@@ -50,12 +50,12 @@ class S1C19_1 extends Scene {
       this.tigerX -= 40 * timeManager.deltaTime;
       this.bearX -= 40 * timeManager.deltaTime;
       imageManager.DrawImageScale(
-        this.tigerRoutine[(millis() / 100) % 5],
+        this.tigerRoutine[Math.floor((millis() / 100) % 5)],
         createVector(this.tigerX, this.tigerY),
         createVector(0.15, 0.15)
       );
       imageManager.DrawImageScale(
-        this.bearRoutine[(millis() / 100) % 5],
+        this.bearRoutine[Math.floor((millis() / 100) % 5)],
         createVector(this.bearX, this.bearY),
         createVector(0.15, 0.15)
       );
