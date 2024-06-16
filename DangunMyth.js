@@ -210,3 +210,9 @@ function keyPressed() {
     }
   }
 }
+
+function mousePressed() {
+  if (sceneManager.currentScene instanceof S2C6) {
+		sceneManager.currentScene.OnMousePressed();
+  }
+}
