@@ -325,7 +325,7 @@ class EndingCredit extends Scene {
     this.AddText("사용 기능, 함수", 36, 150);
     this.AddTwoText(
       "Processing::Image ",
-      "https://processing.org/reerence/#imageManager"
+      "https://processing.org/reerence/#image"
     );
     this.AddTwoText(
       "Processing::Math ",
@@ -481,7 +481,7 @@ class EndingCredit extends Scene {
         creditText.flying = true;
         creditText.dirX -= dir.x * creditText.speed;
         creditText.dirY -= dir.y * creditText.speed;
-        creditText.speed = 30;
+        creditText.speed = 10;
       }
       fontManager.DrawFont(
         "font",
@@ -505,7 +505,7 @@ class EndingCredit extends Scene {
 
     if (isReturnButtonOverlaped) {
       if (mouseIsPressed && !this.lastMousePressed) {
-        OnReturnButtonDown();
+        OnReturnButtonDown(); // ?? this없어도 되나?
         // 이미지 그리기
         imageManager.DrawImage(
           "ReturnButton",
@@ -1316,6 +1316,7 @@ class Obstacle {
 class S1C15 extends Scene {
   constructor() {
     super();
+		this.ended = false;
     this.ALTIMETER_MAX = 550;
     this.altimeterSpeed = 0.4;
     this.altimeter = 150;
@@ -1376,6 +1377,7 @@ class S1C15 extends Scene {
     this.hwanungImage = imageManager.GetImage("hwanung");
 
     this.obstacleCreatedTime = timeManager.time;
+		this.ended = false;
   }
 
   OnDraw() {
@@ -1665,7 +1667,8 @@ class S1C15 extends Scene {
     }
 
     // 게임 종료
-    if (this.altimeter >= this.ALTIMETER_MAX && this.groundY <= 500) {
+    if (this.altimeter >= this.ALTIMETER_MAX && this.groundY <= 500 && !this.ended) {
+			this.ended = true;
       this.altimeterSpeed = 0;
       setTimeout(() => {
         if (Math.abs(this.indicator * 6) < 600) {
@@ -2298,12 +2301,12 @@ class S1C19_1 extends Scene {
       this.tigerX -= 40 * timeManager.deltaTime;
       this.bearX -= 40 * timeManager.deltaTime;
       imageManager.DrawImageScale(
-        this.tigerRoutine[(millis() / 100) % 5],
+        this.tigerRoutine[Math.floor((millis() / 100) % 5)],
         createVector(this.tigerX, this.tigerY),
         createVector(0.15, 0.15)
       );
       imageManager.DrawImageScale(
-        this.bearRoutine[(millis() / 100) % 5],
+        this.bearRoutine[Math.floor((millis() / 100) % 5)],
         createVector(this.bearX, this.bearY),
         createVector(0.15, 0.15)
       );
@@ -3549,7 +3552,7 @@ class S1C9 extends Scene {
 class S2C1 extends Scene {
   constructor() {
     super();
-    this.SCENE_DURATION = 7.5;
+    this.SCENE_DURATION = 6.5;
     this.originalAnimalScale = 0.3;
     this.animalScale = 0.3;
     this.animalX = 300;
@@ -3625,7 +3628,7 @@ class S2C1 extends Scene {
 
     if (this.animalX < 900) {
       this.animalX += 120 * timeManager.deltaTime;
-      this.animalY -= 0.5 * timeManager.deltaTime;
+      this.animalY -= 60 * timeManager.deltaTime;
       this.animalScale -= 0.03 * timeManager.deltaTime;
     }
 
@@ -4004,7 +4007,7 @@ class S2C4 extends Scene {
     this.tearRightY = height - 290;
     this.tearSpeed = 0;
     this.sessionIndex;
-    this.sessionDuration = [4, 8];
+    this.sessionDuration = [4, 8, 12];
     this.sessionSound = ["S2/C4/narr1", "S2/C4/narr2", "S2/C4/narr3"];
     this.sessionText = ["text1", "text2", "text3"];
     this.isSessionOut = [];
@@ -4022,7 +4025,7 @@ class S2C4 extends Scene {
     imageManager.LoadImage("text1", "../../../Images/S2/C4/text1");
     imageManager.LoadImage("text2", "../../../Images/S2/C4/text2");
     imageManager.LoadImage("text3", "../../../Images/S2/C4/text3");
-    this.isSessionOut = [false, false];
+    this.isSessionOut = [false, false, false];
     this.animalScale = 0.25;
     this.utilScale = 0.035;
     this.tearScale = 0.025;
@@ -4372,9 +4375,9 @@ class S2C6 extends Scene {
     let timeStr = "";
     if (displayTime < 10) {
       fill(255, 0, 0);
-      timeStr = " D-" + displayTime;
+      timeStr = " D-" + Math.ceil(displayTime);
     } else {
-      timeStr = "D-" + displayTime;
+      timeStr = "D-" + Math.ceil(displayTime);
     }
     text(timeStr, 1176, 90);
   }
@@ -4384,6 +4387,7 @@ class S2C6 extends Scene {
   }
 
   OnMousePressed() {
+		console.log('OnMousePressed')
     for (let i = 0; i < this.m_ItemsLoc.length; i++) {
       if (
         this.m_ItemsLoc[i].x - 25 <= mouseX &&
@@ -5947,7 +5951,7 @@ class S3C3V1_4_2 extends Scene {
 
     this.alpha = 255;
     this.fadeoutTime = 4;
-    this.preparationTime = 3;
+    this.preparationTime = 1;
   }
 
   OnDraw() {
@@ -7096,7 +7100,7 @@ function setup() {
   noStroke();
 
   fontManager = new FontManager();
-  fontManager.LoadFont("font", "../../../../Fonts/NanumGothic.ttf");
+  fontManager.LoadFont("font", "../../../../Fonts/LeeSeoyun.otf");
 
   imageManager = new ImageManager();
   timeManager = new TimeManager();
@@ -7167,6 +7171,7 @@ function setup() {
 
   sceneManager.SetCreditScene(new EndingCredit());
   sceneManager.Setup(sceneList[0]);
+  // sceneManager.Setup(sceneList[26]);
 }
 
 function draw() {
@@ -7197,5 +7202,11 @@ function keyPressed() {
         sceneManager.ChangeSceneManually(sceneList[index - 1]);
       }
     }
+  }
+}
+
+function mousePressed() {
+  if (sceneManager.currentScene instanceof S2C6) {
+		sceneManager.currentScene.OnMousePressed();
   }
 }

@@ -107,7 +107,7 @@ function setup() {
   noStroke();
 
   fontManager = new FontManager();
-  fontManager.LoadFont("font", "NanumGothic.ttf");
+  fontManager.LoadFont("font", "LeeSeoyun.otf");
 
   imageManager = new ImageManager();
   timeManager = new TimeManager();

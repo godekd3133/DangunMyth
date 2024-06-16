@@ -14,7 +14,7 @@ class S3C3V1_4_2 extends Scene {
 
     this.alpha = 255;
     this.fadeoutTime = 4;
-    this.preparationTime = 3;
+    this.preparationTime = 1;
   }
 
   OnDraw() {

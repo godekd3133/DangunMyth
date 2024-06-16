@@ -105,7 +105,7 @@ class EndingCredit extends Scene {
     this.AddText("사용 기능, 함수", 36, 150);
     this.AddTwoText(
       "Processing::Image ",
-      "https://processing.org/reerence/#imageManager"
+      "https://processing.org/reerence/#image"
     );
     this.AddTwoText(
       "Processing::Math ",
@@ -261,7 +261,7 @@ class EndingCredit extends Scene {
         creditText.flying = true;
         creditText.dirX -= dir.x * creditText.speed;
         creditText.dirY -= dir.y * creditText.speed;
-        creditText.speed = 30;
+        creditText.speed = 10;
       }
       fontManager.DrawFont(
         "font",
@@ -285,7 +285,7 @@ class EndingCredit extends Scene {
 
     if (isReturnButtonOverlaped) {
       if (mouseIsPressed && !this.lastMousePressed) {
-        OnReturnButtonDown();
+        OnReturnButtonDown(); // ?? this없어도 되나?
         // 이미지 그리기
         imageManager.DrawImage(
           "ReturnButton",
