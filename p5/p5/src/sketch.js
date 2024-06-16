@@ -1385,21 +1385,24 @@ class S1C15 extends Scene {
       "background",
       createVector(width / 2, height / 2, 0)
     );
-    if (this.altimeter > 480 && this.hwanungY < height / 2 + 250) {
+    if (this.altimeter > 480 && this.hwanungY < height / 2 + 250 && !this.ended) {
       this.hwanungY += 2;
     }
-    if (this.altimeter > 400) {
+    if (this.altimeter > 400 && !this.ended) {
       this.groundY--;
-      imageManager.DrawImage(
-        "ground",
-        createVector(width / 2 + this.indicator * 6, this.groundY, 0)
-      );
     }
 
-    if (mouseX < width / 2) {
-      this.indicator += this.indicator < 200 ? 0.5 : 0;
-    } else if (mouseX > width / 2) {
-      this.indicator -= this.indicator > -200 ? 0.5 : 0;
+    imageManager.DrawImage(
+      "ground",
+      createVector(width / 2 + this.indicator * 6, this.groundY, 0)
+    );
+
+    if (!this.ended) {
+      if (mouseX < width / 2) {
+        this.indicator += this.indicator < 200 ? 0.5 : 0;
+      } else if (mouseX > width / 2) {
+        this.indicator -= this.indicator > -200 ? 0.5 : 0;
+      }
     }
 
     if (this.altimeter <= this.ALTIMETER_MAX) {
@@ -1409,10 +1412,9 @@ class S1C15 extends Scene {
     if (
       this.collisionActionSpeed === 0 &&
       this.altimeter <= this.ALTIMETER_MAX
+      && !this.ended
     ) {
       this.hwanungX = lerp(this.hwanungX, mouseX, timeManager.deltaTime);
-    } else {
-      mouseX = this.hwanungX;
     }
 
     imageManager.DrawImageScale(
