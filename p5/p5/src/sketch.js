@@ -1246,7 +1246,7 @@ class Opening extends Scene {
     );
     openingImageManager.LoadImage("logo", this.prefix + "ui/logo");
     openingImageManager.LoadImage("btn_start", this.prefix + "ui/startButton");
-
+    this.selectedSequence = -1;
     this.logoAlpha = 0;
     this.pressedMouse = false;
     this.cloudX = 0;
