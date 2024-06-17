@@ -63,11 +63,12 @@ class SceneManager {
           this.backgroundAlpha = 255;
           this.fadeOut = false;
           if (this.currentScene != null) {
+						soundManager.StopAllSound();
             this.currentScene.OnExit();
           }
           this.currentScene = this.nextScene;
-          imageManager.ResetImages();
-          soundManager.ResetSounds();
+          // imageManager.ResetImages();
+          // soundManager.ResetSounds();
           this.currentScene.enterTime = millis() / 1000;
           this.currentScene.OnEnter();
         }

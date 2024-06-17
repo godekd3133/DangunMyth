@@ -18,17 +18,7 @@ class S1C18 extends Scene {
     this.changeTick = 0;
     this.currentIndex = 0;
 
-    imageManager.LoadImage("background", "Images/S1/C18/background");
-    imageManager.LoadImage("narr", "Images/S1/C18/narr");
-    imageManager.LoadImage("tiger0", "Images/S1/C18/tiger0");
-    imageManager.LoadImage("tiger1", "Images/S1/C18/tiger1");
-    imageManager.LoadImage("bear0", "Images/S1/C18/bear0");
-    imageManager.LoadImage("bear1", "Images/S1/C18/bear1");
-
     this.playedSoundMap = new Map();
-    soundManager.LoadSound("S1C18_NARR", "Sounds/S1/C18/narr/narr.mp3");
-    soundManager.LoadSound("S1C18_TIGER", "Sounds/S1/C18/narr/tiger.mp3");
-    soundManager.LoadSound("S1C18_BEAR", "Sounds/S1/C18/narr/bear.mp3");
     this.playedSoundMap.set("S1C18_NARR", 0);
     this.playedSoundMap.set("S1C18_TIGER", 0);
     this.playedSoundMap.set("S1C18_BEAR", 0);
@@ -39,20 +29,20 @@ class S1C18 extends Scene {
   OnDraw() {
     this.changeTick += timeManager.deltaTime;
 
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c18_background", createVector(width / 2, height / 2));
     imageManager.DrawImageScale(
-      `bear${this.currentIndex}`,
+      `s1c18_bear${this.currentIndex}`,
       createVector(this.bearX, this.animalY),
       createVector(0.25, 0.25)
     );
     imageManager.DrawImageScale(
-      `tiger${this.currentIndex}`,
+      `s1c18_tiger${this.currentIndex}`,
       createVector(this.tigerX, this.animalY),
       createVector(0.25, 0.25)
     );
 
     imageManager.DrawImageScale(
-      "narr",
+      "s1c18_narr",
       createVector(width / 2, height / 2),
       createVector(1.0, 1.0)
     );

@@ -2,20 +2,6 @@ class S3C3V1_4_3 extends Scene {
   constructor() {
     super();
     this.SCENE_DURATION = 7;
-    this.imageNames = [
-      "background",
-      "body",
-      "head",
-      "arm",
-      "mouth1",
-      "mouth2",
-      "ally",
-      "enemy1",
-      "enemy2",
-      "enemy3",
-      "flag",
-    ];
-    this.imagePath = "Images/S3/C3/V1/_4/_3/";
     this.manScale = 0.3;
     this.allyScale = 0.2;
     this.enemyScale1 = 0.2;
@@ -29,13 +15,6 @@ class S3C3V1_4_3 extends Scene {
   }
 
   OnEnter() {
-    this.imageNames.forEach((imageName) =>
-      imageManager.LoadImage(imageName, this.imagePath + imageName)
-    );
-
-    imageManager.LoadImage("text", "Images/S3/C3/V1/_4/_3/text");
-    soundManager.LoadSound("narr", "Sounds/S3/C3/V1/_4/_3/narr.mp3");
-
     this.animationTick = 0;
     this.firstFlag = false;
   }
@@ -48,38 +27,38 @@ class S3C3V1_4_3 extends Scene {
     }
 
     imageManager.DrawImageScale(
-      "background",
+      "s3c3v1_4_3_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
 
     imageManager.DrawImageScale(
-      "enemy2",
+      "s3c3v1_4_3_enemy2",
       createVector(100, 450),
       createVector(this.enemyScale2, this.enemyScale2)
     );
     imageManager.DrawImageScale(
-      "enemy2",
+      "s3c3v1_4_3_enemy2",
       createVector(200, 450),
       createVector(this.enemyScale2, this.enemyScale2)
     );
     imageManager.DrawImageScale(
-      "enemy1",
+      "s3c3v1_4_3_enemy1",
       createVector(500, 450),
       createVector(this.enemyScale2, this.enemyScale2)
     );
     imageManager.DrawImageScale(
-      "enemy3",
+      "s3c3v1_4_3_enemy3",
       createVector(350, 450),
       createVector(this.enemyScale1, this.enemyScale1)
     );
     imageManager.DrawImageScale(
-      "ally",
+      "s3c3v1_4_3_ally",
       createVector(1180, 500),
       createVector(this.allyScale, this.allyScale)
     );
     imageManager.DrawImageScale(
-      "flag",
+      "s3c3v1_4_3_flag",
       createVector(1300, 250),
       createVector(0.25, 0.25),
       0.3
@@ -87,25 +66,25 @@ class S3C3V1_4_3 extends Scene {
 
     if (this.isAnimating)
       imageManager.DrawImageScale(
-        "arm",
+        "s3c3v1_4_3_arm",
         createVector(950, 280),
         createVector(this.manScale, this.manScale),
         0.3
       );
     else
       imageManager.DrawImageScale(
-        "arm",
+        "s3c3v1_4_3_arm",
         createVector(900, 300),
         createVector(this.manScale, this.manScale)
       );
 
     imageManager.DrawImageScale(
-      "body",
+      "s3c3v1_4_3_body",
       createVector(900, 500),
       createVector(this.manScale, this.manScale)
     );
     imageManager.DrawImageScale(
-      "head",
+      "s3c3v1_4_3_head",
       createVector(1050, 300),
       createVector(this.manScale, this.manScale),
       0.2
@@ -113,27 +92,27 @@ class S3C3V1_4_3 extends Scene {
 
     if (this.isAnimating)
       imageManager.DrawImageScale(
-        "mouth1",
+        "s3c3v1_4_3_mouth1",
         createVector(1050, 300),
         createVector(this.manScale, this.manScale),
         0.2
       );
     else
       imageManager.DrawImageScale(
-        "mouth2",
+        "s3c3v1_4_3_mouth2",
         createVector(1050, 300),
         createVector(this.manScale, this.manScale),
         0.2
       );
 
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_4_3_text", createVector(width / 2, height / 2));
 
-    if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
       sceneManager.CreditScene();
     }
     if (!this.firstFlag) {
       this.firstFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S3/C3/V1/_4/_3/narr");
     }
   }
 

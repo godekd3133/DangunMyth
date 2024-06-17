@@ -5,15 +5,12 @@ class S2C5 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S2/C5/background");
-    imageManager.LoadImage("button", "Images/S2/C5/button");
-    soundManager.LoadSound("effect", "Sounds/S2/C5/effect/effect.wav");
     this.isEffectOut = false;
   }
 
   OnDraw() {
     imageManager.DrawImageScale(
-      "background",
+      "s2c5_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
@@ -24,8 +21,8 @@ class S2C5 extends Scene {
       mouseY >= 585 &&
       mouseY <= height - 85
     ) {
-      imageManager.DrawImage(
-        "button",
+      imageManager.DrawImageWithTint(
+        "s2c5_button",
         createVector(width / 2, height / 2),
         0,
         255,
@@ -36,7 +33,7 @@ class S2C5 extends Scene {
 
       if (mouseIsPressed) {
         if (!this.isEffectOut) {
-          soundManager.PlaySound("effect");
+          soundManager.PlaySound("S2/C5/effect");
           this.isEffectOut = !this.isEffectOut;
         }
         // Navigate to the mini-game scene
@@ -44,7 +41,7 @@ class S2C5 extends Scene {
       }
     } else {
       imageManager.DrawImageScale(
-        "button",
+        "s2c5_button",
         createVector(width / 2, height / 2),
         createVector(1, 1)
       );

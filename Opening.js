@@ -11,26 +11,25 @@ class Opening extends Scene {
     this.prefix = "Images/Opening/";
   }
 
-  OnEnter() {
-    imageManager.LoadImage("Opening_background", this.prefix + "background/1");
-    imageManager.LoadImage("cloud01", this.prefix + "background/2");
-    imageManager.LoadImage("cloud02", this.prefix + "background/3");
-    imageManager.LoadImage("cloud03", this.prefix + "background/4");
-    soundManager.LoadSound("intro", "Sounds/intro.wav");
+  async OnEnter() {
+    openingImageManager.LoadImage("Opening_background", this.prefix + "background/1");
+    openingImageManager.LoadImage("cloud01", this.prefix + "background/2");
+    openingImageManager.LoadImage("cloud02", this.prefix + "background/3");
+    openingImageManager.LoadImage("cloud03", this.prefix + "background/4");
     soundManager.PlaySound("intro");
-    imageManager.LoadImage("btn_sequence01", this.prefix + "ui/btn_sequence_1");
-    imageManager.LoadImage("btn_sequence02", this.prefix + "ui/btn_sequence_2");
-    imageManager.LoadImage("btn_sequence03", this.prefix + "ui/btn_sequence_3");
-    imageManager.LoadImage(
+    openingImageManager.LoadImage("btn_sequence01", this.prefix + "ui/btn_sequence_1");
+    openingImageManager.LoadImage("btn_sequence02", this.prefix + "ui/btn_sequence_2");
+    openingImageManager.LoadImage("btn_sequence03", this.prefix + "ui/btn_sequence_3");
+    openingImageManager.LoadImage(
       "dropdown_list",
       this.prefix + "ui/btn_sequence_dropdown_list"
     );
-    imageManager.LoadImage(
+    openingImageManager.LoadImage(
       "dropdown",
       this.prefix + "ui/btn_sequence_dropdown"
     );
-    imageManager.LoadImage("logo", this.prefix + "ui/logo");
-    imageManager.LoadImage("btn_start", this.prefix + "ui/startButton");
+    openingImageManager.LoadImage("logo", this.prefix + "ui/logo");
+    openingImageManager.LoadImage("btn_start", this.prefix + "ui/startButton");
 
     this.logoAlpha = 0;
     this.pressedMouse = false;
@@ -38,26 +37,27 @@ class Opening extends Scene {
     this.zoomIn = 1;
     this.enterTime = timeManager.time;
     this.dropdown = false;
+    await imageManager.preloadAllImages();
   }
 
   OnDraw() {
     let scale = createVector(this.zoomIn, this.zoomIn, 0);
-    imageManager.DrawImageScale(
+    openingImageManager.DrawImageScale(
       "Opening_background",
       createVector(width / 2, height / 2, 0),
       scale
     );
-    imageManager.DrawImageScale(
+    openingImageManager.DrawImageScale(
       "cloud01",
       createVector(width / 2 - this.cloudX, height / 2, 0),
       scale
     );
-    imageManager.DrawImageScale(
+    openingImageManager.DrawImageScale(
       "cloud02",
       createVector(width / 2 - this.cloudX, height / 2, 0),
       scale
     );
-    imageManager.DrawImageScale(
+    openingImageManager.DrawImageScale(
       "cloud03",
       createVector(width / 2 + this.cloudX, height / 2, 0),
       scale
@@ -68,7 +68,7 @@ class Opening extends Scene {
       this.cloudX += 100 * timeManager.deltaTime;
     } else if (this.zoomIn >= 1.25) {
       this.zoomIn = 1.25;
-      imageManager.DrawImage(
+      openingImageManager.DrawImage(
         "logo",
         createVector(width / 2, height / 2),
         0,
@@ -83,14 +83,9 @@ class Opening extends Scene {
         mousePos.y > 381 &&
         mousePos.y < 456
       ) {
-        imageManager.DrawImage(
+        openingImageManager.DrawImageWithTint(
           "btn_start",
-          createVector(width / 2, height / 2),
-          0,
-          255,
-          220,
-          220,
-          220
+          createVector(width / 2, height / 2),0,255,220,220,220
         );
         if (mouseIsPressed && !this.pressedMouse) {
           if (this.selectedSequence == 0) {
@@ -102,7 +97,7 @@ class Opening extends Scene {
           }
         }
       } else {
-        imageManager.DrawImage(
+        openingImageManager.DrawImage(
           "btn_start",
           createVector(width / 2, height / 2),
           0,
@@ -124,7 +119,7 @@ class Opening extends Scene {
       }
 
       if (this.dropdown) {
-        imageManager.DrawImage(
+        openingImageManager.DrawImage(
           "dropdown_list",
           createVector(width / 2, height / 2),
           0,
@@ -137,7 +132,7 @@ class Opening extends Scene {
             mousePos.y < 569) ||
           this.selectedSequence == 0
         ) {
-          imageManager.DrawImage(
+          openingImageManager.DrawImage(
             "btn_sequence01",
             createVector(width / 2, height / 2),
             0,
@@ -148,7 +143,7 @@ class Opening extends Scene {
             this.dropdown = false;
           }
         } else {
-          imageManager.DrawImage(
+          openingImageManager.DrawImage(
             "btn_sequence01",
             createVector(width / 2, height / 2),
             0,
@@ -162,7 +157,7 @@ class Opening extends Scene {
             mousePos.y < 609) ||
           this.selectedSequence == 1
         ) {
-          imageManager.DrawImage(
+          openingImageManager.DrawImage(
             "btn_sequence02",
             createVector(width / 2, height / 2),
             0,
@@ -173,7 +168,7 @@ class Opening extends Scene {
             this.dropdown = false;
           }
         } else {
-          imageManager.DrawImage(
+          openingImageManager.DrawImage(
             "btn_sequence02",
             createVector(width / 2, height / 2),
             0,
@@ -187,7 +182,7 @@ class Opening extends Scene {
             mousePos.y < 649) ||
           this.selectedSequence == 2
         ) {
-          imageManager.DrawImage(
+          openingImageManager.DrawImage(
             "btn_sequence03",
             createVector(width / 2, height / 2),
             0,
@@ -198,7 +193,7 @@ class Opening extends Scene {
             this.dropdown = false;
           }
         } else {
-          imageManager.DrawImage(
+          openingImageManager.DrawImage(
             "btn_sequence03",
             createVector(width / 2, height / 2),
             0,
@@ -206,13 +201,38 @@ class Opening extends Scene {
           );
         }
       } else {
-        imageManager.DrawImage(
+        openingImageManager.DrawImage(
           "dropdown",
           createVector(width / 2, height / 2),
           0,
           this.logoAlpha
         );
       }
+
+			if (mouseIsPressed) {
+				if (
+          (mousePos.x > 540 &&
+            mousePos.x < 736 &&
+            mousePos.y > 527 &&
+            mousePos.y < 569)
+        ) {
+					sceneManager.ChangeScene(new S1C1());
+				} else if (
+          (mousePos.x > 540 &&
+            mousePos.x < 736 &&
+            mousePos.y > 569 &&
+            mousePos.y < 609)
+        ) {
+					sceneManager.ChangeScene(new S2C1());
+				} else if (
+          (mousePos.x > 540 &&
+            mousePos.x < 736 &&
+            mousePos.y > 609 &&
+            mousePos.y < 649)
+        ) {
+					sceneManager.ChangeScene(new S3C1());
+				}
+			}
 
       if (this.logoAlpha < 255) this.logoAlpha += 255 * timeManager.deltaTime;
       this.pressedMouse = mouseIsPressed;

@@ -13,52 +13,43 @@ class S3C3V1_1_1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S3/C3/V1/_1/_1/background");
-    imageManager.LoadImage("bear_before", "Images/S3/C3/V1/_1/_1/bear_before");
-    imageManager.LoadImage("bear_after", "Images/S3/C3/V1/_1/_1/bear_after");
-    imageManager.LoadImage(
-      "tiger_before",
-      "Images/S3/C3/V1/_1/_1/tiger_before"
-    );
-    imageManager.LoadImage("tiger_after", "Images/S3/C3/V1/_1/_1/tiger_after");
-    soundManager.LoadSound("evolution", "Sounds/Effects/Evolution.mp3");
     this._time = 0;
   }
 
   OnDraw() {
-    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C3V1_1_2());
     }
     this._time += 2;
     imageManager.DrawImageScale(
-      "background",
+      "s3c3v1_1_1_background",
       createVector(width / 2, height / 2, 0),
       createVector(1, 1, 0)
     );
 
     if (this._time < 100) {
       imageManager.DrawImageScale(
-        "bear_before",
+        "s3c3v1_1_1_bear_before",
         createVector(this.bear_x, this.bear_y, 0),
         this.character_scale,
         0
       );
       imageManager.DrawImageScale(
-        "tiger_before",
+        "s3c3v1_1_1_tiger_before",
         createVector(this.tiger_x, this.tiger_y, 0),
         this.character_scale,
         0
       );
     } else {
       imageManager.DrawImageScale(
-        "bear_before",
+        "s3c3v1_1_1_bear_before",
         createVector(this.bear_x, this.bear_y, 0),
         this.character_scale,
         0,
         255
       );
       imageManager.DrawImageScale(
-        "bear_after",
+        "s3c3v1_1_1_bear_after",
         createVector(this.bear_x, this.bear_y, 0),
         this.character_scale,
         0,
@@ -66,14 +57,14 @@ class S3C3V1_1_1 extends Scene {
       );
 
       imageManager.DrawImageScale(
-        "tiger_before",
+        "s3c3v1_1_1_tiger_before",
         createVector(this.tiger_x, this.tiger_y, 0),
         this.character_scale,
         0,
         255
       );
       imageManager.DrawImageScale(
-        "tiger_after",
+        "s3c3v1_1_1_tiger_after",
         createVector(this.tiger_x, this.tiger_y, 0),
         this.character_scale,
         0,

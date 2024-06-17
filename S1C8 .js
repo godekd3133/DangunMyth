@@ -28,19 +28,6 @@ class S1C8 extends Scene {
   OnEnter() {
     this.hwaninX = this.centerX - 310;
     this.hwaninY = this.centerY + 350;
-
-    // 환인
-    imageManager.LoadImage("BackgroundS1C8", "Images/S1/C8/Background");
-    imageManager.LoadImage("HwaninBody", "Images/S1/C8/HwaninBody");
-    // imageManager.LoadImage("HwaninFace_MouseClose", "Images/S1/C8/HwaninFace_MouseClose");
-    // imageManager.LoadImage("HwaninFace_MouseOpen", "Images/S1/C8/HwaninFace_MouseOpen");
-    imageManager.LoadImage("HwaninFace", "Images/S1/C8/HwaninFace");
-
-    imageManager.LoadImage("HwaninHand", "Images/S1/C8/HwaninHand");
-    imageManager.LoadImage("NarrS1C8", "Images/S1/C8/narr");
-
-    soundManager.LoadSound("NarrS1C8", "Sounds/S1/C8/narr/narr.mp3");
-    soundManager.LoadSound("HawninS1C8", "Sounds/S1/C8/narr/hwanin.mp3");
     this.playedSoundMap.set("NarrS1C8", 0);
     this.playedSoundMap.set("HawninS1C8", 0);
 
@@ -66,14 +53,14 @@ class S1C8 extends Scene {
     // }
 
     imageManager.DrawImageScale(
-      "BackgroundS1C8",
+      "s1c8_BackgroundS1C8",
       createVector(this.centerX, this.centerY),
       createVector(1, 1)
     );
 
     // 환인 Draw
     imageManager.DrawImageScale(
-      "HwaninBody",
+      "s1c8_HwaninBody",
       createVector(this.hwaninX, this.hwaninY),
       createVector(0.49, 0.49)
     );
@@ -81,7 +68,7 @@ class S1C8 extends Scene {
     // else imageManager.DrawImageScale("HwaninFace_MouseOpen", this.hwaninX + 15, this.hwaninY + this.hwaninfaceOffset + this.tick1Cnt, 0.4, 0.0, 255);
 
     imageManager.DrawImageScale(
-      "HwaninFace",
+      "s1c8_HwaninFace",
       createVector(
         this.hwaninX + 15,
         this.hwaninY + this.hwaninfaceOffset + this.tick1Cnt - 80
@@ -89,7 +76,7 @@ class S1C8 extends Scene {
       createVector(0.49, 0.49)
     );
     imageManager.DrawImageScale(
-      "HwaninHand",
+      "s1c8_HwaninHand",
       createVector(this.hwaninX - 75, this.hwaninY - 160),
       createVector(0.4, 0.4),
       0.7,
@@ -97,7 +84,7 @@ class S1C8 extends Scene {
     );
 
     imageManager.DrawImageScale(
-      "NarrS1C8",
+      "s1c8_NarrS1C8",
       createVector(this.centerX, this.centerY),
       createVector(1.0, 1.0)
     );

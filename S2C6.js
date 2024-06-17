@@ -15,17 +15,6 @@ class S2C6 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S2/C6/background");
-    imageManager.LoadImage("clock", "Images/S2/C6/clock");
-    imageManager.LoadImage("manul", "Images/S2/C6/manul");
-    imageManager.LoadImage("sook", "Images/S2/C6/sook");
-    imageManager.LoadImage("bear_hand", "Images/S2/C6/bear_hand");
-    imageManager.LoadImage("bear_click", "Images/S2/C6/bear_click");
-    imageManager.LoadImage("tiger_hand", "Images/S2/C6/tiger_hand");
-    imageManager.LoadImage("tiger_click", "Images/S2/C6/tiger_click");
-    imageManager.LoadImage("transparent", "Images/S2/C6/transparent");
-    soundManager.LoadSound("item_click", "Sounds/S2/C6/item_click.wav");
-    soundManager.LoadSound("bgm", "Sounds/S2/C6/bgm.mp3");
 
     this.m_Items = new Array(25);
     this.m_ItemsLoc = new Array(25);
@@ -45,13 +34,13 @@ class S2C6 extends Scene {
     this.m_SookCnt = 0;
     this.m_ManulCnt = 0;
 
-    soundManager.PlaySound("bgm");
+    soundManager.PlaySound("S2/C6/bgm");
     fontManager.LoadFont("lee", "LeeSeoyun.otf");
   }
 
   OnDraw() {
     let displayTime =
-      this.DISPLAY_TIME - (timeManager.time - timeManager.enterTime);
+      this.DISPLAY_TIME - (timeManager.time - this.enterTime);
 
     if (
       this.m_ManulCnt >= this.TOTAL_MANUL_CNT &&
@@ -63,7 +52,7 @@ class S2C6 extends Scene {
       sceneManager.ChangeScene(new S2C6V1());
     }
     imageManager.DrawImageScale(
-      "background",
+      "s2c6_background",
       createVector(width / 2, height / 2, 0),
       createVector(1, 1, 0)
     );
@@ -76,14 +65,14 @@ class S2C6 extends Scene {
       }
       if ((item & this.TYPE_SOOK) === this.TYPE_SOOK) {
         imageManager.DrawImageScale(
-          "sook",
+          "s2c6_sook",
           this.m_ItemsLoc[i],
           createVector(0.025, 0.025, 0)
         );
       }
       if ((item & this.TYPE_MANUL) === this.TYPE_MANUL) {
         imageManager.DrawImageScale(
-          "manul",
+          "s2c6_manul",
           this.m_ItemsLoc[i],
           createVector(0.025, 0.025, 0)
         );
@@ -107,7 +96,7 @@ class S2C6 extends Scene {
       }
     }
     imageManager.DrawImageScale(
-      "transparent",
+      "s2c6_transparent",
       createVector(mouseX, mouseY),
       createVector(visibleArea, visibleArea, 0)
     );
@@ -115,13 +104,13 @@ class S2C6 extends Scene {
     if (!this.m_IsTigerHand) {
       if (mouseIsPressed) {
         imageManager.DrawImageScale(
-          "bear_click",
+          "s2c6_bear_click",
           createVector(mouseX, mouseY),
           createVector(0.12, 0.12, 0)
         );
       } else {
         imageManager.DrawImageScale(
-          "bear_hand",
+          "s2c6_bear_hand",
           createVector(mouseX, mouseY),
           createVector(0.12, 0.12, 0)
         );
@@ -129,13 +118,13 @@ class S2C6 extends Scene {
     } else {
       if (mouseIsPressed) {
         imageManager.DrawImageScale(
-          "tiger_click",
+          "s2c6_tiger_click",
           createVector(mouseX, mouseY),
           createVector(0.12, 0.12, 0)
         );
       } else {
         imageManager.DrawImageScale(
-          "tiger_hand",
+          "s2c6_tiger_hand",
           createVector(mouseX, mouseY),
           createVector(0.12, 0.12, 0)
         );
@@ -143,7 +132,7 @@ class S2C6 extends Scene {
     }
 
     imageManager.DrawImageScale(
-      "sook",
+      "s2c6_sook",
       createVector(70, 70),
       createVector(0.05, 0.05, 0)
     );
@@ -157,7 +146,7 @@ class S2C6 extends Scene {
     );
 
     imageManager.DrawImageScale(
-      "manul",
+      "s2c6_manul",
       createVector(180, 70),
       createVector(0.05, 0.05, 0)
     );
@@ -171,7 +160,7 @@ class S2C6 extends Scene {
     );
 
     imageManager.DrawImageScale(
-      "clock",
+      "s2c6_clock",
       createVector(1205, 75),
       createVector(0.055, 0.055, 0)
     );
@@ -181,15 +170,15 @@ class S2C6 extends Scene {
     let timeStr = "";
     if (displayTime < 10) {
       fill(255, 0, 0);
-      timeStr = " D-" + displayTime;
+      timeStr = " D-" + Math.ceil(displayTime);
     } else {
-      timeStr = "D-" + displayTime;
+      timeStr = "D-" + Math.ceil(displayTime);
     }
-    text(timeStr, 1176, 90);
+    fontManager.DrawFont("lee", timeStr, 0, 25, 1176, 90);
   }
 
   OnExit() {
-    soundManager.StopSound("bgm");
+    soundManager.StopSound("S2/C6/bgm");
   }
 
   OnMousePressed() {

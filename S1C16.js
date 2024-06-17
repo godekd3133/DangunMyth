@@ -10,53 +10,38 @@ class S1C16 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S1/C16/background");
-    imageManager.LoadImage("extra_1", "Images/S1/C16/extra_1");
-    imageManager.LoadImage("extra_2", "Images/S1/C16/extra_2");
-    imageManager.LoadImage("extra_3", "Images/S1/C16/extra_3");
-    imageManager.LoadImage("extra_4", "Images/S1/C16/extra_4");
-    imageManager.LoadImage("hwanung_arm", "Images/S1/C16/hwanung_arm");
-    imageManager.LoadImage("hwanung_face", "Images/S1/C16/hwanung_face");
-    imageManager.LoadImage("hwanung_face1", "Images/S1/C16/hwanung_face1");
-    imageManager.LoadImage("hwanung_face2", "Images/S1/C16/hwanung_face2");
-    imageManager.LoadImage("hwanung", "Images/S1/C16/hwanung");
-    imageManager.LoadImage("hwanung1", "Images/S1/C16/hwanung1");
-    imageManager.LoadImage("hwanung2", "Images/S1/C16/hwanung2");
-    imageManager.LoadImage("text", "Images/S1/C16/text");
-    soundManager.LoadSound("narr", "Sounds/S1/C16/narr/narr.mp3");
     this.isNarrOut = false;
-    this.enterTime = timeManager.time;
   }
 
   OnDraw() {
     if (!this.isNarrOut) {
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C16/narr");
       this.isNarrOut = true;
     }
 
     imageManager.DrawImageScale(
-      "background",
+      "s1c16_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
 
     imageManager.DrawImageScale(
-      "extra_1",
+      "s1c16_extra_1",
       createVector(width / 2 - 550, height / 2 - 200),
       createVector(0.1, 0.1)
     );
     imageManager.DrawImageScale(
-      "extra_2",
+      "s1c16_extra_2",
       createVector(width / 2 - 150, height / 2 - 200),
       createVector(0.1, 0.1)
     );
     imageManager.DrawImageScale(
-      "extra_3",
+      "s1c16_extra_3",
       createVector(width / 2 - 350, height / 2 - 20),
       createVector(0.1, 0.1)
     );
     imageManager.DrawImageScale(
-      "extra_4",
+      "s1c16_extra_4",
       createVector(width / 2 - 50, height / 2 - 30),
       createVector(0.1, 0.1)
     );
@@ -78,27 +63,27 @@ class S1C16 extends Scene {
 
     // imageManager.DrawImageScale("hwanung_arm", createVector(width / 2 + this.handX, height / 2 - 80), createVector(0.3, 0.3), this.handRotate);
 
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
-        "hwanung1",
+        "s1c16_hwanung1",
         createVector(width / 2 + 500, height / 2),
         createVector(0.3, 0.3)
       );
     } else {
       imageManager.DrawImageScale(
-        "hwanung2",
+        "s1c16_hwanung2",
         createVector(width / 2 + 500, height / 2),
         createVector(0.3, 0.3)
       );
     }
     imageManager.DrawImageScale(
-      "hwanung_face",
+      "s1c16_hwanung_face",
       createVector(width / 2 + 480, height / 2 - 165),
       createVector(0.3, 0.3)
     );
 
     imageManager.DrawImageScale(
-      "text",
+      "s1c16_text",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );

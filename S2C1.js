@@ -1,7 +1,7 @@
 class S2C1 extends Scene {
   constructor() {
     super();
-    this.SCENE_DURATION = 7.5;
+    this.SCENE_DURATION = 6.5;
     this.originalAnimalScale = 0.3;
     this.animalScale = 0.3;
     this.animalX = 300;
@@ -16,14 +16,6 @@ class S2C1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S2/C1/background");
-    imageManager.LoadImage("tiger1", "Images/S2/C1/tiger1");
-    imageManager.LoadImage("tiger2", "Images/S2/C1/tiger2");
-    imageManager.LoadImage("tiger3", "Images/S2/C1/tiger3");
-    imageManager.LoadImage("bear1", "Images/S2/C1/bear1");
-    imageManager.LoadImage("bear2", "Images/S2/C1/bear2");
-    imageManager.LoadImage("bear3", "Images/S2/C1/bear3");
-    soundManager.LoadSound("step", "Sounds/S2/C1/effect/Step_Grass_01.wav");
 
     this.walkTick = 0;
     this.soundTick = 0;
@@ -35,7 +27,7 @@ class S2C1 extends Scene {
 
   OnDraw() {
     imageManager.DrawImageScale(
-      "background",
+      "s2c1_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
@@ -57,18 +49,18 @@ class S2C1 extends Scene {
       }
 
       if (this.soundTick > this.SOUND_INTERVAL) {
-        soundManager.PlaySound("step");
+        soundManager.PlaySound("S2/C1/step");
         this.soundTick = 0;
       }
     }
 
     imageManager.DrawImageScale(
-      "bear" + this.imageNumber,
+      "s2c1_bear" + this.imageNumber,
       createVector(this.animalX, this.animalY),
       createVector(this.animalScale, this.animalScale)
     );
     imageManager.DrawImageScale(
-      "tiger" + this.imageNumber,
+      "s2c1_tiger" + this.imageNumber,
       createVector(
         this.animalX + (200 * this.animalScale) / this.originalAnimalScale,
         this.animalY
@@ -78,11 +70,11 @@ class S2C1 extends Scene {
 
     if (this.animalX < 900) {
       this.animalX += 120 * timeManager.deltaTime;
-      this.animalY -= 0.5 * timeManager.deltaTime;
+      this.animalY -= 60 * timeManager.deltaTime;
       this.animalScale -= 0.03 * timeManager.deltaTime;
     }
 
-    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S2C2());
     }
   }

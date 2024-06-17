@@ -33,27 +33,20 @@ class S1C6_2 extends Scene {
     // int hwaninY = centerY;
 
     //나레이션
-    soundManager.LoadSound("narr", "Sounds/S1/C6-2/narr/narr.mp3");
 
-    //환인
-    imageManager.LoadImage("Background2", "Images/S1/C6-2/Background");
-    imageManager.LoadImage("HwaninBody", "Images/S1/C6-2/HwaninBody");
-    imageManager.LoadImage("HwaninFace", "Images/S1/C6-2/HwaninFace");
-    imageManager.LoadImage("text", "Images/S1/C6-2/text");
-    soundManager.LoadSound("hwanin", "Sounds/S1/C6-2/narr/hwanin.mp3");
   }
 
   OnDraw() {
     if (!this.narrFlag) {
       this.narrFlag = true;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C6-2/hwanwoong");
     }
     if (
       timeManager.time - this.enterTime > this.hwaninStartTime &&
       !this.hwaninVoiceFlag
     ) {
       this.hwaninVoiceFlag = true;
-      soundManager.PlaySound("hwanin");
+      soundManager.PlaySound("S1/C6-2/hwanin");
     }
     if (this.hwaninFace) this.hwaninFaceScale += timeManager.deltaTime * 0.2;
     else this.hwaninFaceScale -= timeManager.deltaTime * 0.2;
@@ -65,23 +58,23 @@ class S1C6_2 extends Scene {
       sceneManager.ChangeScene(new S1C7());
     }
     imageManager.DrawImageScale(
-      "Background2",
+      "s1c6_2_Background2",
       createVector(this.centerX, this.centerY),
       createVector(1, 1)
     );
 
     //환인 Draw
     imageManager.DrawImageScale(
-      "HwaninBody",
+      "s1c6_2_HwaninBody",
       createVector(this.hwaninX, this.hwaninY),
       createVector(0.47, 0.47)
     );
     imageManager.DrawImageScale(
-      "HwaninFace",
+      "s1c6_2_HwaninFace",
       createVector(this.hwaninX, this.hwaninY + this.hwaninfaceOffset),
       createVector(0.47, 0.47)
     );
-    imageManager.DrawImage("text", createVector(this.centerX, this.centerY, 0));
+    imageManager.DrawImage("s1c6_2_text", createVector(this.centerX, this.centerY, 0));
   }
 
   OnExit() {}

@@ -13,18 +13,7 @@ class S3C3V2_1_2 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S3/C3/V2/_1/_2/background");
-    imageManager.LoadImage("text", "Images/S3/C3/V2/_1/_2/text");
 
-    imageManager.LoadImage("girlbody", "Images/S3/C3/V2/_1/_2/girlbody");
-    imageManager.LoadImage("girlface", "Images/S3/C3/V2/_1/_2/girlface");
-    imageManager.LoadImage("girlface2", "Images/S3/C3/V2/_1/_2/girlface2");
-    imageManager.LoadImage("girlhand", "Images/S3/C3/V2/_1/_2/girlhand");
-
-    soundManager.LoadSound(
-      "woonggirl",
-      "Sounds/S3/C3/V2/_1/_2/narr/woonggirl.mp3"
-    );
     this.startMillis = millis();
 
     this.GIRL_X = 600;
@@ -37,47 +26,47 @@ class S3C3V2_1_2 extends Scene {
   }
 
   OnDraw() {
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_1_2_background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v2_1_2_text", createVector(width / 2, height / 2));
 
     this.GIRL_HAND_Y = lerp(
       550,
       515,
-      (timeManager.time - timeManager.enterTime) / this.SCENE_DURATION
+      (timeManager.time - this.enterTime) / this.SCENE_DURATION
     );
 
     //girl
     imageManager.DrawImageScale(
-      "girlbody",
+      "s3c3v2_1_2_girlbody",
       createVector(this.GIRL_X, this.GIRL_Y),
       createVector(this.GIRL_SCALE, this.GIRL_SCALE)
     );
     imageManager.DrawImageScale(
-      "girlhand",
+      "s3c3v2_1_2_girlhand",
       createVector(this.GIRL_HAND_X, abs(this.GIRL_HAND_Y)),
       createVector(this.GIRL_SCALE, this.GIRL_SCALE)
     );
-    if ((millis() / 500) % 2 === 0) {
+    if (Math.floor(millis() / 500) % 2 === 0) {
       imageManager.DrawImageScale(
-        "girlface",
+        "s3c3v2_1_2_girlface",
         createVector(this.GIRL_EYE_X, this.GIRL_EYE_Y),
         createVector(this.GIRL_SCALE, this.GIRL_SCALE)
       );
     } else {
       imageManager.DrawImageScale(
-        "girlface2",
+        "s3c3v2_1_2_girlface2",
         createVector(this.GIRL_EYE_X, this.GIRL_EYE_Y),
         createVector(this.GIRL_SCALE, this.GIRL_SCALE)
       );
     }
     if (
-      soundManager.hasSound("woonggirl") &&
+      soundManager.hasSound("S3/C3/V2/_1/_2/woonggirl") &&
       isTimeExceededMillis(this.startMillis, 1)
     ) {
-      soundManager.playSoundOnce("woonggirl");
+      soundManager.playSoundOnce("S3/C3/V2/_1/_2/woonggirl");
     }
     // 씬 시작 후 SCENE_DURATION 초 경과시 다음 장면으로 이동
-    if (timeManager.time - timeManager.enterTime >= this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime >= this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C3V2_1_3());
     }
   }

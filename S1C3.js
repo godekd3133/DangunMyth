@@ -3,10 +3,6 @@ class S1C3 extends Scene {
     super();
     this.SCENE_DURATION = 8; // narr. 7sec
 
-    this.GOD_IMAGE = "Images/S1/C3/god";
-    this.BACKGROUND_IMAGE = "Images/S1/C3/background";
-    this.CLOUD_IMAGE = "Images/S1/C3/cloud";
-    this.DEFAULT_FACE = "Images/S1/C3/god_smile";
     this.TELLING_FACES = [
       "Images/S1/C3/god_telling1",
       "Images/S1/C3/god_telling2",
@@ -25,73 +21,60 @@ class S1C3 extends Scene {
   OnEnter() {
     this.isNarrOut = false;
 
-    imageManager.LoadImage("background", this.BACKGROUND_IMAGE);
-    imageManager.LoadImage("cloud01", this.CLOUD_IMAGE);
-
-    imageManager.LoadImage("god", this.GOD_IMAGE);
-    imageManager.LoadImage("face", this.DEFAULT_FACE);
-    imageManager.LoadImage("text", "Images/S1/C3/text");
-    soundManager.LoadSound("narr", "Sounds/S1/C3/narr/narr.mp3");
-
-    let imageCount = this.TELLING_FACES.length;
     this.currentImageIndex = 0;
     this.godY = 0;
     this.cloudY = 0;
 
-    for (let i = 0; i < imageCount; i++) {
-      imageManager.LoadImage("telling" + i, this.TELLING_FACES[i]);
-    }
-
     imageManager.DrawImageScale(
-      "background",
+      "s1c3_background",
       createVector(width / 2, height / 2, 0),
       createVector(0.67, 0.67, 0)
     );
     imageManager.DrawImageScale(
-      "god",
+      "s1c3_god",
       createVector(width / 2, height / 2 + this.godY, 0),
       createVector(0.25, 0.25, 0)
     );
     imageManager.DrawImageScale(
-      "face",
+      "s1c3_face",
       createVector(width / 2, height / 2 + this.godY, 0),
       createVector(0.25, 0.25, 0)
     );
     imageManager.DrawImageScale(
-      "cloud01",
+      "s1c3_cloud01",
       createVector(width / 2, height / 2 + this.cloudY, 0),
       createVector(0.67, 0.67, 0)
     );
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c3_text", createVector(width / 2, height / 2));
   }
 
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C3/narr");
     }
 
     imageManager.DrawImageScale(
-      "background",
+      "s1c3_background",
       createVector(width / 2, height / 2, 0),
       createVector(0.67, 0.67, 0)
     );
     imageManager.DrawImageScale(
-      "god",
+      "s1c3_god",
       createVector(width / 2, height / 2 + this.godY, 0),
       createVector(0.25, 0.25, 0)
     );
     imageManager.DrawImageScale(
-      "telling" + this.currentImageIndex,
+      "s1c3_telling" + this.currentImageIndex,
       createVector(width / 2, height / 2 + this.godY, 0),
       createVector(0.25, 0.25, 0)
     );
     imageManager.DrawImageScale(
-      "cloud01",
+      "s1c3_cloud01",
       createVector(width / 2, height / 2 + this.cloudY, 0),
       createVector(0.67, 0.67, 0)
     );
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c3_text", createVector(width / 2, height / 2));
 
     this.godY += (100 * timeManager.deltaTime) / this.SCENE_DURATION;
     this.cloudY += (100 * timeManager.deltaTime) / this.SCENE_DURATION;

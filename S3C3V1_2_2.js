@@ -1,7 +1,6 @@
 class S3C3V1_2_2 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "Images/S3/C3/V1/_2/_2/";
     this.moveMillis = 5000;
     this.환웅_X = 1150;
     this.환웅_Y = 500;
@@ -17,15 +16,6 @@ class S3C3V1_2_2 extends Scene {
   OnEnter() {
     this.lastScene = new S3C3V1_2_1();
 
-    // 이미지 로드
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("범녀", this.PREFIX + "범녀1");
-    imageManager.LoadImage("웅녀", this.PREFIX + "웅녀");
-    imageManager.LoadImage("환웅", this.PREFIX + "환웅");
-    imageManager.LoadImage("button_left", this.PREFIX + "button_left");
-    imageManager.LoadImage("button_right", this.PREFIX + "button_right");
-    imageManager.LoadImage("S3C3V1_2_2_TEXT", this.PREFIX + "text");
-
     this.startMinute = minute();
     this.startSecond = second();
     this.startMillis = millis();
@@ -39,7 +29,7 @@ class S3C3V1_2_2 extends Scene {
       this.tongueY *= -1;
     }
     let elapsedMills = millis() - this.startMillis;
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_2_2_background", createVector(width / 2, height / 2));
 
     // 검은색 반투명
     fill(0, min(128, lerp(255, 128, this.darkenMillis / elapsedMills)));
@@ -54,29 +44,29 @@ class S3C3V1_2_2 extends Scene {
     let bearScale = hoveredBear ? 0.22 : 0.2;
 
     imageManager.DrawImageScale(
-      "범녀",
+      "s3c3v1_2_2_범녀",
       createVector(this.lastScene.범녀_X_End, this.lastScene.범녀_Y_End),
       createVector(tigerScale, tigerScale)
     );
     imageManager.DrawImageScale(
-      "웅녀",
+      "s3c3v1_2_2_웅녀",
       createVector(this.lastScene.웅녀_X_End, this.lastScene.웅녀_Y_End),
       createVector(bearScale, bearScale)
     );
     imageManager.DrawImageScale(
-      "환웅",
+      "s3c3v1_2_2_환웅",
       createVector(this.환웅_X, this.환웅_Y),
       createVector(0.3, 0.3)
     );
     imageManager.DrawImageScale(
-      "S3C3V1_2_2_TEXT",
+      "s3c3v1_2_2_S3C3V1_2_2_TEXT",
       createVector(width / 2, height / 2),
       createVector(1.0, 1.0)
     );
 
     if (hoveredTiger) {
       imageManager.DrawImageScale(
-        "button_left",
+        "s3c3v1_2_2_button_left",
         createVector(width / 2 - 60, height / 2 - 80),
         createVector(0.8, 0.8)
       );
@@ -84,7 +74,7 @@ class S3C3V1_2_2 extends Scene {
 
     if (hoveredBear) {
       imageManager.DrawImageScale(
-        "button_right",
+        "s3c3v1_2_2_button_right",
         createVector(width / 2, height / 2 - 55),
         createVector(0.8, 0.8)
       );

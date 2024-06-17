@@ -10,6 +10,7 @@ class Obstacle {
 class S1C15 extends Scene {
   constructor() {
     super();
+		this.ended = false;
     this.ALTIMETER_MAX = 550;
     this.altimeterSpeed = 0.4;
     this.altimeter = 150;
@@ -18,7 +19,7 @@ class S1C15 extends Scene {
 
     this.groundY = 900;
 
-    this.obstacles = ["bird", "gust", "plane", "UFO", "cloud", "lightning"];
+    this.obstacles = ["s1c15_bird", "s1c15_gust", "s1c15_plane", "s1c15_UFO", "s1c15_cloud", "s1c15_lightning"];
     this.obstaclesImageScale = [0.2, 0.3, 0.7, 0.3, 0.3, 0.25];
     this.obstaclesProbability = [
       0, 0, 0, 1, 1, 1, 2, 3, 3, 3, 4, 4, 4, 5, 5, 5,
@@ -42,59 +43,37 @@ class S1C15 extends Scene {
   }
 
   OnEnter() {
-    this.enterTime = timeManager.time;
-
-    imageManager.LoadImage("background", "Images/S1/C15/background");
-    imageManager.LoadImage("ground", "Images/S1/C15/ground");
-
-    imageManager.LoadImage("hwanung", "Images/S1/C15/hwanung");
-    imageManager.LoadImage("hwanungFace1", "Images/S1/C15/hwanung_face_1");
-    imageManager.LoadImage("hwanungFace2", "Images/S1/C15/hwanung_face_2");
-
-    imageManager.LoadImage("bird", "Images/S1/C15/obstacles/bird");
-    imageManager.LoadImage("gust", "Images/S1/C15/obstacles/gust");
-    imageManager.LoadImage("plane", "Images/S1/C15/obstacles/plane");
-    imageManager.LoadImage("UFO", "Images/S1/C15/obstacles/UFO");
-    imageManager.LoadImage("cloud", "Images/S1/C15/obstacles/cloud");
-    imageManager.LoadImage("lightning", "Images/S1/C15/obstacles/lightning");
-
-    imageManager.LoadImage("wind", "Images/S1/C15/obstacles/wind");
-    imageManager.LoadImage("fog", "Images/S1/C15/obstacles/fog");
-
-    imageManager.LoadImage("altimeter", "Images/S1/C15/altimeter_1");
-    imageManager.LoadImage("altimeterHwanung", "Images/S1/C15/altimeter_2");
-    imageManager.LoadImage("arrow", "Images/S1/C15/arrow");
-
-    soundManager.LoadSound("Interaction1", "Sounds/S1/C15/Interaction1.wav");
-    soundManager.LoadSound("crash", "Sounds/S1/C15/crash.mp3");
-
     soundManager.PlaySound("Interaction1");
 
-    this.hwanungImage = imageManager.GetImage("hwanung");
+    this.hwanungImage = imageManager.GetImage("s1c15_hwanung");
 
     this.obstacleCreatedTime = timeManager.time;
+		this.ended = false;
   }
 
   OnDraw() {
     imageManager.DrawImage(
-      "background",
+      "s1c15_background",
       createVector(width / 2, height / 2, 0)
     );
-    if (this.altimeter > 480 && this.hwanungY < height / 2 + 250) {
+    if (this.altimeter > 480 && this.hwanungY < height / 2 + 250 && !this.ended) {
       this.hwanungY += 2;
     }
-    if (this.altimeter > 400) {
+    if (this.altimeter > 400 && !this.ended) {
       this.groundY--;
-      imageManager.DrawImage(
-        "ground",
-        createVector(width / 2 + this.indicator * 6, this.groundY, 0)
-      );
     }
 
-    if (mouseX < width / 2) {
-      this.indicator += this.indicator < 200 ? 0.5 : 0;
-    } else if (mouseX > width / 2) {
-      this.indicator -= this.indicator > -200 ? 0.5 : 0;
+    imageManager.DrawImage(
+      "s1c15_ground",
+      createVector(width / 2 + this.indicator * 6, this.groundY, 0)
+    );
+
+    if (!this.ended) {
+      if (mouseX < width / 2) {
+        this.indicator += this.indicator < 200 ? 0.5 : 0;
+      } else if (mouseX > width / 2) {
+        this.indicator -= this.indicator > -200 ? 0.5 : 0;
+      }
     }
 
     if (this.altimeter <= this.ALTIMETER_MAX) {
@@ -104,26 +83,25 @@ class S1C15 extends Scene {
     if (
       this.collisionActionSpeed === 0 &&
       this.altimeter <= this.ALTIMETER_MAX
+      && !this.ended
     ) {
       this.hwanungX = lerp(this.hwanungX, mouseX, timeManager.deltaTime);
-    } else {
-      mouseX = this.hwanungX;
     }
 
     imageManager.DrawImageScale(
-      "hwanung",
+      "s1c15_hwanung",
       createVector(this.hwanungX, this.hwanungY, 0),
       createVector(this.hwanungImageScale, this.hwanungImageScale, 0)
     );
     if (this.collisionTime === 0) {
       imageManager.DrawImageScale(
-        "hwanungFace1",
+        "s1c15_hwanungFace1",
         createVector(this.hwanungX - 8, this.hwanungY - 45, 0),
         createVector(this.hwanungImageScale, this.hwanungImageScale, 0)
       );
     } else {
       imageManager.DrawImageScale(
-        "hwanungFace2",
+        "s1c15_hwanungFace2",
         createVector(this.hwanungX - 8, this.hwanungY - 45, 0),
         createVector(this.hwanungImageScale, this.hwanungImageScale, 0)
       );
@@ -193,24 +171,24 @@ class S1C15 extends Scene {
             this.collisionDirection = this.hwanungX < obstacle.x ? 1 : 2;
 
             switch (obstacle.image) {
-              case "bird":
+              case "s1c15_bird":
                 this.collisionActionTime = 1;
                 this.collisionActionSpeed = 2;
                 break;
-              case "plane":
+              case "s1c15_plane":
                 this.collisionActionTime = 2;
                 this.collisionActionSpeed = 4;
                 break;
-              case "gust":
+              case "s1c15_gust":
                 this.collisionActionTime = 1.5;
                 this.collisionDirection = Math.floor(Math.random() * 2) + 1;
                 this.collisionActionSpeed = 3;
                 break;
-              case "UFO":
+              case "s1c15_UFO":
                 break;
-              case "cloud":
+              case "s1c15_cloud":
                 break;
-              case "lightning":
+              case "s1c15_lightning":
                 this.collisionActionTime = 5;
                 break;
             }
@@ -225,16 +203,16 @@ class S1C15 extends Scene {
     }
 
     // 게이지 출력
-    imageManager.DrawImage("altimeter", createVector(width / 2, height / 2, 0));
+    imageManager.DrawImage("s1c15_altimeter", createVector(width / 2, height / 2, 0));
     imageManager.DrawImage(
-      "altimeterHwanung",
+      "s1c15_altimeterHwanung",
       createVector(90, this.altimeter, 0)
     );
 
     let arrowAngle =
       Math.abs(this.indicator * 6) < 600 ? 0 : this.indicator < 0 ? 0.5 : -0.5;
     imageManager.DrawImageScale(
-      "arrow",
+      "s1c15_arrow",
       createVector(width / 2, height - 100, 0),
       createVector(0.4, 0.4, 0),
       arrowAngle,
@@ -249,8 +227,8 @@ class S1C15 extends Scene {
       }
 
       switch (this.collisionObstacle) {
-        case "bird":
-        case "plane":
+        case "s1c15_bird":
+        case "s1c15_plane":
           this.hwanungX +=
             this.collisionDirection === 1
               ? this.collisionActionSpeed * -1
@@ -270,7 +248,7 @@ class S1C15 extends Scene {
               (this.hwanungImage.width * this.hwanungImageScale) / 2;
           }
           break;
-        case "gust":
+        case "s1c15_gust":
           this.hwanungX +=
             this.collisionDirection === 1
               ? this.collisionActionSpeed * -1
@@ -292,7 +270,7 @@ class S1C15 extends Scene {
 
           if (this.collisionDirection === 1) {
             imageManager.DrawImageScale(
-              "wind",
+              "s1c15_wind",
               createVector(this.hwanungX + 160, this.hwanungY - 45, 0),
               createVector(0.4, 0.4, 0),
               -0.5,
@@ -300,7 +278,7 @@ class S1C15 extends Scene {
             );
           } else {
             imageManager.DrawImageScale(
-              "wind",
+              "s1c15_wind",
               createVector(this.hwanungX - 160, this.hwanungY - 45, 0),
               createVector(0.4, 0.4, 0),
               -2.5,
@@ -308,18 +286,18 @@ class S1C15 extends Scene {
             );
           }
           break;
-        case "UFO":
+        case "s1c15_UFO":
           this.obstacleIntervalTime *= 0.9;
           this.altimeter += this.altimeterSpeed;
           break;
-        case "cloud":
+        case "s1c15_cloud":
           imageManager.DrawImageScale(
-            "fog",
+            "s1c15_fog",
             createVector(width / 2, height / 2, 0),
             createVector(1.2, 1.2, 0)
           );
           break;
-        case "lightning":
+        case "s1c15_lightning":
           if (this.collisionLightning[this.collisionLightningIndex] === 0) {
             this.collisionLightningIndex++;
           }
@@ -348,7 +326,7 @@ class S1C15 extends Scene {
         this.collisionDirection = 0;
         this.collisionSoundPlayFlag = false;
       } else if (
-        this.collisionObstacle === "lightning" &&
+        this.collisionObstacle === "s1c15_lightning" &&
         this.collisionLightningIndex === 6 &&
         this.collisionLightning[this.collisionLightningIndex] === 0
       ) {
@@ -362,7 +340,8 @@ class S1C15 extends Scene {
     }
 
     // 게임 종료
-    if (this.altimeter >= this.ALTIMETER_MAX && this.groundY <= 500) {
+    if (this.altimeter >= this.ALTIMETER_MAX && this.groundY <= 500 && !this.ended) {
+			this.ended = true;
       this.altimeterSpeed = 0;
       setTimeout(() => {
         if (Math.abs(this.indicator * 6) < 600) {

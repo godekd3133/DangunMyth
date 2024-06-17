@@ -6,16 +6,12 @@ class S1C14 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S1/C14/background");
-    imageManager.LoadImage("button", "Images/S1/C14/button");
-    soundManager.LoadSound("effect", "Sounds/S1/C14/effect/effect.wav");
-    this.enterTime = timeManager.time;
     this.isEffectOut = false;
   }
 
   OnDraw() {
     imageManager.DrawImage(
-      "background",
+      "s1c14_background",
       createVector(width / 2, height / 2, 0)
     );
 
@@ -25,8 +21,8 @@ class S1C14 extends Scene {
       mouseY >= 585 &&
       mouseY <= height - 85
     ) {
-      imageManager.DrawImage(
-        "button",
+      imageManager.DrawImageWithTint(
+        "s1c14_button",
         createVector(width / 2, height / 2),
         0,
         255,
@@ -37,7 +33,7 @@ class S1C14 extends Scene {
 
       if (mouseIsPressed) {
         if (!this.isEffectOut) {
-          soundManager.PlaySound("effect");
+          soundManager.PlaySound("S1/C14/effect");
           this.isEffectOut = !this.isEffectOut;
         }
         // 미니 게임 씬 이동
@@ -45,7 +41,7 @@ class S1C14 extends Scene {
       }
     } else {
       imageManager.DrawImageScale(
-        "button",
+        "s1c14_button",
         createVector(width / 2, height / 2),
         createVector(1, 1)
       );

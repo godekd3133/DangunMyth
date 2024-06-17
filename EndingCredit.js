@@ -1,7 +1,7 @@
 class CreditText {
   constructor(text, size, offsetX, offsetY) {
     this.position = createVector(width / 2 + offsetX, height + 100 + offsetY);
-    this.forcePosition = createVector(300, 0);
+    this.forcePosition = createVector(0, 0);
     this.text = text;
     this.size = size;
     this.dirX = 0;
@@ -29,7 +29,7 @@ class EndingCredit extends Scene {
     this.lastMousePressed = false;
   }
 
-  AddText(text, size, offset, offsetX) {
+  AddText(text, size, offset, offsetX = 0) {
     this.offSetY += offset;
     let creditText = new CreditText(text, size, offsetX, this.offSetY);
     this.creditTextList.push(creditText);
@@ -60,7 +60,6 @@ class EndingCredit extends Scene {
   }
 
   OnEnter() {
-    soundManager.LoadSound("Credit", "Sounds/BGM/EndingCredit.mp3");
     soundManager.PlaySound("Credit");
     imageManager.LoadImage("HomeButton", "Images/Ending/HomeButton");
     imageManager.LoadImage("ReturnButton", "Images/Ending/ReturnButton");
@@ -106,7 +105,7 @@ class EndingCredit extends Scene {
     this.AddText("사용 기능, 함수", 36, 150);
     this.AddTwoText(
       "Processing::Image ",
-      "https://processing.org/reerence/#imageManager"
+      "https://processing.org/reerence/#image"
     );
     this.AddTwoText(
       "Processing::Math ",
@@ -260,9 +259,9 @@ class EndingCredit extends Scene {
         dir.normalize();
 
         creditText.flying = true;
+        creditText.speed = 10;
         creditText.dirX -= dir.x * creditText.speed;
         creditText.dirY -= dir.y * creditText.speed;
-        creditText.speed = 30;
       }
       fontManager.DrawFont(
         "font",
@@ -286,7 +285,7 @@ class EndingCredit extends Scene {
 
     if (isReturnButtonOverlaped) {
       if (mouseIsPressed && !this.lastMousePressed) {
-        OnReturnButtonDown();
+        this.OnReturnButtonDown();
         // 이미지 그리기
         imageManager.DrawImage(
           "ReturnButton",
@@ -325,7 +324,7 @@ class EndingCredit extends Scene {
 
     if (isHomeButtonOverlaped) {
       if (mouseIsPressed && !this.lastMousePressed) {
-        OnHomeButtonDown();
+        this.OnHomeButtonDown();
         // 이미지 그리기
         imageManager.DrawImage(
           "HomeButton",

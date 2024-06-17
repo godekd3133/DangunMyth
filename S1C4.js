@@ -13,15 +13,6 @@ class S1C4 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S1/C4/background");
-    imageManager.LoadImage("man1", "Images/S1/C4/man1");
-    imageManager.LoadImage("man2", "Images/S1/C4/man2");
-    imageManager.LoadImage("eye1", "Images/S1/C4/eye1");
-    imageManager.LoadImage("eye2", "Images/S1/C4/eye2");
-    imageManager.LoadImage("eye3", "Images/S1/C4/eye3");
-    imageManager.LoadImage("mouth", "Images/S1/C4/mouth");
-    imageManager.LoadImage("text", "Images/S1/C4/text");
-    soundManager.LoadSound("narr", "Sounds/S1/C4/narr/narr.mp3");
 
     this.closeTime = timeManager.time;
     this.openTime = timeManager.time;
@@ -33,48 +24,48 @@ class S1C4 extends Scene {
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C4/narr");
     }
     imageManager.DrawImageScale(
-      "background",
+      "s1c4_background",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
     imageManager.DrawImageScale(
-      "text",
+      "s1c4_text",
       createVector(width / 2, height / 2),
       createVector(1, 1)
     );
     imageManager.DrawImageScale(
-      "man1",
+      "s1c4_man1",
       createVector(width / 2 + 130, height - 165),
       createVector(0.35, 0.35)
     );
     imageManager.DrawImageScale(
-      "eye3",
+      "s1c4_eye3",
       createVector(width / 2 + 130, height - 165),
       createVector(0.35, 0.35)
     );
     imageManager.DrawImageScale(
-      "mouth",
+      "s1c4_mouth",
       createVector(width / 2 + 130, height - 165),
       createVector(0.35, 0.35)
     );
     imageManager.DrawImageScale(
-      "man2",
+      "s1c4_man2",
       createVector(width / 2 + 400, height - 165),
       createVector(0.43, 0.43)
     );
 
     if (this.eyeIndex == 0) {
       imageManager.DrawImageScale(
-        "eye1",
+        "s1c4_eye1",
         createVector(width / 2 + 370, height - 390),
         createVector(0.38, 0.38)
       );
     } else {
       imageManager.DrawImageScale(
-        "eye2",
+        "s1c4_eye2",
         createVector(width / 2 + 370, height - 390),
         createVector(0.38, 0.38)
       );

@@ -1,7 +1,6 @@
 class S1C15V1 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "Images/S1/C15-1/";
     this.backgroundAlpha = 0;
 
     this.SCENE_DURATION = 20;
@@ -24,17 +23,7 @@ class S1C15V1 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("HWANUNG_BODY", this.PREFIX + "HWANUNG_BODY");
-    imageManager.LoadImage("HWANUNG_FACE", this.PREFIX + "HWANUNG_FACE");
-    imageManager.LoadImage("HWANUNG_SWEAT", this.PREFIX + "HWANUNG_SWEAT");
-    imageManager.LoadImage("HWANUNG_TEXT", this.PREFIX + "TEXT");
 
-    imageManager.LoadImage("button_top", "Images/S1/C15-1/button_top");
-    imageManager.LoadImage("button_bottom", "Images/S1/C15-1/button_bottom");
-
-    soundManager.LoadSound("HWANUNG_NARR1", "Sounds/S1/C15-1/narr/narr1.mp3");
-    // soundManager.LoadSound("HWANUNG_NARR2", "Sounds/S1/C15-1/narr/narr2.mp3");
     this.playedSoundMap = new Map();
     this.playedSoundMap.set("HWANUNG_NARR1", 0);
     // this.playedSoundMap.set("HWANUNG_NARR2", 0);
@@ -47,15 +36,15 @@ class S1C15V1 extends Scene {
   }
 
   OnDraw() {
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c15v1_background", createVector(width / 2, height / 2));
     imageManager.DrawImageScale(
-      "HWANUNG_BODY",
+      "s1c15v1_HWANUNG_BODY",
       createVector(this.HWANUNG_BODY_X, this.HWANUNG_BODY_Y),
       createVector(this.HWANUNG_BODY_SCALE, this.HWANUNG_BODY_SCALE)
     );
     // this.faceX = sin(float(millis()) * 0.004) * 4; //240604 QA수정(얼굴 흔들림 삭제)
     imageManager.DrawImageScale(
-      "HWANUNG_FACE",
+      "s1c15v1_HWANUNG_FACE",
       createVector(this.HWANUNG_FACE_X + this.faceX + 2, this.HWANUNG_FACE_Y),
       createVector(this.HWANUNG_FACE_SCALE, this.HWANUNG_FACE_SCALE)
     );
@@ -67,7 +56,7 @@ class S1C15V1 extends Scene {
     }
     this.HWANUNG_SWEAT_Y = height / 2 + this.flowY * 40 - 150;
     imageManager.DrawImageScale(
-      "HWANUNG_SWEAT",
+      "s1c15v1_HWANUNG_SWEAT",
       createVector(this.HWANUNG_SWEAT_X + 4, this.HWANUNG_SWEAT_Y),
       createVector(this.HWANUNG_SWEAT_SCALE, this.HWANUNG_SWEAT_SCALE)
     );
@@ -79,7 +68,7 @@ class S1C15V1 extends Scene {
     }
     //240603 텍스트 수정
     imageManager.DrawImage(
-      "HWANUNG_TEXT",
+      "s1c15v1_HWANUNG_TEXT",
       createVector(width / 2, height / 2 + 50)
     );
 
@@ -108,7 +97,7 @@ class S1C15V1 extends Scene {
       //Mouse Hover
       if (mouseX > 480 && mouseX < 800 && mouseY > 375 && mouseY < 459) {
         imageManager.DrawImage(
-          "button_top",
+          "s1c15v1_button_top",
           createVector(width / 2, height / 2),
           0,
           180,
@@ -119,7 +108,7 @@ class S1C15V1 extends Scene {
       } else {
         // imageManager.DrawImageScale("button_top", createVector(width / 2, height / 2), createVector(1, 1));
         imageManager.DrawImage(
-          "button_top",
+          "s1c15v1_button_top",
           createVector(width / 2, height / 2),
           0,
           this.backgroundAlpha + 80,
@@ -131,7 +120,7 @@ class S1C15V1 extends Scene {
       //Mouse Hover
       if (mouseX > 480 && mouseX < 800 && mouseY > 237 && mouseY < 324) {
         imageManager.DrawImage(
-          "button_bottom",
+          "s1c15v1_button_bottom",
           createVector(width / 2, height / 2),
           0,
           180,
@@ -142,7 +131,7 @@ class S1C15V1 extends Scene {
       } else {
         // imageManager.DrawImageScale("button_bottom", createVector(width / 2, height / 2), createVector(1, 1));
         imageManager.DrawImage(
-          "button_bottom",
+          "s1c15v1_button_bottom",
           createVector(width / 2, height / 2),
           0,
           this.backgroundAlpha + 80,

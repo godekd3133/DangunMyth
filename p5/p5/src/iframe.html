@@ -12,21 +12,16 @@
       margin : 0;
       background-color: #1b1b1b;
     }
-    .p5Canvas {
-      display:block;
-      margin: auto;
-      align-items: center;
-    }
+    iframe {
+			border: 0 !important;
+			width: 100vw;
+			height: 100vh;
+		}
   </style>
-  <script src="../p5.js"></script>
-  <script src="../addons/p5.sound.js"></script>
-	<script src="https://unpkg.com/@free-side/audioworklet-polyfill/dist/audioworklet-polyfill.js" type="text/javascript"></script> 
-  <script src="sketch.js"></script>
 </head>
 
 <body>
-  <main>
-  </main>
+  <iframe src="./" allow="autoplay" />
 </body>
 
 </html>

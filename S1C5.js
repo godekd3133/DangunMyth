@@ -11,12 +11,6 @@ class S1C5 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S1/C5/background");
-    imageManager.LoadImage("hwanin", "Images/S1/C5/hawnin");
-    imageManager.LoadImage("hwanwoong", "Images/S1/C5/hwanwoong");
-    imageManager.LoadImage("text", "Images/S1/C5/text");
-    soundManager.LoadSound("narr", "Sounds/S1/C5/narr/narr.mp3");
-
     this.timeline = new TimelineManager();
 
     this.timeline.pushTimeline((elapsedTime) => {
@@ -82,25 +76,25 @@ class S1C5 extends Scene {
   OnDraw() {
     if (!this.isNarrOut) {
       this.isNarrOut = !this.isNarrOut;
-      soundManager.PlaySound("narr");
+      soundManager.PlaySound("S1/C5/narr");
     }
     this.timeline.OnDraw();
     imageManager.DrawImageScale(
-      "background",
+      "s1c5_background",
       createVector(width / 2, height / 2, 0),
       createVector(1, 1, 0)
     );
     imageManager.DrawImageScale(
-      "hwanwoong",
+      "s1c5_hwanwoong",
       createVector(width * 0.64, height * 0.35, 0),
       createVector(0.15, 0.15, 0)
     );
     imageManager.DrawImageScale(
-      "hwanin",
+      "s1c5_hwanin",
       createVector(this.xPos, this.yPos, 0),
       createVector(this.size, this.size, 0)
     );
-    imageManager.DrawImage("text", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s1c5_text", createVector(width / 2, height / 2));
   }
 
   OnExit() {}

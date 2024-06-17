@@ -1,7 +1,6 @@
 class S3C3V1_4_1 extends Scene {
   constructor() {
     super();
-    this.PREFIX = "Images/S3/C3/V1/_4/_1/";
     this.범녀_X = 588;
     this.범녀_Y = 350;
     this.환웅_X = 1150;
@@ -28,11 +27,6 @@ class S3C3V1_4_1 extends Scene {
     this.angle = 0;
 
     // 이미지 로드
-    imageManager.LoadImage("background", this.PREFIX + "background");
-    imageManager.LoadImage("범녀1", this.PREFIX + "범녀1");
-    imageManager.LoadImage("환웅", this.PREFIX + "환웅");
-    imageManager.LoadImage("heart", this.PREFIX + "heart");
-    soundManager.LoadSound("Choice", "Sounds/Effects/Choice.mp3");
     soundManager.PlaySound("Choice");
     this.startMinute = minute();
     this.startSecond = second();
@@ -46,21 +40,21 @@ class S3C3V1_4_1 extends Scene {
       (sin(this.angle) * this.diameter) / 2 +
       this.diameter / 2;
 
-    imageManager.DrawImage("background", createVector(width / 2, height / 2));
+    imageManager.DrawImage("s3c3v1_4_1_background", createVector(width / 2, height / 2));
 
     // 범녀 선택 씬
     imageManager.DrawImageScale(
-      "범녀1",
+      "s3c3v1_4_1_범녀1",
       createVector(this.범녀_X, this.범녀_Y),
       createVector(0.2, 0.2)
     );
     imageManager.DrawImageScale(
-      "환웅",
+      "s3c3v1_4_1_환웅",
       createVector(this.환웅_X, this.환웅_Y),
       createVector(0.3, 0.3)
     );
     imageManager.DrawImageScale(
-      "heart",
+      "s3c3v1_4_1_heart",
       createVector(width / 2, height / 2),
       createVector(d1 / 2000, d1 / 2000)
     );

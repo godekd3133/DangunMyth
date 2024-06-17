@@ -14,12 +14,6 @@ class S3C3V1_1_2 extends Scene {
   }
 
   OnEnter() {
-    imageManager.LoadImage("background", "Images/S3/C3/V1/_1/_2/background");
-    imageManager.LoadImage("bear", "Images/S3/C3/V1/_1/_2/bear");
-    imageManager.LoadImage("bear_star", "Images/S3/C3/V1/_1/_2/bear_star");
-    imageManager.LoadImage("tiger", "Images/S3/C3/V1/_1/_2/tiger");
-    imageManager.LoadImage("tiger_star", "Images/S3/C3/V1/_1/_2/tiger_star");
-    soundManager.LoadSound("harp", "Sounds/Effects/HarpSound.mp3");
     soundManager.PlaySound("harp");
 
     this._time = 0;
@@ -34,23 +28,23 @@ class S3C3V1_1_2 extends Scene {
   }
 
   OnDraw() {
-    if (timeManager.time - timeManager.enterTime > this.SCENE_DURATION) {
+    if (timeManager.time - this.enterTime > this.SCENE_DURATION) {
       sceneManager.ChangeScene(new S3C3V1_2_1());
     }
     this._time++;
     imageManager.DrawImageScale(
-      "background",
+      "s3c3v1_1_2_background",
       createVector(width / 2, height / 2, 0),
       createVector(1, 1, 0)
     );
 
     imageManager.DrawImageScale(
-      "bear",
+      "s3c3v1_1_2_bear",
       createVector(this.bear_x, this.bear_y, 0),
       createVector(0.2, 0.2, 0)
     );
     imageManager.DrawImageScale(
-      "tiger",
+      "s3c3v1_1_2_tiger",
       createVector(this.tiger_x, this.tiger_y, 0),
       createVector(0.2, 0.2, 0)
     );
@@ -67,12 +61,12 @@ class S3C3V1_1_2 extends Scene {
       }
     }
     imageManager.DrawImageScale(
-      "bear_star",
+      "s3c3v1_1_2_bear_star",
       createVector(300, 200, 0),
       createVector(this.bear_star_size, this.bear_star_size, 0)
     );
     imageManager.DrawImageScale(
-      "tiger_star",
+      "s3c3v1_1_2_tiger_star",
       createVector(1000, 200, 0),
       createVector(this.tiger_star_size, this.tiger_star_size, 0)
     );
